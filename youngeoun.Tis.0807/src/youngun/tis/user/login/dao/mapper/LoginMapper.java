@@ -1,0 +1,7 @@
+package youngun.tis.user.login.dao.mapper;
+
+import youngun.tis.user.login.domain.Login;
+
+public interface LoginMapper {
+	Login getUser(String userId);
+}
