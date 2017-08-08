@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+    pageEncoding="UTF-8"%>
 <!doctype html>
+
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="description" content="해외 자유여행 컨텐츠 정보 공유">
@@ -12,18 +14,26 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/travel/css/styleMainn.css">
     <link rel="stylesheet" href="../res/travel/css/travelMain.css">
+    <link rel="stylesheet" href="../res/travel/css/SelectContent.css">
     <script type="text/javascript" src="../res/travel/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/travel/js/modernizr.custom.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
+    <!--이미지 슬라이더-->
+    <link href="../res/travel/themes/5/js-image-slider.css" rel="stylesheet" type="text/css" />
+    <script src="../res/travel/themes/5/js-image-slider.js" type="text/javascript"></script>
+    <!-- <link href="generic.css" rel="stylesheet" type="text/css" /> -->
+    
+	
 </head>
 
 <body>
+
     <div id="fullweb">
         <header>
             <div class="Center">
                 <div class="site-logo">
-                    <img src="../res/img/DYTR.png" style="display:inline-block; width:15%;height:auto; margin-top:-15px;">
+                    <img src="../res/travel/img/DYTR.png" style="display:inline-block; width:15%;height:auto; margin-top:-15px;">
                     <h1><a href="../main.jsp">Design Your Trip</a></h1>
                 </div>
                 <div id="cbp-hrmenu" class="cbp-hrmenu">
@@ -169,7 +179,7 @@
 			                            <h4>후기</h4>
 		                           	</div>
 	                           	</div>
-                           	</div>                  
+                           	</div>            
                         </li>
                         <li>
                             <a href="#">이벤트</a>
@@ -218,6 +228,7 @@
 								<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 
 								<script src="../res/travel/js/index.js"></script>
+
                     
                     <div class="clear"></div>
                     
@@ -237,10 +248,6 @@
         </header>
 
         <div class="picture">
-            <div class="nation_title">
-                <h2>프랑스</h2>
-                <h3>FRANCE</h3>
-            </div>
 			<div class="option_box">
 				<select id="sl" onchange="zzz()">
 				    <option value="hide">-- Continent --</option>
@@ -287,19 +294,19 @@
 			
     		
             <div class="mySlides fade" style="display:block;">
-                <img src="../res/img/trip/p.jpg" style="width:100%; ">
+                <img src="../res/travel/img/trip/p.jpg" style="width:100%; ">
             </div>
 
             <div class="mySlides fade">
-                <img src="../res/img/trip/m.jpg" style="width:100%; ">
+                <img src="../res/travel/img/trip/m.jpg" style="width:100%; ">
             </div>
 
             <div class="mySlides fade">
-                <img src="../res/img/trip/g.jpg" style="width:100%; ">
+                <img src="../res/travel/img/trip/g.jpg" style="width:100%; ">
             </div>
 
             <div class="mySlides fade">
-                <img src="../res/img/trip/pr.jpg" style="width:100%;">
+                <img src="../res/travel/img/trip/pr.jpg" style="width:100%;">
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -313,47 +320,74 @@
 		
 		
         <main>
-			<div class="travel_main">
-				<h1>파리여행기</h1>
-                <a href="BlogMain.jsp" class="action-button shadow animate blue"  style="margin-left: 90px;">글작성</a>
-                <div class="clear"></div>
-				<div class="travel_box">
-                        <a href="SelectContent.jsp">
-						<div class="box1">
-							<img src="../res/travel/img/trip/g.jpg">
-							<h3>그리스 산토리니</h3>
-							<p>강추강추추추추추</p>
-						</div>
-                        </a>
-						<div class="box2"></div>
-						<div class="box3"></div>
-						<div class="box4"></div>
-						<div class="box5"></div>
-						<div class="box6"></div>
-						<div class="box7"></div>
-						<div class="box8"></div>
-						<!-- 페이지 인덱스 -->
-						<div id="page_index">
-							<ul>
-								<li><a href="#">&laquo;prev</a></li>
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">6</a></li>
-								<li><a href="#">7</a></li>
-								<li><a href="#">8</a></li>
-								<li><a href="#">9</a></li>
-								<li><a href="#">next&raquo;</a></li>
-							</ul>
-						</div>
-				</div>
-			</div>
+        <div class="travel_container">
+			<div class="content_pictures">
+                <div id="sliderFrame">
+                    <div id="slider">
+                        <!--<a>
+                            <img src="images/image-slider-1.jpg"/>
+                        </a>-->
+                        <a class="lazyImage" href="../res/travel/images/spain.jpg" />
+                        <a class="lazyImage" href="../res/travel/images/spain2.jpg" />
+                        <a class="lazyImage" href="../res/travel/images/p.jpg" />
+                        <a class="lazyImage" href="../res/travel/images/pr.jpg"/>
+                        <a class="lazyImage" href="../res/travel/images/m.jpg"/>
+                        <a class="lazyImage" href="../res/travel/images/g.jpg"/>
+                        <a class="lazyImage" href="../res/travel/images/p.jpg"/>
+                        <a class="lazyImage" href="../res/travel/images/pr.jpg"/>
+                        
+                    </div>
+                    <div style="display: none;">
+                        <div id="htmlcaption3">
+                            <em>HTML</em> caption. Back to <a href="http://www.menucool.com/">Menucool</a>.
+                        </div>
+                        <div id="htmlcaption5">
+                            Smart Lazy Loading Image
+                        </div>
+                    </div>
 
-        
-			<div class="clear"></div>
+                <!--thumbnails-->
+                    <div id="thumbs">
+                        <div class="thumb"><img src="../res/travel/images/spain_thumb.jpg" /></div>
+                        <div class="thumb"><img src="../res/travel/images/spain2_thumb.jpg" /></div>
+                        <div class="thumb"><img src="../res/travel/images/p_thumb.jpg" /></div>
+                        <div class="thumb"><img src="../res/travel/images/pr_thumb.jpg" /></div>
+                        <div class="thumb"><img src="../res/travel/images/m_thumb.jpg" /></div>
+                        <div class="thumb"><img src="../res/travel/images/g_thumb.jpg" /></div>
+                        <div class="thumb"><img src="../res/travel/images/p_thumb.jpg" /></div>
+                        <div class="thumb"><img src="../res/travel/images/pr_thumb.jpg" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="travel_content">
+                
+                <div class="content_buttons">
+                    <a href="BlogMain.jsp" class="action-button shadow animate blue">수정</a>
+                    <a href="#" onclick="aler()" class="action-button shadow animate red">삭제</a>
+                </div>
+                
+                <div class="content_title">
+                    <h2>정말 즐거운 스페인여행</h2>
+                </div>
+                
+                <script type="text/javascript">
+                	function aler(){
+                		var answer = confirm("작성된 내용이 취소됩니다. 괜찮으십니까?");
+                		if(answer) location.replace("TravelMain.jsp");
+                	}
+                </script>
+                <div class="content_content">
+                    <p>7박 8일간의 스페인여행은 정말 꿀이였다.</p>
+                    <p>꽃보다 할배를 보고서는 스페인에 가고 싶어졌다.</p>
+                    <p>아래 사진으로나마 스페인 아름다움을 느껴보세요!</p>
+                    <a href="../res/travel/img/trip/spain.jpg"><img src="../res/travel/img/trip/spain.jpg"></a>
+                    <br>
+                    <a href="../res/travel/img/trip/spain2.jpg"><img src="../res/travel/img/trip/spain2.jpg"></a>
+                </div>
+            </div>
+        </div>
 		</main>
+        <div class="clear"></div>
         <footer>
             <div class="footer_nav">
                 
@@ -380,5 +414,7 @@
     <!--main_login-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/travel/js/index.js"></script>
+	
 </body>
+
 </html>
