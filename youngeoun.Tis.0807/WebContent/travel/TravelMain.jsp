@@ -10,11 +10,11 @@
 			인도네시아, 프랑스, 스페인, 이탈리아, 영국">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Design Your TRip</title>
-    <link rel="stylesheet" href="../res/travel/css/styleMainn.css">
-    <link rel="stylesheet" href="../res/travel/css/travelMain.css">
-    <script type="text/javascript" src="../res/travel/js/custom.js"></script>
+    <link rel="stylesheet" href="../res/css/styleMain.css">
+    <link rel="stylesheet" href="../res/css/travelMain.css">
+    <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="../res/travel/js/modernizr.custom.js"></script>
+    <script src="../res/js/modernizr.custom.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 </head>
 
@@ -281,25 +281,25 @@
                     }
                 </script>
 				<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	    		<script src="../res/travel/js/indexOption.js"></script>
+	    		<script src="../res/js/indexOption.js"></script>
                 
 			</div>
 			
     		
             <div class="mySlides fade" style="display:block;">
-                <img src="../res/img/trip/p.jpg" style="width:100%; ">
+                <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
 
             <div class="mySlides fade">
-                <img src="../res/img/trip/m.jpg" style="width:100%; ">
+                <img src="../res/img/travelImg/m.jpg" style="width:100%; ">
             </div>
 
             <div class="mySlides fade">
-                <img src="../res/img/trip/g.jpg" style="width:100%; ">
+                <img src="../res/img/travelImg/g.jpg" style="width:100%; ">
             </div>
 
             <div class="mySlides fade">
-                <img src="../res/img/trip/pr.jpg" style="width:100%;">
+                <img src="../res/img/travelImg/pr.jpg" style="width:100%;">
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -320,7 +320,7 @@
 				<div class="travel_box">
                         <a href="SelectContent.jsp">
 						<div class="box1">
-							<img src="../res/travel/img/trip/g.jpg">
+							<img src="../res/img/travelImg/g.jpg">
 							<h3>그리스 산토리니</h3>
 							<p>강추강추추추추추</p>
 						</div>
@@ -374,11 +374,11 @@
 
     <!--main_menu_nav-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../res/travel/js/cbpHorizontalMenu.min.js"></script>
+    <script src="../res/js/cbpHorizontalMenu.min.js"></script>
     <script>$(function() {cbpHorizontalMenu.init();});</script>
 
     <!--main_login-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-    <script src="../res/travel/js/index.js"></script>
+    <script src="../res/js/index.js"></script>
 </body>
 </html>
