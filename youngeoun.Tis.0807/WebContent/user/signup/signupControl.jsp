@@ -7,17 +7,16 @@
 	/* join parameter */
 	request.setCharacterEncoding("UTF-8");
 	
-	String sign_check = request.getParameter("sign_check");
-	   
-	String userId = request.getParameter("join_user_id");
-	String password = request.getParameter("join_user_pw");   
- 	String userName  = request.getParameter("join_user_name");
-	String birth = request.getParameter("join_user_birth"); 
-	String gender = request.getParameter("join_user_gender");
-	String nickName = request.getParameter("join_user_nickname");
-	String email = request.getParameter("join_user_email");	   
-	String phoneNum = request.getParameter("join_user_ph");    	
+	/* String sign_check = request.getParameter("sign_check"); */
 	
+	String userId = request.getParameter("join_user_id");         // ID
+	String password = request.getParameter("join_user_pw");       // PW
+ 	String userName  = request.getParameter("join_user_name");    // name
+	String birth = request.getParameter("join_user_birth");       // birth
+	String gender = request.getParameter("join_user_gender");     // gender
+	String nickName = request.getParameter("join_user_nickname"); // nick
+	String email = request.getParameter("join_user_email");	      // email
+	String phoneNum = request.getParameter("join_user_ph");    	  // phone
 	
 %>
 <!DOCTYPE html>

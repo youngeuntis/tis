@@ -6,14 +6,6 @@ public class Login {
 	private String userId;	      //회원 아이디
 	private String password;      //회원 비밀번호
 	private boolean flag = false; // 
-    
-//	private String gradeNum;      //등급
-//	private String birth;         //생일
-//	private String phoneNum;      //휴대폰
-//	private String email;	      //이메일
-//	private String nickName;      //닉네임
-//	private String profileImg;    //프로필 이미지
-//	private String gender;	      //성별
 	
 	public Login() {}
 	

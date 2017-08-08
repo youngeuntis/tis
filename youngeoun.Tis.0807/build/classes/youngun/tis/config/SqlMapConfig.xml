@@ -35,5 +35,6 @@
 
 	<mappers>		
 		<mapper resource="youngun/tis/user/login/dao/mapper/LoginMapper.xml" />
+		<mapper resource="youngun/tis/user/login/dao/mapper/MemberMapper.xml" />
 	</mappers>
 </configuration>

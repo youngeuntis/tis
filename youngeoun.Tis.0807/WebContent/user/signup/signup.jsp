@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Sign Up Form</title>
-<link rel="stylesheet" href="../res/css/signStyle.css">
+<link rel="stylesheet" href="../../res/css/signStyle.css">
 </head>
 <body>
 	<div id='container'>
@@ -15,15 +15,17 @@
 				<input type="password" name="join_user_pw" placeholder="비밀번호" maxlength="12" /> 
 				<input type="password" name="join_user_pw_check" placeholder="비밀번호 확인"  />
 				<input type="text" name="join_user_name" placeholder="이름" maxlength="8"/>
-				<input type="text" name="join_user_birth" placeholder="생년월일 :ex)20170731" maxlength="8"/>
-				<input type="radio" name="join_user_gender" value="m" checked="checked"> 남자 
-				<input type="radio" name="join_user_gender" value="f"> 여자
+				<input type="text" name="join_user_birth" placeholder="생년월일 :ex) 20170731" maxlength="8"/>
+				<input type="radio" name="join_user_gender" value="m" checked="checked" id="m"/> <label for="m">남자</label>
+				<input type="radio" name="join_user_gender" value="f" id="f" ><label for="f">여자</label>
 				<input type="text" name="join_user_nickname" placeholder="닉네임" maxlength="12"/> 
-				<input type="text" name="join_user_email" placeholder="이메일" /> 
-				<input type="text" name="join_user_ph" placeholder="휴대폰" maxlength="11"/> 
+				<input type="text" name="join_user_email" placeholder="이메일 : ex) ex@tis.com" /> 
+				<input type="text" name="join_user_ph" placeholder="휴대폰 :ex) 01088888888" maxlength="11"/> 
 				<input type='submit' value="가입" />
 			</form>
 		</div>
+		
+		<!-- 이용약관 -->
 		<div class='whysign'>
 			<h1>약관 내용</h1>
 			<input type="radio" name="sign_check" value="_ok"> 약관 동의
