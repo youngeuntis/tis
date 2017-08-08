@@ -1,0 +1,109 @@
+#container {
+    position: relative;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#content {
+    position: relative;
+    padding: 32px 51px 95px;
+    background-color: #fff;
+}
+
+.c_header h2 {
+    font-size: 70px;
+    color: #c15020;
+}
+
+.c_header p {
+    font-size: 40px;
+    color: #c15020;
+}
+
+.table{
+    margin-top: 40px;
+}
+
+tr,th,td{
+    height: 30px;
+    text-align: center;
+    line-height: 40px;
+}
+.boardNums{
+    width: 50px;
+    font-size: 20px;
+    color: rgba(14,84,153,0.7);
+    border-right: 1px solid #c15020;
+    border-bottom: 1px solid #c15020;
+}
+.boardNum{
+    width: 50px;
+    font-size: 15px;
+    border-right: 1px solid #c15020;
+    border-bottom: 1px solid #c15020;
+}
+
+.boardTexts{
+    width: 400px;
+    color: rgba(14,84,153,0.7);
+    font-size: 20px;
+    border-bottom: 1px solid #c15020;
+}
+.boardText{
+    width: 400px;
+    font-size: 15px;
+    border-bottom: 1px solid #c15020;
+}
+.boardText:hover{
+    width: 400px;
+    font-size: 16px;
+    color: cornflowerblue;
+    border-bottom: 1px solid #c15020;
+}
+
+.board{
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.prev-next {
+    clear: both;
+    margin: 20px 0 15px 0;
+}
+
+table.Nnavi {
+    height: 13px;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+table.Nnavi a {
+    display: block;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 2px 6px 0 5px;
+    font-weight: bold;
+    color: rgba(20,22,84,0.6);
+}
+
+table.Nnavi a:hover {
+    display: block;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 2px 6px 0 5px;
+    font-weight: bold;
+    color: rgba(220,62,54,1);
+}

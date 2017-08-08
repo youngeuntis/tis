@@ -1,0 +1,352 @@
+    /*review01 - main css 작업*/
+div.aaa h1{
+    margin-top: 17px;
+}
+
+table.type02 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 45px;
+    font-size: 40px;
+  
+}
+table.type02 th {
+    box-shadow: 2px 2px 10px #000;
+    text-align: center;
+    width: 350px;
+    height: 100px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+table.type02 td {
+    box-shadow: 2px 2px 10px #000;
+    text-align: center;
+    width: 1100px;
+    height: 200px;
+    vertical-align: top;
+    border: 1px solid black;
+}
+	
+table.type03 {
+	box-shadow: 2px 2px 10px #000;
+    float : right;
+    border-collapse: collapse;
+    line-height: 1.5;
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+table.type03 th {
+    box-shadow: 2px 2px 10px #000;
+	text-align: center;
+    width: 140px;
+    height: 50px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+div#page_index{
+ background-color: #f1f1f1;
+ border : 0;
+ margin: 50px 0px 300px 400px;
+ position:relative;
+ width : 800px; 
+}
+
+div#page_index ul li{
+ float : left;
+ margin-right : 40px;
+ list-style:none;
+}
+div#page_index ul li a{
+ text-decoration: none;
+ color : black;
+ font-size: 30px;
+} 
+
+
+
+	
+	
+	/*review02 - 후기작성 css 작업*/
+
+.selectbox{
+    margin-top: 50px;
+}
+table.type11 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top : 30px;
+}
+table.type11 th {
+    box-shadow: 2px 2px 10px #000;
+    width: 1400px;
+    height: 300px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type12 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 30px;
+}
+table.type12 td {
+    box-shadow: 2px 2px 10px #000;
+    width: 1400px;
+    height: 100px;
+    vertical-align: top;
+    border: 1px solid black;
+    
+}
+
+table.type13 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top : 30px;
+}
+table.type13 th {
+    box-shadow: 2px 2px 10px #000;
+    width: 1400px;
+    height: 100px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+table.type13 th p {
+    float : left;
+    margin-left: 40px;
+}
+
+table.type14 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+     margin-top: 30px;
+}
+table.type14 td {
+    box-shadow: 2px 2px 10px #000;
+    width: 1400px;
+    height: 900px;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type15 {
+    box-shadow: 2px 2px 10px #000;
+	float : right;
+    border-collapse: collapse;
+    line-height: 1.5;
+   margin: 30px 0px 200px 20px;
+    
+}
+
+table.type15 th {
+	box-shadow: 2px 2px 10px #000;
+	text-align: center;
+    width: 140px;
+    height: 50px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+	
+	
+	/*review03 - 수정,04 - 수정완료 css 작업*/
+	
+table.type21 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top : 50px;
+}
+table.type21 th {
+    box-shadow: 1px 1px 5px #000;
+    width: 1400px;
+    height: 300px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type22 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 30px;
+}
+
+table.type22 th{
+    box-shadow: 2px 2px 10px #000;
+    width: 1400px;
+    height: 100px;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type23 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 30px;
+}
+table.type23 td {
+    box-shadow: 2px 2px 10px #000;
+    width: 1400px;
+    height: 900px;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type24{
+    box-shadow: 2px 2px 10px #000;
+	float : right;
+    border-collapse: collapse;
+    line-height: 1.5;
+    margin: 30px 0px 200px 420px;
+}
+
+table.type24 th {
+    box-shadow: 2px 2px 10px #000;
+	text-align: center;
+    width: 140px;
+    height: 50px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+	
+	
+
+
+/*review05 - 작성글확인 css 작업*/
+	
+table.type31 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top : 50px;
+}
+table.type31 th {
+    box-shadow: 1px 1px 5px #000;
+    width: 1400px;
+    height: 300px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type32 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 30px;
+}
+
+table.type32 th{
+    box-shadow: 2px 2px 10px #000;
+    width: 1400px;
+    height: 100px;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type33 {
+    box-shadow: 2px 2px 10px #000;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 30px;
+}
+table.type33 td {
+    box-shadow: 2px 2px 10px #000;
+    width: 1400px;
+    height: 900px;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type34{
+    box-shadow: 2px 2px 10px #000;
+	float : right;
+    border-collapse: collapse;
+    line-height: 1.5;
+    margin: 30px 0px 30px 500px;
+}
+
+table.type34 th {
+    box-shadow: 2px 2px 10px #000;
+	text-align: center;
+    width: 140px;
+    height: 50px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+
+
+/*review06 - 댓글기능 07- 댓글수정 css 작업*/
+
+table.type41{
+    box-shadow: 2px 2px 10px #000;
+	float : left;
+    border-collapse: collapse;
+    line-height: 1.5;
+    margin: 100px 0px 0px 0px;
+}
+
+table.type41 th {
+    box-shadow: 2px 2px 10px #000;
+	text-align: center;
+    width: 140px;
+    height: 50px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type42{
+    box-shadow: 2px 2px 10px #000;
+	float : left;
+    border-collapse: collapse;
+    line-height: 1.5;
+    margin: 0px 0px 200px 0px;
+}
+
+table.type42 th {
+    box-shadow: 2px 2px 10px #000;
+	text-align: center;
+    width: 1260px;
+    height: 150px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
+
+table.type42 td {
+    box-shadow: 2px 2px 10px #000;
+	text-align: center;
+    width: 140px;
+    height: 75px;
+    font-weight: bold;
+    vertical-align: top;
+    border: 1px solid black;
+}
