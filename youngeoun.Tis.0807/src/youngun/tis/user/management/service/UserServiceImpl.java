@@ -7,7 +7,8 @@ import youngun.tis.user.management.domain.User;
 public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	private int check;
-	private boolean flag=false;
+	
+	private boolean flag=false; //성공여부
 	
 	public UserServiceImpl() {
 		this.userDao = new UserDaoImpl();
@@ -42,5 +43,4 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

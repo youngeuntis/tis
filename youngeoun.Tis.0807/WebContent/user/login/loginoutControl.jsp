@@ -26,11 +26,16 @@
 <%
 	if(action.equals("login")){
 		LoginService loginService = new LoginServiceImpl(loginId, loginPw);
+		
 		Login login = loginService.findUserLogin(loginId);
+		
+		System.out.print("로그인"+login.getUserId()+login.isFlag());
 		
 		if(!login.isFlag()){
 			response.sendRedirect("../../main.jsp");
+			System.out.print("틀림");
 		}else{
+			System.out.print("됨");
 			session.setAttribute("Login", login);
 			response.sendRedirect("../../main.jsp");
 		}

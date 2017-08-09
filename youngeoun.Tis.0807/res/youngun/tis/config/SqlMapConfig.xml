@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<!-- DB 접속 정보 -->
-	<properties resource="youngun/tis/config/jdbc.properties" />	
+	<properties resource="youngun/tis/config/jdbc.tis" />	
 	
 	<!-- typeAlias : Full Class Name을 alias로 정의 -->
 	<typeAliases>

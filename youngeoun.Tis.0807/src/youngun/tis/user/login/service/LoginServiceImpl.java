@@ -19,6 +19,8 @@ public class LoginServiceImpl implements LoginService {
 	public Login findUserLogin(String userId){
 		Login vo = loginDao.getUser(userId);
 		
+		//System.out.println("service"+vo.getUserId());
+		
 		/* 인터셉터로 빼기 */
 		if(vo==null){
 			vo = new Login();
