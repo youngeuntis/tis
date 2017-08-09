@@ -326,10 +326,16 @@
                 <form action="" method="get">
                     <input type="text" name="editor_title" style="width:1200px;">
                     <textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; left: 50%;" name="editor_content"></textarea>
-                    <button type="submit" style="background-color: rgba(0,0,0,0.0); border: 0px;" ><span class="action-button shadow animate blue" type="submit" style="display:inline-block;">저장</span></button>
-                    <a href="#" onclick="aler()" class="action-button shadow animate red">취소</a>
+                    <button type="submit" class="action-button shadow animate blue" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">저장</button>
                 </form>
+                	<button onclick="cancelMove()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">취소</button>
             </div>
+            <script>
+                    function cancelMove(){
+                        var answer = confirm("확인을 누르시면 데이터가 삭제됩니다.삭제를 원하십니까?")
+                        if(answer) location.replace("01TravelMain.html");
+                    }
+            </script>
 		</main>
 		
         <div class="clear"></div>

@@ -285,7 +285,7 @@
                     }
                 </script>
 				<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	    		<script src="js/indexOption.js"></script>
+	    		<script src="../res/js/indexOption.js"></script>
                 
 			</div>
 			
@@ -360,7 +360,7 @@
                 
                 <div class="content_buttons">
                     <a href="02BloglMain.html" class="action-button shadow animate blue">수정</a>
-                    <a href="#" onclick="aler()" class="action-button shadow animate red">삭제</a>
+                    <button onclick="aler()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">삭제</button>
                 </div>
                 
                 <div class="content_title">
@@ -369,7 +369,8 @@
                 
                 <script>
                     function aler(){
-                        prompt("정말이에요??");
+                        var answer = confirm("확인을 누르시면 데이터가 삭제됩니다.삭제를 원하십니까?")
+                        if(answer) location.replace("01TravelMain.html");
                     }
                 </script>
                 <div class="content_content">
