@@ -1,192 +1,276 @@
 <style type="text/css">
     
 *{margin:0; padding:0;} li{list-style-type:none;}
-header {font:20px "±¼¸²", Gulim; margin-left: 150px; margin-top: 0px;}
-#gnb {width:1200px; height:40px; padding-left:100px; background:#cccccc; }
-/*¹Ù±ù ÂÊ 
-  ¿©±ä ¾È ÂÊ*/
+.adminMenu {margin-left: 0px; margin-top: 92px; position: fixed;}
+#gnb {width:1400px; height:60px; padding-left:23px;  }
+/*ë°”ê¹¥ ìª½ 
+  ì—¬ê¸´ ì•ˆ ìª½*/
 #gnb li {display:inline;}
-#gnb li a { float:left; width:200px; height:30px; text-align:center;
-			border-top:12px solid #000000;margin-right:25px; background:#ffffff;
-			color:#666; text-decoration:none; }
-#gnb li a:hover {background:#ffffff; color:#000;}
+#gnb li a { float:left; width:250px; height:60px; text-align:center; 
+			border-top:16px solid #000000;margin-right:25px; background:#ffffff;
+			color:#000; text-decoration:none; }
+#gnb li a:hover {background:#ffffff; color:#4d4d4d; border-radius: 15px;}
 #gnb li a span {display:block;}
-/*<--------------------------------1¹ø ¸Þ´º----------------------------------->*/
+/*<--------------------------------1 munu----------------------------------->*/
     
 
 *{margin:0; padding:0;} li{list-style-type:none;}
-#gnb2 {width:330px; height:40px; padding-left:20px; background:#cccccc; }
-<!-- ¹Ù±ù ÂÊ -->
-<!-- ¿©±ä ¾È ÂÊ-->
+#gnb2 {width:350px; height:30px; padding-left:20px; background:#cccccc; }
+<!-- ë°”ê¹¥ ìª½ -->
+<!-- ì—¬ê¸´ ì•ˆ ìª½-->
 #gnb2 li {float:left;}
-#gnb2 li a {float:left; width:90px; height:50px; text-align:center;
+#gnb2 li a {float:left; width:90px; height:30px; text-align:center;
 			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
-			color:#666; text-decoration:none; }
-#gnb2 li a:hover {background:#ffffff; color:#000;}
+			color:#000; font-size: 16px; text-decoration:none; }
+#gnb2 li a:hover {background:#ffffff; color:#4d4d4d;}
 #gnb2 li a span {display:block;}
-/*<!-- ------------------------------2¹ø ¸Þ´º--------------------------------- -->*/
+/*<!-- ------------------------------2 menu--------------------------------- -->*/
     
     
 *{margin:0; padding:0;} li{list-style-type:none;}
-#gnb3 {width:1075px; height:40px; padding-left:45px; background:#cccccc; }
-<!-- ¹Ù±ù ÂÊ -->
-<!-- ¿©±ä ¾È ÂÊ-->
+#gnb3 {width:1100px; height:30px; padding-left:33px; background:#cccccc; }
+<!-- ë°”ê¹¥ ìª½ -->
+<!-- ì—¬ê¸´ ì•ˆ ìª½-->
 #gnb3 li {float:left; }
 #gnb3 li a {float:left; width:130px; height:30px; text-align:center;
 			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
-			color:#666; text-decoration:none; }
-#gnb3 li a:hover {background:#ffffff; color:#000;}
+			color:#000; font-size: 16px; text-decoration:none; }
+#gnb3 li a:hover {background:#ffffff; color:#4d4d4d;}
 #gnb3 li a span {display:block;}
-/*<!-- ------------------------------4¹ø ¸Þ´º--------------------------------- -->*/
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
     
     
 *{margin:0; padding:0;} li{list-style-type:none;}
-#gnb4 {width:550px; height:20px; padding-left:20px; background:#000; margin-left: 0px; }
-/*<--! ¹Ù±ù ÂÊ -->
-<--! ¿©±ä ¾È ÂÊ-->*/
+#gnb4 {width:900px; height:40px; padding-left:35px; background:#000; margin-left: 0px; }
+/*<--! ë°”ê¹¥ ìª½ -->
+<--! ì—¬ê¸´ ì•ˆ ìª½-->*/
 #gnb4 li {float:left;}
-#gnb4 li a {float:left; width:90px; height:20px; text-align:center;
+#gnb4 li a {float:left; width:150px; height:30px; text-align:center;
 			margin-right:20px; background:#ffffff;
-			color:#000; text-decoration:none; }
+			color:#000; font-size: 30px; text-decoration:none; }
 #gnb4 li a:hover {background:#ccc; color:#fff;}
 #gnb4 li a span {display:block;}
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
 
-div{      
+
+
+
+
+
+
+
+
+
+div.admin{      
         border: 1px solid black;
         text-align:center;
             
     }
- 
+
     .main{
-            width: 1200px;
-            height: 730px;
-            margin-left: 200px;
-            margin-top: 50px;
+            width: 1400px;
+            height: 950px;
+            margin-left: 0px;
+            margin-top: 200px;
+            
          }
     .mainA{
-            width: 1160px;
-            height: 240px;
-            margin-left: 20px;
+            width: 1200px;
+            height: 320px;
+            margin-left: 100px;
             margin-top: 20px;
+            color: #000;
         }
         
     .mainA1{
             
             width: 350px;
-            height: 240px;
+            height: 320px;
             margin-left: 0px;
             float: left;
+            text-align:center;
+            background: #ccc;
+            
          
         }
     
     .mainAa1{
             text-align:left;
-            font:18px "±¼¸²", Gulim;
+            font:20px "êµ´ë¦¼", Gulim;
             width: 330px;
-            height: 85px;
+            height: 150px;
             margin-left: 10px;
             float: left;
+            background: #fff;
+            
+            
             
         }
     .mainAbutton{
-            text-align: right;
-            font:20px "±¼¸²", Gulim;
+            color: #000;
+            text-align: center;
             width: 60px;
             height: 25px;
-            margin-left: 260px;
-            float: left;
-        
+            margin-left: 280px;
+            margin-top: 20px; 
+            float:left;
+            background: #ccc;
+		}
+    .mainAbutton a{
+            color: #000;
+            font-size: 20px;
+            text-decoration: none;
+    
         }
     
     .mainA2{
             width: 350px;
-            height: 240px;
-            margin-left: 52px;
+            height: 320px;
+            margin-left: 75px;
             float: left;
+            text-align:center;
+            background: #ccc;
         
         }
     .mainAa2{
             text-align:left;
-            font:18px "±¼¸²", Gulim;
+            font:18px "êµ´ë¦¼", Gulim;
             width: 330px;
-            height: 85px;
-             margin-left: 10px;
-           
+            height: 150px;
+            margin-left: 10px;
             float: left;
+            background: #fff;
             
         }
     
     .mainA3{
             width: 350px;
-            height: 240px;
-            margin-left: 52px;
+            height: 320px;
+            margin-left: 75px;
             float: left;
+            text-align:center;
+            background: #ccc;
+        
         }
     .mainAa3{
             text-align:left;
-            font:18px "±¼¸²", Gulim;
+            font:18px "êµ´ë¦¼", Gulim;
             width: 330px;
-            height: 85px;
+            height: 150px;
             margin-left: 10px;
             float: left;
+            background: #fff;
             
         }
     .mainB{
-            width: 1160px;
-            height: 423px;
-            margin-left: 20px;
+            width: 1200px;
+            height: 520px;
+            margin-left: 100px;
             margin-top: 20px;
             float: left;
+            text-align:center;
+            color: #000;
+            background: #ccc;
         }
      .mainBb{
             width: 1120px;
             height: 40px;
-            margin-left: 18px;
+            margin-left: 48px;
             margin-top: 20px;
             float: left;
+         
         }
     .mainSerch{
-        width: 1120px;
+        width: 300px;
         height: 40px;
-        margin-left: 18px;
+        margin-left: 440px;
         float: left;
+        background: #fff;
+        border-radius: 20px;
      }
+    .mainSerch1{
+        width: 70px;
+        height: 21px;
+        margin-left: 9px;
+        margin-top: 10px;
+        float: left;
+        background: #fff;
+      
+        
+    }
+      .mainSerch2{
+        width: 175px;
+        height: 20px;
+        margin-left: 0px;
+        margin-top: 10px;
+        float: left;
+        background: #fff;
+        
+        
+    }
+     .mainSerch3{
+        width: 31px;
+        height: 29px;
+        margin-left: 0px;
+        margin-top: 5px;
+        float: left;
+        
+    }
+    #member_button{
+        background-image: url(../img/trip/button.png);
+        width: 29px;
+        height: 28px;
+        background-color: #fff;
+    }
 
     .mainB2{
             text-align:left;
-            font:18px "±¼¸²", Gulim;
-            width: 1055px;
-            height: 210px;
-            margin-left: 50px;
+            font:18px "êµ´ë¦¼", Gulim;
+            width: 1030px;
+            height: 270px;
+            margin-left: 82px;
+            margin-top: 20px;
             float: left;
+            background: #fff;
     }
     .mainBoption{
         text-align:left;
-        width: 570px;
-        height: 20px;
-        margin-left: 270px;
-        margin-top: 10px;
+        width: 900px;
+        height: 40px;
+        margin-left: 140px;
+        margin-top: 20px;
         float: left;
      }
-    .serchOption{
-        margin-top: 10px;
-    }
+  
     .memberNum{
         text-align:center;
         width: 300px;
         height: 20px;
-        margin-left: 400px;
-        margin-top: 10px;
+        margin-left: 450px;
+        margin-top: 20px;
         float: left;
     }
+
+    .memberNum a{
+        color: #000;
+        font-size: 20px;
+    
+     }
     .mainBbutton{
-            font:20px "±¼¸²", Gulim;
-            margin-left: 1020px;
-            margin-top: 315px;
-            width: 60px;
-            height: 25px;
-          
+        color: #000;
+        text-align: right;
+        width: 60px;
+        height: 25px;
+        margin-left: 980px;
+        margin-top: 0px; 
+        float:left;
+        text-decoration: none;
         }
+    .mainBbutton a{
+         color: #000;
+        font-size: 20px;
+        text-decoration: none;
+    }
     .clear{
             display: none;
             clear: both;
