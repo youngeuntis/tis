@@ -1,0 +1,63 @@
+<style type="text/css">
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+div{      
+        border: 0px solid black;
+        text-align:center;
+        position:relative;  
+        font:18px "한나", hanna;
+        float: left;
+    }
+
+
+.blindMain{
+            width: 600px;
+            height: 265px;
+            margin: 10px;
+            margin-left: 0px;
+            margin-top: 0px;
+            color: #000;
+            clear: both;
+            background-color: antiquewhite;
+        }
+.blindTitle{
+            width: 600px;
+            height: 31px;
+            margin: 0px;
+            margin-left: 0px;
+            margin-top: 0px;
+            color: azure;
+            background-color: black;
+        }
+    
+.blindMassage{
+            width: 500px;
+            height: 170px;
+            margin: 10px;
+            margin-left: 50px;
+            margin-top: 25px;
+            color: #000;
+            clear: both;
+            background-color: white;
+          
+            
+        }
+
+.blindbutton{
+            width: 100px;
+            height: 30px;
+            margin-left: 450px;
+            margin-top: 0px;
+            color: #000;
+            clear: both;
+            background-color: antiquewhite;
+         }
+
+
+ .clear{
+            display: none;
+            clear: both;
+    }
+
+</div>
+</style>

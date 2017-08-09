@@ -1,0 +1,281 @@
+<style type="text/css">
+    
+*{margin:0; padding:0;} li{list-style-type:none;}
+.adminMenu {margin-left: 0px; margin-top: 92px; position: fixed;}
+#gnb {width:1400px; height:60px; padding-left:23px;  }
+/*바깥 쪽 
+  여긴 안 쪽*/
+#gnb li {display:inline;}
+#gnb li a { float:left; width:250px; height:60px; text-align:center; 
+			border-top:16px solid #000000;margin-right:25px; background:#ffffff;
+			color:#000; text-decoration:none; }
+#gnb li a:hover {background:#ffffff; color:#4d4d4d; border-radius: 15px;}
+#gnb li a span {display:block;}
+/*<--------------------------------1 munu----------------------------------->*/
+    
+
+*{margin:0; padding:0;} li{list-style-type:none;}
+#gnb2 {width:350px; height:30px; padding-left:20px; background:#cccccc; }
+<!-- 바깥 쪽 -->
+<!-- 여긴 안 쪽-->
+#gnb2 li {float:left;}
+#gnb2 li a {float:left; width:90px; height:30px; text-align:center;
+			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
+			color:#000; font-size: 16px; text-decoration:none; }
+#gnb2 li a:hover {background:#ffffff; color:#4d4d4d;}
+#gnb2 li a span {display:block;}
+/*<!-- ------------------------------2 menu--------------------------------- -->*/
+    
+    
+*{margin:0; padding:0;} li{list-style-type:none;}
+#gnb3 {width:1100px; height:30px; padding-left:33px; background:#cccccc; }
+<!-- 바깥 쪽 -->
+<!-- 여긴 안 쪽-->
+#gnb3 li {float:left; }
+#gnb3 li a {float:left; width:130px; height:30px; text-align:center;
+			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
+			color:#000; font-size: 16px; text-decoration:none; }
+#gnb3 li a:hover {background:#ffffff; color:#4d4d4d;}
+#gnb3 li a span {display:block;}
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
+    
+    
+*{margin:0; padding:0;} li{list-style-type:none;}
+#gnb4 {width:900px; height:40px; padding-left:35px; background:#000; margin-left: 0px; }
+/*<--! 바깥 쪽 -->
+<--! 여긴 안 쪽-->*/
+#gnb4 li {float:left;}
+#gnb4 li a {float:left; width:150px; height:30px; text-align:center;
+			margin-right:20px; background:#ffffff;
+			color:#000; font-size: 30px; text-decoration:none; }
+#gnb4 li a:hover {background:#ccc; color:#fff;}
+#gnb4 li a span {display:block;}
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
+
+
+*{margin:0; padding:0;} li{list-style-type:none;}
+#gnb5 {width:400px; height:40px; padding-left:42px; background:#000; margin-left: 270px; }
+/*<--! 바깥 쪽 -->
+<--! 여긴 안 쪽-->*/
+#gnb5 li {float:left;}
+#gnb5 li a {float:left; width:150px; height:30px; text-align:center;
+			margin-right:20px; background:#ffffff;
+			color:#000; font-size: 30px; text-decoration:none; }
+#gnb5 li a:hover {background:#ccc; color:#fff;}
+#gnb5 li a span {display:block;}
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
+
+
+*{margin:0; padding:0;} li{list-style-type:none;}
+#gnb6 {width:230px; height:40px; padding-left:42px; background:#000; margin-left: 350px; }
+/*<--! 바깥 쪽 -->
+<--! 여긴 안 쪽-->*/
+#gnb6 li {float:left;}
+#gnb6 li a {float:left; width:150px; height:30px; text-align:center;
+			margin-right:20px; background:#ffffff;
+			color:#000; font-size: 30px; text-decoration:none; }
+#gnb6 li a:hover {background:#ccc; color:#fff;}
+#gnb6 li a span {display:block;}
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
+
+*{margin:0; padding:0;} li{list-style-type:none;}
+#gnb7 {width:950px; height:30px; padding-left:33px; background:#cccccc; margin-left: 90px; }
+<!-- 바깥 쪽 -->
+<!-- 여긴 안 쪽-->
+#gnb7 li {float:left; }
+#gnb7 li a {float:left; width:130px; height:30px; text-align:center;
+			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
+			color:#000; font-size: 16px; text-decoration:none; }
+#gnb7 li a:hover {background:#ffffff; color:#4d4d4d;}
+#gnb7 li a span {display:block;}
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
+
+*{margin:0; padding:0;} li{list-style-type:none;}
+#gnb8 {width:950px; height:30px; padding-left:33px; background:#cccccc; margin-left: 150px; }
+<!-- 바깥 쪽 -->
+<!-- 여긴 안 쪽-->
+#gnb8 li {float:left; }
+#gnb8 li a {float:left; width:130px; height:30px; text-align:center;
+			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
+			color:#000; font-size: 16px; text-decoration:none; }
+#gnb8 li a:hover {background:#ffffff; color:#4d4d4d;}
+#gnb8 li a span {display:block;}
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
+
+*{margin:0; padding:0;} li{list-style-type:none;}
+#gnb9 {width:800px; height:30px; padding-left:33px; background:#cccccc; margin-left: 220px; }
+<!-- 바깥 쪽 -->
+<!-- 여긴 안 쪽-->
+#gnb9 li {float:left; }
+#gnb9 li a {float:left; width:130px; height:30px; text-align:center;
+			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
+			color:#000; font-size: 16px; text-decoration:none; }
+#gnb9 li a:hover {background:#ffffff; color:#4d4d4d;}
+#gnb9 li a span {display:block;}
+/*<!-- ------------------------------4 menu--------------------------------- -->*/
+
+
+
+
+
+
+
+
+
+div.admin{      
+        border: 1px solid black;
+        text-align:center;
+            
+    }
+
+    .main{
+            width: 1400px;
+            height: 870px;
+            margin-left: 0px;
+            margin-top: 200px;
+            
+         }
+   
+    .mainB{
+            width: 1200px;
+            height: 770px;
+            margin-left: 100px;
+            margin-top: 0px;
+            float: left;
+            text-align:center;
+            color: #000;
+            background: #ccc;
+        }
+     .mainBb{
+            width: 1120px;
+            height: 40px;
+            margin-left: 48px;
+            margin-top: 20px;
+            float: left;
+         
+        }
+    .mainSerch{
+        width: 300px;
+        height: 40px;
+        margin-left: 440px;
+        float: left;
+        background: #fff;
+        border-radius: 20px;
+     }
+    .mainSerch1{
+        width: 70px;
+        height: 21px;
+        margin-left: 9px;
+        margin-top: 10px;
+        float: left;
+        background: #fff;
+      
+        
+    }
+      .mainSerch2{
+        width: 175px;
+        height: 20px;
+        margin-left: 0px;
+        margin-top: 10px;
+        float: left;
+        background: #fff;
+        
+        
+    }
+     .mainSerch3{
+        width: 31px;
+        height: 29px;
+        margin-left: 0px;
+        margin-top: 5px;
+        float: left;
+        
+    }
+    #member_button{
+        background-image: url(../img/trip/button.png);
+        width: 29px;
+        height: 28px;
+    }
+
+    .mainB2{
+            text-align:left;
+            font:18px "굴림", Gulim;
+            width: 1030px;
+            height: 520px;
+            margin-left: 82px;
+            margin-top: 20px;
+            float: left;
+            background: #fff;
+    }
+    .mainB2blind{
+            text-align:left;
+            font:18px "굴림", Gulim;
+            width: 881px;
+            height: 520px;
+            margin-left: 170px;
+            margin-top: 20px;
+            float: left;
+            background: #fff;
+    }
+    .mainB2forcedblind{
+            text-align:left;
+            font:18px "굴림", Gulim;
+            width: 732px;
+            height: 520px;
+            margin-left: 230px;
+            margin-top: 20px;
+            float: left;
+            background: #fff;
+    }
+    .mainB2Step{
+            text-align:left;
+            font:18px "굴림", Gulim;
+            width: 581px;
+            height: 520px;
+            margin-left: 300px;
+            margin-top: 20px;
+            float: left;
+            background: #fff;
+    }
+
+
+    .mainBoption{
+        text-align:left;
+        width: 900px;
+        height: 40px;
+        margin-left: 140px;
+        margin-top:20px;
+        float: left;
+     }
+  
+    .memberNum{
+        text-align:center;
+        width: 300px;
+        height: 20px;
+        margin-left: 450px;
+        margin-top: 20px;
+        float: left;
+    }
+
+    .memberNum a{
+        color: #000;
+        font-size: 20px;
+    
+     }
+    .mainBbutton{
+        color: #000;
+        text-align: right;
+        width: 60px;
+        height: 25px;
+        margin-left: 980px;
+        margin-top: 0px; 
+        float:left;
+        }
+    .mainBbutton a{
+         color: #000;
+        font-size: 20px;
+    }
+    .clear{
+            display: none;
+            clear: both;
+    }
+</style>

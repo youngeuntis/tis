@@ -1,4 +1,8 @@
-    /*review01 - main css 작업*/
+main{
+	overflow: hidden;
+}
+
+    /*review01 - main css �옉�뾽*/
 div.aaa h1{
     margin-top: 17px;
 }
@@ -72,7 +76,7 @@ div#page_index ul li a{
 
 	
 	
-	/*review02 - 후기작성 css 작업*/
+	/*review02 - �썑湲곗옉�꽦 css �옉�뾽*/
 
 .selectbox{
     margin-top: 50px;
@@ -164,7 +168,7 @@ table.type15 th {
 }
 	
 	
-	/*review03 - 수정,04 - 수정완료 css 작업*/
+	/*review03 - �닔�젙,04 - �닔�젙�셿猷� css �옉�뾽*/
 	
 table.type21 {
     box-shadow: 2px 2px 10px #000;
@@ -234,7 +238,7 @@ table.type24 th {
 	
 
 
-/*review05 - 작성글확인 css 작업*/
+/*review05 - �옉�꽦湲��솗�씤 css �옉�뾽*/
 	
 table.type31 {
     box-shadow: 2px 2px 10px #000;
@@ -303,7 +307,7 @@ table.type34 th {
 
 
 
-/*review06 - 댓글기능 07- 댓글수정 css 작업*/
+/*review06 - �뙎湲�湲곕뒫 07- �뙎湲��닔�젙 css �옉�뾽*/
 
 table.type41{
     box-shadow: 2px 2px 10px #000;
