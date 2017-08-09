@@ -1,6 +1,8 @@
 package youngun.tis.user.management.domain;
 
-public class member {
+import youngun.tis.common.TextUtils;
+
+public class User {
 	private int memberNum; 	      //회원 번호
 	private String userName;      //회원 이름
 	private String userId;	      //회원 아이디
@@ -15,14 +17,22 @@ public class member {
 
 	private boolean flag = false; // 성공여부
 	
-	public member() {}
+	public User() {}
 	
-	public member(String userName, String userId, String password) {
+	public User(String userName, String userId, String password, String birth, String phoneNum, String email,
+			String nickName, String gender) {
+		super();
 		this.userName = userName;
 		this.userId = userId;
 		this.password = password;
+		this.birth = birth;
+		this.phoneNum = phoneNum;
+		this.email = email;
+		this.nickName = nickName;
+		this.gender = gender;
 	}
-	
+
+
 	public int getMemberNum() {
 		return memberNum;
 	}
@@ -32,6 +42,9 @@ public class member {
 	}
 
 	public String getUserName() {
+		if(TextUtils.isEmpty(userName)){
+			flag = false;
+		}
 		return userName;
 	}
 
@@ -40,6 +53,9 @@ public class member {
 	}
 	
 	public String getUserId() {
+		if(TextUtils.isEmpty(userId)){
+			flag = false;
+		}
 		return userId;
 	}
 
@@ -48,6 +64,9 @@ public class member {
 	}
 
 	public String getPassword() {
+		if(TextUtils.isEmpty(password)){
+			flag = false;
+		}
 		return password;
 	}
 
@@ -64,6 +83,9 @@ public class member {
 	}
 
 	public String getGradeNum() {
+		if(TextUtils.isEmpty(gradeNum)){
+			flag = false;
+		}
 		return gradeNum;
 	}
 
@@ -72,6 +94,9 @@ public class member {
 	}
 
 	public String getBirth() {
+		if(TextUtils.isEmpty(birth)){
+			flag = false;
+		}
 		return birth;
 	}
 
@@ -80,6 +105,9 @@ public class member {
 	}
 
 	public String getPhoneNum() {
+		if(TextUtils.isEmpty(phoneNum)){
+			flag = false;
+		}
 		return phoneNum;
 	}
 
@@ -88,6 +116,9 @@ public class member {
 	}
 
 	public String getEmail() {
+		if(TextUtils.isEmpty(email)){
+			flag = false;
+		}
 		return email;
 	}
 
@@ -96,6 +127,9 @@ public class member {
 	}
 
 	public String getNickName() {
+		if(TextUtils.isEmpty(nickName)){
+			flag = false;
+		}
 		return nickName;
 	}
 
@@ -104,6 +138,9 @@ public class member {
 	}
 
 	public String getProfileImg() {
+		if(TextUtils.isEmpty(profileImg)){
+			flag = false;
+		}
 		return profileImg;
 	}
 
@@ -112,6 +149,9 @@ public class member {
 	}
 
 	public String getGender() {
+		if(TextUtils.isEmpty(gender)){
+			flag = false;
+		}
 		return gender;
 	}
 

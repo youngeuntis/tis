@@ -1,3 +1,4 @@
+<%@page import="youngun.tis.user.management.domain.Member"%>
 <%@page import="youngun.tis.config.Configuration"%>
 <%@page import="java.lang.ProcessBuilder.Redirect"%>
 
@@ -17,6 +18,19 @@
 	String nickName = request.getParameter("join_user_nickname"); // nick
 	String email = request.getParameter("join_user_email");	      // email
 	String phoneNum = request.getParameter("join_user_ph");    	  // phone
+	
+	Member member = new Member(userName, userId, password, birth, phoneNum, email, nickName, gender);
+	
+/* 
+	member.setUserId(userId);
+	member.setPassword(password);
+	member.setUserName(userName);
+	member.setBirth(birth);
+	member.setGender(gender);
+	member.setNickName(nickName);
+	member.setEmail(email);
+	member.setPhoneNum(phoneNum);
+ */
 	
 %>
 <!DOCTYPE html>
