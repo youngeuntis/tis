@@ -1,49 +1,49 @@
 <style type="text/css">
     
 *{margin:0; padding:0;} li{list-style-type:none;}
-header {font:20px "±¼¸²", Gulim; margin-left: 150px; margin-top: 0px;}
+header {font:20px "ï¿½ï¿½ï¿½ï¿½", Gulim; margin-left: 150px; margin-top: 0px;}
 #gnb {width:1200px; height:40px; padding-left:100px; background:#cccccc; }
-/*¹Ù±ù ÂÊ 
-  ¿©±ä ¾È ÂÊ*/
+/*ï¿½Ù±ï¿½ ï¿½ï¿½ 
+  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½*/
 #gnb li {display:inline;}
 #gnb li a { float:left; width:200px; height:30px; text-align:center;
 			border-top:12px solid #000000;margin-right:25px; background:#ffffff;
 			color:#666; text-decoration:none; }
 #gnb li a:hover {background:#ffffff; color:#000;}
 #gnb li a span {display:block;}
-/*<--------------------------------1¹ø ¸Þ´º----------------------------------->*/
+/*<--------------------------------1ï¿½ï¿½ ï¿½Þ´ï¿½----------------------------------->*/
     
 
 *{margin:0; padding:0;} li{list-style-type:none;}
 #gnb2 {width:330px; height:40px; padding-left:20px; background:#cccccc; }
-<!-- ¹Ù±ù ÂÊ -->
-<!-- ¿©±ä ¾È ÂÊ-->
+<!-- ï¿½Ù±ï¿½ ï¿½ï¿½ -->
+<!-- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½-->
 #gnb2 li {float:left;}
 #gnb2 li a {float:left; width:90px; height:50px; text-align:center;
 			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
 			color:#666; text-decoration:none; }
 #gnb2 li a:hover {background:#ffffff; color:#000;}
 #gnb2 li a span {display:block;}
-/*<!-- ------------------------------2¹ø ¸Þ´º--------------------------------- -->*/
+/*<!-- ------------------------------2ï¿½ï¿½ ï¿½Þ´ï¿½--------------------------------- -->*/
     
     
 *{margin:0; padding:0;} li{list-style-type:none;}
 #gnb3 {width:1075px; height:40px; padding-left:45px; background:#cccccc; }
-<!-- ¹Ù±ù ÂÊ -->
-<!-- ¿©±ä ¾È ÂÊ-->
+<!-- ï¿½Ù±ï¿½ ï¿½ï¿½ -->
+<!-- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½-->
 #gnb3 li {float:left; }
 #gnb3 li a {float:left; width:130px; height:30px; text-align:center;
 			border-top:10px solid #000000;margin-right:20px; background:#ffffff;
 			color:#666; text-decoration:none; }
 #gnb3 li a:hover {background:#ffffff; color:#000;}
 #gnb3 li a span {display:block;}
-/*<!-- ------------------------------4¹ø ¸Þ´º--------------------------------- -->*/
+/*<!-- ------------------------------4ï¿½ï¿½ ï¿½Þ´ï¿½--------------------------------- -->*/
     
     
 *{margin:0; padding:0;} li{list-style-type:none;}
 #gnb4 {width:550px; height:20px; padding-left:20px; background:#000; margin-left: 0px; }
-/*<--! ¹Ù±ù ÂÊ -->
-<--! ¿©±ä ¾È ÂÊ-->*/
+/*<--! ï¿½Ù±ï¿½ ï¿½ï¿½ -->
+<--! ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½-->*/
 #gnb4 li {float:left;}
 #gnb4 li a {float:left; width:90px; height:20px; text-align:center;
 			margin-right:20px; background:#ffffff;
@@ -81,7 +81,7 @@ div{
     
     .mainAa1{
             text-align:left;
-            font:18px "±¼¸²", Gulim;
+            font:18px "ï¿½ï¿½ï¿½ï¿½", Gulim;
             width: 330px;
             height: 85px;
             margin-left: 10px;
@@ -90,7 +90,7 @@ div{
         }
     .mainAbutton{
             text-align: right;
-            font:20px "±¼¸²", Gulim;
+            font:20px "ï¿½ï¿½ï¿½ï¿½", Gulim;
             width: 60px;
             height: 25px;
             margin-left: 260px;
@@ -107,7 +107,7 @@ div{
         }
     .mainAa2{
             text-align:left;
-            font:18px "±¼¸²", Gulim;
+            font:18px "ï¿½ï¿½ï¿½ï¿½", Gulim;
             width: 330px;
             height: 85px;
              margin-left: 10px;
@@ -124,7 +124,7 @@ div{
         }
     .mainAa3{
             text-align:left;
-            font:18px "±¼¸²", Gulim;
+            font:18px "ï¿½ï¿½ï¿½ï¿½", Gulim;
             width: 330px;
             height: 85px;
             margin-left: 10px;
@@ -154,7 +154,7 @@ div{
 
     .mainB2{
             text-align:left;
-            font:18px "±¼¸²", Gulim;
+            font:18px "ï¿½ï¿½ï¿½ï¿½", Gulim;
             width: 1055px;
             height: 210px;
             margin-left: 50px;
@@ -180,7 +180,7 @@ div{
         float: left;
     }
     .mainBbutton{
-            font:20px "±¼¸²", Gulim;
+            font:20px "ï¿½ï¿½ï¿½ï¿½", Gulim;
             margin-left: 1020px;
             margin-top: 315px;
             width: 60px;
