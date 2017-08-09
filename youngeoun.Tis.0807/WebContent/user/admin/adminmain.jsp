@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <head>
 </head>
-<link rel = "stylesheet" href =  "../../res/css/AdminStyle.css"/>
+<link rel = "stylesheet" href =  "../../res/AdminStyle.css"/>
 <body>
 <header>
 	<ul id="gnb">
