@@ -9,6 +9,7 @@
 	<typeAliases>
 		<typeAlias alias="login" type="youngun.tis.user.login.domain.Login" />
 		<typeAlias alias="user" type="youngun.tis.user.management.domain.User" />
+		<typeAlias alias="Blog" type="youngun.tis.travel.blog.Blog" />
 	</typeAliases>	
 
 	<environments default="development">
@@ -37,5 +38,6 @@
 	<mappers>		
 		<mapper resource="youngun/tis/user/login/dao/mapper/LoginMapper.xml" />
 		<mapper resource="youngun/tis/user/management/dao/mapper/UserMapper.xml" />
+		<mapper resource="youngun/tis/travel/blog/BlogMapper.xml" />
 	</mappers>
 </configuration>
