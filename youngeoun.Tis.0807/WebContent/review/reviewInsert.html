@@ -293,31 +293,55 @@
 		
 		<!-- 메인 작업부분 -->
 		
-		<main>
-			<table class="type31">
-					<th><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+		
+		
+        <main>
+            <div class="selectbox">
+                <select id="nation" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                        <option selected value="NATION">국가별</option>
+                        <option value="KOREA">한국</option>
+                        <option value="JAPAN">일본</option>
+                        <option value="USA">미국</option>
+                        <option value="SPAIN">스페인</option>
+                </select>
+                <select id="area" style="width:165px;height:50px;font-size:20px;
+                font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                        <option selected value="AREA">지역별</option>
+                        <option value="">서울</option>
+                        <option value="">대전</option>
+                        <option value="">대구</option>
+                        <option value="">부산</option>
+                </select>
+            </div>
+			<table class="type11">
+					<th rowspan="2">메인 사진을 업로드 해 주세요<p><input type="file" name="uploadFile1" style =  "display:none;">
+                    <img src="../res/img/123.jpg" onclick="document.all.uploadFile1.click();"></p></th>
+            </table>
+            <table class="type12">   
+                <td>
+                    <textarea name="titleinput" style="width:100%; height:100%; ">제목 입력</textarea>
+                </td>
+            <table class="type13">
+					<th>글 내용안의 동영상 사진 음악 등 업로드
+                        <p><input type="file" name="uploadFile2" style =  "display:none;">
+                        <img src="../res/img/DYTR.png"
+                        onclick="document.all.uploadFile2.click();"></p>
+                        <p><input type="file" name="uploadFile3" style =  "display:none;">
+                        <img src="../res/img/DYTR.png"
+                        onclick="document.all.uploadFile3.click();"></p>
+                    </th>
             </table> 
-            <table class="type32">
-                    <th>제목이 들어갑니다.</th>
-            </table>
-            <table class="type33">
-                <td>내용이 들어갑니다.</td>
+            <table class="type14">
+                <td><textarea name="titleinput" style="width:100%; height:100%; ">내용 입력</textarea></td>
 			</table>
-			<table class="type34">
-                <th><a href="#"/>확인</th>
-            </table>            
-            
-            <table class="type41">
-                <th>댓글</th>
+			<table class="type15">
+				<th><a href="review.html"/>등록</th>
             </table>
-            <table class="type42">
-                <tr>
-                    <th rowspan="2"><textarea name="titleinput" style="width:100%; height:100%; "></textarea></th>
-                    <td><a href="#"/>등록</td>
-                </tr>
-                <tr>
-                    <td><a href="#"/>삭제</td>
-                </tr>
+            <table class="type15">
+                <th><a href="reviewMain.html"/>취소</th>
+			</table>
             </table>
         </main>
 

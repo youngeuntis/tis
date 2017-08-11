@@ -19,6 +19,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int insertUser(User user) {
+		System.out.println("dao" + user);
 		return userMapper.insertUser(user);
 	}
 

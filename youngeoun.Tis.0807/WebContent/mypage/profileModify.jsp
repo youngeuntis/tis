@@ -1,11 +1,9 @@
-<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<%@ page session="true"%>
-<% Login dto = (Login)session.getAttribute("Login"); %>
-
 <!doctype html>
-<html lang="ko">
+
+<html>
+
 <head>
 <meta charset="utf-8">
 <meta name="description" content="해외 자유여행 컨텐츠 정보 공유">
@@ -15,13 +13,17 @@
 			인도네시아, 프랑스, 스페인, 이탈리아, 영국">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Design Your TRip</title>
-<link rel="stylesheet" href="res/css/styleMain.css">
-<script type="text/javascript" src="res/js/custom.js"></script>
+<title>My profile</title>
+<link rel="stylesheet" href="../res/css/mypage.css">
+<link rel="stylesheet" href="../res/css/myprofile.css">
+
+<script type="text/javascript" src="../res/js/custom.js"></script>
+<script
+	src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <link
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<script src="res/js/modernizr.custom.js"></script>
+<script src="../res/js/modernizr.custom.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
@@ -33,10 +35,10 @@
 		<header>
 			<div class="Center">
 				<div class="site-logo">
-					<img src="res/img/logo/DYTR.png"
+					<img src="../res/img/logo/DYTR.png"
 						style="display: inline-block; width: 15%; height: auto; margin-top: -15px;">
 					<h1>
-						<a href="main.jsp">Design Your Trip</a>
+						<a href="../main.html">Design Your Trip</a>
 					</h1>
 				</div>
 				<div id="cbp-hrmenu" class="cbp-hrmenu">
@@ -237,12 +239,10 @@
 				</div>
 
 				<div class="right_nav">
-					<!-- signup -->
-					<%if(dto == null){ %>
+					<!-- main_join -->
 					<div class="right_nav_join">
-						<a href="user/signup/signup.jsp">회원가입</a>
+						<a>회원가입</a>
 					</div>
-					<%} %>
 					<!-- end join -->
 
 					<!-- main_login -->
@@ -251,53 +251,41 @@
 							<a class="btn-close badge-overlay-close" id="closepopup" href="#">✖</a>
 							<section id="signup">
 								<h2>Login</h2>
-								<form id="login-email" class="badge-login-form" action="user/login/loginoutControl.jsp" method="POST">
-									<input type="hidden" name="action" value="login">
-									<input type="hidden" id="jsid-login-form-next-url" name="next" value=""> 
-									<input type="hidden" name="location" value="1">
+								<form id="login-email" class="badge-login-form" action=""
+									method="POST">
+									<input type="hidden" value=""> <input type="hidden"
+										id="jsid-login-form-next-url" name="next" value=""> <input
+										type="hidden" name="location" value="1">
 									<p class="lead">Log in with your id password</p>
 									<div class="field">
 										<label for="jsid-login-email-name">ID</label> <input
-											id="jsid-login-email-name" type="text" name="login_user_id"
+											id="jsid-login-email-name" type="text" name="username"
 											value="" autofocus="autofocus">
 									</div>
 									<div class="field">
 										<label for="login-email-password">PASSWORD</label> <input
-											id="login-email-password" type="password" name="login_user_pw"
+											id="login-email-password" type="password" name="password"
 											value="">
 									</div>
 									<div class="btn-container">
-										<input type="submit" value="Log in" onclick=""> 
-										<a class="forgot-password" href="" onclick="">Forgot Password</a>
+										<input type="submit" value="Log in" onclick=""> <a
+											class="forgot-password" href="" onclick="">Forgot
+											Password</a>
 									</div>
 								</form>
 							</section>
 						</section>
 					</div>
 					<div class="overlay"></div>
-
-					<%if(dto != null){ %>
-
-					<div class="demo">
-						<a id="launch" class="fbbutton" href="#"><label>마이페이지</label></a>
-						<a id="launch" class="fbbutton"
-							href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
-						</a>
-						<%if(dto.getUserId().equals("admin")){ %>
-						<a id="launch" class="fbbutton"
-							href="user/login/loginoutControl.jsp?action=logout"><label>관리자페이지</label>
-						</a>
-						<%} %>
-					</div>
-					<%}else{ %>
 					<div class="demo">
 						<a id="launch" class="fbbutton" href="#">로그인</a>
 					</div>
-					<%} %>
 					<script
 						src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 
-					<script src="res/js/index.js"></script>
+					<script src="../res/js/index.js"></script>
+
+
 					<div class="clear"></div>
 
 					<!-- main_search -->
@@ -320,81 +308,97 @@
 			</div>
 			<!--end .Center-->
 		</header>
-
 		<div class="slideshow-container">
 
 			<div class="mySlides fade" style="display: block;">
-				<img src="res/img/mainslide/p.jpg" style="width: 100%;">
+				<img src="../res/img/travelImg/p.jpg" style="width: 100%;">
 			</div>
 
 			<div class="mySlides fade">
-				<img src="res/img/mainslide/m.jpg" style="width: 100%;">
+				<img src="../res/img/travelImg/m.jpg" style="width: 100%;">
 			</div>
 
 			<div class="mySlides fade">
-				<img src="res/img/mainslide/g.jpg" style="width: 100%;">
+				<img src="../res/img/travelImg/g.jpg" style="width: 100%;">
 			</div>
 
 			<div class="mySlides fade">
-				<img src="res/img/mainslide/pr.jpg" style="width: 100%;">
+				<img src="../res/img/travelImg/pr.jpg" style="width: 100%;">
 			</div>
 
 			<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
 				onclick="plusSlides(1)">&#10095;</a>
 		</div>
-
 		<!-- 메인 작업부분 -->
 
 		<main>
-		<div class="best">
-			<h1 class="bestTitle">Best Travel Content</h1>
-			<div class="bestDiv">
-				<h2 class="bestDivIneer">
-					<a href="travel/03.html">
-						<div class="best1">
-							<img src="res/img/mainslide/g.jpg">
-							<h3>그리스 산토리니</h3>
-							<p>강추강추추추추추</p>
-						</div>
-					</a>
-					<div class="best2"></div>
-					<div class="best3"></div>
-					<div class="best4"></div>
-				</h2>
-			</div>
-		</div>
-		<hr style="width: 400px; margin: 0 auto; border: 1px solid #DC4D28;">
-		<div class="best">
-			<h1 class="bestTitle">Hot Event</h1>
-			<div class="bestDiv">
-				<h2 class="bestDivIneer">
-					<a href="event/01.html">
-						<div class="best1">
-							<img src="res/img/mainslide/g.jpg">
-							<h3>그리스 산토리니</h3>
-							<p>강추강추추추추추</p>
-						</div>
-					</a>
-					<div class="best2"></div>
-					<div class="best3"></div>
-					<div class="best4"></div>
-				</h2>
+		<div id="container">
+			<div id="content">
+				<div class="c_header">
+					<h2>프로필 수정</h2>
+					<p class="contxt">Design Your Trip 대표 프로필과 별명을 수정 하실 수 있습니다.</p>
+				</div>
+				<form id="profileForm" method="post" enctype="multipart/form-data">
+					<table border="0" class="tbl_model">
+						<caption>
+							<span class="blind">프로필 수정</span>
+						</caption>
+						<colgroup>
+							<col style="width: 20%">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">
+									<div class="thcell">프로필 사진</div>
+								</th>
+								<td>
+									<div class="tdcell">
+										<div class="profile_photo">
+											<img id="imgThumb"
+												src="http://via.placeholder.com/150x150"
+												width="150" height="150">
+										</div>
+										<p class="btn_area_btm">
+											<span class="btn_file"> <label for="inputImge"
+												class="btn_model">사진변경</label> <input type="file"
+												id="inputImge" name="profileImg" accept="image/*">
+											</span> <a href="#" class="btn_model">삭제</a>
+										</p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<div class="thcell">
+										<label for="inpNickname">별명</label>
+									</div>
+								</th>
+								<td>
+									<div class="tdcell">
+										<p class="contxt_webctrl nickname">
+											<input type="text" name="nickname" id="inpNickname" value=" "
+												style="width: 254px">
+											<!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
+											<input type="text" style="display: none;">
+										</p>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="btn_wrap">
+						<a href="myPage.jsp" class="btn_model commit">적용</a> <a href="#"
+							class="btn_model reset">취소</a>
+					</div>
+				</form>
 			</div>
 		</div>
 		</main>
 
-		<!-- video -->
-		<div class="main_player">
-			<div class="player_overlay"></div>
-			<iframe
-				src="https://www.youtube.com/embed/p2vI7IEvGJg?version=2&amp;autoplay=1&amp;loop=1&amp;vq=hd1080&amp;playlist=p2vI7IEvGJg"
-				frameborder="0" allowfullscreen="" class="video"></iframe>
-		</div>
-		<!-- end video -->
 
 		<footer>
 			<div class="footer_nav">
-
 				<ul>
 					<li><a href="#">회사소개</a></li>
 					<li><a href="#">제휴제안</a></li>
@@ -406,7 +410,6 @@
 				<p>copyright DESIGN YOUR TRIP</p>
 			</div>
 		</footer>
-		<!--p태그로 잡으면 안되나봐 -->
 
 	</div>
 	<!-- end fullweb -->
@@ -414,16 +417,20 @@
 	<!--main_menu_nav-->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="res/js/cbpHorizontalMenu.min.js"></script>
+	<script src="../res/js/cbpHorizontalMenu.min.js"></script>
 	<script>
-		$(function() {
-			cbpHorizontalMenu.init();
-		});
-	</script>
+        $(function() {
+            cbpHorizontalMenu.init();
+        });
+    </script>
 
 	<!--main_login-->
 	<script
-		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-	<script src="res/js/index.js"></script>
+		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="../res/js/index.js"></script>
+
+
 </body>
+
 </html>
+
