@@ -41,3 +41,24 @@ function emailmodify(){
     
     return false;
 }
+
+function PWnone(){
+    var d_myLetterPW = document.getElementById('d_myLetterPW');
+    var p_myLetterPW = document.getElementById('p_myLetterPW');
+    d_myLetterPW.style.display='none';
+    p_myLetterPW.style.display='block';
+    return false;
+}
+
+
+
+function PWmodify(){
+    var d_myLetterPW = document.getElementById('d_myLetterPW');
+    var p_myLetterPW = document.getElementById('p_myLetterPW');
+    
+        d_myLetterPW.style.display='block';
+        p_myLetterPW.style.display='none';
+        
+    
+    return false;
+}
