@@ -8,7 +8,7 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	private int check;
 	
-	private boolean flag=false; //성공여부
+	private boolean flag = false; //성공여부
 	
 	public UserServiceImpl() {
 		this.userDao = new UserDaoImpl();
@@ -22,7 +22,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean saveUser(User user) {
+		System.out.println("serviceuser" + user);
+		
 		check=userDao.insertUser(user);
+		
+		System.out.println("service" + check);
 		
 		if(check!=1){
 			flag=false;

@@ -9,9 +9,14 @@
 	<typeAliases>
 		<typeAlias alias="login" type="youngun.tis.user.login.domain.Login" />
 		<typeAlias alias="user" type="youngun.tis.user.management.domain.User" />
+<<<<<<< HEAD
 		<typeAlias alias="post" type="youngun.tis.qna.domain.Post"/>
 		<typeAlias alias="page" type="youngun.tis.qna.domain.Page"/>
 	</typeAliases>
+=======
+		<typeAlias alias="Blog" type="youngun.tis.travel.blog.domain.Blog" />
+	</typeAliases>	
+>>>>>>> branch 'master' of https://github.com/youngeuntis/tis
 
 	<environments default="development">
 		<environment id="development">
@@ -39,7 +44,11 @@
 	<mappers>		
 		<mapper resource="youngun/tis/user/login/dao/mapper/LoginMapper.xml" />
 		<mapper resource="youngun/tis/user/management/dao/mapper/UserMapper.xml" />
+<<<<<<< HEAD
 		<mapper resource="youngun/tis/qna/dao/mapper/PostMapper.xml" />
 		<mapper resource="youngun/tis/qna/dao/mapper/PageMapper.xml" />
+=======
+		<mapper resource="youngun/tis/travel/blog/BlogMapper.xml" />
+>>>>>>> branch 'master' of https://github.com/youngeuntis/tis
 	</mappers>
 </configuration>
