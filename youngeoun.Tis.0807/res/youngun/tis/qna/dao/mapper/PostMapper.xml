@@ -23,7 +23,7 @@
 	</select>
 	
 	<insert id="write" parameterType="post">
-	 insert into posts
+	 insert into qna_notices
 	 values(postno_seq.nextval, #{title}, #{content}, #{writer}, sysdate , 0)
 	</insert>
 	

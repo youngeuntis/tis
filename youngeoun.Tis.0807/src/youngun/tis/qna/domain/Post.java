@@ -9,6 +9,7 @@ public class Post {
 	private String writer;
 	private Date regDate;
 	private int viewCnt;
+	private String qnaImg;
 	
 	public Post(){}
 	

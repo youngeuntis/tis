@@ -41,10 +41,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
-    <link rel="stylesheet" href="../res/css/qna.css">
+    
     <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
+    <link rel="stylesheet" href="../res/css/qna.css">
     <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
     <!--end main_menu_nav-->
@@ -53,6 +54,38 @@
             location.href = url;
         }
     </script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style type="text/css">
+    .text-center{text-align:center;}
+
+
+.pagination{display:inline-block;
+	padding-left:0;
+	margin:20px 0;
+	border-radius:4px;}
+.pagination>li{display:inline-block;}
+.pagination>li>a,.pagination>li>span{
+	position:relative;float:left;
+	padding:6px 12px;
+	margin-left:-1px;
+	line-height:1.42857143;
+	color:#337ab7;
+	text-decoration:none;
+	background-color:#fff;
+	border:1px solid #ddd;}
+.pagination>li:first-child>a,.pagination>li:first-child>span{
+	margin-left:0;
+	border-top-left-radius:4px;
+	border-bottom-left-radius:4px}
+	.pagination>li:last-child>a,.pagination>li:last-child>span{
+	border-top-right-radius:4px;
+	border-bottom-right-radius:4px;}
+	.pagination>li>a:focus,.pagination>li>a:hover,.pagination>li>span:focus,.pagination>li>span:hover{
+	z-index:2;
+	color:#23527c;
+	background-color:#eee;
+	border-color:#ddd;}
+	</style>
 </head>
 
 <body>
@@ -340,7 +373,8 @@
 			</tbody>
 	</table>
 		<!-- 페이징 -->
-		<div class="text-center">
+		
+		<div class="text-center" style="text-align:center;">
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li><a href="list.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a></li>
@@ -357,7 +391,7 @@
 				</c:if>
 			</ul>
 		</div>
-		<div class=boardButton>
+		<div class=boardButton style="float:right;">
         	<input type=button value="글쓰기"  onclick="move('insert.html');">
 			<input type=button value="내 글">
 			<input type=button value="내 댓글">
