@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
 			closeFaqsContainer.addClass('move-left');
 			$('body').addClass('cd-overlay');
 		} else {
-	        $('body,html').animate({ 'scrollTop': target.offset().top - 19}, 200); 
+	        $('body,html').animate({ 'scrollTop': target.offset().top - 120}, 200); 
 		}
 	});
 

@@ -217,7 +217,7 @@ div.admin{
         
     }
     #member_button{
-        background-image: url(../img/trip/button.png);
+        background-image: url(../../res/img/button/button.png);
         width: 29px;
         height: 28px;
         background-color: #fff;
