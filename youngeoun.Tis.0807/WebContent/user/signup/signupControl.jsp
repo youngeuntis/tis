@@ -1,4 +1,6 @@
-<%@page import="youngun.tis.user.management.domain.Member"%>
+<%@page import="youngun.tis.user.management.service.UserServiceImpl"%>
+<%@page import="youngun.tis.user.management.service.UserService"%>
+<%@page import="youngun.tis.user.management.domain.User"%>
 <%@page import="youngun.tis.config.Configuration"%>
 <%@page import="java.lang.ProcessBuilder.Redirect"%>
 
@@ -19,31 +21,14 @@
 	String email = request.getParameter("join_user_email");	      // email
 	String phoneNum = request.getParameter("join_user_ph");    	  // phone
 	
-	Member member = new Member(userName, userId, password, birth, phoneNum, email, nickName, gender);
+	UserService userService = new UserServiceImpl();
+	User user = new User(userName, userId, password, birth, phoneNum, email, nickName, gender);
 	
-/* 
-	member.setUserId(userId);
-	member.setPassword(password);
-	member.setUserName(userName);
-	member.setBirth(birth);
-	member.setGender(gender);
-	member.setNickName(nickName);
-	member.setEmail(email);
-	member.setPhoneNum(phoneNum);
- */
+	boolean flag = userService.saveUser(user);
 	
+	
+	if(!flag){
+		out.println("가입성공");
+		response.sendRedirect("../../main.jsp");
+	}
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>입력처리</title>
-</head>
-<body>
-
-<%
-	
-%>
-
-</body>
-</html>

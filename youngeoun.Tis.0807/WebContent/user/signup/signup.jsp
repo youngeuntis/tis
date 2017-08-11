@@ -31,7 +31,7 @@
 			<input type="radio" name="sign_check" value="_ok"> 약관 동의
 			<p>부정 가입 또는 잘못된 행동을 할 경우 강제 탈퇴 될 수 있습니다</p>
 			<p>
-				예: <span>광고</span> <span>음란물 배포</span> <span>장 영근씨</span>
+				예: <span>광고</span> <span>음란물 배포</span> <span>장 영근씨</span> <span>장 결근씨</span>
 			</p>
 		</div>
 	</div>
