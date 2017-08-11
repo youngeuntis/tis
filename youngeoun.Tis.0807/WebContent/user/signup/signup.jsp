@@ -10,7 +10,7 @@
 <body>
 	<div id='container'>
 		<div class='signup'>
-			<form action="signup_control.jsp" method="post">
+			<form action="signupControl.jsp" method="post">
 				<input type="text" name="join_user_id" placeholder="아이디" maxlength="12"/> 
 				<input type="password" name="join_user_pw" placeholder="비밀번호" maxlength="12" /> 
 				<input type="password" name="join_user_pw_check" placeholder="비밀번호 확인"  />
