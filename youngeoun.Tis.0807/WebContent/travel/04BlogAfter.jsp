@@ -1,6 +1,6 @@
-<%@page import="youngun.tis.travel.blog.Blog"%>
+<%@page import="youngun.tis.travel.blog.domain.Blog"%>
 <%@page import="youngun.tis.config.Configuration"%>
-<%@page import="youngun.tis.travel.blog.BlogMapper"%>
+<%@page import="youngun.tis.travel.blog.mapper.BlogMapper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -352,6 +352,8 @@
 			blog.setBlogContent(content);
 			
 			blogMapper.insertBlog(blog);
+			
+			session.setAttribute("BlogDB", blog);
 			
 		%>
 		

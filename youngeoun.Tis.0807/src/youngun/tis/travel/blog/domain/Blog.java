@@ -1,10 +1,19 @@
-package youngun.tis.travel.blog;
+package youngun.tis.travel.blog.domain;
 
 public class Blog {
+	private int blogNum;
 	private String blogTitle;
 	private String blogContent;
 	
 	public Blog(){}
+
+	public int getBlogNum() {
+		return blogNum;
+	}
+
+	public void setBlogNum(int blogNum) {
+		this.blogNum = blogNum;
+	}
 
 	public String getBlogTitle() {
 		return blogTitle;

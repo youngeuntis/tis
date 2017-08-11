@@ -1,3 +1,4 @@
+<%@page import="youngun.tis.travel.blog.Blog"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -461,7 +462,7 @@
 				                <img data-u="image" src="../res/img/travelImg/g.jpg" />
 				                <img data-u="thumb" src="../res/img/travelImg/g.jpg" />
 				            </div>
-				            <div>
+				            <!-- <div>
 				                <img data-u="image" src="../res/img/travelImg/p.jpg" />
 				                <img data-u="thumb" src="../res/img/travelImg/p.jpg" />
 				            </div>
@@ -500,7 +501,7 @@
 				            <div>
 				                <img data-u="image" src="../res/img/travelImg/spain.jpg" />
 				                <img data-u="thumb" src="../res/img/travelImg/spain.jpg" />
-				            </div>
+				            </div> -->
 				            <a data-u="any" href="https://www.jssor.com" style="display:none">bootstrap slider</a>
 				        </div>
 				        <!-- Thumbnail Navigator -->
@@ -527,9 +528,12 @@
                     <a href="02BloglMain.html" class="action-button shadow animate blue">수정</a>
                     <button onclick="aler()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">삭제</button>
                 </div>
-                
+                <%
+                	Blog blog = (Blog)session.getAttribute("BlogDB");
+                	
+                %>
                 <div class="content_title">
-                    <h2>정말 즐거운 스페인여행</h2>
+                    <h2><%=blog.getBlogTitle() %></h2>
                 </div>
                 
                 <script>
@@ -539,12 +543,7 @@
                     }
                 </script>
                 <div class="content_content">
-                    <p>7박 8일간의 스페인여행은 정말 꿀이였다.</p>
-                    <p>꽃보다 할배를 보고서는 스페인에 가고 싶어졌다.</p>
-                    <p>아래 사진으로나마 스페인 아름다움을 느껴보세요!</p>
-                    <a href="../res/img/travelImg/spain.jpg"><img src="../res/img/travelImg/spain.jpg"></a>
-                    <br>
-                    <a href="../res/img/travelImg/spain2.jpg"><img src="../res/img/travelImg/spain2.jpg"></a>
+                   <%=blog.getBlogContent() %>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
 	<typeAliases>
 		<typeAlias alias="login" type="youngun.tis.user.login.domain.Login" />
 		<typeAlias alias="user" type="youngun.tis.user.management.domain.User" />
-		<typeAlias alias="Blog" type="youngun.tis.travel.blog.Blog" />
+		<typeAlias alias="Blog" type="youngun.tis.travel.blog.domain.Blog" />
 	</typeAliases>	
 
 	<environments default="development">

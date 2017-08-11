@@ -352,6 +352,12 @@
             <div class="editor" style="position: relative; height: 900px; width:1200px; left:50%; margin-left: -600px;">
                 <form action="04BlogAfter.jsp" method="get">
                     <input type="text" name="editor_title" style="width:1200px;">
+                    <select name="continent">
+                    	<option>하이</option>
+                    </select>
+                    <select name="country">
+                    	<option>하이</option>
+                    </select>
                     <textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; left: 50%;" name="editor_content"></textarea>
                     <button type="submit" class="action-button shadow animate blue" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">저장</button>
                 </form>

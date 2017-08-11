@@ -29,7 +29,7 @@
             <div class="Center">
                 <div class="site-logo">
                     <img src="../res/img/logo/DYTR.png" style="display:inline-block; width:15%;height:auto; margin-top:-15px;">
-                    <h1><a href="../main.html">Design Your Trip</a></h1>
+                    <h1><a href="../main.jsp">Design Your Trip</a></h1>
                 </div>
                 <div id="cbp-hrmenu" class="cbp-hrmenu">
                     <ul>
