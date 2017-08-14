@@ -57,9 +57,4 @@ public class Post {
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
-	
-	/*@Override
-	public String toString() {
-		return String.format("%d %s %s", postNo, title, content);
-	}*/
 }
