@@ -8,7 +8,7 @@
 		    	select rownum as rnum, x.*from(
 		    		select * from review_notices
 		    		order by review_num desc
-		     )x where rownum <= #{rowCnt}*#{currentPage}
+		     )x where rownum <= #{rowCnt}*#{currentPage}5
 		    )where rnum > #{rowCnt}*(#{currentPage}-1)
 		]]>
 	</select>
