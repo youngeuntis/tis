@@ -5,6 +5,11 @@ public class Login {
 	private String userName;      //회원 이름
 	private String userId;	      //회원 아이디
 	private String password;      //회원 비밀번호
+	private String email;		  //회원 이메일
+	private String PH;            //회원 휴대폰번호
+	private String nickName;      //회원 닉네임
+	private String profileImg;    //회원 프로필이미지
+	
 	private boolean flag = false; // 
 	
 	public Login() {}
@@ -56,9 +61,43 @@ public class Login {
 		this.flag = flag;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPH() {
+		return PH;
+	}
+
+	public void setPH(String pH) {
+		PH = pH;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public String getProfileImg() {
+		return profileImg;
+	}
+
+	public void setProfileImg(String profileImg) {
+		this.profileImg = profileImg;
+	}
+
 	@Override
 	public String toString() {
 		return "Login [memberNum=" + memberNum + ", userName=" + userName + ", userId=" + userId + ", password="
-				+ password + "]";
+				+ password + ", email=" + email + ", PH=" + PH + ", nickName=" + nickName + ", profileImg=" + profileImg
+				+ ", flag=" + flag + "]";
 	}
+
 }

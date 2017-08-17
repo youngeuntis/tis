@@ -7,10 +7,14 @@
 		<result property="userName" column="user_name"/>
 		<result property="userId" column="user_id"/>
 		<result property="password" column="pw"/>
+		<result property="email" column="email"/>
+		<result property="PH" column="phone_num"/>
+		<result property="nickName" column="nickname"/>
+		<result property="profileImg" column="profile_img"/>
 	</resultMap>
 	
 	<select id="getUser" parameterType="String" resultMap="userMap">
-		select user_id userId, user_name userName, pw password
+		select user_id userId, user_name userName, pw password, email, phone_num PH, nickname nickName, profile_img profileImg
 		from members
 		where user_id = #{userId}
 	</select>
