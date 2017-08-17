@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@page import="youngun.tis.user.login.domain.Login"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -342,7 +344,7 @@
 				<div class="c_header">
 					<h2>연락처 수정</h2>
 					<p class="contxt1">
-						<strong>(회원)</strong>님의 연락처 정보입니다.
+						<strong><%=dto.getUserId() %></strong>님의 연락처 정보입니다.
 					</p>
 					<p class="contxt2">*회원정보는 개인정보처리방침에 따라 안전하게 보호되며, 회원님의 명백한 동의
 						없이 공개 또는 제 3자에게 제공되지 않습니다.</p>
@@ -365,7 +367,7 @@
 								</th>
 								<td>
 									<div class="tdcell">
-										<p class="contxt_tit">김철수</p>
+										<p class="contxt_tit"><%=dto.getUserName() %></p>
 									</div>
 								</td>
 							</tr>
@@ -375,7 +377,7 @@
 								</th>
 								<td>
 									<div class="tdcell">
-										<p id="p_txt_phoneNo" class="contxt_tit">010-1234-1234</p>
+										<p id="p_txt_phoneNo" class="contxt_tit"><%=dto.getPH() %></p>
 										<p class="contxt_desc">아이디, 비밀번호 찾기 등 본인확인이 필요한 경우 또는 이벤트
 											알림을 받을 때 사용할 휴대전화입니다.</p>
 										<div id="d_phoneNo" style="display: none">
@@ -645,7 +647,7 @@
 								</th>
 								<td>
 									<div class="tdcell">
-										<p id="p_txt_myLetterEmail" class="contxt_tit">aaaa@email.com</p>
+										<p id="p_txt_myLetterEmail" class="contxt_tit"><%=dto.getEmail() %></p>
 										<p class="contxt_desc">이벤트 등 다양한 소식 및 알림을 받기 위해 사용할 이메일
 											주소입니다.</p>
 

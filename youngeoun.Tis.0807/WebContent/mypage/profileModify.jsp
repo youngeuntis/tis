@@ -1,5 +1,8 @@
+<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -355,9 +358,7 @@
 								<td>
 									<div class="tdcell">
 										<div class="profile_photo">
-											<img id="imgThumb"
-												src="http://via.placeholder.com/150x150"
-												width="150" height="150">
+											<img id="imgThumb" src="<%=dto.getProfileImg()%>" width="150" height="150" alt="profile img">
 										</div>
 										<p class="btn_area_btm">
 											<span class="btn_file"> <label for="inputImge"
@@ -377,7 +378,10 @@
 								<td>
 									<div class="tdcell">
 										<p class="contxt_webctrl nickname">
-											<input type="text" name="nickname" id="inpNickname" value=" "
+											<input type="text" 
+											onfocus="if(this.value=='<%=dto.getNickName()%>') this.value='';" 
+											onblur="if(this.value=='') this.value='<%=dto.getNickName()%>';" 
+											name="nickname" id="inpNickname" value="<%= dto.getNickName() %>"
 												style="width: 254px">
 											<!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
 											<input type="text" style="display: none;">

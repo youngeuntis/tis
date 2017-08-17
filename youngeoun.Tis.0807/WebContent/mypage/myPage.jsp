@@ -340,11 +340,11 @@
 
 						<div class="my_profile_content">
 							<div class="my_profile_img">
-								<img src="http://via.placeholder.com/150x150" alt="profile img"
+								<img src="<%=dto.getProfileImg()%>" alt="profile img"
 									class="profile_img">
 							</div>
 							<div class="my_profile_name">
-								<span class="profile_name">name</span>
+								<span class="profile_name"><%=dto.getNickName()%></span>
 							</div>
 						</div>
 						<!--end my_profile_content-->
@@ -367,14 +367,14 @@
 							<div class="email">
 								<dt class="per">
 									<dr class="per_email">이메일</dr>
-									<dr class="per_email_addr"> abcdefghi9999@google.com</dr>
+									<dr class="per_email_addr"><%=dto.getEmail() %></dr>
 								</dt>
 							</div>
 							<!--end email-->
 							<div class="tel">
 								<dt class="per">
 									<dr class="per_tel">연락처</dr>
-									<dr class="per_tel_num">010-1234-5678</dr>
+									<dr class="per_tel_num"><%=dto.getPH()%></dr>
 								</dt>
 							</div>
 							<!--end tel-->
