@@ -90,3 +90,9 @@ caption{
     width: 200px;
     display: inline-block;
 }
+
+.btn_wrap a {
+    font-size: 30px;
+    position: relative;
+    top: 30px;
+}

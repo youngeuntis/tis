@@ -279,7 +279,7 @@
 					<%if(dto != null){ %>
 
 					<div class="demo">
-						<a id="launch" class="fbbutton" href="#"><label>마이페이지</label></a>
+						<a id="my" class="my" href="mypage/myPage.jsp"><label>마이페이지</label></a>
 						<a id="launch" class="fbbutton"
 							href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
 						</a>
