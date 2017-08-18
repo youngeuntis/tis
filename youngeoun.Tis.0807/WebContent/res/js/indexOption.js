@@ -1,70 +1,34 @@
-/*
-Reference: http://jsfiddle.net/BB3JK/47/
-*/
+$(".custom-select").each(function() {
+	var classes = $(this).attr("class"),
+	id      = $(this).attr("id"),
+	name    = $(this).attr("name");
+	var template =  '<div class="' + classes + '">';
+	template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+	template += '<div class="custom-options">';
+	$(this).find("option").each(function() {
+		template += '<a href=aaa.html?country='+$(this).attr("value")+'>'+'<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
+	});
+	template += '</div></div>';
 
-$('select').each(function(){
-    var $this = $(this), numberOfOptions = $(this).children('option').length;
-
-    $this.addClass('select-hidden'); 
-    $this.wrap('<div class="select"></div>');
-    $this.after('<div class="select-styled"></div>');
-
-    var $styledSelect = $this.next('div.select-styled');
-    $styledSelect.text($this.children('option').eq(0).text());
-    
-    var $list = $('<ul />', {
-        'class': 'select-options'
-    }).insertAfter($styledSelect);
-  
-    for (var i = 0; i < numberOfOptions; i++) {
-        $('<li />', {
-            text: $this.children('option').eq(i).text(),
-            rel: $this.children('option').eq(i).val()
-        }).appendTo($list);
-    }
-  
-    var $listItems = $list.children('li');
-  
-    $styledSelect.click(function(e) {
-              
-        e.stopPropagation();
-        $('div.select-styled.active').not(this).each(function(){
-            $(this).removeClass('active').next('ul.select-options').hide();
-        });
-        $(this).toggleClass('active').next('ul.select-options').toggle();
-    });
-  
-    $listItems.click(function(e) {
-        e.stopPropagation();
-        $styledSelect.text($(this).text()).removeClass('active');
-        if($styledSelect.text()=="대한민국"){
-            document.getElementById("country_select").innerHTML="<option>서울</option><option>부산</option>";
-        }
-        $this.val($(this).attr('rel'));
-        $list.hide();
-        //console.log($this.val());
-    });
-  
-    $(document).click(function() {
-        $styledSelect.removeClass('active');
-        $list.hide();
-    });
-    
-   
-
+	$(this).wrap('<div class="custom-select-wrapper"></div>');
+	$(this).hide();
+	$(this).after(template);
 });
-
- function zzz(){
-    var firstSelect = document.getElementById("sl").value;
-    alert("gk");
-    /*if(firstSelect=="a") document.getElementById("country_select").innerHTML
-    = '<option value="hide">-- Country --</option>'
-    + '<option value="서울">서울</option>'
-    + '<option value="경기">경기</option>'
-    + '<option value="제주">제주</option>'
-    + '<option value="부산">부산</option>'
-    + '<option value="강원도">강원도</option>'
-    + '<option value="충청도">충청도</option>'
-    + '<option value="경상도">경상도</option>'
-    + '<option value="전라도">전라도</option>';*/
-}
+$(".custom-option:first-of-type").hover(function() {
+	$(this).parents(".custom-options").addClass("option-hover");
+}, function() {
+	$(this).parents(".custom-options").removeClass("option-hover");
+});
+$(".custom-select-trigger").on("click", function() {
+	$('html').one('click',function() {
+		$(".custom-select").removeClass("opened");
+	});
+	$(this).parents(".custom-select").toggleClass("opened");
+	event.stopPropagation();
+});
+$(".custom-option").on("click", function() {
+	$(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
+	$(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+	$(this).addClass("selection");
+	$(this).parents(".custom-select").removeClass("opened");
+});

@@ -1,4 +1,9 @@
-<%@page import="youngun.tis.travel.blog.Blog"%>
+<%@page import="youngun.tis.travel.blog.mapper.TravelMapper"%>
+<%@page import="youngun.tis.travel.blog.domain.Country"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.travel.blog.mapper.BlogMapper"%>
+<%@page import="youngun.tis.travel.blog.domain.Blog"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -30,7 +35,7 @@
             <div class="Center">
                 <div class="site-logo">
                     <img src="../res/img/logo/DYTR.png" style="display:inline-block; width:15%;height:auto; margin-top:-15px;">
-                    <h1><a href="../main.html">Design Your Trip</a></h1>
+                    <h1><a href="../main.jsp">Design Your Trip</a></h1>
                 </div>
                 <div id="cbp-hrmenu" class="cbp-hrmenu">
                     <ul>
@@ -43,20 +48,20 @@
 									<div class="sub_ham">
                                         <h4>커뮤니티</h4>
                                         <ul>
-                                            <li><a href="../review/01reviewMain.html">후기</a></li>
+                                            <li><a href="../review/01reviewMain.jsp">후기</a></li>
                                         </ul>
                                     </div>
                                     <div class="sub_ham" id="sub_ham_event" >
                                         <h4>이벤트</h4>
                                         <ul>
-                                            <li><a href="../event/01event.html">이벤트</a></li>
+                                            <li><a href="../event/01event.jsp">이벤트</a></li>
                                         </ul>
                                     </div>
 									<div class="sub_ham">
                                         <h4>문의사항</h4>
                                         <ul>
-                                            <li><a href="../qna/01qnaMain.html">Q&amp;A</a></li>
-                                            <li><a href="../qna/08faqlist.html">FAQ</a></li>
+                                            <li><a href="../qna/01qnaMain.jsp">Q&amp;A</a></li>
+                                            <li><a href="../qna/08faqlist.jsp">FAQ</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -71,90 +76,90 @@
                                     <div>
                                         <h4>대한민국</h4>
                                         <ul>
-                                            <li><a href="../travel/01TravelMain.html">서울</a></li>
-                                            <li><a href="../travel/01TravelMain.html">경기</a></li>
-                                            <li><a href="../travel/01TravelMain.html">제주</a></li>
-                                            <li><a href="../travel/01TravelMain.html">부산</a></li>
-                                            <li><a href="../travel/01TravelMain.html">강원도</a></li>
-                                            <li><a href="../travel/01TravelMain.html">충청도</a></li>
-                                            <li><a href="../travel/01TravelMain.html">전라도</a></li>
-                                            <li><a href="../travel/01TravelMain.html">경상도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=서울">서울</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=경기">경기</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=제주">제주</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=부산">부산</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=강원도">강원도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=충청도">충청도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=전라도">전라도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=경상도">경상도</a></li>
                                         </ul>
                                     </div>
                                     <div class="asia" style = "width : 200px;">
                                         <h4>아시아</h4>
                                         <div class="asia_l">
                                         <ul>
-                                            <li><a href="../travel/01TravelMain.html">네팔</a></li>
-                                            <li><a href="../travel/01TravelMain.html">대만</a></li>
-                                            <li><a href="../travel/01TravelMain.html">몰디브</a></li>
-                                            <li><a href="../travel/01TravelMain.html">말레이시아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">발리</a></li>
-                                            <li><a href="../travel/01TravelMain.html">베트남</a></li>
-                                            <li><a href="../travel/01TravelMain.html">부탄</a></li>
-                                            <li><a href="../travel/01TravelMain.html">싱가폴</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=네팔">네팔</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=대만">대만</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=몰디브">몰디브</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=말레이시아">말레이시아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=발리">발리</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=베트남">베트남</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=부탄">부탄</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=싱가폴">싱가폴</a></li>
                                         </ul>
                                         </div>
                                         <div class="asia_r">
                                             <ul>
-                                            <li><a href="../travel/01TravelMain.html">일본</a></li>
-                                            <li><a href="../travel/01TravelMain.html">인도</a></li>
-                                            <li><a href="../travel/01TravelMain.html">인도네시아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">중국</a></li>
-                                            <li><a href="../travel/01TravelMain.html">캄보디아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">태국</a></li>
-                                            <li><a href="../travel/01TravelMain.html">필리핀</a></li>
-                                            <li><a href="../travel/01TravelMain.html">홍콩</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=일본">일본</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=인도">인도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=인도네시아">인도네시아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=중국">중국</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=캄보디아">캄보디아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=태국">태국</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=필리핀">필리핀</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=홍콩">홍콩</a></li>
                                         </ul>
                                         </div>
                                     </div>
                                     <div>
                                         <h4>미/대양주</h4>
                                         <ul>
-                                            <li><a href="../travel/01TravelMain.html">미국</a></li>
-                                            <li><a href="../travel/01TravelMain.html">하와이</a></li>
-                                            <li><a href="../travel/01TravelMain.html">호주</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=미국">미국</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=하와이">하와이</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=호주">호주</a></li>
                                         </ul>
                                     </div>
                                     <div class="eu" style="width:300px">
                                         <h4>유럽</h4>
                                         <div class="eu_l">
                                         <ul>
-                                            <li><a href="../travel/01TravelMain.html">그리스</a></li>
-                                            <li><a href="../travel/01TravelMain.html">노르웨이</a></li>
-                                            <li><a href="../travel/01TravelMain.html">네덜란드</a></li>
-                                            <li><a href="../travel/01TravelMain.html">독일</a></li>
-                                            <li><a href="../travel/01TravelMain.html">덴마크</a></li>
-                                            <li><a href="../travel/01TravelMain.html">록셈부르크</a></li>
-                                            <li><a href="../travel/01TravelMain.html">루마니아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">몰타</a></li>
-                                            <li><a href="../travel/01TravelMain.html">벨기에</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=그리스">그리스</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=노르웨이">노르웨이</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=네덜란드">네덜란드</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=독일">독일</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=덴마크">덴마크</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=룩셈부르크">록셈부르크</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=루마니아">루마니아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=몰타">몰타</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=벨기에">벨기에</a></li>
                                         </ul>
                                         </div>
                                         <div class="eu_c">
                                             <ul>
-                                            <li><a href="../travel/01TravelMain.html">스위스</a></li>
-                                            <li><a href="../travel/01TravelMain.html">스웨덴</a></li>
-                                            <li><a href="../travel/01TravelMain.html">스페인</a></li>
-                                            <li><a href="../travel/01TravelMain.html">슬로바키아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">아이슬란드</a></li>
-                                            <li><a href="../travel/01TravelMain.html">아일랜드</a></li>
-                                            <li><a href="../travel/01TravelMain.html">영국</a></li>
-                                            <li><a href="../travel/01TravelMain.html">이탈리아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">오스트리아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=스위스">스위스</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=스웨덴">스웨덴</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=스페인">스페인</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=슬로바키아">슬로바키아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=아이슬란드">아이슬란드</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=아일랜드">아일랜드</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=영국">영국</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=이탈리아">이탈리아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=오스트리아">오스트리아</a></li>
                                         </ul>
                                         </div>
                                         <div class="eu_r">
                                             <ul>
-                                            <li><a href="../travel/01TravelMain.html">체코</a></li>
-                                            <li><a href="../travel/01TravelMain.html">터키</a></li>
-                                            <li><a href="../travel/01TravelMain.html">러시아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">에스토니아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">크로아티아</a></li>
-                                            <li><a href="../travel/01TravelMain.html">헝가리</a></li>
-                                            <li><a href="../travel/01TravelMain.html">프랑스</a></li>
-                                            <li><a href="../travel/01TravelMain.html">폴란드</a></li>
-                                            <li><a href="../travel/01TravelMain.html">포르투칼</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=체코">체코</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=터키">터키</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=러시아">러시아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=에스토니아">에스토니아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=크로아티아">크로아티아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=헝가리">헝가리</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=프랑스">프랑스</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=폴란드">폴란드</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?trParam=포르투칼">포르투칼</a></li>
                                         </ul>
                                         </div>
                                     </div>
@@ -168,7 +173,7 @@
                             <div class="cbp-hrsub" style="width:20%!important; left:700px;">
                                 <div class="cbp-hrsub-inner" style="width:300px;">
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-left:40px; margin-right: 20px;">
-			                            <h4><a href="../review/01reviewMain.html">후기</a></h4>
+			                            <h4><a href="../review/01reviewMain.jsp">후기</a></h4>
 		                           	</div>
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-right: 20px;">
 			                            <h4><a href="#">제목1</a></h4>
@@ -185,7 +190,7 @@
 	                        <div class="cbp-hrsub" style="width:20%!important; left:800px;">
                                 <div class="cbp-hrsub-inner" style="width:300px;">
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-left:40px; margin-right: 20px;">
-			                            <h4><a href="../event/01event.html">이벤트</a></h4>
+			                            <h4><a href="../event/01event.jsp">이벤트</a></h4>
 		                           	</div>
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-right: 20px;">
 			                            <h4><a href="#">제목1</a></h4>
@@ -202,10 +207,10 @@
                             <div class="cbp-hrsub" style="width:20%!important; left:800px;">
                                 <div class="cbp-hrsub-inner" style="width:300px;">
 		                           	<div class="sub_comunity" style="position:relative; margin-left:80px; margin-right : 20px; display:block; float:left;">
-			                            <h4><a href="../qna/01qnaMain.html">Q&amp;A</a></h4>
+			                            <h4><a href="../qna/01qnaMain.jsp">Q&amp;A</a></h4>
 		                           	</div>
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-right: 20px;">
-			                            <h4><a href="../qna/08faqlist.html">FAQ</a></h4>
+			                            <h4><a href="../qna/08faqlist.jsp">FAQ</a></h4>
 		                           	</div>
 	                           	</div>
                            	</div>
@@ -448,12 +453,54 @@
 				        .jssort051 .p:hover .t{opacity:.8;}
 				        .jssort051 .pav .t, .jssort051 .pdn .t, .jssort051 .p:hover.pdn .t{opacity:1;}
 				    </style>
+				    <%
+                	BlogMapper blogMapper = Configuration.getMapper(BlogMapper.class);
+              		String blogNum = request.getParameter("blognum");
+              		String continent = (String)session.getAttribute("continent");
+              		String country = (String)session.getAttribute("country");
+              		String index = "";
+              		String indexCountry ="";
+              		List<Blog> blogs = blogMapper.getBlogListNoPara();
+              		Blog selectBlog = null;
+  
+              		
+              		for(int i=0; i < blogs.size(); i++){
+              			
+              			if(blogs.get(i).getBlogNum()==Integer.parseInt(blogNum)){
+              					selectBlog = blogs.get(i);
+  
+              			}
+              		}
+              		/* if(continent.equals("대한민국")) index = "c1";
+    				else if(continent.equals("유럽")) index = "c2";
+    				else if(continent.equals("미대양주")) index = "c3";
+    				else if(continent.equals("아시아")) index = "c1";
+              		
+              		TravelMapper travelMapper = Configuration.getMapper(TravelMapper.class);
+              		List<Country> countries = travelMapper.getCountryList(index);
+              		
+              		for(Country nation : countries){
+    					if(nation.getCountryName().equals(country))
+    						indexCountry = "%"+nation.getNationalCode()+"%";
+    				}
+              		
+              		if(country!=null && !country.equals("")) blogs = blogMapper.getBlogList(indexCountry);
+              		else blogs = blogMapper.getBlogListNoPara();
+              		
+              		for(Blog blog : blogs){
+              			if(blog.getBlogNum()==Integer.parseInt(blogNum)){
+              				selectBlog = blog;
+              			}
+              		}  */
+                %>
+                
 				    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:380px;overflow:hidden;visibility:hidden;">
 				        <!-- Loading Screen -->
 				        <div data-u="loading" class="jssorl-004-double-tail-spin" style="position:absolute;top:0px;left:0px;text-align:center;background-color:rgba(0,0,0,0.7);">
 				            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/double-tail-spin.svg" />
 				        </div>
 				        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+	          
 				            <div>
 				                <img data-u="image" src="../res/img/travelImg/spain.jpg" />
 				                <img data-u="thumb" src="../res/img/travelImg/spain.jpg" />
@@ -525,25 +572,22 @@
             <div class="travel_content">
                 
                 <div class="content_buttons">
-                    <a href="02BloglMain.html" class="action-button shadow animate blue">수정</a>
+                    <a href="02BlogMain.jsp" class="action-button shadow animate blue">수정</a>
                     <button onclick="aler()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">삭제</button>
                 </div>
-                <%
-                	Blog blog = (Blog)session.getAttribute("BlogDB");
-                	
-                %>
-                <div class="content_title">
-                    <h2><%=blog.getBlogTitle() %></h2>
+                
+           <div class="content_title">
+                    <h2><%=selectBlog.getBlogTitle() %></h2>
                 </div>
                 
                 <script>
                     function aler(){
                         var answer = confirm("확인을 누르시면 데이터가 삭제됩니다.삭제를 원하십니까?")
-                        if(answer) location.replace("01TravelMain.html");
+                        if(answer) location.replace("01TravelMain.jsp");
                     }
                 </script>
                 <div class="content_content">
-                   <%=blog.getBlogContent() %>
+                   <%=selectBlog.getBlogContent() %>
                 </div>
             </div>
         </div>

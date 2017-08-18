@@ -7,5 +7,39 @@
 		values(blog_seq.nextval,#{blogTitle},#{blogContent})
 	</insert>
 	
+	<insert id="insertInfo" parameterType="Blog">
+	insert into infomations values(
+	trainfo_seq.nextVal,2,#{continentCode},#{nationCode},null,#{blogTitle},#{blogContent},sysdate,#{img},null,0)
+	</insert>
+	
+	<select id="getBlogList" parameterType="string" resultType="Blog">
+	select info_num blogNum, member_num memberNum, continent_code continentCode, nation_code nationCode,
+	area_code areaCode, info_title blogTitle, info_content blogContent, info_date blogDate, info_img img,
+	info_video, info_hits hits from infomations
+	where nation_code like #{country}
+	order by info_num
+	</select>
+	
+	<select id="getBlogListNoPara" resultType="Blog">
+	select info_num blogNum, member_num memberNum, continent_code continentCode, nation_code nationCode,
+	area_code areaCode, info_title blogTitle, info_content blogContent, info_date blogDate, info_img img,
+	info_video, info_hits hits from infomations
+	order by info_num
+	</select>
+	
+	<!-- <select id="getBlogList" parameterType="string" resultType="Blog" >
+		select info_num blogNum, info_title blogTitle, info_img img, nation_code nationCode
+		from infomations
+		where nation_code like #{nationCode}
+		order by info_num
+	</select> -->
+	
+	<select id="getBlogListContinent" parameterType="string" resultType="Blog" >
+		select info_num blogNum, info_title blogTitle, info_img img, nation_code nationCode
+		from infomations
+		where continent_code like #{continentCode}
+		order by info_num
+	</select>
+	
 	
 </mapper>

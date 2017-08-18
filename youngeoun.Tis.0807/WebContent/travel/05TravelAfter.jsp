@@ -1,10 +1,12 @@
-<%@page import="java.util.regex.Matcher"%>
-<%@page import="java.util.regex.Pattern"%>
 <%@page import="youngun.tis.travel.blog.domain.Blog"%>
-<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="javax.security.auth.callback.ConfirmationCallback"%>
 <%@page import="youngun.tis.travel.blog.mapper.BlogMapper"%>
+<%@page import="youngun.tis.travel.blog.domain.Country"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.travel.blog.mapper.TravelMapper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!doctype html>
 
 <html>
@@ -19,14 +21,272 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/travelMain.css">
-    <link rel="stylesheet" href="../res/css/SelectContent.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
     
+	
 </head>
+<style>
+	.centerSelect {
+		position: absolute;
+		display: inline-block;
+		top: 50%;
+		left: 60%;
+		margin-top: 100px;
+		transform: translate(-50%, -50%);
+		z-index: 3;
+	}
+	
+	/** Custom Select **/
+	.custom-select-wrapper {
+		position: relative;
+		display: inline-block;
+		user-select: none;
+	}
+	
+	.custom-select-wrapper select {
+		display: none;
+	}
+	
+	.custom-select {
+		position: relative;
+		display: inline-block;
+	}
+	
+	.custom-select-trigger {
+		position: relative;
+		display: block;
+		width: 190px;
+		font-size: 22px;
+		padding-left:20px;
+		
+		color: #fff;
+		line-height: 60px;
+		background: #5c9cd8;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+	
+	.custom-select-trigger:after {
+		position: absolute;
+		display: block;
+		content: '';
+		width: 10px;
+		height: 10px;
+		top: 50%;
+		right: 25px;
+		margin-top: -3px;
+		border-bottom: 1px solid #fff;
+		border-right: 1px solid #fff;
+		transform: rotate(45deg) translateY(-50%);
+		transition: all .4s ease-in-out;
+		transform-origin: 50% 0;
+	}
+	
+	.custom-select.opened .custom-select-trigger:after {
+		margin-top: 3px;
+		transform: rotate(-135deg) translateY(-50%);
+	}
+	
+	.custom-options {
+		position: absolute;
+		display: block;
+		top: 100%;
+		left: 0;
+		right: 0;
+		min-width: 100%;
+		margin: 15px 0;
+		border: 1px solid #b5b5b5;
+		border-radius: 4px;
+		box-sizing: border-box;
+		box-shadow: 0 2px 1px rgba(0, 0, 0, .07);
+		background: #fff;
+		transition: all .4s ease-in-out;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transform: translateY(-15px);
+	}
+	
+	.custom-options a {
+		text-decoration: none;
+	}
+	
+	.custom-select.opened .custom-options {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: all;
+		transform: translateY(0);
+	}
+	
+	.custom-options:before {
+		position: absolute;
+		display: block;
+		content: '';
+		bottom: 100%;
+		right: 25px;
+		width: 7px;
+		height: 7px;
+		margin-bottom: -4px;
+		border-top: 1px solid #b5b5b5;
+		border-left: 1px solid #b5b5b5;
+		background: #fff;
+		transform: rotate(45deg);
+		transition: all .4s ease-in-out;
+	}
+	
+	.option-hover:before {
+		background: #f9f9f9;
+	}
+	
+	.custom-option {
+		position: relative;
+		display: block;
+		padding: 0 22px;
+		border-bottom: 1px solid #b5b5b5;
+		font-size: 18px;
+		font-weight: 600;
+		color: #b5b5b5;
+		line-height: 47px;
+		cursor: pointer;
+		transition: all .4s ease-in-out;
+	}
+	
+	.custom-option:first-of-type {
+		border-radius: 4px 4px 0 0;
+	}
+	
+	.custom-option:last-of-type {
+		border-bottom: 0;
+		border-radius: 0 0 4px 4px;
+	}
+	
+	.custom-option:hover, .custom-option.selection {
+		background: #f9f9f9;
+	}
+	
+	
+	.centerSelect2{
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 40%;
+  margin-top: 100px;
+  transform: translate(-50%, -50%);
+  z-index:4;
+}
 
+/** Custom Select **/
+.custom-select-wrapper2 {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+  .custom-select-wrapper2 select {
+    display: none;
+  }
+  .custom-select2 {
+    position: relative;
+    display: inline-block;
+  }
+    .custom-select-trigger2 {
+      position: relative;
+      display: block;
+      width: 190px;
+      padding-left:20px;
+      font-size: 22px;
+      color: #fff;
+      line-height: 60px;
+      background: #5c9cd8;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+      .custom-select-trigger2:after {
+        position: absolute;
+        display: block;
+        content: '';
+        width: 10px; height: 10px;
+        top: 50%; right: 25px;
+        margin-top: -3px;
+        border-bottom: 1px solid #fff;
+        border-right: 1px solid #fff;
+        transform: rotate(45deg) translateY(-50%);
+        transition: all .4s ease-in-out;
+        transform-origin: 50% 0;
+      }
+      .custom-select2.opened2 .custom-select-trigger2:after {
+        margin-top: 3px;
+        transform: rotate(-135deg) translateY(-50%);
+      }
+  .custom-options2 {
+    position: absolute;
+    display: block;
+    top: 100%; left: 0; right: 0;
+    min-width: 100%;
+    margin: 15px 0;
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 1px rgba(0,0,0,.07);
+    background: #fff;
+    transition: all .4s ease-in-out;
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-15px);
+  }
+          .custom-options2 a{
+              text-decoration: none;
+          }
+  .custom-select2.opened2 .custom-options2 {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+    .custom-options2:before {
+      position: absolute;
+      display: block;
+      content: '';
+      bottom: 100%; right: 25px;
+      width: 7px; height: 7px;
+      margin-bottom: -4px;
+      border-top: 1px solid #b5b5b5;
+      border-left: 1px solid #b5b5b5;
+      background: #fff;
+      transform: rotate(45deg);
+      transition: all .4s ease-in-out;
+    }
+    .option-hover2:before {
+      background: #f9f9f9;
+    }
+    .custom-option2 {
+      position: relative;
+      display: block;
+      padding: 0 22px;
+      border-bottom: 1px solid #b5b5b5;
+      font-size: 18px;
+      font-weight: 600;
+      color: #b5b5b5;
+      line-height: 47px;
+      cursor: pointer;
+      transition: all .4s ease-in-out;
+    }
+    .custom-option2:first-of-type {
+      border-radius: 4px 4px 0 0;
+    }
+    .custom-option2:last-of-type {
+      border-bottom: 0;
+      border-radius: 0 0 4px 4px;
+    }
+    .custom-option2:hover,
+    .custom-option.selection {
+      background: #f9f9f9;
+    }
+</style>
 <body>
 
     <div id="fullweb">
@@ -47,20 +307,20 @@
 									<div class="sub_ham">
                                         <h4>커뮤니티</h4>
                                         <ul>
-                                            <li><a href="../review/01reviewMain.jsp">후기</a></li>
+                                            <li><a href="../review/01reviewMain.html">후기</a></li>
                                         </ul>
                                     </div>
                                     <div class="sub_ham" id="sub_ham_event" >
                                         <h4>이벤트</h4>
                                         <ul>
-                                            <li><a href="../event/01event.jsp">이벤트</a></li>
+                                            <li><a href="../event/01event.html">이벤트</a></li>
                                         </ul>
                                     </div>
 									<div class="sub_ham">
                                         <h4>문의사항</h4>
                                         <ul>
-                                            <li><a href="../qna/01qnaMain.jsp">Q&amp;A</a></li>
-                                            <li><a href="../qna/08faqlist.jsp">FAQ</a></li>
+                                            <li><a href="../qna/01qnaMain.html">Q&amp;A</a></li>
+                                            <li><a href="../qna/08faqlist.html">FAQ</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -172,7 +432,7 @@
                             <div class="cbp-hrsub" style="width:20%!important; left:700px;">
                                 <div class="cbp-hrsub-inner" style="width:300px;">
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-left:40px; margin-right: 20px;">
-			                            <h4><a href="../review/01reviewMain.jsp">후기</a></h4>
+			                            <h4><a href="../review/01reviewMain.html">후기</a></h4>
 		                           	</div>
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-right: 20px;">
 			                            <h4><a href="#">제목1</a></h4>
@@ -189,7 +449,7 @@
 	                        <div class="cbp-hrsub" style="width:20%!important; left:800px;">
                                 <div class="cbp-hrsub-inner" style="width:300px;">
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-left:40px; margin-right: 20px;">
-			                            <h4><a href="../event/01event.jsp">이벤트</a></h4>
+			                            <h4><a href="../event/01event.html">이벤트</a></h4>
 		                           	</div>
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-right: 20px;">
 			                            <h4><a href="#">제목1</a></h4>
@@ -206,10 +466,10 @@
                             <div class="cbp-hrsub" style="width:20%!important; left:800px;">
                                 <div class="cbp-hrsub-inner" style="width:300px;">
 		                           	<div class="sub_comunity" style="position:relative; margin-left:80px; margin-right : 20px; display:block; float:left;">
-			                            <h4><a href="../qna/01qnaMain.jsp">Q&amp;A</a></h4>
+			                            <h4><a href="../qna/01qnaMain.html">Q&amp;A</a></h4>
 		                           	</div>
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-right: 20px;">
-			                            <h4><a href="../qna/08faqlist.jsp">FAQ</a></h4>
+			                            <h4><a href="../qna/08faqlist.html">FAQ</a></h4>
 		                           	</div>
 	                           	</div>
                            	</div>
@@ -273,52 +533,133 @@
                 </div><!--end .right_nav -->
             </div><!--end .Center-->
         </header>
+        <%
+				TravelMapper travelMapper = Configuration.getMapper(TravelMapper.class);
+				String continentCode = null;
+				List<Country> countries = null;
+				String index="";
+				String placeContinent="";
+				continentCode = request.getParameter("trParam");
+				String country ="--Country--";
+				
+				if(continentCode!=null&&(continentCode.equals("대한민국")||continentCode.equals("유럽")||continentCode.equals("미대양주")||continentCode.equals("아시아"))){
+					session.setAttribute("continent", continentCode);
+					placeContinent = continentCode;
+					
+				}else{
+					placeContinent = (String)(session.getAttribute("continent"));
+					country = continentCode;
+					session.setAttribute("country", country);
+				}
+				if(placeContinent.equals("대한민국")) index = "c1";
+				else if(placeContinent.equals("유럽")) index = "c2";
+				else if(placeContinent.equals("미대양주")) index = "c3";
+				else if(placeContinent.equals("아시아")) index = "c1";
+				countries = travelMapper.getCountryList(index);	
+		%>
+		
 
         <div class="picture">
-			<div class="option_box">
-				<select id="sl" onchange="zzz()">
-				    <option value="hide">-- Continent --</option>
-				    <option value="Korea" rel="icon-temperature">대한민국</option>
-				    <option value="Europe">유럽</option>
-				    <option value="America">미/대양주</option>
-				    <option value="Asia">아시아</option>
-				</select> 
+            <div class="nation_title">
+                <h2><%= continentCode %></h2>
+            </div>
+            <div class="centerSelect2">
+              <select name="sources2" id="sources2" class="custom-select2 sources2" placeholder="<%=placeContinent%>">
+                <option value="대한민국">대한민국</option>
+                <option value="유럽">유럽</option>
+                <option value="미대양주">미대양주</option>
+                <option value="아시아">아시아</option>
+              </select>
+            </div>
+		<%
 				
-				<select id="country_select">
-				    <option value="hide">-- Nation --</option>
-				</select>
-				
-				<select id="country">
-				    <option value="hide">-- Area --</option>
-				    <option value="2010">2010</option>
-				    <option value="2011">2011</option>
-				    <option value="2012">2012</option>
-				    <option value="2013">2013</option>
-				    <option value="2014">2014</option>
-				    <option value="2015">2015</option>
-				</select>
-				<script>
-                    
-                    function zzz(){
-                         var firstSelect = document.getElementById("sl").value;
-                        alert(firstSelect);
-                        /*if(firstSelect=="a") document.getElementById("country_select").innerHTML
-                        = '<option value="hide">-- Country --</option>'
-                        + '<option value="서울">서울</option>'
-                        + '<option value="경기">경기</option>'
-                        + '<option value="제주">제주</option>'
-                        + '<option value="부산">부산</option>'
-                        + '<option value="강원도">강원도</option>'
-                        + '<option value="충청도">충청도</option>'
-                        + '<option value="경상도">경상도</option>'
-                        + '<option value="전라도">전라도</option>';*/
-                    }
-                </script>
-				<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	    		<script src="../res/js/indexOption.js"></script>
-                
-			</div>
+		%>
 			
+            
+			<div class="centerSelect">
+              <select name="sources" id="sources" class="custom-select sources" placeholder="<%=country %>">
+            <% for(int i=0; i<countries.size(); i++){
+            %>
+                <option value="<%=countries.get(i) %>"><%=countries.get(i)%></option>
+			<%
+            	}
+			%>
+              </select>
+            </div>
+            
+	    	<script>
+		    	$(".custom-select").each(function() {
+		    		  var classes = $(this).attr("class"),
+		    		      id      = $(this).attr("id"),
+		    		      name    = $(this).attr("name");
+		    		  var template =  '<div class="' + classes + '">';
+		    		      template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+		    		      template += '<div class="custom-options">';
+		    		      $(this).find("option").each(function() {
+		    		        template += '<a href=05TravelAfter.jsp?trParam='+$(this).attr("value")+'>'+'<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
+		    		      });
+		    		  template += '</div></div>';
+		    		  
+		    		  $(this).wrap('<div class="custom-select-wrapper"></div>');
+		    		  $(this).hide();
+		    		  $(this).after(template);
+		    		});
+		    		$(".custom-option:first-of-type").hover(function() {
+		    		  $(this).parents(".custom-options").addClass("option-hover");
+		    		}, function() {
+		    		  $(this).parents(".custom-options").removeClass("option-hover");
+		    		});
+		    		$(".custom-select-trigger").on("click", function() {
+		    		  $('html').one('click',function() {
+		    		    $(".custom-select").removeClass("opened");
+		    		  });
+		    		  $(this).parents(".custom-select").toggleClass("opened");
+		    		  event.stopPropagation();
+		    		});
+		    		$(".custom-option").on("click", function() {
+		    		  $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
+		    		  $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+		    		  $(this).addClass("selection");
+		    		  $(this).parents(".custom-select").removeClass("opened");
+		    		});
+		    		
+		    		
+		    		
+		    		$(".custom-select2").each(function() {
+		    			  var classes = $(this).attr("class"),
+		    			      id      = $(this).attr("id"),
+		    			      name    = $(this).attr("name");
+		    			  var template =  '<div class="' + classes + '">';
+		    			      template += '<span class="custom-select-trigger2">' + $(this).attr("placeholder") + '</span>';
+		    			      template += '<div class="custom-options2">';
+		    			      $(this).find("option").each(function() {
+		    			        template += '<a href=05TravelAfter.jsp?trParam='+$(this).attr("value")+'>'+'<span class="custom-option2 ' + $(this).attr("class") + '" data-value2="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
+		    			      });
+		    			  template += '</div></div>';
+		    			  
+		    			  $(this).wrap('<div class="custom-select-wrapper2"></div>');
+		    			  $(this).hide();
+		    			  $(this).after(template);
+		    			});
+		    			$(".custom-option2:first-of-type").hover(function() {
+		    			  $(this).parents(".custom-options2").addClass("option-hover2");
+		    			}, function() {
+		    			  $(this).parents(".custom-options2").removeClass("option-hover2");
+		    			});
+		    			$(".custom-select-trigger2").on("click", function() {
+		    			  $('html').one('click',function() {
+		    			    $(".custom-select2").removeClass("opened2");
+		    			  });
+		    			  $(this).parents(".custom-select2").toggleClass("opened2");
+		    			  event.stopPropagation();
+		    			});
+		    			$(".custom-option").on("click", function() {
+		    			  $(this).parents(".custom-select-wrapper2").find("select").val($(this).data("value"));
+		    			  $(this).parents(".custom-options2").find(".custom-option2").removeClass("selection2");
+		    			  $(this).addClass("selection2");
+		    			  $(this).parents(".custom-select2").removeClass("opened2");
+		    			});
+	    	</script>
     		
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
@@ -343,36 +684,111 @@
 		
 		
 		<!-- 메인 작업부분 -->
-		<% 
+		
+		
+		<%
 			BlogMapper blogMapper = Configuration.getMapper(BlogMapper.class);
+			String indexCountry = null;
+			List<Blog> informations = null;
 			
-			String title = request.getParameter("editor_title");
-			String content = request.getParameter("editor_content");
-			String continent = request.getParameter("continent");
-			String country = request.getParameter("country");
-			Pattern p = Pattern.compile("(http://i.imgur.com/)+([a-zA-Z0-9]*.jpg)");
-			Matcher m = p.matcher(content);
-			
-			
-			Blog blog = new Blog();
-			blog.setContinentCode(continent);
-			blog.setNationCode(country);
-			blog.setBlogTitle(title);
-			blog.setBlogContent(content);
-			while(m.find()){
-				blog.setImg(m.group());
+			if(continentCode!=null&&(continentCode.equals("대한민국")||continentCode.equals("유럽")||continentCode.equals("미대양주")||continentCode.equals("아시아"))){
+				indexCountry = "%" + index +"%";
+				informations = blogMapper.getBlogListContinent(indexCountry);
+				country = continentCode;
+				
+			}else{
+				country = continentCode;
+				for(Country nation : countries){
+					if(nation.getCountryName().equals(country))
+						indexCountry = "%"+nation.getNationalCode()+"%";
+				}
+				informations = blogMapper.getBlogList(indexCountry);
 			}
-			blogMapper.insertInfo(blog);
 			
-			session.setAttribute("BlogDB", blog);
+			
+		
 			
 		%>
 		
-		
         <main>
-        	<h2>글이 등록되었습니다.</h2>
+			<div class="travel_main">
+				<h1><%= continentCode %>여행기</h1>
+				
+                <a href="02BlogMain.jsp" class="action-button shadow animate blue"  style="margin-left: 90px;">글작성</a>
+                <div class="clear"></div>
+				<div class="travel_box">
+				<%	
+					final int MAX_QUAN = 8; //한 페이지에 출력될 최대 게시글 수
+					
+					if(MAX_QUAN > informations.size()){ // 게시글이 8 미만일 때 한페이지에서만 다 나오게 할 경우
+						for(int i=0; i < informations.size(); i++){				
+				%>
+	                        <a href="03SelectContent.jsp?blognum=<%=informations.get(i).getBlogNum() %>">
+							<div class="box1" >
+								<img src="<%=informations.get(i).getImg()%>" style="width:290px; height:200px; margin-bottom : 30px;">
+								<h3><%=informations.get(i).getBlogTitle() %></h3>
+							</div>
+	                        </a>
+                <%
+                		}
+				%>
+						<div id="page_index">
+							<ul>
+								<li><a href="#">1</a></li>
+							</ul>
+						</div>
+				<%
+					}else{ // 게시글이 8개 이상일 때
+						int pageQuan = (int)(informations.size() / MAX_QUAN)+1; //페이지 수
+						String firstContent = "";
+						try{
+							firstContent = request.getParameter("page"); // 한 페이지에서 시작될 첫번째 게시글
+						}catch(Exception e){}
+						
+						if(firstContent == null || firstContent.equals("")){
+							firstContent="0";
+							
+						}
+						
+						int intFirstContent = Integer.parseInt(firstContent);
+						
+						for(int i=intFirstContent*MAX_QUAN; i< (intFirstContent*MAX_QUAN)+8; i++){
+							if(i==informations.size()) break;
+				%>
+							<a href="03SelectContent.jsp?blognum=<%=informations.get(i).getBlogNum() %>">
+							<div class="box1" >
+								<img src="<%=informations.get(i).getImg()%>" style="width:290px; height:200px; margin-bottom : 30px;">
+								<h3><%=informations.get(i).getBlogTitle() %></h3>
+							</div>
+			                </a>
+				<%			
+							
+						}
+				%>
+						<div class="clear" style="width:0px; height:0px;"></div>
+						<div id="page_index">
+							<ul>
+							
+							
+				<%
+						for(int i=0; i<pageQuan; i++){
+				%>
+								<a href="05TravelAfter.jsp?trParam=<%= country %>&page=<%=i %>"><li><%=i+1 %></li></a>	
+				<%			
+						}
+						
+					}
+				%>	
+							</ul>
+						</div>
+					
+						
+				</div>
+			</div>
+
+        
+			<div class="clear"></div>
 		</main>
-        <div class="clear"></div>
         <footer>
             <div class="footer_nav">
                 
@@ -403,4 +819,3 @@
 </body>
 
 </html>
-

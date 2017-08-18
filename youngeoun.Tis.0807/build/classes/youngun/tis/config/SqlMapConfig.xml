@@ -17,7 +17,10 @@
 		<typeAlias alias="pagee" type="youngun.tis.review.domain.Page"/>
 
 		<typeAlias alias="Blog" type="youngun.tis.travel.blog.domain.Blog" />
+
+		<typeAlias alias="country" type="youngun.tis.travel.blog.domain.Country" />
 	</typeAliases>	
+ 
 
 	<environments default="development">
 		<environment id="development">
@@ -46,6 +49,7 @@
 		<mapper resource="youngun/tis/user/login/dao/mapper/LoginMapper.xml" />
 		<mapper resource="youngun/tis/user/management/dao/mapper/UserMapper.xml" />
 
+
 		<mapper resource="youngun/tis/qna/dao/mapper/PostMapper.xml" />
 		<mapper resource="youngun/tis/qna/dao/mapper/PageMapper.xml" />
 
@@ -53,5 +57,7 @@
 		<mapper resource="youngun/tis/review/dao/mapper/PageMapper.xml" />
 
 		<mapper resource="youngun/tis/travel/blog/BlogMapper.xml" />
+		<mapper resource="youngun/tis/travel/blog/TravelMapper.xml" />
+ 
 	</mappers>
 </configuration>
