@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	public boolean saveUser(User user) {
 		System.out.println("serviceuser" + user);
 		
-		check=userDao.insertUser(user);
+		check = userDao.insertUser(user);
 		
 		System.out.println("service" + check);
 		
