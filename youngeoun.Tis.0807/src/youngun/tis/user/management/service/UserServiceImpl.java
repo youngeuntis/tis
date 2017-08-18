@@ -20,6 +20,16 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	
+	//아이디 중복
+	@Override
+	public String findUserId(String userId) {
+		userDao.selectUserId(userId);
+		return userId;
+	}
+	
+	
+	//회원 가입
 	@Override
 	public boolean saveUser(User user) {
 		System.out.println("serviceuser" + user);
