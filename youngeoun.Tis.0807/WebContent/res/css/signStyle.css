@@ -28,6 +28,20 @@ body {
 	border-radius: 5px 0 0 5px;
 }
 
+a .idCheck2 {
+	margin-top : 0px;
+	width: 80%;
+	border: 0;
+	background-color: #53CACE;
+	border-radius: 5px;
+	height: 20px;
+	color: white;
+	font-weight: 400;
+	font-size: 1em;
+	line-height: 20px;
+}
+
+
 [type=password] {
 	display: block;
 	margin: 0 auto;
@@ -66,7 +80,8 @@ input[type=button] {
 	font-size: 1em;
 }
 
-button {
+#idCheck {
+	margin-top : 0px;
 	width: 80%;
 	border: 0;
 	background-color: #53CACE;

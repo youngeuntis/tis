@@ -4,7 +4,8 @@ import youngun.tis.user.management.domain.User;
 
 public interface UserMapper {
 	User selectUserAll();
-	int insertUser(User user);
+	User selectUserId(String userId); //아이디 중복확인
+	int insertUser(User user);        //회원가입
 	boolean updateUser(String userId);
 	boolean deleteUser(String userId);
 }

@@ -17,9 +17,18 @@ public class UserDaoImpl implements UserDao {
 		return null;
 	}
 
+	//아이디 중복 확인
+	@Override
+	public User selectUserId(String userId) {
+		System.out.println("dao" + userId);
+		return userMapper.selectUserId(userId);
+	}
+	
+	
+	//회원가입
 	@Override
 	public int insertUser(User user) {
-		System.out.println("dao" + user);
+		//System.out.println("dao" + user);
 		return userMapper.insertUser(user);
 	}
 

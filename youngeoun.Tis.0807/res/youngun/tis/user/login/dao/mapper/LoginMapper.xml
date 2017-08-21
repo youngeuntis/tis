@@ -13,6 +13,7 @@
 		<result property="profileImg" column="profile_img"/>
 	</resultMap>
 	
+	
 	<select id="getUser" parameterType="String" resultMap="userMap">
 		select user_id userId, user_name userName, pw password, email, phone_num PH, nickname nickName, profile_img profileImg
 		from members
