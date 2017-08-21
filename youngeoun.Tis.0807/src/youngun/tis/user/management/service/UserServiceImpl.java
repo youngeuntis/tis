@@ -1,6 +1,5 @@
 package youngun.tis.user.management.service;
 
-import youngun.tis.user.login.domain.Login;
 import youngun.tis.user.management.dao.UserDao;
 import youngun.tis.user.management.dao.UserDaoImpl;
 import youngun.tis.user.management.domain.User;
