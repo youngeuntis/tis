@@ -4,6 +4,28 @@ public class User {
 	private String userId;     //아이디
 	private String userName;   //이름
 	private int memberNum;     //
+	private String blackReason;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public String getBlackReason() {
+		return blackReason;
+	}
+
+	public void setBlackReason(String blackReason) {
+		this.blackReason = blackReason;
+	}
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub

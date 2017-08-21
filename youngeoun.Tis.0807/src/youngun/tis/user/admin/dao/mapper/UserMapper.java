@@ -1,7 +1,12 @@
 package youngun.tis.user.admin.dao.mapper;
 
+import java.util.List;
+
 import youngun.tis.user.admin.domain.User;
 
 public interface UserMapper {
-	User getUsers();
+	List<User> getUsers();
+	List<User> getblindUsers();
+	List<User> getFblindUsers();
+	List<User> getStepUsers();
 }

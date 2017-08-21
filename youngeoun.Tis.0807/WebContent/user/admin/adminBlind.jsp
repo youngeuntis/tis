@@ -1,5 +1,10 @@
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.user.admin.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	List<User> Buser = (List<User>)session.getAttribute("Buser");
+%>
 <!doctype html>
 
 <html>
@@ -256,11 +261,11 @@
         
 <div class="adminMenu">
 	<ul id="gnb">
-		<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
-		<li><a href="adminFull.jsp"><h2>회원 관리</h2></a></li>
-		<li><a href="adminBlind.jsp"><h2>제재 회원 관리</h2></a></li>
-		<li><a href="adminForcedBlind.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
-		<li><a href="adminStep.jsp"><h2>스텝 관리</h2></a></li>
+				<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
+				<li><a href="adminFullControl.jsp"><h2>회원 관리</h2></a></li>
+				<li><a href="adminBlindControl.jsp"><h2>제재 회원 관리</h2></a></li>
+				<li><a href="adminForcedBlindControl.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
+				<li><a href="adminStepControl.jsp"><h2>스텝 관리</h2></a></li>
 	</ul>
 </div>
      <div class="main">
@@ -291,27 +296,15 @@
               
              
              <div class="mainB2blind"> 
+              <%for(int i=0;i<Buser.size();i++){ %>
                        <div class="memberblindDataBcheck"><p><input type="checkbox"></p></div>
-                       <div class="memberblindDataBid"><p>TIS1234</p></div>
-                       <div class="memberblindDataBname"><p>길동잉</p></div>
-                       <div class="memberblindDataBre"><p>도배했졍</p></div>
-                       <div class="memberblindDataBdate"><p>2017.08.08</p></div>
-                       <div class="memberblindDataBenddate"><p>2017.08.08</p></div>
-                       <div class="memberblindDataBadmin"><p>매니저1</p></div>
-                       <div class="memberblindDataBcheck"><p><input type="checkbox"></p></div>
-                       <div class="memberblindDataBid"><p>TIS1234</p></div>
-                       <div class="memberblindDataBname"><p>길동잉</p></div>
-                       <div class="memberblindDataBre"><p>도배했졍</p></div>
-                       <div class="memberblindDataBdate"><p>2017.08.08</p></div>
-                       <div class="memberblindDataBenddate"><p>2017.08.08</p></div>
-                       <div class="memberblindDataBadmin"><p>매니저1</p></div>
-                       <div class="memberblindDataBcheck"><p><input type="checkbox"></p></div>
-                       <div class="memberblindDataBid"><p>TIS1234</p></div>
-                       <div class="memberblindDataBname"><p>길동잉</p></div>
-                       <div class="memberblindDataBre"><p>도배했졍</p></div>
-                       <div class="memberblindDataBdate"><p>2017.08.08</p></div>
-                       <div class="memberblindDataBenddate"><p>2017.08.08</p></div>
-                       <div class="memberblindDataBadmin"><p>매니저1</p></div>
+                       <div class="memberblindDataBid"><p><%=Buser.get(i).getUserId() %></p></div>
+                       <div class="memberblindDataBname"><p><%=Buser.get(i).getUserName() %></p></div>
+                       <div class="memberblindDataBre"><p><%=Buser.get(i).getBlackReason() %></p></div>
+                       <div class="memberblindDataBdate"><p></p></div>
+                       <div class="memberblindDataBenddate"><p></p></div>
+                       <div class="memberblindDataBadmin"><p></p></div>
+                <%} %>
             </div>
                      
              <div class="memberNum"><a>◀ 1 2 3 4 5 ▶</a></div>

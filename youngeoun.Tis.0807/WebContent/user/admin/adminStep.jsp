@@ -1,5 +1,10 @@
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.user.admin.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	List<User> StepUser = (List<User>)session.getAttribute("StepUser");
+%>
 <!doctype html>
 
 <html>
@@ -256,11 +261,11 @@
         
 <div class="adminMenu">
 	<ul id="gnb">
-		<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
-		<li><a href="adminFull.jsp"><h2>회원 관리</h2></a></li>
-		<li><a href="adminBlind.jsp"><h2>제재 회원 관리</h2></a></li>
-		<li><a href="adminForcedBlind.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
-		<li><a href="adminStep.jsp"><h2>스텝 관리</h2></a></li>
+				<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
+				<li><a href="adminFullControl.jsp"><h2>회원 관리</h2></a></li>
+				<li><a href="adminBlindControl.jsp"><h2>제재 회원 관리</h2></a></li>
+				<li><a href="adminForcedBlindControl.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
+				<li><a href="adminStepControl.jsp"><h2>스텝 관리</h2></a></li>
 	</ul>
 </div>
      <div class="main">
@@ -289,17 +294,13 @@
               
              
              <div class="mainB2Step"> 
+              <%for(int i=0;i<StepUser.size();i++){ %>
                         <div class="memberstepDataBcheck"><p><input type="checkbox"></p></div>
-                        <div class="memberstepDataBid"><p>TIS1234</p></div>
-                        <div class="memberstepDataBname"><p>길동잉</p></div>
-                        <div class="memberstepDataBdate"><p>2017.07.08</p></div>
-                        <div class="memberstepDataBgrade"><p>매니저1</p></div>
-                         <div class="memberstepDataBcheck"><p><input type="checkbox"></p></div>
-                        <div class="memberstepDataBid"><p>TIS1234</p></div>
-                        <div class="memberstepDataBname"><p>길동잉</p></div>
-                        <div class="memberstepDataBdate"><p>2017.07.08</p></div>
-                        <div class="memberstepDataBgrade"><p>매니저1</p></div>
-                         
+                        <div class="memberstepDataBid"><p><%=StepUser.get(i).getUserId() %></p></div>
+                        <div class="memberstepDataBname"><p><%=StepUser.get(i).getUserName() %></p></div>
+                        <div class="memberstepDataBdate"><p></p></div>
+                        <div class="memberstepDataBgrade"><p></p></div>
+              <%} %>   
                         
              </div>
                      
