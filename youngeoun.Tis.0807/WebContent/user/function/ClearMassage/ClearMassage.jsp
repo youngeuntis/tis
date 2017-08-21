@@ -1,11 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
-
-<html>
 
 <head>
     <meta charset="utf-8">
-    <link rel = "stylesheet" href = "../../res/css/ClearMassage.css"/>
+    <link rel = "stylesheet" href = "../../../res/css/ClearMassage.css"/>
+    <script type="text/javascript" src="../../../res/js/admin.js"></script>
 </head>
+
 <body>
       <div class="blindMain">    
       <div class="blindTitle"><a> 알 림 </a></div>
@@ -23,7 +25,7 @@
       
            <div class="blindbutton">
               <button id="Send_button" type="submit">확인</button>
-              <button id="Cancel_button" type="submit">취소</button>
+              <input type="button" value="닫기" onclick="Confirm();">
         </div>
           </div>
            <div class="clear"></div>

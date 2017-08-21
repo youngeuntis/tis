@@ -1,11 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
-
-<html>
 
 <head>
     <meta charset="utf-8">
-    <link rel = "stylesheet" href = "../../res/css/forcedblindMassage.css"/>
+    <link rel = "stylesheet" href = "../../../res/css\forcedblindMassage.css"/>
+    <script type="text/javascript" src="../../../res/js/admin.js"></script>
 </head>
+
 <body>
       <div class="blindMain">    
       <div class="blindTitle"><a> 알 림 </a></div>
@@ -14,7 +16,7 @@
           <br />
           <br />
           <a>선택 회원을 </a>
-           <select>
+           <select select size = "1" style="width: 50px; height: 22px;">
                    <option>도배</option>
                    <option>광고</option>
                    <option>욕설</option>
@@ -30,7 +32,7 @@
      
            <div class="blindbutton">
               <button id="Send_button" type="submit">확인</button>
-              <button id="Cancel_button" type="submit">취소</button>
+              <input type="button" value="닫기" onclick="Confirm();">
         </div>
            </div>
            <div class="clear"></div>
