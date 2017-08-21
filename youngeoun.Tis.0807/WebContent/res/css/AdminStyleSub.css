@@ -127,18 +127,16 @@ div.admin{
         text-align:center;
             
     }
-
+/*<!-- ------------------------------공용 메인 사이즈--------------------------------- -->*/   
     .main{
             width: 1400px;
             height: 870px;
             margin-left: 0px;
             margin-top: 200px;
-            
          }
-   
+/*------공용 안쪽 공간--------*/
     .mainB{
             width: 1200px;
-            height: 770px;
             margin-left: 100px;
             margin-top: 0px;
             float: left;
@@ -146,7 +144,8 @@ div.admin{
             color: #000;
             background: #ccc;
         }
-     .mainBb{
+/*------공용 메뉴 공간--------*/
+    .mainBb{
             width: 1120px;
             height: 40px;
             margin-left: 48px;
@@ -154,6 +153,7 @@ div.admin{
             float: left;
          
         }
+/*------공용 검색 공간--------*/
     .mainSerch{
         width: 300px;
         height: 40px;
@@ -172,7 +172,7 @@ div.admin{
       
         
     }
-      .mainSerch2{
+    .mainSerch2{
         width: 175px;
         height: 20px;
         margin-left: 0px;
@@ -182,7 +182,7 @@ div.admin{
         
         
     }
-     .mainSerch3{
+    .mainSerch3{
         width: 31px;
         height: 29px;
         margin-left: 0px;
@@ -195,58 +195,7 @@ div.admin{
         width: 29px;
         height: 28px;
     }
-
-    .mainB2{
-            text-align:left;
-            font:18px "굴림", Gulim;
-            width: 1030px;
-            height: 520px;
-            margin-left: 82px;
-            margin-top: 20px;
-            float: left;
-            background: #fff;
-    }
-    .mainB2blind{
-            text-align:left;
-            font:18px "굴림", Gulim;
-            width: 881px;
-            height: 520px;
-            margin-left: 170px;
-            margin-top: 20px;
-            float: left;
-            background: #fff;
-    }
-    .mainB2forcedblind{
-            text-align:left;
-            font:18px "굴림", Gulim;
-            width: 732px;
-            height: 520px;
-            margin-left: 230px;
-            margin-top: 20px;
-            float: left;
-            background: #fff;
-    }
-    .mainB2Step{
-            text-align:left;
-            font:18px "굴림", Gulim;
-            width: 581px;
-            height: 520px;
-            margin-left: 300px;
-            margin-top: 20px;
-            float: left;
-            background: #fff;
-    }
-
-
-    .mainBoption{
-        text-align:left;
-        width: 900px;
-        height: 40px;
-        margin-left: 140px;
-        margin-top:20px;
-        float: left;
-     }
-  
+/*------공용 페이지, 더보기 공간--------*/
     .memberNum{
         text-align:center;
         width: 300px;
@@ -255,7 +204,6 @@ div.admin{
         margin-top: 20px;
         float: left;
     }
-
     .memberNum a{
         color: #000;
         font-size: 20px;
@@ -274,6 +222,278 @@ div.admin{
          color: #000;
         font-size: 20px;
     }
+/*------공용 맨 밑 옵션 공간--------*/
+    .mainBoption{
+        text-align:left;
+        width: 900px;
+        height: 40px;
+        margin-left: 245px;
+        margin-top:20px;
+        float: left;
+     }
+
+/*<!-- ------------------------------전체 회원 페이지 css--------------------------------- -->*/   
+/*------안쪽 데이터 공간--------*/
+    .mainB2{
+            text-align:left;
+            font:18px "굴림", Gulim;
+            width: 1030px;
+            margin-left: 82px;
+            margin-top: 20px;
+            float: left;
+            background: #fff;
+    }
+/*------전체 회원 데이터--------*/
+    .memberDataBcheck{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberDataBid{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 97px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberDataBname{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 185px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberDataBjoindate{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 120px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberDataBvisitdate{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 177px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberDataBwhite{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 127px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberDataBcoment{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 165px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberDataBvisitcount{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 139px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+/*<!-- ------------------------------제재 회원 페이지 css--------------------------------- -->*/   
+/*------안쪽 데이터 공간--------*/
+    .mainB2blind{
+            text-align:left;
+            font:18px "굴림", Gulim;
+            width: 881px;
+            margin-left: 170px;
+            margin-top: 20px;
+            float: left;
+            background: #fff;
+    }
+/*------제재 회원 데이터--------*/
+    .memberblindDataBcheck{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberblindDataBid{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 126px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberblindDataBname{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 136px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberblindDataBre{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 166px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberblindDataBdate{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 146px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberblindDataBenddate{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 145px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberblindDataBadmin{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 142px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+/*<!-- ------------------------------강퇴 회원 페이지 css--------------------------------- -->*/ 
+/*------안쪽 데이터 공간--------*/
+    .mainB2forcedblind{
+            text-align:left;
+            font:18px "굴림", Gulim;
+            width: 732px;
+            margin-left: 230px;
+            margin-top: 20px;
+            float: left;
+            background: #fff;
+    }
+/*------제재 회원 데이터--------*/
+    .memberforcedblindDataBcheck{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberforcedblindDataBid{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 97px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberforcedblindDataBname{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 197px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberforcedblindDataBre{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 100px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberforcedblindDataBdate{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 197px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberforcedblindDataBadmin{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 121px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+/*<!-- ------------------------------스텝 페이지 css--------------------------------- -->*/ 
+/*------안쪽 데이터 공간--------*/
+    .mainB2Step{
+            text-align:left;
+            font:18px "굴림", Gulim;
+            width: 581px;
+            margin-left: 300px;
+            margin-top: 20px;
+            float: left;
+            background: #fff;
+    }
+/*------스텝 데이터--------*/
+    .memberstepDataBcheck{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberstepDataBid{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 120px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberstepDataBname{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 145px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberstepDataBdate{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 160px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+    .memberstepDataBgrade{
+            text-align:center;
+            font:18px "굴림", Gulim;
+            width: 136px;
+            height: 20px;
+            float: left;
+            background: #fff;
+    }
+
+
+
+  
+
+   
     .clear{
             display: none;
             clear: both;

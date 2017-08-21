@@ -22,10 +22,6 @@ public class PostServiceImpl implements PostService {
 		return postDao.getPosts(page);
 	}
 
-	@Override
-	public Post findPost(int postNo) {
-		return postDao.getPost(postNo);
-	}
 
 	@Override
 	public boolean write(Post post) {
