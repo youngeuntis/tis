@@ -364,7 +364,7 @@
 				<c:forEach var="post" items="${posts}">
 					<tr>
 						<td>${post.postNo}</td>
-						<td>${post.title}</td>
+						<td><a href="04view.jsp?qna_num=${post.postNo}">${post.title}</a></td>
 						<td>${post.writer}</td>
 						<td>${post.regDate}</td>
 						<td><span class="badge">${post.viewCnt}</span></td>
@@ -382,17 +382,17 @@
 				
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 					<li <c:out value ="${pageMaker.page.currentPage==idx? 'class=active':'' }"/>>
-						<a href="list.jsp?currentPage=${idx}">${idx}</a>
+						<a href="01qnaMain.jsp?currentPage=${idx}">${idx}</a>
 					</li>
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next}">
-					<li><a href="list.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
+					<li><a href="01qnaMain?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
 				</c:if>
 			</ul>
 		</div>
 		<div class=boardButton style="float:right;">
-        	<input type=button value="글쓰기"  onclick="move('insert.html');">
+        	<input type=button value="글쓰기"  onclick="move('02insert.jsp');">
 			<input type=button value="내 글">
 			<input type=button value="내 댓글">
 		</div>

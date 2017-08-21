@@ -2,14 +2,13 @@ package youngun.tis.qna.dao;
 
 import java.util.List;
 
-import youngun.tis.config.Configuration;
 import youngun.tis.qna.dao.mapper.PostMapper;
 import youngun.tis.qna.domain.Page;
 import youngun.tis.qna.domain.Post;
 
 public class PostDaoImpl implements PostDao {
 	private PostMapper postMapper;
-
+	
 	public PostDaoImpl(){}
 	
 	public PostDaoImpl(PostMapper postMapper) {
@@ -22,8 +21,13 @@ public class PostDaoImpl implements PostDao {
 	}
 
 	@Override
-	public Post getPost(int postNo) {
-		return postMapper.getPost(postNo);
+	public String getContent(int postNo) {
+		return postMapper.getContent(postNo);
+	}
+
+	@Override
+	public String getTitle(int postNo) {
+		return postMapper.getTitle(postNo);
 	}
 
 	@Override

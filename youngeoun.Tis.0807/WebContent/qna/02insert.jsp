@@ -1,7 +1,10 @@
-<!doctype html>
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+	
+%>
+<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="description" content="해외 자유여행 컨텐츠 정보 공유">
@@ -18,11 +21,18 @@
     <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
     <!--end main_menu_nav-->
+    <script type="text/javascript">
+        function move(url) {
+            location.href = url;
+        }
 
+        function boardViewCheck() {
+            var form = document.BoardWriteForm;
+            return true;
+        }
+    </script>
 </head>
-
 <body>
-
     <div id="fullweb">
         <header>
             <div class="Center">
@@ -273,49 +283,58 @@
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/faq1.jpg" style="width:100%; ">
             </div>
+
+            <main>
+                <form action="03insertSucssess.jsp">
+                    <div class="writing">
+                        <div class="board_title">
+                            <input type="text" name="qna_title" placeholder="제목을 입력하세요." style="width:1000px; height: 50px;">
+                        </div>
+                        <div class="board_content">
+                            <textarea name="qna_content" style="width:1000px; height: 500px;" placeholder="내용을 입력하세요.">
+                            </textarea>
+                        </div>
+                        
+                        <div class="writeButton" align="center">
+                        	<input type="file" name="qna_img">
+                        	<input type="radio" name="open_check" value="1" checked/>공개
+							<input type="radio" name="open_check" value="0"/>비공개
+                            <input type="submit" value="등록">
+                            <input type="button" value="뒤로" onclick="move('01qnaMain.jsp');">
+                        </div>
+                    </div>
+                </form>
+            </main>
+
+            <footer>
+                <div class="footer_nav">
+
+                    <ul>
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">제휴제안</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+
+                    <p> copyright DESIGN YOUR TRIP</p>
+                </div>
+            </footer>
         </div>
+        </div><!-- end fullweb -->
 
-        <main>
-            <div class="successMsg">
-                <br><br><br><br><br><br><br><br><br><br><br><br>
-                <h2>등록이 완료되었습니다.</h2>
-                <br><br><br><br><br><br><br><br><br><br><br><br>
-            </div>
-            <div class="goToList">
-                <p><a href="01.html" style="font-size:21px;" />목록으로</p>
-            </div>
-        </main>
+        <!--main_menu_nav-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="../res/js/cbpHorizontalMenu.min.js"></script>
+        <script>
+            $(function() {
+                cbpHorizontalMenu.init();
+            });
+        </script>
 
-        <footer>
-            <div class="footer_nav">
-
-                <ul>
-                    <li><a href="#">회사소개</a></li>
-                    <li><a href="#">제휴제안</a></li>
-                    <li><a href="#">이용약관</a></li>
-                    <li><a href="#">개인정보처리방침</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul>
-
-
-                <p> copyright DESIGN YOUR TRIP</p>
-            </div>
-        </footer>
-    </div>
-    <!-- end fullweb -->
-
-    <!--main_menu_nav-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../res/js/cbpHorizontalMenu.min.js"></script>
-    <script>
-        $(function() {
-            cbpHorizontalMenu.init();
-        });
-    </script>
-
-    <!--main_login-->
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-    <script src="../res/js/index.js"></script>
+        <!--main_login-->
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+        <script src="../res/js/index.js"></script>
 
 </body>
 </html>

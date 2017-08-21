@@ -1,3 +1,32 @@
+<%@page import="youngun.tis.qna.presentation.BoardIoImpl"%>
+<%@page import="youngun.tis.qna.presentation.BoardIo"%>
+<%@page import="youngun.tis.qna.service.PostService"%>
+<%@page import="youngun.tis.qna.dao.PostDaoImpl"%>
+<%@page import="youngun.tis.qna.dao.PostDao"%>
+<%@page import="youngun.tis.qna.service.PostServiceImpl"%>
+<%@page import="youngun.tis.qna.domain.Post"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.qna.dao.mapper.PostMapper"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+	PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+
+	String title = request.getParameter("qna_title");
+	String content = request.getParameter("qna_content");
+	String openCheck = request.getParameter("open_check");
+	String qnaImg = request.getParameter("qna_img");
+	
+	Post post = new Post();
+	post.setTitle(title);
+	post.setContent(content);
+	post.setOpenCheck(openCheck);
+	post.setQnaImg(qnaImg);
+	
+	postMapper.write(post);
+	
+	session.setAttribute("qnaDB", post);
+%>
 <!doctype html>
 
 <html>
@@ -18,20 +47,11 @@
     <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
     <!--end main_menu_nav-->
-    <script type="text/javascript">
-        function move(url) {
-            location.href = url;
-        }
-
-        function boardViewCheck() {
-            var form = document.BoardWriteForm;
-            return true;
-        }
-    </script>
 
 </head>
 
 <body>
+
     <div id="fullweb">
         <header>
             <div class="Center">
@@ -282,53 +302,49 @@
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/faq1.jpg" style="width:100%; ">
             </div>
-
-            <main>
-                <form action="03i.html">
-                    <div class="writing">
-                        <div class="board_title">
-                            <input type="text" name="title" placeholder="제목을 입력하세요." style="width:1000px; height: 50px;">
-                        </div>
-                        <div class="board_content">
-                            <textarea name="content" style="width:1000px; height: 500px;" placeholder="내용을 입력하세요."></textarea>
-                        </div>
-                        <div class="writeButton" align="center">
-                            <input type="submit" value="등록">
-                            <input type="button" value="뒤로" onclick="move('01.html');">
-                        </div>
-                    </div>
-                </form>
-            </main>
-
-            <footer>
-                <div class="footer_nav">
-
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">제휴제안</a></li>
-                        <li><a href="#">이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-
-                    <p> copyright DESIGN YOUR TRIP</p>
-                </div>
-            </footer>
         </div>
-        </div><!-- end fullweb -->
 
-        <!--main_menu_nav-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="../res/js/cbpHorizontalMenu.min.js"></script>
-        <script>
-            $(function() {
-                cbpHorizontalMenu.init();
-            });
-        </script>
+        <main>
+            <div class="successMsg">
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <h2>등록이 완료되었습니다.</h2>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+            <div class="goToList">
+                <p><a href="01qnaMain.jsp" style="font-size:21px;" />목록으로</p>
+            </div>
+        </main>
 
-        <!--main_login-->
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-        <script src="../res/js/index.js"></script>
+        <footer>
+            <div class="footer_nav">
+
+                <ul>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">제휴제안</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+
+
+                <p> copyright DESIGN YOUR TRIP</p>
+            </div>
+        </footer>
+    </div>
+    <!-- end fullweb -->
+
+    <!--main_menu_nav-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../res/js/cbpHorizontalMenu.min.js"></script>
+    <script>
+        $(function() {
+            cbpHorizontalMenu.init();
+        });
+    </script>
+
+    <!--main_login-->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script src="../res/js/index.js"></script>
 
 </body>
 </html>

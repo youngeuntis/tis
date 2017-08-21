@@ -1,7 +1,24 @@
+<%@page import="com.sun.scenario.effect.impl.prism.PrImage"%>
+<%@page import="youngun.tis.qna.domain.Post"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.qna.dao.mapper.PostMapper"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+
+PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+
+int postNo = Integer.parseInt(request.getParameter("qna_num"));
+String content = postMapper.getContent(postNo);
+String title = postMapper.getTitle(postNo);
+
+Post post = new Post();
+postMapper.updateCnt(postNo);
+
+
+%>
 <!doctype html>
-
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="description" content="해외 자유여행 컨텐츠 정보 공유">
@@ -279,7 +296,7 @@
             <div class="board_mod">
                 <div class="board_content">
                     <div class="board_title">
-                        <h2>정말 즐거운 스페인여행</h2>
+                        <h2><%=title %></h2>
                     </div>
                     <script>
                         function aler() {
@@ -287,14 +304,13 @@
                         }
                     </script>
                     <div class="board_content">
-                        <p>7박 8일간의 스페인여행은 정말 꿀이였다.</p>
-                        <p>꽃보다 할배를 보고서는 스페인에 가고 싶어졌다.</p>
-                        <p>아래 사진으로나마 스페인 아름다움을 느껴보세요!</p>
+                        <p><%= content %></p>
+                      
                     </div>
                     <div class="board_buttons">
-                        <a href="01.html"><button type="button">목록으로</button></a>
-                        <a href="05.html"><button type="button">수정</button></a>
-                        <a href="07.html" onclick="aler()"><button type="button">삭제</button></a>
+                        <a href="01qnaMain.jsp"><button type="button">목록으로</button></a>
+                        <a href="05modified.jsp?qna_num=<%=postNo%>"><button type="button">수정</button></a>
+                        <a href="07delSucssess.jsp?qna_num=<%=postNo%>" onclick="aler()"><button type="button">삭제</button></a>
                     </div>
                 </div>
                 <div class="comments-app" ng-app="commentsApp" ng-controller="CommentsController as cmntCtrl">

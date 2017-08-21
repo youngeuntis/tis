@@ -7,8 +7,10 @@ import youngun.tis.qna.domain.Post;
 
 public interface PostMapper {
 	List<Post> getPosts(Page page);
-	Post getPost(int postNo);
+	String getContent(int postNo);
+	String getTitle(int postNo);
 	int write(Post post);
 	int updateBoard(Post post);
+	int updateCnt(int postNo);
 	int delBoard(int postNo);
 }	

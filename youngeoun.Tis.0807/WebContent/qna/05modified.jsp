@@ -1,3 +1,15 @@
+
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.qna.dao.mapper.PostMapper"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+
+int postNo = Integer.parseInt(request.getParameter("qna_num"));
+String content = postMapper.getContent(postNo);
+String title = postMapper.getTitle(postNo);
+%>
 <!doctype html>
 
 <html>
@@ -323,19 +335,23 @@
 			</div>
 
 			<main>
-			<form action="06.html">
+			<form action="06modifiedSucssess.jsp">
 				<div class="writing">
+					<input type="hidden" name="qna_num" value="<%=postNo%>"/>
 					<div class="board_title">
-						<input type="text" name="title" placeholder="제목을 입력하세요."
-							style="width: 1000px; height: 50px;">
+						<textarea name="qna_title"
+							style="width: 1000px; height: 50px; font-size:19px;"><%=title %></textarea>
 					</div>
 					<div class="board_content">
-						<textarea name="content" style="width: 1000px; height: 500px;"
-							placeholder="내용을 입력하세요."></textarea>
+						<textarea name="qna_content" style="width: 1000px; height: 500px;"
+							><%=content %></textarea>
 					</div>
-					<div class="writeButton" align="center">
-						<input type="submit" value="수정"> <input type="button"
-							value="목록으로" onclick="move('01.html');">
+						<div class="writeButton" align="center">
+                        	<input type="radio" name="open_check" value="1" checked/>공개
+							<input type="radio" name="open_check" value="0"/>비공개
+                            <input type="submit" value="수정">
+                            <input type="button" value="목록으로" onclick="move('01qnaMain.jsp');">
+                        </div>
 					</div>
 				</div>
 			</form>
