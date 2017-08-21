@@ -1,3 +1,32 @@
+<%@page import="youngun.tis.qna.presentation.BoardIoImpl"%>
+<%@page import="youngun.tis.qna.presentation.BoardIo"%>
+<%@page import="youngun.tis.qna.service.PostService"%>
+<%@page import="youngun.tis.qna.dao.PostDaoImpl"%>
+<%@page import="youngun.tis.qna.dao.PostDao"%>
+<%@page import="youngun.tis.qna.service.PostServiceImpl"%>
+<%@page import="youngun.tis.qna.domain.Post"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.qna.dao.mapper.PostMapper"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+	PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+
+	String title = request.getParameter("qna_title");
+	String content = request.getParameter("qna_content");
+	String openCheck = request.getParameter("open_check");
+	String qnaImg = request.getParameter("qna_img");
+	
+	Post post = new Post();
+	post.setTitle(title);
+	post.setContent(content);
+	post.setOpenCheck(openCheck);
+	post.setQnaImg(qnaImg);
+	
+	postMapper.write(post);
+	
+	session.setAttribute("qnaDB", post);
+%>
 <!doctype html>
 
 <html>
@@ -18,11 +47,7 @@
     <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
     <!--end main_menu_nav-->
-    <script type="text/javascript">
-        function move(url) {
-            location.href = url;
-        }
-    </script>
+
 </head>
 
 <body>
@@ -280,119 +305,15 @@
         </div>
 
         <main>
-
-            <div class="bo">
-                <div class="board">
-                    <table class="boardTable" width="1000" height="800" bgcolor="white" border-style="outset">
-                        <colgroup>
-                            <col width="50" />
-                            <col width="500" />
-                            <col width="100" />
-                            <col width="70" />
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>번 호</th>
-                                <th>제 목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>조 회</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td align="center">10</td>
-                                <td><a href="04.html">게시판 글입니다. 10</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">9</td>
-                                <td><a href="04.html">게시판 글입니다. 9</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">8</td>
-                                <td><a href="04.html">게시판 글입니다. 8</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">7</td>
-                                <td><a href="04.html">게시판 글입니다. 10</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">6</td>
-                                <td><a href="04.html">게시판 글입니다. 10</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">5</td>
-                                <td><a href="04.html">게시판 글입니다. 10</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">4</td>
-                                <td><a href="04.html">게시판 글입니다. 10</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">3</td>
-                                <td><a href="04.html">게시판 글입니다. 10</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">2</td>
-                                <td><a href="04.html">게시판 글입니다. 10</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                            <tr>
-                                <td align="center">1</td>
-                                <td><a href="04.html">게시판 글입니다. 10</a></td>
-                                <td align="center">영빈</td>
-                                <td align="center">2017/07/27</td>
-                                <td align="center">123</td>
-                            </tr>
-                    </table>
-                </div>
-                <div class=boardButton>
-                    <input type=button value="글쓰기" onclick="move('02.html');">
-                    <input type=button value="내 글">
-                    <input type=button value="내 댓글">
-                </div>
-                <br><br><br><br><br><br><br><br>
-                <div id="page_index">
-                    <ul>
-                        <li><a href="#">&laquo;prev</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">next&raquo;</a></li>
-                    </ul>
-                </div>
+            <div class="successMsg">
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <h2>등록이 완료되었습니다.</h2>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
-
+            <div class="goToList">
+                <p><a href="01qnaMain.jsp" style="font-size:21px;" />목록으로</p>
+            </div>
         </main>
-
 
         <footer>
             <div class="footer_nav">
@@ -424,7 +345,6 @@
     <!--main_login-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/js/index.js"></script>
-
 
 </body>
 </html>

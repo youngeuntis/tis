@@ -1,7 +1,10 @@
-<!doctype html>
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+	
+%>
+<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="description" content="해외 자유여행 컨텐츠 정보 공유">
@@ -28,9 +31,7 @@
             return true;
         }
     </script>
-
 </head>
-
 <body>
     <div id="fullweb">
         <header>
@@ -284,17 +285,22 @@
             </div>
 
             <main>
-                <form action="03i.html">
+                <form action="03insertSucssess.jsp">
                     <div class="writing">
                         <div class="board_title">
-                            <input type="text" name="title" placeholder="제목을 입력하세요." style="width:1000px; height: 50px;">
+                            <input type="text" name="qna_title" placeholder="제목을 입력하세요." style="width:1000px; height: 50px;">
                         </div>
                         <div class="board_content">
-                            <textarea name="content" style="width:1000px; height: 500px;" placeholder="내용을 입력하세요."></textarea>
+                            <textarea name="qna_content" style="width:1000px; height: 500px;" placeholder="내용을 입력하세요.">
+                            </textarea>
                         </div>
+                        
                         <div class="writeButton" align="center">
+                        	<input type="file" name="qna_img">
+                        	<input type="radio" name="open_check" value="1" checked/>공개
+							<input type="radio" name="open_check" value="0"/>비공개
                             <input type="submit" value="등록">
-                            <input type="button" value="뒤로" onclick="move('01.html');">
+                            <input type="button" value="뒤로" onclick="move('01qnaMain.jsp');">
                         </div>
                     </div>
                 </form>

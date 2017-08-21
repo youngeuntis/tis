@@ -1,3 +1,32 @@
+<%-- <%@page import="youngun.tis.review.domain.Post"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.review.dao.PostDaoImpl"%>
+<%@page import="youngun.tis.review.dao.PostDao"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.review.dao.mapper.PostMapper"%>
+<%@page import="youngun.tis.review.service.PostServiceImpl"%>
+<%@page import="youngun.tis.review.service.PostService"%>
+<%@page import="youngun.tis.review.service.PageServiceImpl"%>
+<%@page import="youngun.tis.review.service.PageService"%>
+<%@page import="youngun.tis.review.domain.Page"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+	Page myPage = null;
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
+	else myPage = new Page();
+	
+	PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+	PostDao postDao = new PostDaoImpl(postMapper);
+	
+	PageService pageService = new PageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", pageService);
+	PostService postService = new PostServiceImpl(postDao);
+	List<Post> posts = postService.listPosts(myPage);
+	pageContext.setAttribute("posts", posts);
+%> --%>
 <!doctype html>
 
 <html>
@@ -11,13 +40,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
-    <link rel="stylesheet" href="../res/css/qna.css">
+    <link rel="stylesheet" href="../res/css/review.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
-    <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
-    <!--end main_menu_nav-->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
 
@@ -268,54 +295,88 @@
             </div><!--end .Center-->
         </header>
 
+
         <div class="slideshow-container">
 
             <div class="mySlides fade" style="display:block;">
-                <img src="../res/img/faq1.jpg" style="width:100%; ">
+                <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
-        </div>
 
-        <main>
-            <div class="successMsg">
-                <br><br><br><br><br><br><br><br><br><br><br><br>
-                <h2>수정이 완료되었습니다.</h2>
-                <br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="mySlides fade">
+                <img src="../res/img/travelImg/m.jpg" style="width:100%; ">
             </div>
-            <div class="goToList">
-                <p><a href="01.html" style="font-size:21px;" />목록으로</p>
+
+            <div class="mySlides fade">
+                <img src="../res/img/travelImg/g.jpg" style="width:100%; ">
             </div>
+
+            <div class="mySlides fade">
+                <img src="../res/img/travelImg/pr.jpg" style="width:100%;">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+		
+		
+		<!-- 메인 작업부분 -->
+		
+		<main>
+            <table class="type31">
+					<th><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+            </table> 
+            <table class="type32">
+                    <th>제목이 들어갑니다.</th>
+            </table>
+            <table class="type33">
+                <td>내용이 들어갑니다.</td>
+			</table>
+			<table class="type34">
+				<th><a href="reviewMain.html"/>확인</th>
+            </table>
+            
+            <table class="type41">
+                <th>댓글</th>
+            </table>
+            <table class="type42">
+                <tr>
+                    <th rowspan="2"></th>
+                    <td><a href="review.html"/>수정</td>
+                </tr>
+                <tr>
+                    <td><a href="review.html"/>삭제</td>
+                </tr>
+            </table>            
         </main>
-        
+
         <footer>
             <div class="footer_nav">
-
-                <ul>
-                    <li><a href="#">회사소개</a></li>
-                    <li><a href="#">제휴제안</a></li>
-                    <li><a href="#">이용약관</a></li>
-                    <li><a href="#">개인정보처리방침</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul>
-
+                
+                    <ul>
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">제휴제안</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+            
 
                 <p> copyright DESIGN YOUR TRIP</p>
             </div>
         </footer>
-    </div>
-    <!-- end fullweb -->
+
+    </div> <!-- end fullweb -->
 
     <!--main_menu_nav-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../res/js/cbpHorizontalMenu.min.js"></script>
-    <script>
-        $(function() {
-            cbpHorizontalMenu.init();
-        });
-    </script>
+    <script>$(function() {cbpHorizontalMenu.init();});</script>
 
     <!--main_login-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/js/index.js"></script>
 
 </body>
+
 </html>

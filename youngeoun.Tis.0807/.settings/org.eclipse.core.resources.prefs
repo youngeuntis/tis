@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/res/css/review.css=UTF-8
+encoding//WebContent/review/jsp/reviewInsert.jsp=UTF-8
+encoding//WebContent/review/jsp/reviewMain.jsp=UTF-8
+encoding//WebContent/review/jsp/reviewModify.jsp=UTF-8
 encoding//WebContent/travel/04BlogAfter.jsp=UTF-8
 encoding/<project>=UTF-8

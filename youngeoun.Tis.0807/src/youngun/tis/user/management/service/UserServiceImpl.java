@@ -23,9 +23,17 @@ public class UserServiceImpl implements UserService {
 	
 	//아이디 중복
 	@Override
-	public String findUserId(String userId) {
-		userDao.selectUserId(userId);
-		return userId;
+	public boolean findUserId(String userId) {
+		User vo = userDao.selectUserId(userId);
+		/* 인터셉터로 빼기 */
+				
+		if(vo==null){
+			vo = new User();
+			vo.setFlag(false);
+		}else{
+				vo.setFlag(true);
+		}
+		return vo.isFlag();
 	}
 	
 	

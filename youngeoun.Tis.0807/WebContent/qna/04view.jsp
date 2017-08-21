@@ -1,7 +1,24 @@
+<%@page import="com.sun.scenario.effect.impl.prism.PrImage"%>
+<%@page import="youngun.tis.qna.domain.Post"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.qna.dao.mapper.PostMapper"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+
+PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+
+int postNo = Integer.parseInt(request.getParameter("qna_num"));
+String content = postMapper.getContent(postNo);
+String title = postMapper.getTitle(postNo);
+
+Post post = new Post();
+postMapper.updateCnt(postNo);
+
+
+%>
 <!doctype html>
-
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="description" content="해외 자유여행 컨텐츠 정보 공유">
@@ -11,10 +28,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
-    <link rel="stylesheet" href="../res/css/review.css">
+    <link rel="stylesheet" href="../res/css/qna.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
+    <!--end main_menu_nav-->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
@@ -266,75 +285,92 @@
             </div><!--end .Center-->
         </header>
 
-
         <div class="slideshow-container">
 
             <div class="mySlides fade" style="display:block;">
-                <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
+                <img src="../res/img/faq1.jpg" style="width:100%; ">
             </div>
-
-            <div class="mySlides fade">
-                <img src="../res/img/travelImg/m.jpg" style="width:100%; ">
-            </div>
-
-            <div class="mySlides fade">
-                <img src="../res/img/travelImg/g.jpg" style="width:100%; ">
-            </div>
-
-            <div class="mySlides fade">
-                <img src="../res/img/travelImg/pr.jpg" style="width:100%;">
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
         </div>
-		
-		
-		<!-- 메인 작업부분 -->
-		
-		<main>
-            <table class="type31">
-					<th><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-            </table> 
-            <table class="type32">
-                    <th>제목이 들어갑니다.</th>
-            </table>
-            <table class="type33">
-                <td>내용이 들어갑니다.</td>
-			</table>
-			<table class="type34">
-				<th><a href="01.html"/>확인</th>
-            </table>            
-        </main>
 
+        <main>
+            <div class="board_mod">
+                <div class="board_content">
+                    <div class="board_title">
+                        <h2><%=title %></h2>
+                    </div>
+                    <script>
+                        function aler() {
+                            prompt("정말이에요??");
+                        }
+                    </script>
+                    <div class="board_content">
+                        <p><%= content %></p>
+                      
+                    </div>
+                    <div class="board_buttons">
+                        <a href="01qnaMain.jsp"><button type="button">목록으로</button></a>
+                        <a href="05modified.jsp?qna_num=<%=postNo%>"><button type="button">수정</button></a>
+                        <a href="07delSucssess.jsp?qna_num=<%=postNo%>" onclick="aler()"><button type="button">삭제</button></a>
+                    </div>
+                </div>
+                <div class="comments-app" ng-app="commentsApp" ng-controller="CommentsController as cmntCtrl">
+                    <div class="comment-form">
+                        <div class="comment-avatar">
+                            <img src="http://lorempixel.com/200/200/people">
+                        </div>
+
+                        <form class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" novalidate>
+                            <div class="form-row">
+                                <textarea class="input" ng-model="cmntCtrl.comment.text" placeholder="Add comment..." required></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <input class="input" ng-class="{ disabled: cmntCtrl.comment.anonymous }" ng-disabled="cmntCtrl.comment.anonymous" ng-model="cmntCtrl.comment.author" ng-required="!cmntCtrl.comment.anonymous" placeholder="Email" type="email">
+                            </div>
+
+                            <div class="form-row text-right">
+                                <input id="comment-anonymous" ng-change="cmntCtrl.anonymousChanged()" ng-model="cmntCtrl.comment.anonymous" type="checkbox">
+                                <label for="comment-anonymous">Anonymous</label>
+                            </div>
+
+                            <div class="form-row">
+                                <input type="submit" value="Add Comment">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
         <footer>
             <div class="footer_nav">
-                
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">제휴제안</a></li>
-                        <li><a href="#">이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-            
+
+                <ul>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">제휴제안</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+
 
                 <p> copyright DESIGN YOUR TRIP</p>
             </div>
         </footer>
-
-    </div> <!-- end fullweb -->
+    </div>
+    <!-- end fullweb -->
 
     <!--main_menu_nav-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../res/js/cbpHorizontalMenu.min.js"></script>
-    <script>$(function() {cbpHorizontalMenu.init();});</script>
+    <script>
+        $(function() {
+            cbpHorizontalMenu.init();
+        });
+    </script>
 
     <!--main_login-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/js/index.js"></script>
 
 </body>
-
 </html>

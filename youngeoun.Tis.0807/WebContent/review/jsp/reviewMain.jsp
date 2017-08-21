@@ -1,23 +1,3 @@
-<%@page import="youngun.tis.review.service.PostServiceImpl"%>
-<%@page import="youngun.tis.review.service.PostService"%>
-<%@page import="youngun.tis.review.service.PageServiceImpl"%>
-<%@page import="youngun.tis.review.service.PageService"%>
-<%@page import="youngun.tis.review.domain.Page"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%
-	Page myPage = null;
-	String currentPage = request.getParameter("currentPage");
-	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
-	else myPage = new Page();
-	
-	PageService pageService = new PageServiceImpl(5, myPage);
-	pageContext.setAttribute("pageMaker", pageService);
-	PostService postService = new PostServiceImpl();
-	pageContext.setAttribute("posts", postService.listPosts(myPage));
-%>
-
 <!doctype html>
 
 <html>
@@ -313,19 +293,86 @@
 		
 		<!-- 메인 작업부분 -->
 		
-		<main>
-            <table class="type31">
-					<th><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-            </table> 
-            <table class="type32">
-                    <th>제목이 들어갑니다.</th>
-            </table>
-            <table class="type33">
-                <td>내용이 들어갑니다.</td>
+		
+		
+<main>
+            <div class = "aaa">
+                <h1>여행 후기 여백 공간</h1>
+            </div>
+			<a href="review.html">
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
 			</table>
-			<table class="type34">
-				<th><a href="01.html"/>확인</th>
-            </table>            
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+             </table>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+            </table>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+			</table>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+			</table>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+			</table></a>
+			<a href="reviewInsert.html">
+                <table class="type03">
+				<tr>
+					<th>글쓰기</th>
+				</tr>
+			</table></a>
+            <div id="page_index">
+                <ul>
+                    <li><a href="#">&laquo;prev</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">next&raquo;</a></li>
+                </ul>   
+        </div>
         </main>
 
         <footer>

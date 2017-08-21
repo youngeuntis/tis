@@ -1,3 +1,26 @@
+<%@page import="youngun.tis.qna.domain.Post"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.qna.dao.mapper.PostMapper"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+
+String title = request.getParameter("qna_title");
+String content = request.getParameter("qna_content");
+String openCheck = request.getParameter("open_check");
+int postNo = Integer.parseInt(request.getParameter("qna_num"));
+
+Post post = new Post();
+post.setPostNo(postNo);
+post.setTitle(title);
+post.setContent(content);
+post.setOpenCheck(openCheck);
+
+postMapper.updateBoard(post);
+
+session.setAttribute("qnaUpDB", post);
+%>
 <!doctype html>
 
 <html>
@@ -12,6 +35,7 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/qna.css">
+    <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
     <!--main_menu_nav-->
@@ -277,14 +301,14 @@
         <main>
             <div class="successMsg">
                 <br><br><br><br><br><br><br><br><br><br><br><br>
-                <h2>삭제가 완료되었습니다.</h2>
+                <h2>수정이 완료되었습니다.</h2>
                 <br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
             <div class="goToList">
-                <p><a href="01.html" style="font-size:21px;" />목록으로</p>
+                <p><a href="01qnaMain.jsp" style="font-size:21px;" />목록으로</p>
             </div>
         </main>
-
+        
         <footer>
             <div class="footer_nav">
 
@@ -300,7 +324,6 @@
                 <p> copyright DESIGN YOUR TRIP</p>
             </div>
         </footer>
-
     </div>
     <!-- end fullweb -->
 
@@ -318,5 +341,4 @@
     <script src="../res/js/index.js"></script>
 
 </body>
-
 </html>

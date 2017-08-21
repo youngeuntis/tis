@@ -1,3 +1,14 @@
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.qna.dao.mapper.PostMapper"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+
+int postNo = Integer.parseInt(request.getParameter("qna_num"));
+
+postMapper.delBoard(postNo);
+%>
 <!doctype html>
 
 <html>
@@ -12,12 +23,11 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/qna.css">
-    <script type="text/javascript" src="../res/js/custom.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
     <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
     <!--end main_menu_nav-->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
 
@@ -276,55 +286,16 @@
         </div>
 
         <main>
-            <div class="board_mod">
-                <div class="board_content">
-                    <div class="board_title">
-                        <h2>정말 즐거운 스페인여행</h2>
-                    </div>
-                    <script>
-                        function aler() {
-                            prompt("정말이에요??");
-                        }
-                    </script>
-                    <div class="board_content">
-                        <p>7박 8일간의 스페인여행은 정말 꿀이였다.</p>
-                        <p>꽃보다 할배를 보고서는 스페인에 가고 싶어졌다.</p>
-                        <p>아래 사진으로나마 스페인 아름다움을 느껴보세요!</p>
-                    </div>
-                    <div class="board_buttons">
-                        <a href="01.html"><button type="button">목록으로</button></a>
-                        <a href="05.html"><button type="button">수정</button></a>
-                        <a href="07.html" onclick="aler()"><button type="button">삭제</button></a>
-                    </div>
-                </div>
-                <div class="comments-app" ng-app="commentsApp" ng-controller="CommentsController as cmntCtrl">
-                    <div class="comment-form">
-                        <div class="comment-avatar">
-                            <img src="http://lorempixel.com/200/200/people">
-                        </div>
-
-                        <form class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" novalidate>
-                            <div class="form-row">
-                                <textarea class="input" ng-model="cmntCtrl.comment.text" placeholder="Add comment..." required></textarea>
-                            </div>
-
-                            <div class="form-row">
-                                <input class="input" ng-class="{ disabled: cmntCtrl.comment.anonymous }" ng-disabled="cmntCtrl.comment.anonymous" ng-model="cmntCtrl.comment.author" ng-required="!cmntCtrl.comment.anonymous" placeholder="Email" type="email">
-                            </div>
-
-                            <div class="form-row text-right">
-                                <input id="comment-anonymous" ng-change="cmntCtrl.anonymousChanged()" ng-model="cmntCtrl.comment.anonymous" type="checkbox">
-                                <label for="comment-anonymous">Anonymous</label>
-                            </div>
-
-                            <div class="form-row">
-                                <input type="submit" value="Add Comment">
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="successMsg">
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <h2>삭제가 완료되었습니다.</h2>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+            <div class="goToList">
+                <p><a href="01qnaMain.jsp" style="font-size:21px;" />목록으로</p>
             </div>
         </main>
+
         <footer>
             <div class="footer_nav">
 
@@ -340,6 +311,7 @@
                 <p> copyright DESIGN YOUR TRIP</p>
             </div>
         </footer>
+
     </div>
     <!-- end fullweb -->
 
@@ -357,4 +329,5 @@
     <script src="../res/js/index.js"></script>
 
 </body>
+
 </html>

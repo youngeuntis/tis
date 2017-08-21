@@ -10,7 +10,26 @@ public class Post {
 	private Date regDate;
 	private int viewCnt;
 	private String qnaImg;
+	private String openCheck;
 	
+	public String getQnaImg() {
+		return qnaImg;
+	}
+
+	public void setQnaImg(String qnaImg) {
+		this.qnaImg = qnaImg;
+	}
+
+
+
+	public String getOpenCheck() {
+		return openCheck;
+	}
+
+	public void setOpenCheck(String openCheck) {
+		this.openCheck = openCheck;
+	}
+
 	public Post(){}
 	
 	public Post(String writer, String title, String content) {

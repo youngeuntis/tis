@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="youngun.tis.user.admin.dao.mapper.UserMapper">
+	
+	<!-- 회원관리 리절트 맵 -->
+	<resultMap id="userMap" type="Auser">
+		<id property="memberNum" column="member_num" />
+		<result property="userName" column="user_name"/>
+		<result property="userId" column="user_id"/>
+	</resultMap>
+	
+	<!-- 제재회원 리절트 맵  -->
+	<resultMap id="blindUserMap" type="Auser">
+		<id property="memberNum" column="member_num" />
+		<result property="userName" column="user_name"/>
+		<result property="userId" column="user_id"/>
+		<result property="blackReason" column="black_reason"/>
+	</resultMap>
+	
+	<!-- 강퇴회원 리절트 맵  -->
+	<resultMap id="FblindUserMap" type="Auser">
+		<id property="memberNum" column="member_num" />
+		<result property="userName" column="user_name"/>
+		<result property="userId" column="user_id"/>
+		<result property="blackReason" column="black_reason"/>
+	</resultMap>
+	
+	<!-- 스텝 리절트 맵  -->
+	<resultMap id="StepUserMap" type="Auser">
+		<result property="userName" column="user_name"/>
+		<result property="userId" column="user_id"/>
+	</resultMap>
+	
+	
+	
+	
+	<select id="getUsers" resultMap="userMap">
+		select * 
+		from members
+		order by member_num
+	</select>
+	
+	
+	<select id="getblindUsers" resultMap="blindUserMap">
+		select e.USER_NAME, e.USER_ID, b.BLACK_REASON 
+		from members e, blacklist b
+		where e.MEMBER_NUM = b.MEMBER_NUM
+	</select>
+	
+	<select id="getFblindUsers" resultMap="FblindUserMap">
+		select e.USER_NAME, e.USER_ID, e.grade_num, b.BLACK_REASON 
+		from members e, blacklist b
+		where e.MEMBER_NUM = b.MEMBER_NUM and e.GRADE_NUM = 'f01'
+	</select>
+	
+	<select id="getStepUsers" resultMap="StepUserMap">
+		select USER_NAME, USER_ID
+		from members
+		where GRADE_NUM = 'g01'
+	</select>
+	
+</mapper>

@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 <h3>시스템 에러 발생</h3>
-<h5>고객센터 1577-1577로 문의하세요</h5>
+<h5>고객센터 010-4172-1777로 문의하세요</h5>
 <%
 	Logger logger = null;
 	if(application.getAttribute("logger")!=null)
