@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.travel.blog.dao.BlogDaoImpl"%>
+<%@page import="youngun.tis.travel.blog.service.SearchService"%>
+<%@page import="youngun.tis.travel.blog.dao.BlogDao"%>
 <%@page import="java.util.regex.Matcher"%>
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="youngun.tis.travel.blog.domain.Blog"%>
@@ -74,91 +78,91 @@
                                 <div class="cbp-hrsub-inner">
                                     <div>
                                         <h4>대한민국</h4>
-                                        <ul>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=서울">서울</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=경기">경기</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=제주">제주</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=부산">부산</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=강원도">강원도</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=충청도">충청도</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=전라도">전라도</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=경상도">경상도</a></li>
+                                         <ul>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=서울">서울</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=경기">경기</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=제주">제주</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=부산">부산</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=강원도">강원도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=충청도">충청도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=전라도">전라도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=경상도">경상도</a></li>
                                         </ul>
                                     </div>
                                     <div class="asia" style = "width : 200px;">
                                         <h4>아시아</h4>
                                         <div class="asia_l">
                                         <ul>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=네팔">네팔</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=대만">대만</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=몰디브">몰디브</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=말레이시아">말레이시아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=발리">발리</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=베트남">베트남</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=부탄">부탄</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=싱가폴">싱가폴</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=네팔">네팔</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=대만">대만</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=몰디브">몰디브</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=말레이시아">말레이시아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=발리">발리</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=베트남">베트남</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=부탄">부탄</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=싱가폴">싱가폴</a></li>
                                         </ul>
                                         </div>
                                         <div class="asia_r">
                                             <ul>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=일본">일본</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=인도">인도</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=인도네시아">인도네시아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=중국">중국</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=캄보디아">캄보디아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=태국">태국</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=필리핀">필리핀</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=홍콩">홍콩</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=일본">일본</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=인도">인도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=인도네시아">인도네시아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=중국">중국</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=캄보디아">캄보디아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=태국">태국</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=필리핀">필리핀</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=아시아&nation=홍콩">홍콩</a></li>
                                         </ul>
                                         </div>
                                     </div>
                                     <div>
                                         <h4>미/대양주</h4>
                                         <ul>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=미국">미국</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=하와이">하와이</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=호주">호주</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=미대양주&nation=미국">미국</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=미대양주&nation=하와이">하와이</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=미대양주&nation=호주">호주</a></li>
                                         </ul>
                                     </div>
                                     <div class="eu" style="width:300px">
                                         <h4>유럽</h4>
                                         <div class="eu_l">
                                         <ul>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=그리스">그리스</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=노르웨이">노르웨이</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=네덜란드">네덜란드</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=독일">독일</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=덴마크">덴마크</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=룩셈부르크">록셈부르크</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=루마니아">루마니아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=몰타">몰타</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=벨기에">벨기에</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=그리스">그리스</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=노르웨이">노르웨이</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=네덜란드">네덜란드</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=독일">독일</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=덴마크">덴마크</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=룩셈부르크">록셈부르크</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=루마니아">루마니아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=몰타">몰타</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=벨기에">벨기에</a></li>
                                         </ul>
                                         </div>
                                         <div class="eu_c">
                                             <ul>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=스위스">스위스</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=스웨덴">스웨덴</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=스페인">스페인</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=슬로바키아">슬로바키아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=아이슬란드">아이슬란드</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=아일랜드">아일랜드</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=영국">영국</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=이탈리아">이탈리아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=오스트리아">오스트리아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=스위스">스위스</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=스웨덴">스웨덴</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=스페인">스페인</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=슬로바키아">슬로바키아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=아이슬란드">아이슬란드</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=아일랜드">아일랜드</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=영국">영국</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=이탈리아">이탈리아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=오스트리아">오스트리아</a></li>
                                         </ul>
                                         </div>
                                         <div class="eu_r">
                                             <ul>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=체코">체코</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=터키">터키</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=러시아">러시아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=에스토니아">에스토니아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=크로아티아">크로아티아</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=헝가리">헝가리</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=프랑스">프랑스</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=폴란드">폴란드</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=포르투칼">포르투칼</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=체코">체코</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=터키">터키</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=러시아">러시아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=에스토니아">에스토니아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=크로아티아">크로아티아</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=헝가리">헝가리</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=프랑스">프랑스</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=폴란드">폴란드</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=유럽&nation=포르투칼">포르투칼</a></li>
                                         </ul>
                                         </div>
                                     </div>
@@ -275,52 +279,7 @@
         </header>
 
         <div class="picture">
-			<div class="option_box">
-				<select id="sl" onchange="zzz()">
-				    <option value="hide">-- Continent --</option>
-				    <option value="Korea" rel="icon-temperature">대한민국</option>
-				    <option value="Europe">유럽</option>
-				    <option value="America">미/대양주</option>
-				    <option value="Asia">아시아</option>
-				</select> 
-				
-				<select id="country_select">
-				    <option value="hide">-- Nation --</option>
-				</select>
-				
-				<select id="country">
-				    <option value="hide">-- Area --</option>
-				    <option value="2010">2010</option>
-				    <option value="2011">2011</option>
-				    <option value="2012">2012</option>
-				    <option value="2013">2013</option>
-				    <option value="2014">2014</option>
-				    <option value="2015">2015</option>
-				</select>
-				<script>
-                    
-                    function zzz(){
-                         var firstSelect = document.getElementById("sl").value;
-                        alert(firstSelect);
-                        /*if(firstSelect=="a") document.getElementById("country_select").innerHTML
-                        = '<option value="hide">-- Country --</option>'
-                        + '<option value="서울">서울</option>'
-                        + '<option value="경기">경기</option>'
-                        + '<option value="제주">제주</option>'
-                        + '<option value="부산">부산</option>'
-                        + '<option value="강원도">강원도</option>'
-                        + '<option value="충청도">충청도</option>'
-                        + '<option value="경상도">경상도</option>'
-                        + '<option value="전라도">전라도</option>';*/
-                    }
-                </script>
-				<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	    		<script src="../res/js/indexOption.js"></script>
-                
-			</div>
-			
-    		
-            <div class="mySlides fade" style="display:block;">
+			<div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
 
@@ -344,28 +303,34 @@
 		
 		<!-- 메인 작업부분 -->
 		<% 
-			BlogMapper blogMapper = Configuration.getMapper(BlogMapper.class);
-			
+			BlogDao blogDao = new BlogDaoImpl();
+			SearchService service = new SearchService(blogDao);
 			String title = request.getParameter("editor_title");
 			String content = request.getParameter("editor_content");
 			String continent = request.getParameter("continent");
 			String country = request.getParameter("country");
-			Pattern p = Pattern.compile("(http://i.imgur.com/)+([a-zA-Z0-9]*.jpg)");
+			String blogNum = request.getParameter("blogNum");
+			Pattern p = Pattern.compile("(http://i.imgur.com/)+(([a-zA-Z0-9]*.jpg)|([a-zA-Z0-9]*.png)|([a-zA-Z0-9]*.jpeg))");
 			Matcher m = p.matcher(content);
+			List<Blog> blogs = blogDao.getBlogListNoPara();
+			Blog blog = null;
+			if(blogNum == null){
+				blog = new Blog();
+				service.writeBlog(blog, title, content, continent, country, m);
+				blogDao.insertInfo(blog);
+			}else{
+				blog = service.searchBlog(blogs, blogNum);
+				service.writeBlog(blog, title, content, continent, country, m);
+				service.modifyBlog(blog);
+			}
 			
-			
-			Blog blog = new Blog();
-			blog.setContinentCode(continent);
+			/* blog.setContinentCode(continent);
 			blog.setNationCode(country);
 			blog.setBlogTitle(title);
 			blog.setBlogContent(content);
 			while(m.find()){
 				blog.setImg(m.group());
-			}
-			blogMapper.insertInfo(blog);
-			
-			session.setAttribute("BlogDB", blog);
-			
+			} */			
 		%>
 		
 		

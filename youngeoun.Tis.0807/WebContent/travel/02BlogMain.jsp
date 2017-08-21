@@ -1,3 +1,8 @@
+<%@page import="youngun.tis.travel.blog.service.SearchService"%>
+<%@page import="youngun.tis.travel.blog.dao.BlogDaoImpl"%>
+<%@page import="youngun.tis.travel.blog.dao.BlogDao"%>
+<%@page import="youngun.tis.travel.blog.domain.Blog"%>
+<%@page import="youngun.tis.travel.blog.dao.TravelDao"%>
 <%@page import="youngun.tis.travel.blog.domain.Country"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.config.Configuration"%>
@@ -81,15 +86,15 @@
                                 <div class="cbp-hrsub-inner">
                                     <div>
                                         <h4>대한민국</h4>
-                                        <ul>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=서울">서울</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=경기">경기</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=제주">제주</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=부산">부산</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=강원도">강원도</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=충청도">충청도</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=전라도">전라도</a></li>
-                                            <li><a href="../travel/05TravelAfter.jsp?trParam=경상도">경상도</a></li>
+                                         <ul>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=서울">서울</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=경기">경기</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=제주">제주</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=부산">부산</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=강원도">강원도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=충청도">충청도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=전라도">전라도</a></li>
+                                            <li><a href="../travel/05TravelAfter.jsp?continent=대한민국&nation=경상도">경상도</a></li>
                                         </ul>
                                     </div>
                                     <div class="asia" style = "width : 200px;">
@@ -314,33 +319,59 @@
         });
         </script>
             
-		
+		<%
+			Blog selectBlog = null;
+			String title = "";
+			String content= "";
+			BlogDao blogDao = new BlogDaoImpl();
+			SearchService service = new SearchService(blogDao);
+			List<Blog> blogs = blogDao.getBlogListNoPara();
+			String blogNum = request.getParameter("blogNum");
+			if(blogNum == null){
+				title = "";
+				content = "";
+			}else{
+				selectBlog = service.searchBlog(blogs, blogNum);			
+				title = selectBlog.getBlogTitle();
+				content = selectBlog.getBlogContent();
+			}
+			
+		%>
 		
         <main>
             <div class="editor" style="position: relative; height: 900px; width:1200px; left:50%; margin-left: -600px;">
                 <form action="04BlogAfter.jsp" method="get">
-                    <input type="text" name="editor_title" style="width:1200px;">
                     
+                    <!-- <input type="text" name="editor_title" style="width:1200px;">
+                    </div> -->
+                    <div style="width:1200px; overflow : hidden;">
+                    <textarea cols="60" style="width:1300px; height:20px;" name="editor_title"><%=title %></textarea>
+                    </div>
                     <select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();">
-                    	<option value="c1">대한민국</option>
+                    	<option value="c6">대한민국</option>
                     	<option value="c2">유럽</option>
                     	<option value="c3">미대양주</option>
                     	<option value="c1">아시아</option>
                     </select>
                     <select class="editorSelect" id="subSelect" name="country">
-                    	<option value="n77">서울</option>
-                    	<option value="n78">부산</option>
-                    	<option value="n79">전주</option>
+                    	<option value="n49">서울</option>
+                    	<option value="n50">부산</option>
+                    	<option value="n51">제주</option>
+                    	<option value="n52">경기</option>
+                    	<option value="n53">강원도</option>
+                    	<option value="n54">충청도</option>
+                    	<option value="n55">전라도</option>
+                    	<option value="n56">경상도</option>
                     </select>
                     <script>
                     	function subCategory(){
                     		var x = document.getElementById("mySelect").value;
                     		<%
-                    			
-	            				TravelMapper travelMapper = Configuration.getMapper(TravelMapper.class);
-	            				List<Country> countries = travelMapper.getCountryList("c1");
-	            				List<Country> countries2 = travelMapper.getCountryList("c2");
-	            				List<Country> countries3 = travelMapper.getCountryList("c3");
+                    			TravelDao travelDao = new TravelDao();
+								List<Country> countries = travelDao.getCountryList("c1");
+								List<Country> countries2 = travelDao.getCountryList("c2");
+								List<Country> countries3 = travelDao.getCountryList("c3");
+								List<Country> countries4 = travelDao.getCountryList("c6");
             				%>
             				
                     		if(x=="c1"){
@@ -376,10 +407,28 @@
 	            				%>
                     			var str = <%=str%>
                     			document.getElementById("subSelect").innerHTML =str;
+                    		}else if(x=="c6"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries4.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries4.get(i).getNationalCode()%>\"><%=countries4.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
                     		}
                     	}
                     </script>
-                    <textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; left: 50%;" name="editor_content"></textarea>
+                    <textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; left: 50%; overflow:scroll;" name="editor_content"><%=content %></textarea>
+                    <% 
+                    	if(blogNum != null){
+                    %>
+                    <input type="hidden" name="blogNum" value="<%=blogNum%>">
+                    <% 
+                    	}
+                    %>
                     <button type="submit" class="action-button shadow animate blue" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">저장</button>
                 </form>
                 	<button onclick="cancelMove()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">취소</button>

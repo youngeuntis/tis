@@ -4,7 +4,7 @@
 <mapper namespace="youngun.tis.travel.blog.mapper.TravelMapper">
 	<select id="getCountryList" parameterType="string" resultType="country">
 		select nation_code nationalCode, nation_name countryName from nations
-		where continent_code = #{continentName}
+		where continent_code like #{continentName}
 	</select>
 	
 	
