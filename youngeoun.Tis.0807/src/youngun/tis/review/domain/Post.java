@@ -9,6 +9,33 @@ public class Post {
 	private String writer;
 	private Date regDate;
 	private int viewCnt;
+	private String qnaImg;
+	private String openCheck;
+	
+	public String getQnaImg() {
+		return qnaImg;
+	}
+
+	public void setQnaImg(String qnaImg) {
+		this.qnaImg = qnaImg;
+	}
+
+	public String getOpenCheck() {
+		return openCheck;
+	}
+
+	public void setOpenCheck(String openCheck) {
+		this.openCheck = openCheck;
+	}
+
+	public Post(){}
+	
+	public Post(String writer, String title, String content) {
+		super();
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+	}
 	
 	public int getPostNo() {
 		return postNo;
@@ -56,5 +83,10 @@ public class Post {
 
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("%d %s %s", postNo, title, content);
 	}
 }

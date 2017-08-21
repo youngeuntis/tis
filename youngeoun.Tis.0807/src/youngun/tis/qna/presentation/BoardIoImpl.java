@@ -2,14 +2,20 @@ package youngun.tis.qna.presentation;
 
 import java.util.List;
 
+import youngun.tis.config.Configuration;
+import youngun.tis.qna.dao.PostDao;
+import youngun.tis.qna.dao.PostDaoImpl;
+import youngun.tis.qna.dao.mapper.PostMapper;
 import youngun.tis.qna.domain.CODE;
 import youngun.tis.qna.domain.Page;
 import youngun.tis.qna.domain.Post;
 import youngun.tis.qna.service.PostService;
+import youngun.tis.qna.service.PostServiceImpl;
 
 
 public class BoardIoImpl implements BoardIo {
 	private PostService postService;
+
 	
 	public BoardIoImpl(PostService  postService){
 		this.postService = postService;
@@ -25,8 +31,8 @@ public class BoardIoImpl implements BoardIo {
 	}
 
 	@Override
-	public void write() {
-		Post post = null;
+	public void write() {	
+	/*	Post post = null;
 		Console.in("작성자 이름을 입력.");
 		String writer = Console.inStr();
 		Console.in("제목을 입력.");
@@ -41,8 +47,12 @@ public class BoardIoImpl implements BoardIo {
 	
 		if(postService.write(new Post(writer,title,content)))
 			Console.info("게시물 쓰기 성공.");
-		else Console.err("게시물 쓰기 실패.");
+		else Console.err("게시물 쓰기 실패.");*/
 		
+/*		Post post = new Post();
+		post.setTitle(title);
+		post.setContent(content);
+		post.setOpenCheck(openCheck);*/
 	}
 
 	@Override
@@ -95,6 +105,4 @@ public class BoardIoImpl implements BoardIo {
 		post = postService.findPost(postNo);
 		System.out.println(post);
 	}
-
-	
 }

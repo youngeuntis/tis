@@ -1,7 +1,5 @@
 package youngun.tis.review.dao;
 
-
-
 import youngun.tis.config.Configuration;
 import youngun.tis.review.dao.mapper.PageMapper;
 

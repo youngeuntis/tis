@@ -16,26 +16,38 @@
 		select post_no postNo, title, content from posts
 	</select> -->
 	
-	<select id="getPost" parameterType="int" resultType="post">
-	 select post_no postNo, title, content
-	 from posts
-	 where post_no=#{postNo}
+	<select id="getContent" parameterType="int" resultType="string">
+	 select qna_content
+	 from qna_notices
+	 where qna_num=#{postNo}
+	</select>
+	
+	<select id="getTitle" parameterType="int" resultType="string">
+	 select qna_title
+	 from qna_notices
+	 where qna_num=#{postNo}
 	</select>
 	
 	<insert id="write" parameterType="post">
 	 insert into qna_notices
-	 values(postno_seq.nextval, #{title}, #{content}, #{writer}, sysdate , 0)
+	 values(qna_num_seq.nextval, 5, #{title}, #{content}, sysdate , #{openCheck},#{qnaImg},0)
 	</insert>
 	
 	<update id="updateBoard" parameterType="post">
-		update posts
-		set title=#{title}, content=#{content}
-		where post_No=#{postNo}
+		update qna_notices
+		set qna_title=#{title}, qna_content=#{content}, open_check=#{openCheck}
+		where qna_num=#{postNo}
+	</update>
+	
+	<update id="updateCnt" parameterType="int">
+		update qna_notices
+		set qna_hits= qna_hits + 1
+		where qna_num=#{postNo}
 	</update>
 	
 	<delete id="delBoard" parameterType="int">
-		delete posts
-		where post_no=#{postNo}
+		delete qna_notices
+		where qna_num=#{postNo}
 	</delete>
 	
 	<resultMap id="postMap" type="post">
@@ -46,5 +58,6 @@
 		<result property="regDate" column="qna_date"/>
 		<result property="viewCnt" column="qna_hits"/>
 		<result property="qnaImg" column="qna_img"/>
+		<result property="openCheck" column="open_check"/>
 	</resultMap>
 </mapper>
