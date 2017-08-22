@@ -342,16 +342,14 @@
 						<li><a href="#">아이디▼</a></li>
 						<li><a href="#">이름▼</a></li>
 					</ul>
+					
 					<div class="mainAa1">
-						<div class="memberDataAdate">
-							<p>2017.08.08</p>
-						</div>
-						<div class="memberDataAid">
-							<p>TIS1234</p>
-						</div>
-						<div class="memberDataAname">
-							<p>길동잉</p>
-						</div>
+					
+						<div class="memberDataAdate"><p>2017.08.08</p></div>
+						<div class="memberDataAid"><p></p></div>
+						<div class="memberDataAname"><p></p></div>
+					
+					
 					</div>
 					<div class="mainAbutton">
 						<a href="adminUntilBlind.jsp">더보기</a>
