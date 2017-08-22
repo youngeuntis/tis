@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+
 <!doctype html>
 
 <html>
@@ -295,84 +298,54 @@
 		
 		
 		
-<main>
-            <div class = "aaa">
-                <h1>여행 후기 여백 공간</h1>
+        <main>
+            <div class="selectbox">
+                <select id="nation" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                        <option selected value="NATION">국가별</option>
+                        <option value="KOREA">한국</option>
+                        <option value="JAPAN">일본</option>
+                        <option value="USA">미국</option>
+                        <option value="SPAIN">스페인</option>
+                </select>
+                <select id="area" style="width:165px;height:50px;font-size:20px;
+                font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                        <option selected value="AREA">지역별</option>
+                        <option value="">서울</option>
+                        <option value="">대전</option>
+                        <option value="">대구</option>
+                        <option value="">부산</option>
+                </select>
             </div>
-			<a href="review.html">
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
-			</table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
-             </table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
+			<table class="type11">
+					<th rowspan="2">메인 사진을 업로드 해 주세요<p><input type="file" name="uploadFile1" style =  "display:none;">
+                    <img src="../res/img/123.jpg" onclick="document.all.uploadFile1.click();"></p></th>
             </table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
+            <table class="type12">   
+                <td>
+                    <textarea name="titleinput" style="width:100%; height:100%; ">제목 입력</textarea>
+                </td>
+            <table class="type13">
+					<th>글 내용안의 동영상 사진 음악 등 업로드
+                        <p><input type="file" name="uploadFile2" style =  "display:none;">
+                        <img src="../res/img/DYTR.png"
+                        onclick="document.all.uploadFile2.click();"></p>
+                        <p><input type="file" name="uploadFile3" style =  "display:none;">
+                        <img src="../res/img/DYTR.png"
+                        onclick="document.all.uploadFile3.click();"></p>
+                    </th>
+            </table> 
+            <table class="type14">
+                <td><textarea name="titleinput" style="width:100%; height:100%; ">내용 입력</textarea></td>
 			</table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
+			<table class="type15">
+				<th><a href="review.jsp"/>등록</th>
+            </table>
+            <table class="type15">
+                <th><a href="reviewMain.jsp"/>취소</th>
 			</table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
-			</table></a>
-			<a href="reviewInsert.html">
-                <table class="type03">
-				<tr>
-					<th>글쓰기</th>
-				</tr>
-			</table></a>
-            <div id="page_index">
-                <ul>
-                    <li><a href="#">&laquo;prev</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li><a href="#">next&raquo;</a></li>
-                </ul>   
-        </div>
+            </table>
         </main>
 
         <footer>

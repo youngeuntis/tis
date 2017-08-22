@@ -15,8 +15,8 @@
 		<typeAlias alias="post" type="youngun.tis.qna.domain.Post"/>
 		<typeAlias alias="page" type="youngun.tis.qna.domain.Page"/>
 		
-		<typeAlias alias="postt" type="youngun.tis.review.domain.Post"/>
-		<typeAlias alias="pagee" type="youngun.tis.review.domain.Page"/>
+		<typeAlias alias="Review" type="youngun.tis.review.domain.Review"/>
+		<typeAlias alias="nation" type="youngun.tis.review.domain.Country"/>
  
 		<typeAlias alias="Blog" type="youngun.tis.travel.blog.domain.Blog" />
 
@@ -62,8 +62,8 @@
 		<mapper resource="youngun/tis/qna/dao/mapper/PageMapper.xml" />
 		
 		<!-- 진형 -->
-		<mapper resource="youngun/tis/review/dao/mapper/PostMapper.xml" />
-		<mapper resource="youngun/tis/review/dao/mapper/PageMapper.xml" />
+		<mapper resource="youngun/tis/review/dao/mapper/ReviewMapper.xml" />
+		<mapper resource="youngun/tis/review/dao/mapper/TravelMapper.xml" />
 		
 		<!-- 진우  -->
 		<mapper resource="youngun/tis/travel/blog/BlogMapper.xml" />

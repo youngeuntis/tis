@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+
 <!doctype html>
 
 <html>
@@ -335,10 +338,10 @@
                 <td><textarea name="titleinput" style="width:100%; height:100%; ">내용 입력</textarea></td>
 			</table>
 			<table class="type15">
-				<th><a href="review.html"/>등록</th>
+				<th><a href="review.jsp"/>등록</th>
             </table>
             <table class="type15">
-                <th><a href="reviewMain.html"/>취소</th>
+                <th><a href="reviewMain.jsp"/>취소</th>
 			</table>
             </table>
         </main>

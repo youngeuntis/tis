@@ -1,10 +1,9 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/youngeuntis/tis
 eclipse.preferences.version=1
 encoding//WebContent/res/css/review.css=UTF-8
-<<<<<<< HEAD
-=======
-encoding//WebContent/review/jsp/reviewInsert.jsp=UTF-8
-encoding//WebContent/review/jsp/reviewMain.jsp=UTF-8
-encoding//WebContent/review/jsp/reviewModify.jsp=UTF-8
+encoding//WebContent/review/reviewMain.jsp=UTF-8
+encoding//WebContent/review/reviewModify.jsp=UTF-8
 encoding//WebContent/travel/04BlogAfter.jsp=UTF-8
->>>>>>> branch 'master' of https://github.com/youngeuntis/tis
 encoding/<project>=UTF-8

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="youngun.tis.review.mapper.ReviewMapper">
+	<insert id="insertReview" parameterType="Review">
+		insert into reviews_notices
+		values(review_seq.nextval,#{reviewTitle},#{reviewContent})
+	</insert>
+	
+	<insert id="insertInfo" parameterType="Review">
+	insert into reviews_notices values(
+	trainfo_seq.nextVal,2,#{continentCode},#{nationCode},null,#{reviewTitle},#{reviewContent},sysdate,#{reviewImg},null,0)
+	</insert>
+	
+	<select id="getReviewList" parameterType="string" resultType="Review">
+	select review_num reviewNum, member_num memberNum, continent_code continentCode, nation_code nationCode,
+	area_code areaCode, review_title reviewTitle, review_content reviewContent, review_date reviewDate, review_img reviewImg,
+	review_video, review_hits reviewHits from reviews_notices
+	where nation_code like #{country}
+	order by info_num
+	</select>
+	
+	<select id="getReviewListNoPara" resultType="Review">
+	select review_num reviewNum, member_num memberNum, continent_code continentCode, nation_code nationCode,
+	area_code areaCode, review_title reviewTitle, review_content reviewContent, review_date reviewDate, review_img reviewImg,
+	review_video, review_hits reviewHits from reviews_notices
+	order by review_num
+	</select>
+	
+
+	
+	<select id="getReviewListContinent" parameterType="string" resultType="Review" >
+		select review_num reviewNum, review_title reviewTitle, review_img reviewImg, nation_code nationCode
+		from reviews_notices
+		where continent_code like #{continentCode}
+		order by review_num
+	</select>
+	<!-- 조회 수 업데이트 -->
+	<update id="updateHits" parameterType="Review">
+		update reviews_notices set review_hits = #{reviewHits} where review_num=#{reviewNum} 
+	</update>
+	<!-- 게시글 수정 -->
+	<update id="updateInfo" parameterType="Review">
+		update reviews_notices set review_title = #{reviewTitle}, review_content=#{reviewContent}, review_img=#{reviewImg} where review_num=#{reviewNum} 
+	</update>
+	
+	<delete id="deleteReview" parameterType="Review">
+		delete from reviews_notices where review_num=#{reviewNum}
+	</delete>
+</mapper>
