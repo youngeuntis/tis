@@ -1,19 +1,29 @@
 package youngun.tis.mypage.domain;
 
-public class personal {
+public class Personal {
+	private int memberNum;		//회원 번호
 	private String userId;		//회원 아이디
 	private String userPh;		//회원 핸드폰번호
 	private String userEmail;	//회원 이메일
 	private String userPw;		//회원 비밀번호
 	
-	public personal() {}
+	public Personal() {}
 
-	public personal(String userId, String userPh, String userEmail, String userPw) {
+	public Personal(int memberNum, String userId, String userPh, String userEmail, String userPw) {
 		super();
+		this.memberNum = memberNum;
 		this.userId = userId;
 		this.userPh = userPh;
 		this.userEmail = userEmail;
 		this.userPw = userPw;
+	}
+
+	public int getmemberNum() {
+		return memberNum;
+	}
+
+	public void setmemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
 
 	public String getUserId() {
@@ -50,7 +60,7 @@ public class personal {
 
 	@Override
 	public String toString() {
-		return "personal [userId=" + userId + ", userPh=" + userPh + ", userEmail=" + userEmail + ", userPw=" + userPw
-				+ "]";
+		return "Personal [memberNum=" + memberNum + ", userId=" + userId + ", userPh=" + userPh + ", userEmail=" + userEmail
+				+ ", userPw=" + userPw + "]";
 	}
 }

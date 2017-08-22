@@ -28,4 +28,8 @@ public class UserDaoImpl implements UserDao {
 	public List<User> getStepUsers(){
 		return userMapper.getStepUsers();
 	}
+	
+	public List<User> getMainUsers(){
+		return userMapper.getMainUsers();
+	}
 }

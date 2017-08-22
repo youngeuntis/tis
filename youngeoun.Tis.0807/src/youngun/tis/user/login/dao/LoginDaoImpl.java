@@ -14,4 +14,9 @@ public class LoginDaoImpl implements LoginDao {
 	public Login getUser(String userId){
 		return loginMapper.getUser(userId);
 	}
+	
+	public int updateUserUntilVisit(String userId){
+		return loginMapper.updateUserUntilVisit(userId);
+	}
+	
 }

@@ -32,6 +32,13 @@
 		<result property="userId" column="user_id"/>
 	</resultMap>
 	
+	<!-- 메인 리절트 맵  -->
+	<resultMap id="MainUserMap" type="Auser">
+		<id property="memberNum" column="member_num" />
+		<result property="userName" column="user_name"/>
+		<result property="userId" column="user_id"/>
+	</resultMap>
+	
 	
 	
 	
@@ -58,6 +65,12 @@
 		select USER_NAME, USER_ID
 		from members
 		where GRADE_NUM = 'g01'
+	</select>
+	
+	<select id="getMainUsers" resultMap="MainUserMap">
+		select * 
+		from members
+		order by member_num
 	</select>
 	
 </mapper>

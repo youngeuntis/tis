@@ -28,10 +28,17 @@ public class LoginServiceImpl implements LoginService {
 		}else{
 			if(vo.getUserId().equals(loginId) && vo.getPassword().equals(loginPw)){
 				vo.setFlag(true);
+				changUserDate(userId);
 			}else{
 				vo.setFlag(false);
 			}
 		}
 		return vo;
 	}
+	
+	@Override
+	public void changUserDate(String userId){
+		loginDao.updateUserUntilVisit(userId);
+	}
+	
 }
