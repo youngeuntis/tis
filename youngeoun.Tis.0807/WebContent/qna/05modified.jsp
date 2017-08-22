@@ -349,7 +349,7 @@ String title = postMapper.getTitle(postNo);
 						<div class="writeButton" align="center">
                         	<input type="radio" name="open_check" value="1" checked/>공개
 							<input type="radio" name="open_check" value="0"/>비공개
-                            <input type="submit" value="수정">
+                            <button type="submit">수정</button>
                             <input type="button" value="목록으로" onclick="move('01qnaMain.jsp');">
                         </div>
 					</div>
