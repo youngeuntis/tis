@@ -4,12 +4,12 @@
 <mapper namespace="youngun.tis.review.mapper.ReviewMapper">
 	<insert id="insertReview" parameterType="Review">
 		insert into reviews_notices
-		values(review_seq.nextval,#{reviewTitle},#{reviewContent})
+		values(review_num_seq.nextval,#{reviewTitle},#{reviewContent})
 	</insert>
 	
 	<insert id="insertInfo" parameterType="Review">
 	insert into reviews_notices values(
-	trainfo_seq.nextVal,2,#{continentCode},#{nationCode},null,#{reviewTitle},#{reviewContent},sysdate,#{reviewImg},null,0)
+	review_num_seq.nextVal,2,#{continentCode},#{nationCode},null,#{reviewTitle},#{reviewContent},sysdate,#{reviewImg},null,0)
 	</insert>
 	
 	<select id="getReviewList" parameterType="string" resultType="Review">
