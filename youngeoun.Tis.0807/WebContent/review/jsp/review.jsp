@@ -1,3 +1,9 @@
+<%-- <%@page import="youngun.tis.review.domain.Post"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.review.dao.PostDaoImpl"%>
+<%@page import="youngun.tis.review.dao.PostDao"%>
+<%@page import="youngun.tis.config.Configuration"%>
+<%@page import="youngun.tis.review.dao.mapper.PostMapper"%>
 <%@page import="youngun.tis.review.service.PostServiceImpl"%>
 <%@page import="youngun.tis.review.service.PostService"%>
 <%@page import="youngun.tis.review.service.PageServiceImpl"%>
@@ -12,12 +18,15 @@
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
 	else myPage = new Page();
 	
+	PostMapper postMapper = Configuration.getMapper(PostMapper.class);
+	PostDao postDao = new PostDaoImpl(postMapper);
+	
 	PageService pageService = new PageServiceImpl(5, myPage);
 	pageContext.setAttribute("pageMaker", pageService);
-	PostService postService = new PostServiceImpl();
-	pageContext.setAttribute("posts", postService.listPosts(myPage));
-%>
-
+	PostService postService = new PostServiceImpl(postDao);
+	List<Post> posts = postService.listPosts(myPage);
+	pageContext.setAttribute("posts", posts);
+%> --%>
 <!doctype html>
 
 <html>
@@ -324,7 +333,20 @@
                 <td>내용이 들어갑니다.</td>
 			</table>
 			<table class="type34">
-				<th><a href="01.html"/>확인</th>
+				<th><a href="reviewMain.html"/>확인</th>
+            </table>
+            
+            <table class="type41">
+                <th>댓글</th>
+            </table>
+            <table class="type42">
+                <tr>
+                    <th rowspan="2"></th>
+                    <td><a href="review.html"/>수정</td>
+                </tr>
+                <tr>
+                    <td><a href="review.html"/>삭제</td>
+                </tr>
             </table>            
         </main>
 

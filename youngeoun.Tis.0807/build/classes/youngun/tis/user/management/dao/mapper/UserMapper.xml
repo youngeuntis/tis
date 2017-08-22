@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="youngun.tis.travel.management.dao.mapper.UserMapper">
+<mapper namespace="youngun.tis.user.management.dao.mapper.UserMapper">
+	
 	<resultMap id="userMap" type="user">
 		<id property="memberNum" column="member_num" />
 		<result property="userName" column="user_name"/>
@@ -17,7 +18,7 @@
 	<select id="selectUserId" parameterType="String" resultMap="selectIdMap">
 		select user_id userId
 		from members
-		where user_id = #{userId}
+		where user_id like #{userId}
 	</select>	
 	
 	<!-- 회원가입  -->

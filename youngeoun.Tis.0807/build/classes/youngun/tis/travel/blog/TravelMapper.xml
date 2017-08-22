@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="youngun.tis.travel.blog.mapper.TravelMapper">
+	<select id="getCountryList" parameterType="string" resultType="country">
+		select nation_code nationalCode, nation_name countryName from nations
+		where continent_code like #{continentName}
+	</select>
+	
+	
+</mapper>

@@ -1,8 +1,8 @@
-package youngun.tis.qna.presentation;
+package youngun.tis.review.presentation;
 
-import youngun.tis.qna.domain.CODE;
-import youngun.tis.qna.presentation.Console;
-import youngun.tis.qna.presentation.BoardIo;
+import youngun.tis.review.domain.CODE;
+import youngun.tis.review.presentation.Console;
+import youngun.tis.review.presentation.BoardIo;
 
 public class MenuImpl implements Menu {
 	private String[] menuItem;
@@ -31,7 +31,7 @@ public class MenuImpl implements Menu {
 			}
 		}
 	}
-	
+
 	private int choose(){
 		boolean isMenuNum = false;
 		int choice = 0;

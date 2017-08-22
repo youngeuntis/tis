@@ -1,4 +1,4 @@
-package youngun.tis.qna.presentation;
+package youngun.tis.review.presentation;
 
 public interface BoardIo {
 	void listPosts();

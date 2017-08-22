@@ -6,8 +6,18 @@
 <meta charset="UTF-8">
 <title>Sign Up Form</title>
 <link rel="stylesheet" href="../../res/css/signStyle.css">
-<script type="text/javascript" src="../../res/js/sign.js"></script>
+<script type="text/javascript" src="../../res/js/sign.js" ></script>
 
+<script type="text/javascript">
+function checkid() {
+	var sid = document.sign.userId.value;
+		
+	window.open("idCheck.jsp?userId="+ sid, "", "width=600, height=280");
+}
+
+
+
+</script>
 </head>
 
 <body>
@@ -15,7 +25,7 @@
 		<div class='signup'>
 			<form name="sign" action="signupControl.jsp" method="post" >
 				<input type="text" name="userId" id="userId" placeholder="아이디 (최대12자리)" maxlength="12" /> 
-				<a href="idCheck.jsp?userId=" onClick="window.open(this.href+userId, '', 'width=600, height=265'); return false;"><input type="button" id="idCheck" value="중복확인"/></a>
+				<input type="button" id="idCheck" value="중복체크" onclick="javascript:checkid()" />
 				<input type="password" name="userPw" id="userPw" placeholder="비밀번호 (최대12자리)" maxlength="12" /> 
 				<input type="password" name="userPwCheck" id="userPwCheck" placeholder="비밀번호 확인" /> 
 				<input type="text" name="userName" id="userName" placeholder="이름" maxlength="8" /> 
@@ -25,15 +35,15 @@
 				<input type="text" name="userNickname" id="userNickname" placeholder="닉네임" maxlength="12" /> 
 				<input type="text" name="userEmail" id="userEmail" placeholder="이메일 : ex) ex@tis.com" /> 
 				<input type="text" name="userPH" id="userPH" placeholder="휴대폰 :ex) 01088888888" maxlength="11" /> 
-				<input type="button" value="가입" onclick="sendIt();" />
+				<input type="button" value="가입" onclick="javascript:sendIt()" />
 			</form>
 		</div>
 
 		<!-- 이용약관 -->
 		<div class='whysign'>
 			<h1>약관 내용</h1>
-			<input type="radio" name="sign_check" value="_ok"> 약관 동의
-			<textarea rows="10" cols="60" disabled="disabled" >부정 가입 또는 잘못된 행동을 할 경우 강제 탈퇴 될 수 있습니다
+			<input type="radio" name="signCheck" value="ok"> 약관 동의
+			<textarea rows="10" cols="60" disabled="disabled" >부정 가입 또는 잘못된 행동을 할 경우 강제 탈퇴 될 수 있습니다. 장 영근씨는 가입이 불가능 합니다.
 				
 			</textarea>
 			

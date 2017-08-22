@@ -1,4 +1,4 @@
-package youngun.tis.qna.presentation;
+package youngun.tis.review.presentation;
 
 import java.util.Scanner;
 
