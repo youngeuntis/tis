@@ -11,10 +11,10 @@
 //	String aaa = request.getParameter("이전 name명");
 	
 	UserService userService = new UserServiceImpl();
-	List<User> Fuser = userService.findUsers();
+	List<User> Buser = userService.blindUsers();
 	
-	session.setAttribute("Fuser", Fuser);
-	response.sendRedirect("adminFull.jsp");
+	session.setAttribute("Buser", Buser);
+	response.sendRedirect("adminBlind.jsp");
 	
 %>
 </html>

@@ -1,9 +1,13 @@
+<%@page import="youngun.tis.user.admin.service.UserServiceImpl"%>
+<%@page import="youngun.tis.user.admin.service.UserService"%>
+<%@page import="java.util.List"%>
 <%@page import="youngun.tis.user.admin.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%
 	User user = (User)session.getAttribute("user");
-%>
+%> 
+
 <!doctype html>
 
 <html>
@@ -269,9 +273,9 @@
 			<ul id="gnb">
 				<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
 				<li><a href="adminFullControl.jsp"><h2>회원 관리</h2></a></li>
-				<li><a href="adminBlind.jsp"><h2>제재 회원 관리</h2></a></li>
-				<li><a href="adminForcedBlind.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
-				<li><a href="adminStep.jsp"><h2>스텝 관리</h2></a></li>
+				<li><a href="adminBlindControl.jsp"><h2>제재 회원 관리</h2></a></li>
+				<li><a href="adminForcedBlindControl.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
+				<li><a href="adminStepControl.jsp"><h2>스텝 관리</h2></a></li>
 			</ul>
 		</div>
 		<div class="main">
@@ -390,127 +394,16 @@
 
 
 				<div class="mainB2">
-					<div class="memberDataBcheck">
-						<input type="checkbox">
-					</div>
-					<div class="memberDataBid">
-						<p>TIS1234</p>
-					</div>
-					<div class="memberDataBname">
-						<p>길동잉</p>
-					</div>
-					<div class="memberDataBjoindate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBvisitdate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBwhite">
-						<p>2500</p>
-					</div>
-					<div class="memberDataBcoment">
-						<p>2481</p>
-					</div>
-					<div class="memberDataBvisitcount">
-						<p>2158</p>
-					</div>
-					<div class="memberDataBcheck">
-						<input type="checkbox">
-					</div>
-					<div class="memberDataBid">
-						<p>TIS1234</p>
-					</div>
-					<div class="memberDataBname">
-						<p>길동잉</p>
-					</div>
-					<div class="memberDataBjoindate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBvisitdate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBwhite">
-						<p>2500</p>
-					</div>
-					<div class="memberDataBcoment">
-						<p>2481</p>
-					</div>
-					<div class="memberDataBvisitcount">
-						<p>2158</p>
-					</div>
-					<div class="memberDataBcheck">
-						<input type="checkbox">
-					</div>
-					<div class="memberDataBid">
-						<p>TIS1234</p>
-					</div>
-					<div class="memberDataBname">
-						<p>길동잉</p>
-					</div>
-					<div class="memberDataBjoindate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBvisitdate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBwhite">
-						<p>2500</p>
-					</div>
-					<div class="memberDataBcoment">
-						<p>2481</p>
-					</div>
-					<div class="memberDataBvisitcount">
-						<p>2158</p>
-					</div>
-					<div class="memberDataBcheck">
-						<input type="checkbox">
-					</div>
-					<div class="memberDataBid">
-						<p>TIS1234</p>
-					</div>
-					<div class="memberDataBname">
-						<p>길동잉</p>
-					</div>
-					<div class="memberDataBjoindate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBvisitdate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBwhite">
-						<p>2500</p>
-					</div>
-					<div class="memberDataBcoment">
-						<p>2481</p>
-					</div>
-					<div class="memberDataBvisitcount">
-						<p>2158</p>
-					</div>
-					<div class="memberDataBcheck">
-						<input type="checkbox">
-					</div>
-					<div class="memberDataBid">
-						<p>TIS1234</p>
-					</div>
-					<div class="memberDataBname">
-						<p>길동잉</p>
-					</div>
-					<div class="memberDataBjoindate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBvisitdate">
-						<p>2017.08.08</p>
-					</div>
-					<div class="memberDataBwhite">
-						<p>2500</p>
-					</div>
-					<div class="memberDataBcoment">
-						<p>2481</p>
-					</div>
-					<div class="memberDataBvisitcount">
-						<p>2158</p>
-					</div>
-
+				<%--  <%for(int i=0;i<Fuser.size();i++){ %>  --%>
+					<div class="memberDataBcheck"><input type="checkbox"></div>
+					<div class="memberDataBid"><p></p></div>
+					<div class="memberDataBname"><p>길동잉</p></div>
+					<div class="memberDataBjoindate"><p>2017.08.08</p></div>
+					<div class="memberDataBvisitdate"><p>2017.08.08</p></div>
+					<div class="memberDataBwhite"><p>2500</p></div>
+					<div class="memberDataBcoment"><p>2481</p></div>
+					<div class="memberDataBvisitcount"><p>2158</p></div>
+				<%-- <%} %>  --%>
 
 
 
