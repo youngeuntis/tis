@@ -1,13 +1,13 @@
 package youngun.tis.mypage.domain;
 
-public class profile {
+public class Profile {
 	private String userId;		//회원아이디
 	private String proflieImg;	//프로필사진
 	private String nickName;	//닉네임
 	
-	public profile(){}
+	public Profile(){}
 
-	public profile(String userId, String proflieImg, String nickName) {
+	public Profile(String userId, String proflieImg, String nickName) {
 		super();
 		this.userId = userId;
 		this.proflieImg = proflieImg;

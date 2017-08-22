@@ -15,6 +15,8 @@
 	String loginId = request.getParameter("login_user_id");
 	String loginPw = request.getParameter("login_user_pw");
 	//xml 에서 인터셉터로 떠넘긴다; 
+	
+	System.out.print("id"+loginId);
 %>
 <!DOCTYPE html>
 <html lang="ko">

@@ -1,14 +1,14 @@
 package youngun.tis.mypage.domain;
 
-public class personal {
+public class Personal {
 	private String userId;		//회원 아이디
 	private String userPh;		//회원 핸드폰번호
 	private String userEmail;	//회원 이메일
 	private String userPw;		//회원 비밀번호
 	
-	public personal() {}
+	public Personal() {}
 
-	public personal(String userId, String userPh, String userEmail, String userPw) {
+	public Personal(String userId, String userPh, String userEmail, String userPw) {
 		super();
 		this.userId = userId;
 		this.userPh = userPh;

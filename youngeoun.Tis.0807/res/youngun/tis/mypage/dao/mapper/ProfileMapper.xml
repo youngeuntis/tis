@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="youngun.tis.user.login.dao.mapper.LoginMapper">
+<mapper namespace="youngun.tis.mypage.dao.mapper.ProfileMapper">
 	<resultMap id="userMap" type="profile">
-		<id property="memberNum" column="member_num" />
+		<id property="memberNum" column="member_num" /> <!-- id는 프라이머리키  -->
 		<result property="userName" column="user_name"/>
 		<result property="userId" column="user_id"/>
 		<result property="password" column="pw"/>
