@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%
-	
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +13,7 @@
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/qna.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
+    <!-- <script type="text/javascript" src="../res/js/imginput.js"></script> -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
     <!--main_menu_nav-->
@@ -31,6 +29,19 @@
             return true;
         }
     </script>
+    <style type="text/css">
+    .writing{
+    	max-width:1000px;
+    	height:1050px;
+    }
+    #holder{
+    	width:300px;
+    	height:300px;
+    	text-align: center;
+    	vertical-align: middle;
+    	margin: 0 auto;    	
+    }
+	</style>
 </head>
 <body>
     <div id="fullweb">
@@ -210,10 +221,10 @@
                             <div class="cbp-hrsub" style="width:20%!important; left:800px;">
                                 <div class="cbp-hrsub-inner" style="width:300px;">
 		                           	<div class="sub_comunity" style="position:relative; margin-left:80px; margin-right : 20px; display:block; float:left;">
-			                            <h4><a href="../qna/01.html">Q&amp;A</a></h4>
+			                            <h4><a href="../qna/01qnaMain.jsp">Q&amp;A</a></h4>
 		                           	</div>
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-right: 20px;">
-			                            <h4><a href="../qna/08.html">FAQ</a></h4>
+			                            <h4><a href="../qna/08faqlist.html">FAQ</a></h4>
 		                           	</div>
 	                           	</div>
                            	</div>
@@ -288,20 +299,55 @@
                 <form action="03insertSucssess.jsp">
                     <div class="writing">
                         <div class="board_title">
-                            <input type="text" name="qna_title" placeholder="제목을 입력하세요." style="width:1000px; height: 50px;">
+                            <input type="text" name="qna_title" placeholder="제목을 입력하세요." style="width:1000px; height: 50px;"/>
                         </div>
-                        <div class="board_content">
-                            <textarea name="qna_content" style="width:1000px; height: 500px;" placeholder="내용을 입력하세요.">
-                            </textarea>
+                        <div class="board_content" style="width:1000px; height: 800px;">     
+                        <article style="width:1000px; height: 270px;">
+						  <p id="status"><!-- File API & FileReader API not supported --></p>
+						  <p><input type=file name="qna_img" id="inp"></p>
+						  <div id="holder" style="width:300px; height:200px; overflow:hidden;"></div>
+						</article>
+						<script>
+						var upload = document.getElementById("inp"),
+						    holder = document.getElementById('holder'),
+						    state = document.getElementById('status');
+						
+						if (typeof window.FileReader === 'undefined') {
+						  state.className = 'fail';
+						} else {
+						  state.className = 'success';
+						  /* state.innerHTML = 'File API & FileReader available'; */
+						}
+						 
+						upload.onchange = function (e) {
+						  e.preventDefault();
+						
+						  var file = upload.files[0],
+						      reader = new FileReader();
+						  reader.onload = function (event) {
+						    var img = new Image();
+						    img.src = event.target.result;
+						    // note: no onload required since we've got the dataurl...I think! :)
+						    if (img.width > 200) { // holder width
+						      img.width = 200;
+						    }
+						    holder.innerHTML = '';
+						    holder.appendChild(img);
+						  };
+						  reader.readAsDataURL(file);
+						
+						  return false;
+						};
+						</script>
+                        <textarea name="qna_content" style="width:1000px; height: 650px;" placeholder="내용을 입력하세요."></textarea>
                         </div>
-                        
-                        <div class="writeButton" align="center">
-                        	<input type="file" name="qna_img">
+                   		<div class="writeButton" align="center" style="margin-bottom:100px ;">
+                        	<!-- <input type="file" name="qna_img"> -->
                         	<input type="radio" name="open_check" value="1" checked/>공개
 							<input type="radio" name="open_check" value="0"/>비공개
-                            <input type="submit" value="등록">
+                            <button type="submit">등록</button>
                             <input type="button" value="뒤로" onclick="move('01qnaMain.jsp');">
-                        </div>
+                    	</div>
                     </div>
                 </form>
             </main>
@@ -330,8 +376,7 @@
             $(function() {
                 cbpHorizontalMenu.init();
             });
-        </script>
-
+        </script>    
         <!--main_login-->
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
         <script src="../res/js/index.js"></script>

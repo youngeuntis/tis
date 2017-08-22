@@ -267,7 +267,7 @@
                             <div class="cbp-hrsub" style="width:20%!important; left:800px;">
                                 <div class="cbp-hrsub-inner" style="width:300px;">
 		                           	<div class="sub_comunity" style="position:relative; margin-left:80px; margin-right : 20px; display:block; float:left;">
-			                            <h4><a href="../qna/01qnaMain.html">Q&amp;A</a></h4>
+			                            <h4><a href="../qna/01qnaMain.jsp">Q&amp;A</a></h4>
 		                           	</div>
 		                           	<div class="sub_comunity" style="display:block; margin-top: -25px; margin-right: 20px;">
 			                            <h4><a href="../qna/08faqlist.html">FAQ</a></h4>
@@ -343,7 +343,7 @@
         </div>
 
         <main>
-            <div class = "board">
+            <div class = "board" style=" height:400px;">
 	 <table class="boardTable" bgcolor="white" border-style="outset">
 	   <colgroup>
              <col width="50" />
