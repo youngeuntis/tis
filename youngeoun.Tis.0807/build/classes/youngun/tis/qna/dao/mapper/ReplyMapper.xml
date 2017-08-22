@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="youngun.tis.qna.dao.mapper.ReplyMapper">
+
+	<select id="selectReplies" parameterType="int" resultType="youngun.tis.qna.domain.Reply">
+		select qna_reply_content replyContent, qna_reply_date replyDate,
+		qna_reply_num replyNo
+		from qna_replies
+		where qna_num=#{postNo}
+	</select>
+	
+ 	<insert id="inputReply" parameterType="youngun.tis.qna.domain.Reply">
+		insert into qna_replies
+		values(qna_reply_seq.nextval, #{postNo} , 4 , #{replyContent}, sysdate)
+	</insert>
+</mapper>

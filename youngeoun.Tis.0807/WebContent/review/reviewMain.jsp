@@ -15,12 +15,16 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/review.css">
+    <link rel="stylesheet" href="../res/css/selectOption.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
+    <script type="text/javascript" src="../res/js/indexOption.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
+
+            
 
 <body>
 
@@ -217,6 +221,20 @@
                     <div class="right_nav_join"><a>회원가입</a></div><!-- end join -->
                     
                     <!-- main_login -->
+                <div class="centerSelect2" style="margin-top:200px;">
+	              <select name="sources2" id="sources2" class="custom-select2 sources2" placeholder="----국가----">
+	                <option value="대한민국">대한민국</option>
+	                <option value="유럽">유럽</option>
+	                <option value="미대양주">미대양주</option>
+	                <option value="아시아">아시아</option>
+	              </select>
+	            </div>
+	            
+				<div class="centerSelect" style="margin-top:200px;">
+	              <select name="sources" id="sources" class="custom-select sources" placeholder="----지역----">
+	              </select>
+	            </div>
+	            
 								<div id ="login">
 									  <section class="modal signup badge-overlay-signin">
 										<a class="btn-close badge-overlay-close" id="closepopup" href="#">✖</a>
@@ -376,6 +394,82 @@
                     <li><a href="#">next&raquo;</a></li>
                 </ul>   
         </div>
+        
+        
+	    	<script>
+		    	$(".custom-select").each(function() {
+		    		  var classes = $(this).attr("class"),
+		    		      id      = $(this).attr("id"),
+		    		      name    = $(this).attr("name");
+		    		  var template =  '<div class="' + classes + '">';
+		    		      template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+		    		      template += '<div class="custom-options">';
+		    		      $(this).find("option").each(function() {
+		    		        template += '<a href=05TravelAfter.jsp?continent='+$(this).attr("value")+'>'+'<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
+		    		      });
+		    		  template += '</div></div>';
+		    		  
+		    		  $(this).wrap('<div class="custom-select-wrapper"></div>');
+		    		  $(this).hide();
+		    		  $(this).after(template);
+		    		});
+		    		$(".custom-option:first-of-type").hover(function() {
+		    		  $(this).parents(".custom-options").addClass("option-hover");
+		    		}, function() {
+		    		  $(this).parents(".custom-options").removeClass("option-hover");
+		    		});
+		    		$(".custom-select-trigger").on("click", function() {
+		    		  $('html').one('click',function() {
+		    		    $(".custom-select").removeClass("opened");
+		    		  });
+		    		  $(this).parents(".custom-select").toggleClass("opened");
+		    		  event.stopPropagation();
+		    		});
+		    		$(".custom-option").on("click", function() {
+		    		  $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
+		    		  $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+		    		  $(this).addClass("selection");
+		    		  $(this).parents(".custom-select").removeClass("opened");
+		    		});
+		    		
+		    		
+		    		
+		    		$(".custom-select2").each(function() {
+		    			  var classes = $(this).attr("class"),
+		    			      id      = $(this).attr("id"),
+		    			      name    = $(this).attr("name");
+		    			  var template =  '<div class="' + classes + '">';
+		    			      template += '<span class="custom-select-trigger2">' + $(this).attr("placeholder") + '</span>';
+		    			      template += '<div class="custom-options2">';
+		    			      $(this).find("option").each(function() {
+		    			        template += '<a href=05TravelAfter.jsp?continent='+$(this).attr("value")+'>'+'<span class="custom-option2 ' + $(this).attr("class") + '" data-value2="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
+		    			      });
+		    			  template += '</div></div>';
+		    			  
+		    			  $(this).wrap('<div class="custom-select-wrapper2"></div>');
+		    			  $(this).hide();
+		    			  $(this).after(template);
+		    			});
+		    			$(".custom-option2:first-of-type").hover(function() {
+		    			  $(this).parents(".custom-options2").addClass("option-hover2");
+		    			}, function() {
+		    			  $(this).parents(".custom-options2").removeClass("option-hover2");
+		    			});
+		    			$(".custom-select-trigger2").on("click", function() {
+		    			  $('html').one('click',function() {
+		    			    $(".custom-select2").removeClass("opened2");
+		    			  });
+		    			  $(this).parents(".custom-select2").toggleClass("opened2");
+		    			  event.stopPropagation();
+		    			});
+		    			$(".custom-option").on("click", function() {
+		    			  $(this).parents(".custom-select-wrapper2").find("select").val($(this).data("value"));
+		    			  $(this).parents(".custom-options2").find(".custom-option2").removeClass("selection2");
+		    			  $(this).addClass("selection2");
+		    			  $(this).parents(".custom-select2").removeClass("opened2");
+		    			});
+	    	</script>
+        
         </main>
 
         <footer>
