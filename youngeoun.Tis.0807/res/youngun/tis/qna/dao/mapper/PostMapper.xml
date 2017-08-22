@@ -49,7 +49,7 @@
 		delete qna_notices
 		where qna_num=#{postNo}
 	</delete>
-	
+
 	<resultMap id="postMap" type="post">
 		<id property="postNo" column="qna_num"/>
 		<result property="title" column="qna_title"/>

@@ -60,6 +60,7 @@
 		<!-- 영빈 -->
 		<mapper resource="youngun/tis/qna/dao/mapper/PostMapper.xml" />
 		<mapper resource="youngun/tis/qna/dao/mapper/PageMapper.xml" />
+		<mapper resource="youngun/tis/qna/dao/mapper/ReplyMapper.xml" />
 		
 		<!-- 진형 -->
 		<mapper resource="youngun/tis/review/dao/mapper/PostMapper.xml" />
