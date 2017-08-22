@@ -22,7 +22,7 @@
 
 		<typeAlias alias="country" type="youngun.tis.travel.blog.domain.Country" />
 		
-		<typeAlias alias="profile" type="youngun.tis.mypage.domain.profile"/> 
+		<typeAlias alias="profile" type="youngun.tis.mypage.domain.Profile"/> 
 	</typeAliases>	
  
 
