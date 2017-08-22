@@ -1,3 +1,7 @@
+<%@page import="youngun.tis.mypage.domain.Wishlist"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.mypage.service.WishlistServiceImpl"%>
+<%@page import="youngun.tis.mypage.service.WishlistService"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
@@ -393,6 +397,19 @@
 				</div>
 				<!--end my_inner_top-->
 
+				<!-- 찜 목록 -->
+				<%
+					/* wishlist 가져오기 */
+					/* 
+					int memberNum = dto.getMemberNum();
+					 */
+					int memberNum = 2;
+					WishlistService wishService = new WishlistServiceImpl();
+					List<Wishlist> wishlist = wishService.findWishlist(memberNum);
+					
+				%>
+				
+				
 				<div class="my_inner_bottom">
 					<div class="wishlist_container">
 						<div class="wishlist_title">
@@ -401,21 +418,25 @@
 						<div class="wishlist_title_add">
 							<a href="wishlist.jsp">더보기</a>
 						</div>
+						
 						<div class="wishlist_content">
+							<% for(int i=0;i<3;i++){ %>
 							<div class="wishlist_list">
 								<div class="wishlist_img">
-									<a href="#"> <img src="http://via.placeholder.com/300x250"
-										alt="찜목록">
+									<a href="#"> <!--진우 글보기 루트?글번호=<%-- <%=wishlist.get(i).getInfoNum%> --%> -->
+										<img src="<%=wishlist.get(i).getWishImg()%>" alt="찜목록">
 									</a>
 								</div>
 								<div class="wishlist_name">
 									<a href="">
-										<p>찜 목록 제목</p>
+										<p><%=wishlist.get(i).getWishTitle() %></p>
 									</a>
 								</div>
 							</div>
+							<%} %>
 						</div>
-
+						
+						
 						<div class="activity_containner">
 							<div class="activity_title">
 								<h1>My 활동기록</h1>

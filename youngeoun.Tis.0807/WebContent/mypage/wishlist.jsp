@@ -1,3 +1,8 @@
+
+<%@page import="youngun.tis.mypage.domain.Wishlist"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.mypage.service.WishlistServiceImpl"%>
+<%@page import="youngun.tis.mypage.service.WishlistService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!doctype html>
@@ -334,7 +339,17 @@
 		<!-- 메인 작업부분 -->
 
 		<main>
-
+		
+		<%
+			/* wishlist 가져오기 */
+			/* 
+			int memberNum = dto.getMemberNum();
+			 */
+			int memberNum = 2;
+			WishlistService wishService = new WishlistServiceImpl();
+			List<Wishlist> wishlist = wishService.findWishlist(memberNum);		
+		%>
+		
 		<div id="container">
 			<div id="content">
 				<div class="c_header">
@@ -343,20 +358,25 @@
 				</div>
 
 				<div class="listcontainer">
+				
+				<% for(int i=0; i<wishlist.size(); i++){ %>
 					<div class="wishlist">
 						<div class="wishlistImg">
-							<a href="#"> <img src="../res/img/travelImg/spain.jpg"
+							<a href="#"> <img src="<%=wishlist.get(i).getWishImg() %>"
 								alt=" 찜 목록" />
 							</a>
 						</div>
 
 						<div class="wishlistName">
 							<a href="#">
-								<p>신나는 NBA 구경</p>
+								<p><%=wishlist.get(i).getWishTitle() %></p>
 							</a>
 						</div>
 					</div>
+				<%} %>
+				
 				</div>
+				
 				<div class="prev-next">
 
 					<table summary="페이지 네비게이션" class="Nnavi" align="center">

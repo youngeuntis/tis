@@ -22,7 +22,7 @@
 
 		<typeAlias alias="country" type="youngun.tis.travel.blog.domain.Country" />
 		
-		<typeAlias alias="profile" type="youngun.tis.mypage.domain.profile"/> 
+		<typeAlias alias="profile" type="youngun.tis.mypage.domain.Profile"/> 
 	</typeAliases>	
  
 
@@ -70,10 +70,12 @@
 		<mapper resource="youngun/tis/travel/blog/BlogMapper.xml" />
 		<mapper resource="youngun/tis/travel/blog/TravelMapper.xml" />
 
+		<!-- 성묵  -->		
+		<mapper resource="youngun/tis/mypage/dao/mapper/WishlistMapper.xml" />
+
 <!-- 	
 		<mapper resource="youngun/tis/mypage/dao/mapper/ProfileMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" />
-		<mapper resource="youngun/tis/mypage/dao/mapper/WishlistMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/commentMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/PostMapper.xml" /> 
  -->		

@@ -52,4 +52,16 @@
 	<delete id="deleteBlog" parameterType="Blog">
 		delete from infomations where info_num=#{blogNum}
 	</delete>
+	
+	<insert id="insertWish" parameterType="int">
+		insert into info_wishlists values(wish_seq.nextval, #{blogNum}, 2)	
+	</insert>
+	
+	<select id="selectWish" parameterType="int" resultType="youngun.tis.travel.blog.domain.Wish">
+		select info_wish_num wishNum, info_num infoNum, member_num memberNum from info_wishlists where member_num = #{memNum} 
+	</select>
+	
+	<delete id="deleteWish" parameterType="youngun.tis.travel.blog.domain.Wish">
+		delete from info_wishlists where info_wish_num = #{wishNum}
+	</delete>
 </mapper>

@@ -7,6 +7,7 @@ import youngun.tis.travel.blog.dao.BlogDao;
 import youngun.tis.travel.blog.dao.BlogDaoImpl;
 import youngun.tis.travel.blog.domain.Blog;
 import youngun.tis.travel.blog.domain.Country;
+import youngun.tis.travel.blog.domain.Wish;
 import youngun.tis.travel.blog.mapper.BlogMapper;
 
 public class SearchService {
@@ -58,6 +59,24 @@ public class SearchService {
 	
 	public void eleminateBlog(Blog blog){
 		blogDao.deleteBlog(blog);
+	}
+	
+	public void addWish(int blogNum){
+		blogDao.insertWish(blogNum);
+	}
+	
+	public Wish configureWish(int memberNum, int blogNum){
+		List<Wish> wishLists = blogDao.selectWish(memberNum);
+		Wish wish = null;
+		for(int i=0; i<wishLists.size(); i++){
+			if(wishLists.get(i).getInfoNum() == blogNum)
+				wish = wishLists.get(i);
+		}
+		return wish;
+	}
+	
+	public int deleteWish(Wish wish){
+		return blogDao.deleteWish(wish);
 	}
 	
 }
