@@ -479,7 +479,7 @@
 				<h1><%= continentCode %>여행기</h1>
 				
 				<%if(dto!=null){ %>
-                <a href="02BlogMain.jsp" class="action-button shadow animate blue"  style="margin-left: 90px;">글작성</a>
+                <a href="02BlogMain.jsp?userNum=<%=dto.getMemberNum() %>" class="action-button shadow animate blue"  style="margin-left: 90px;">글작성</a>
                 <%} %>
                 <div class="clear"></div>
 				<div class="travel_box">

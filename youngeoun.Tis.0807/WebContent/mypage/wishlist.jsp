@@ -1,3 +1,4 @@
+
 <%@page import="youngun.tis.mypage.domain.Wishlist"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.mypage.service.WishlistServiceImpl"%>
