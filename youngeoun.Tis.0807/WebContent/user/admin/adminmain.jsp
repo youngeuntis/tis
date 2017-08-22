@@ -4,9 +4,9 @@
 <%@page import="youngun.tis.user.admin.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<%-- <%
-	User user = (User)session.getAttribute("user");
-%>  --%>
+<%
+	List<User> Muser = (List<User>)session.getAttribute("Muser");
+%>
 
 <!doctype html>
 
@@ -394,16 +394,16 @@
 
 
 				<div class="mainB2">
-				<%--  <%for(int i=0;i<Fuser.size();i++){ %>  --%>
+				<%for(int i=0;i<10;i++){ %>
 					<div class="memberDataBcheck"><input type="checkbox"></div>
-					<div class="memberDataBid"><p></p></div>
-					<div class="memberDataBname"><p>길동잉</p></div>
-					<div class="memberDataBjoindate"><p>2017.08.08</p></div>
-					<div class="memberDataBvisitdate"><p>2017.08.08</p></div>
-					<div class="memberDataBwhite"><p>2500</p></div>
-					<div class="memberDataBcoment"><p>2481</p></div>
-					<div class="memberDataBvisitcount"><p>2158</p></div>
-				<%-- <%} %>  --%>
+					<div class="memberDataBid"><p><%=Muser.get(i).getUserId() %></p></div>
+					<div class="memberDataBname"><p><%=Muser.get(i).getUserName()%></p></div>
+					<div class="memberDataBjoindate"><p></p></div>
+					<div class="memberDataBvisitdate"><p></p></div>
+					<div class="memberDataBwhite"><p></p></div>
+					<div class="memberDataBcoment"><p></p></div>
+					<div class="memberDataBvisitcount"><p></p></div>
+				<%} %>
 
 
 

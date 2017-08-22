@@ -255,7 +255,7 @@
         
 <div class="adminMenu">
 	<ul id="gnb">
-			<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
+				<li><a href="adminmainControl.jsp"><h2>메인</h2></a></li>
 				<li><a href="adminFullControl.jsp"><h2>회원 관리</h2></a></li>
 				<li><a href="adminBlindControl.jsp"><h2>제재 회원 관리</h2></a></li>
 				<li><a href="adminForcedBlind.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
