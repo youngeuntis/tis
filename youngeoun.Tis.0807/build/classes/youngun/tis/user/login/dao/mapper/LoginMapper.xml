@@ -19,4 +19,9 @@
 		from members
 		where user_id = #{userId}
 	</select>
+	
+	<update id="updateUserUntilVisit" parameterType="String">
+		
+	</update>
+		
 </mapper>

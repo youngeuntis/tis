@@ -23,8 +23,8 @@
 	
 	<!-- 회원가입  -->
 	<insert id="insertUser" parameterType="user">
-		insert into members(member_num, user_name, user_id, pw, birth, phone_num, email, nickname, gender)
-		values(mem_num_seq.nextval, #{userName}, #{userId}, #{password}, #{birth}, #{phoneNum}, #{email}, #{nickName}, #{gender})
+		insert into members(member_num, user_name, user_id, pw, birth, phone_num, email, nickname, gender, join_date)
+		values(mem_num_seq.nextval, #{userName}, #{userId}, #{password}, #{birth}, #{phoneNum}, #{email}, #{nickName}, #{gender}, sysdate)
 	</insert>
 	
 	
