@@ -336,6 +336,12 @@
 		
         <main>
         	<h2>글이 등록되었습니다.</h2>
+        	<button onclick="move()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
+        	<script>
+        		function move(){
+        			location.replace("01TravelMain.jsp");
+        		}
+        	</script>
 		</main>
         <div class="clear"></div>
         <footer>

@@ -372,6 +372,7 @@
 				service.eleminateBlog(blog);
 			%>
 					<h1> 삭제가 완료 되었습니다.</h1>
+					<button onclick="cancelMove()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
 			<%
 				}
 			%>
