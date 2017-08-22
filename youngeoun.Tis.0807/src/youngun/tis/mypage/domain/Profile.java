@@ -50,7 +50,7 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "Profile [memberNum=" + memberNum + ", userId=" + userId + ", proflieImg=" + proflieImg + ", nickName="
+		return "Profile [memberNum1=" + memberNum + ", userId=" + userId + ", proflieImg=" + proflieImg + ", nickName="
 				+ nickName + "]";
 	}
 
