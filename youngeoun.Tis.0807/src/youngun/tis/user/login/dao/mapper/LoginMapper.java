@@ -4,4 +4,5 @@ import youngun.tis.user.login.domain.Login;
 
 public interface LoginMapper {
 	Login getUser(String userId);
+	int updateUserUntilVisit(String userId);
 }

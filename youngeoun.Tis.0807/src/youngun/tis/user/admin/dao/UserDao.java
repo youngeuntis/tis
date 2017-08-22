@@ -9,4 +9,5 @@ public interface UserDao {
 	List<User> getblindUsers();
 	List<User> getFblindUsers();
 	List<User> getStepUsers();
+	List<User> getMainUsers();
 }

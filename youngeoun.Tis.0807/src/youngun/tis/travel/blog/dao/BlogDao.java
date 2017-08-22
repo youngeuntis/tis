@@ -3,6 +3,7 @@ package youngun.tis.travel.blog.dao;
 import java.util.List;
 
 import youngun.tis.travel.blog.domain.Blog;
+import youngun.tis.travel.blog.domain.Wish;
 
 public interface BlogDao {
 	public int insertBlog(Blog blog);
@@ -13,4 +14,7 @@ public interface BlogDao {
 	public int updateInfo(Blog blog);
 	public int updateHits(Blog blog);
 	public int deleteBlog(Blog blog);
+	public int insertWish(int blogNum);
+	public List<Wish> selectWish(int memberNum);
+	public int deleteWish(Wish wish);
 }

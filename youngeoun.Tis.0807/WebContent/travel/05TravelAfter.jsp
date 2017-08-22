@@ -1,4 +1,4 @@
-
+<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@page import="youngun.tis.travel.blog.dao.BlogDaoImpl"%>
 <%@page import="youngun.tis.travel.blog.domain.PageTravel"%>
 <%@page import="youngun.tis.travel.blog.service.SearchService"%>
@@ -12,6 +12,7 @@
 <%@page import="youngun.tis.travel.blog.mapper.TravelMapper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -226,59 +227,85 @@
                 </div>
 
                 <div class="right_nav">
-                    <!-- main_join -->
-                    <div class="right_nav_join"><a>회원가입</a></div><!-- end join -->
-                    
-                    <!-- main_login -->
-								<div id ="login">
-									  <section class="modal signup badge-overlay-signin">
-										<a class="btn-close badge-overlay-close" id="closepopup" href="#">✖</a>
-										<section id="signup">
-										<h2>Login</h2>
-										<form id="login-email" class="badge-login-form" action="" method="POST">
-											<input type="hidden" value="">
-											<input type="hidden" id="jsid-login-form-next-url" name="next" value="">
-																	<input type="hidden" name="location" value="1">
-															<p class="lead">Log in with your id password </p>
-											<div class="field">
-												<label for="jsid-login-email-name">ID</label>
-												<input id="jsid-login-email-name" type="text" name="username" value="" autofocus="autofocus">
-											</div>
-											<div class="field">
-												<label for="login-email-password">PASSWORD</label>
-												<input id="login-email-password" type="password" name="password" value="">
-														</div>
-											<div class="btn-container">
-												<input type="submit" value="Log in" onclick="">
-												<a class="forgot-password" href="" onclick="">Forgot Password</a>
-											</div>
-										</form>
-										</section>
-									</section>
-								</div>
-								<div class="overlay"></div>
-								<div class="demo">
-								  <a id="launch" class="fbbutton" href="#">로그인</a>
-								</div>
-								<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+					<!-- signup -->
+					<%if(dto == null){ %>
+					<div class="right_nav_join">
+						<a href="user/signup/signup.jsp">회원가입</a>
+					</div>
+					<%} %>
+					<!-- end join -->
 
-								<script src="../res/js/index.js"></script>
+					<!-- main_login -->
+					<div id="login">
+						<section class="modal signup badge-overlay-signin">
+							<a class="btn-close badge-overlay-close" id="closepopup" href="#">✖</a>
+							<section id="signup">
+								<h2>Login</h2>
+								<form id="login-email" class="badge-login-form" action="user/login/loginoutControl.jsp" method="POST">
+									<input type="hidden" name="action" value="login">
+									<input type="hidden" id="jsid-login-form-next-url" name="next" value=""> 
+									<input type="hidden" name="location" value="1">
+									<p class="lead">Log in with your id password</p>
+									<div class="field">
+										<label for="jsid-login-email-name">ID</label> <input
+											id="jsid-login-email-name" type="text" name="login_user_id"
+											value="" autofocus="autofocus">
+									</div>
+									<div class="field">
+										<label for="login-email-password">PASSWORD</label> <input
+											id="login-email-password" type="password" name="login_user_pw"
+											value="">
+									</div>
+									<div class="btn-container">
+										<input type="submit" value="Log in" onclick=""> 
+										<a class="forgot-password" href="" onclick="">Forgot Password</a>
+									</div>
+								</form>
+							</section>
+						</section>
+					</div>
+					<div class="overlay"></div>
 
-                    
-                    <div class="clear"></div>
-                    
-                    <!-- main_search -->
-                    <div class="right_nav_search">
-                        <form method="get">
-                            <div>
-                                <input id="nav_search" type="search" name="search_keyword" placeholder="여행지를 검색" maxlength="255">
-                            </div>
-                            <div>
-                                <button id="search_button" type="submit"><!--검색--></button>
-                            </div>
-                        </form>
-                    </div><!--end .right_nav_search -->
-                </div><!--end .right_nav -->
+					<%if(dto != null){ %>
+
+					<div class="demo">
+						<a id="my" class="my" href="mypage/myPage.jsp"><label>마이페이지</label></a>
+						<a id="launch" class="fbbutton"
+							href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
+						</a>
+						<%if(dto.getUserId().equals("admin")){ %>
+						<a id="launch" class="fbbutton"
+							href="user/login/loginoutControl.jsp?action=logout"><label>관리자페이지</label>
+						</a>
+						<%} %>
+					</div>
+					<%}else{ %>
+					<div class="demo">
+						<a id="launch" class="fbbutton" href="#">로그인</a>
+					</div>
+					<%} %>
+					<script
+						src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+
+					<script src="res/js/index.js"></script>
+					<div class="clear"></div>
+
+					<!-- main_search -->
+					<div class="right_nav_search">
+						<form method="get">
+							<div>
+								<input id="nav_search" type="search" name="search_keyword"
+									placeholder="여행지를 검색" maxlength="255">
+							</div>
+							<div>
+								<button id="search_button" type="submit">
+									<!--검색-->
+								</button>
+							</div>
+						</form>
+					</div>
+					<!--end .right_nav_search -->
+				</div>
             </div><!--end .Center-->
         </header>
         <%
@@ -451,8 +478,9 @@
 			<div class="travel_main">
 				<h1><%= continentCode %>여행기</h1>
 				
-				
-                <a href="02BlogMain.jsp" class="action-button shadow animate blue"  style="margin-left: 90px;">글작성</a>
+				<%if(dto!=null){ %>
+                <a href="02BlogMain.jsp?userNum=<%=dto.getMemberNum() %>" class="action-button shadow animate blue"  style="margin-left: 90px;">글작성</a>
+                <%} %>
                 <div class="clear"></div>
 				<div class="travel_box">
 				<%	

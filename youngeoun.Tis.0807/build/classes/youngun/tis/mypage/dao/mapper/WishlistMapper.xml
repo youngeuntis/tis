@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="youngun.tis.user.login.dao.mapper.LoginMapper">
-	<resultMap id="userMap" type="profile">
-		<id property="memberNum" column="member_num" />
-		<result property="userName" column="user_name"/>
-		<result property="userId" column="user_id"/>
-		<result property="password" column="pw"/>
-		<result property="email" column="email"/>
-		<result property="PH" column="phone_num"/>
-		<result property="nickName" column="nickname"/>
-		<result property="profileImg" column="profile_img"/>
+<mapper namespace="youngun.tis.mypage.dao.mapper.WishlistMapper">
+	<resultMap id="wishMap" type="youngun.tis.mypage.domain.Wishlist">
+		<id property="wishInfoNum" column="info_num"/>
+		<result property="memberNum" column="member_num" />
+		<result property="wishImg" column="info_img"/>
+		<result property="wishTitle" column="info_title"/>
 	</resultMap>
 	
 	
-	<select id="getUser" parameterType="String" resultMap="userMap">
-		select user_id userId, user_name userName, pw password, email, phone_num PH, nickname nickName, profile_img profileImg
-		from members
-		where user_id = #{userId}
+	<select id="selectWishlist" parameterType="int" resultMap="wishMap">
+		select info.info_num wishInfoNum, iw.member_num memberNum, info.info_img wishImg, info.info_title wishTitle
+		from infomations info , info_wishlists iw
+		where iw.member_num = #{memberNum} and iw.INFO_NUM = info.info_num
 	</select>
+	
+	
+	
 </mapper>

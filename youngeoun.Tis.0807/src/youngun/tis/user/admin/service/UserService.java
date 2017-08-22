@@ -9,4 +9,5 @@ public interface UserService {
 	List<User> blindUsers();
 	List<User> FblindUsers();
 	List<User> StepUsers();
+	List<User> MainUsers();
 }

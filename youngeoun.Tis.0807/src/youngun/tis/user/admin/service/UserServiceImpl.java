@@ -38,4 +38,10 @@ public class UserServiceImpl implements UserService {
 		
 		return userDao.getStepUsers();
 	}
+	
+	@Override
+	public List<User> MainUsers(){
+		
+		return userDao.getMainUsers();
+	}
 }

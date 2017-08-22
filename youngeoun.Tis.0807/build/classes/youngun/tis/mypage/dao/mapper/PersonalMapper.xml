@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="youngun.tis.user.login.dao.mapper.LoginMapper">
-	<resultMap id="userMap" type="profile">
-		<id property="memberNum" column="member_num" />
-		<result property="userName" column="user_name"/>
+<mapper namespace="youngun.tis.mypage.dao.mapper.PersonalMapper">
+	<resultMap id="personalMap" type="youngun.tis.mypage.domain.personal">
 		<result property="userId" column="user_id"/>
-		<result property="password" column="pw"/>
-		<result property="email" column="email"/>
-		<result property="PH" column="phone_num"/>
-		<result property="nickName" column="nickname"/>
-		<result property="profileImg" column="profile_img"/>
+		<result property="userPw" column="pw"/>
+		<result property="userEmail" column="email"/>
+		<result property="userPh" column="phone_num"/>
 	</resultMap>
 	
 	
-	<select id="getUser" parameterType="String" resultMap="userMap">
-		select user_id userId, user_name userName, pw password, email, phone_num PH, nickname nickName, profile_img profileImg
+	<select id="getPersonal" parameterType="String" resultMap="personalMap">
+		select user_id userId, pw userPw, email userEmail, phone_num userPh
 		from members
 		where user_id = #{userId}
 	</select>
+	
+	
+	
 </mapper>

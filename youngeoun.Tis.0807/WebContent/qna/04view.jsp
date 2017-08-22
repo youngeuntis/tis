@@ -1,3 +1,6 @@
+<%@page import="youngun.tis.qna.domain.Reply"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.qna.dao.mapper.ReplyMapper"%>
 <%@page import="com.sun.scenario.effect.impl.prism.PrImage"%>
 <%@page import="youngun.tis.qna.domain.Post"%>
 <%@page import="youngun.tis.config.Configuration"%>
@@ -7,14 +10,14 @@
 <%
 
 PostMapper postMapper = Configuration.getMapper(PostMapper.class);
-
-int postNo = Integer.parseInt(request.getParameter("qna_num"));
+String qnaNum = request.getParameter("qna_num");
+int postNo = 0;
+if(qnaNum!=null) postNo = Integer.parseInt(qnaNum);
 String content = postMapper.getContent(postNo);
 String title = postMapper.getTitle(postNo);
 
 Post post = new Post();
 postMapper.updateCnt(postNo);
-
 
 %>
 <!doctype html>
@@ -245,7 +248,15 @@ body{
   text-align: right;
   width: 15%;
 }
-	
+.abc{
+    background-color: #fcfcfc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+    margin-left: 100px;
+    min-height: 60px;
+    position: relative;
+    padding: 15px;
+    }
 	</style>
 </head>
 
@@ -523,133 +534,58 @@ body{
                         <a href="05modified.jsp?qna_num=<%=postNo%>"><button type="button">수정</button></a>
                         <a href="07delSucssess.jsp?qna_num=<%=postNo%>" onclick="aler()"><button type="button">삭제</button></a>
                     </div>
-                </div>
-				                <div class="comments-app" ng-app="commentsApp" ng-controller="CommentsController as cmntCtrl">
-		
-				  
-				  <!-- From -->
-				  <div class="comment-form">
-				    <!-- Comment Avatar -->
+                </div> 
+                 <div class="comment-form">
 				    <div class="comment-avatar">
 				      <img src="http://lorempixel.com/200/200/people">
 				    </div>
-				
-				    <form class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" novalidate
-				    action="04view.jsp?qna_num=<%=postNo%>">
+				    <form action="04view.jsp" class="form">
 				      <div class="form-row">
-				        <textarea
-				                  class="input"
-				                  ng-model="cmntCtrl.comment.text"
-				                  placeholder="Add comment..."
-				                  required></textarea>
+				        <textarea name="qna_reply_content" class="input" placeholder="Add comment..." required></textarea>
 				      </div>
-				
-				      <div class="form-row">
-				        <input
-				               class="input"
-				               ng-class="{ disabled: cmntCtrl.comment.anonymous }"
-				               ng-disabled="cmntCtrl.comment.anonymous"
-				               ng-model="cmntCtrl.comment.author"
-				               ng-required="!cmntCtrl.comment.anonymous"
-				               placeholder="Email"
-				               type="email">
-				      </div>
-				
-				      <div class="form-row text-right">
-				        <input
-				               id="comment-anonymous"
-				               ng-change="cmntCtrl.anonymousChanged()"
-				               ng-model="cmntCtrl.comment.anonymous"
-				               type="checkbox">
-				        <label for="comment-anonymous">Anonymous</label>
-				      </div>
-				
 				      <div class="form-row">
 				        <input type="submit" value="Add Comment">
 				      </div>
+				      <input type="hidden" name="qna_num" value="<%=postNo%>">
 				    </form>
 				  </div>
-				
-				  <!-- Comments List -->
-				  <div class="comments">
-				    <!-- Comment -->
-				    <div class="comment" ng-repeat="comment in cmntCtrl.comments | orderBy: '-date'">
-				      <!-- Comment Avatar -->
-				      <div class="comment-avatar">
-				        <img ng-src="{{ comment.avatarSrc }}">
-				      </div>
-				
-				      <!-- Comment Box -->
-				      <div class="comment-box">
-				        <div class="comment-text">{{ comment.text }}</div>
-				        <div class="comment-footer">
-				          <div class="comment-info">
-				            <span class="comment-author">
-				              <em ng-if="comment.anonymous">Anonymous</em>
-				              <a ng-if="!comment.anonymous" href="{{ comment.author }}">{{ comment.author }}</a>
-				            </span>
-				            <span class="comment-date">{{ comment.date | date: 'medium' }}</span>
-				          </div>
-				
-				          <div class="comment-actions">
-				            <a href="#">Reply</a>
-				          </div>
-				        </div>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-				<script type="text/javascript">
-				(function(){
-					  'use strict';
-					  
-					  angular
-					    .module('commentsApp', [])
-					    .controller('CommentsController', CommentsController);
-					  
-					  // Inject $scope dependency.
-					  CommentsController.$inject = ['$scope'];
-					  
-					  // Declare CommentsController.
-					  function CommentsController($scope) {
-					    var vm = this;
-					    
-					    // Current comment.
-					    vm.comment = {};
+                <%
+                	ReplyMapper replyMapper = Configuration.getMapper(ReplyMapper.class);
+                             	
+              		String replyContent ="";
+                	replyContent = request.getParameter("qna_reply_content");
+                	
+                	if(replyContent != null) {
+                	Reply reply = new Reply();
+                	reply.setReplyContent(replyContent);
+                	reply.setPostNo(postNo);
+                	replyMapper.inputReply(reply);
+                	session.setAttribute("replyDB", reply);
+                	}  
+                	
+                   	List<Reply> replies = replyMapper.selectReplies(postNo);
+                	for(int i=0; i<replies.size(); i++){
+                %>
+                <div class="comment-form">   
+                	<div class="comment-avatar">
+				      	<img src="http://lorempixel.com/200/200/people">
+				    </div>	
+                	<div class="abc">
+                		<p><%=replies.get(i).getReplyContent() %></p>
+                		<p><%=replies.get(i).getReplyNo() %></p>
+                		<p><%=replies.get(i).getReplyDate() %>
+                	</div>
+                </div>               
+                <%
+                	}
+                %>
+                <script type="text/javascript">
+            
 
-					    // Array where comments will be.
-					    vm.comments = [];
-
-					    // Fires when form is submited.
-					    vm.addComment = function() {
-					      // Fixed img.
-					      vm.comment.avatarSrc = 'http://lorempixel.com/200/200/people/';
-
-					      // Add current date to the comment.
-					      vm.comment.date = Date.now();
-
-					      vm.comments.push( vm.comment );
-					      vm.comment = {};
-
-					      // Reset clases of the form after submit.
-					      $scope.form.$setPristine();
-					    }
-
-					    // Fires when the comment change the anonymous state.
-					    vm.anonymousChanged = function(){
-					      if(vm.comment.anonymous)
-					        vm.comment.author = "";
-					    }
-					  }
-
-					})();
-				
-				</script>
-            </div>
+                </script>
         </main>
         <footer>
             <div class="footer_nav">
-
                 <ul>
                     <li><a href="#">회사소개</a></li>
                     <li><a href="#">제휴제안</a></li>
