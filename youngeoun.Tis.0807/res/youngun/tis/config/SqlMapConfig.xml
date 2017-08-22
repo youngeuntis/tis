@@ -54,8 +54,6 @@
 		<mapper resource="youngun/tis/user/management/dao/mapper/UserMapper.xml" />
 		<mapper resource="youngun/tis/user/admin/dao/mapper/UserMapper.xml" />
 		
-
-
 		<mapper resource="youngun/tis/qna/dao/mapper/PostMapper.xml" />
 		<mapper resource="youngun/tis/qna/dao/mapper/PageMapper.xml" />
 
@@ -64,12 +62,12 @@
 
 		<mapper resource="youngun/tis/travel/blog/BlogMapper.xml" />
 		<mapper resource="youngun/tis/travel/blog/TravelMapper.xml" />
-		
+<!-- 
 		<mapper resource="youngun/tis/mypage/dao/mapper/ProfileMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/WishlistMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/commentMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/PostMapper.xml" />
- 
+ -->
 	</mappers>
 </configuration>
