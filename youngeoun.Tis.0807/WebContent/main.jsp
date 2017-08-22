@@ -74,90 +74,90 @@
 									<div>
 										<h4>대한민국</h4>
 										<ul>
-											<li><a href="../travel/TravelMain.html">서울</a></li>
-											<li><a href="../travel/TravelMain.html">경기</a></li>
-											<li><a href="../travel/TravelMain.html">제주</a></li>
-											<li><a href="../travel/TravelMain.html">부산</a></li>
-											<li><a href="../travel/TravelMain.html">강원도</a></li>
-											<li><a href="../travel/TravelMain.html">충청도</a></li>
-											<li><a href="../travel/TravelMain.html">전라도</a></li>
-											<li><a href="../travel/TravelMain.html">경상도</a></li>
+											<li><a href="travel/01TravelMain.jsp">서울</a></li>
+											<li><a href="travel/01TravelMain.jsp">경기</a></li>
+											<li><a href="travel/01TravelMain.jsp">제주</a></li>
+											<li><a href="travel/01TravelMain.jsp">부산</a></li>
+											<li><a href="travel/01TravelMain.jsp">강원도</a></li>
+											<li><a href="travel/01TravelMain.jsp">충청도</a></li>
+											<li><a href="travel/01TravelMain.jsp">전라도</a></li>
+											<li><a href="travel/01TravelMain.jsp">경상도</a></li>
 										</ul>
 									</div>
 									<div class="asia" style="width: 200px;">
 										<h4>아시아</h4>
 										<div class="asia_l">
 											<ul>
-												<li><a href="../travel/TravelMain.html">네팔</a></li>
-												<li><a href="../travel/TravelMain.html">대만</a></li>
-												<li><a href="../travel/TravelMain.html">몰디브</a></li>
-												<li><a href="../travel/TravelMain.html">말레이시아</a></li>
-												<li><a href="../travel/TravelMain.html">발리</a></li>
-												<li><a href="../travel/TravelMain.html">베트남</a></li>
-												<li><a href="../travel/TravelMain.html">부탄</a></li>
-												<li><a href="../travel/TravelMain.html">싱가폴</a></li>
+												<li><a href="travel/01TravelMain.jsp">네팔</a></li>
+												<li><a href="travel/01TravelMain.jsp">대만</a></li>
+												<li><a href="travel/01TravelMain.jsp">몰디브</a></li>
+												<li><a href="travel/01TravelMain.jsp">말레이시아</a></li>
+												<li><a href="travel/01TravelMain.jsp">발리</a></li>
+												<li><a href="travel/01TravelMain.jsp">베트남</a></li>
+												<li><a href="travel/01TravelMain.jsp">부탄</a></li>
+												<li><a href="travel/01TravelMain.jsp">싱가폴</a></li>
 											</ul>
 										</div>
 										<div class="asia_r">
 											<ul>
-												<li><a href="../travel/TravelMain.html">일본</a></li>
-												<li><a href="../travel/TravelMain.html">인도</a></li>
-												<li><a href="../travel/TravelMain.html">인도네시아</a></li>
-												<li><a href="../travel/TravelMain.html">중국</a></li>
-												<li><a href="../travel/TravelMain.html">캄보디아</a></li>
-												<li><a href="../travel/TravelMain.html">태국</a></li>
-												<li><a href="../travel/TravelMain.html">필리핀</a></li>
-												<li><a href="../travel/TravelMain.html">홍콩</a></li>
+												<li><a href="travel/01TravelMain.jsp">일본</a></li>
+												<li><a href="travel/01TravelMain.jsp">인도</a></li>
+												<li><a href="travel/01TravelMain.jsp">인도네시아</a></li>
+												<li><a href="travel/01TravelMain.jsp">중국</a></li>
+												<li><a href="travel/01TravelMain.jsp">캄보디아</a></li>
+												<li><a href="travel/01TravelMain.jsp">태국</a></li>
+												<li><a href="travel/01TravelMain.jsp">필리핀</a></li>
+												<li><a href="travel/01TravelMain.jsp">홍콩</a></li>
 											</ul>
 										</div>
 									</div>
 									<div>
 										<h4>미/대양주</h4>
 										<ul>
-											<li><a href="../travel/TravelMain.html">미국</a></li>
-											<li><a href="../travel/TravelMain.html">하와이</a></li>
-											<li><a href="../travel/TravelMain.html">호주</a></li>
+											<li><a href="travel/01TravelMain.jsp">미국</a></li>
+											<li><a href="travel/01TravelMain.jsp">하와이</a></li>
+											<li><a href="travel/01TravelMain.jsp">호주</a></li>
 										</ul>
 									</div>
 									<div class="eu" style="width: 300px">
 										<h4>유럽</h4>
 										<div class="eu_l">
 											<ul>
-												<li><a href="../travel/TravelMain.html">그리스</a></li>
-												<li><a href="../travel/TravelMain.html">노르웨이</a></li>
-												<li><a href="../travel/TravelMain.html">네덜란드</a></li>
-												<li><a href="../travel/TravelMain.html">독일</a></li>
-												<li><a href="../travel/TravelMain.html">덴마크</a></li>
-												<li><a href="../travel/TravelMain.html">록셈부르크</a></li>
-												<li><a href="../travel/TravelMain.html">루마니아</a></li>
-												<li><a href="../travel/TravelMain.html">몰타</a></li>
-												<li><a href="../travel/TravelMain.html">벨기에</a></li>
+												<li><a href="travel/01TravelMain.jsp">그리스</a></li>
+												<li><a href="travel/01TravelMain.jsp">노르웨이</a></li>
+												<li><a href="travel/01TravelMain.jsp">네덜란드</a></li>
+												<li><a href="travel/01TravelMain.jsp">독일</a></li>
+												<li><a href="travel/01TravelMain.jsp">덴마크</a></li>
+												<li><a href="travel/01TravelMain.jsp">록셈부르크</a></li>
+												<li><a href="travel/01TravelMain.jsp">루마니아</a></li>
+												<li><a href="travel/01TravelMain.jsp">몰타</a></li>
+												<li><a href="travel/01TravelMain.jsp">벨기에</a></li>
 											</ul>
 										</div>
 										<div class="eu_c">
 											<ul>
-												<li><a href="../travel/TravelMain.html">스위스</a></li>
-												<li><a href="../travel/TravelMain.html">스웨덴</a></li>
-												<li><a href="../travel/TravelMain.html">스페인</a></li>
-												<li><a href="../travel/TravelMain.html">슬로바키아</a></li>
-												<li><a href="../travel/TravelMain.html">아이슬란드</a></li>
-												<li><a href="../travel/TravelMain.html">아일랜드</a></li>
-												<li><a href="../travel/TravelMain.html">영국</a></li>
-												<li><a href="../travel/TravelMain.html">이탈리아</a></li>
-												<li><a href="../travel/TravelMain.html">오스트리아</a></li>
+												<li><a href="travel/01TravelMain.jsp">스위스</a></li>
+												<li><a href="travel/01TravelMain.jsp">스웨덴</a></li>
+												<li><a href="travel/01TravelMain.jsp">스페인</a></li>
+												<li><a href="travel/01TravelMain.jsp">슬로바키아</a></li>
+												<li><a href="travel/01TravelMain.jsp">아이슬란드</a></li>
+												<li><a href="travel/01TravelMain.jsp">아일랜드</a></li>
+												<li><a href="travel/01TravelMain.jsp">영국</a></li>
+												<li><a href="travel/01TravelMain.jsp">이탈리아</a></li>
+												<li><a href="travel/01TravelMain.jsp">오스트리아</a></li>
 											</ul>
 										</div>
 										<div class="eu_r">
 											<ul>
-												<li><a href="../travel/TravelMain.html">체코</a></li>
-												<li><a href="../travel/TravelMain.html">터키</a></li>
-												<li><a href="../travel/TravelMain.html">러시아</a></li>
-												<li><a href="../travel/TravelMain.html">에스토니아</a></li>
-												<li><a href="../travel/TravelMain.html">크로아티아</a></li>
-												<li><a href="../travel/TravelMain.html">헝가리</a></li>
-												<li><a href="../travel/TravelMain.html">프랑스</a></li>
-												<li><a href="../travel/TravelMain.html">폴란드</a></li>
-												<li><a href="../travel/TravelMain.html">포르투칼</a></li>
+												<li><a href="travel/01TravelMain.jsp">체코</a></li>
+												<li><a href="travel/01TravelMain.jsp">터키</a></li>
+												<li><a href="travel/01TravelMain.jsp">러시아</a></li>
+												<li><a href="travel/01TravelMain.jsp">에스토니아</a></li>
+												<li><a href="travel/01TravelMain.jsp">크로아티아</a></li>
+												<li><a href="travel/01TravelMain.jsp">헝가리</a></li>
+												<li><a href="travel/01TravelMain.jsp">프랑스</a></li>
+												<li><a href="travel/01TravelMain.jsp">폴란드</a></li>
+												<li><a href="travel/01TravelMain.jsp">포르투칼</a></li>
 											</ul>
 										</div>
 									</div>
