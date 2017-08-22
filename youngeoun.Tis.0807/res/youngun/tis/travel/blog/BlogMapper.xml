@@ -40,6 +40,16 @@
 		where continent_code like #{continentCode}
 		order by info_num
 	</select>
+	<!-- 조회 수 업데이트 -->
+	<update id="updateHits" parameterType="Blog">
+		update infomations set info_hits = #{hits} where info_num=#{blogNum} 
+	</update>
+	<!-- 게시글 수정 -->
+	<update id="updateInfo" parameterType="Blog">
+		update infomations set info_title = #{blogTitle}, info_content=#{blogContent}, info_img=#{img} where info_num=#{blogNum} 
+	</update>
 	
-	
+	<delete id="deleteBlog" parameterType="Blog">
+		delete from infomations where info_num=#{blogNum}
+	</delete>
 </mapper>

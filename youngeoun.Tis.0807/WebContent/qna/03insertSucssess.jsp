@@ -1,5 +1,3 @@
-<%@page import="youngun.tis.qna.presentation.BoardIoImpl"%>
-<%@page import="youngun.tis.qna.presentation.BoardIo"%>
 <%@page import="youngun.tis.qna.service.PostService"%>
 <%@page import="youngun.tis.qna.dao.PostDaoImpl"%>
 <%@page import="youngun.tis.qna.dao.PostDao"%>

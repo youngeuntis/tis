@@ -17,12 +17,12 @@
 		
 		<typeAlias alias="postt" type="youngun.tis.review.domain.Post"/>
 		<typeAlias alias="pagee" type="youngun.tis.review.domain.Page"/>
-
+ 
 		<typeAlias alias="Blog" type="youngun.tis.travel.blog.domain.Blog" />
 
 		<typeAlias alias="country" type="youngun.tis.travel.blog.domain.Country" />
 		
-		<typeAlias alias="profile" type="youngun.tis.mypage.domain.profile"/>
+		<typeAlias alias="profile" type="youngun.tis.mypage.domain.profile"/> 
 	</typeAliases>	
  
 
@@ -49,25 +49,32 @@
 		</environment>
 	</environments>
 
-	<mappers>		
+	<mappers>
+		<!-- 준식 -->		
 		<mapper resource="youngun/tis/user/login/dao/mapper/LoginMapper.xml" />
 		<mapper resource="youngun/tis/user/management/dao/mapper/UserMapper.xml" />
+		
+		<!-- 영근 -->
 		<mapper resource="youngun/tis/user/admin/dao/mapper/UserMapper.xml" />
 		
+		<!-- 영빈 -->
 		<mapper resource="youngun/tis/qna/dao/mapper/PostMapper.xml" />
 		<mapper resource="youngun/tis/qna/dao/mapper/PageMapper.xml" />
-
+		
+		<!-- 진형 -->
 		<mapper resource="youngun/tis/review/dao/mapper/PostMapper.xml" />
 		<mapper resource="youngun/tis/review/dao/mapper/PageMapper.xml" />
-
+		
+		<!-- 진우  -->
 		<mapper resource="youngun/tis/travel/blog/BlogMapper.xml" />
 		<mapper resource="youngun/tis/travel/blog/TravelMapper.xml" />
-<!-- 
+
+<!-- 	
 		<mapper resource="youngun/tis/mypage/dao/mapper/ProfileMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/WishlistMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/commentMapper.xml" />
-		<mapper resource="youngun/tis/mypage/dao/mapper/PostMapper.xml" />
- -->
+		<mapper resource="youngun/tis/mypage/dao/mapper/PostMapper.xml" /> 
+ -->		
 	</mappers>
 </configuration>
