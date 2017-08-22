@@ -5,7 +5,7 @@ function sendIt() {
     var birth = document.sign.userBirth.value;
 	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 
-	
+
     //아이디 입력여부 검사
     if (sign.userId.value == "") {
         alert("아이디를 입력하지 않았습니다.");
@@ -147,6 +147,7 @@ function sendIt() {
         document.sign.userPH.focus();
         return;
     }
+
     
     var chk_radio = document.getElementsByName('signCheck');
 	var sel_type = null;
