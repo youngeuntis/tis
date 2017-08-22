@@ -30,7 +30,7 @@
 		LoginService loginService = new LoginServiceImpl(loginId, loginPw);
 		
 		Login login = loginService.findUserLogin(loginId);
-		
+
 		System.out.print("로그인"+login.getUserId()+login.isFlag());
 		
 		if(!login.isFlag()){
