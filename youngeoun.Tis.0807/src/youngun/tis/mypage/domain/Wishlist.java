@@ -43,7 +43,7 @@ public class Wishlist {
 	
 	@Override
 	public String toString() {
-		return "Wishlist [memberNum=" + memberNum + ", WishInfoNum=" + WishInfoNum + ", WishTitle=" + WishTitle
+		return "Wishlist [memberNum1=" + memberNum + ", WishInfoNum=" + WishInfoNum + ", WishTitle=" + WishTitle
 				+ ", WishImg=" + WishImg + "]";
 	}
 

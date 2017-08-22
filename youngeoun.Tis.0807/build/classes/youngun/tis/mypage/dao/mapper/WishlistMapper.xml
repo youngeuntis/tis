@@ -11,9 +11,9 @@
 	
 	
 	<select id="selectWishlist" parameterType="int" resultMap="wishMap">
-		select info_num wishInfoNum, member_num memberNum, info_img wishImg, info_title wishTitle
-		from infomations
-		where member_num = #{memberNum}
+		select info.info_num wishInfoNum, iw.member_num memberNum, info.info_img wishImg, info.info_title wishTitle
+		from infomations info , info_wishlists iw
+		where iw.member_num = #{memberNum} and iw.INFO_NUM = info.info_num
 	</select>
 	
 	
