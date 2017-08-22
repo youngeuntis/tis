@@ -1,9 +1,9 @@
-package youngun.tis.mypage.dao.mapper;
+package youngun.tis.mypage.dao;
 
 import java.util.List;
 
 import youngun.tis.mypage.domain.Wishlist;
 
-public interface WishlistMapper {
+public interface WishlistDao {
 	List<Wishlist> selectWishlist(int memberNum);
 }

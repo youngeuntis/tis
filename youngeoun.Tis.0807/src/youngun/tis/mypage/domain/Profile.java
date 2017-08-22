@@ -1,17 +1,27 @@
 package youngun.tis.mypage.domain;
 
 public class Profile {
+	private int memberNum;		//회원번호
 	private String userId;		//회원아이디
 	private String proflieImg;	//프로필사진
 	private String nickName;	//닉네임
 	
 	public Profile(){}
 
-	public Profile(String userId, String proflieImg, String nickName) {
+	public Profile(int memberNum, String userId, String proflieImg, String nickName) {
 		super();
+		this.memberNum = memberNum;
 		this.userId = userId;
 		this.proflieImg = proflieImg;
 		this.nickName = nickName;
+	}
+
+	public int getmemberNum() {
+		return memberNum;
+	}
+
+	public void setmemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
 
 	public String getUserId() {
@@ -40,6 +50,8 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "profile [userId=" + userId + ", proflieImg=" + proflieImg + ", nickName=" + nickName + "]";
+		return "Profile [memberNum=" + memberNum + ", userId=" + userId + ", proflieImg=" + proflieImg + ", nickName="
+				+ nickName + "]";
 	}
+
 }
