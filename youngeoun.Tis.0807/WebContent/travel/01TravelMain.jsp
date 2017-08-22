@@ -1,3 +1,4 @@
+<%@page import="youngun.tis.travel.blog.domain.Wish"%>
 <%@page import="youngun.tis.travel.blog.service.SearchService"%>
 <%@page import="youngun.tis.travel.blog.dao.BlogDaoImpl"%>
 <%@page import="youngun.tis.travel.blog.dao.BlogDao"%>
@@ -360,22 +361,39 @@
         <main>
 	        <%
 				String isDel = request.getParameter("del");
-				if(isDel==null){
+	        	String wish = request.getParameter("wish");
+	        	Blog blog = (Blog)session.getAttribute("Blog");
+				BlogDao blogDao = new BlogDaoImpl();
+				SearchService service = new SearchService(blogDao);
+				if(isDel==null&&wish==null){
 			%>
 				<h2>DYTR(Design Your Trip)은 여러분이 여행정보를 쉽고 빠르게 획득할 수 있도록 설계된 사이트입니다.</h2><br>
 				<h2>상단의 메뉴에서 나라를 직접 선택하시거나 카테고리를 통해 검색하시면 되겠습니다.</h2>
 			<% 
-				}else if(isDel.equals("y")){
-				Blog blog = (Blog)session.getAttribute("Blog");
-				BlogDao blogDao = new BlogDaoImpl();
-				SearchService service = new SearchService(blogDao);
+				}else if(isDel!=null&&isDel.equals("y")){
+				
 				service.eleminateBlog(blog);
 			%>
 					<h1> 삭제가 완료 되었습니다.</h1>
-					<button onclick="cancelMove()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
+					<button onclick="location.replace('01TravelMain.jsp')" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
 			<%
+				}else if(wish!=null&&wish.equals("true")){
+					service.addWish(blog.getBlogNum());
+			%>
+				<h2>즐겨찾기 추가되었습니다.</h2>
+				<button onclick="location.replace('01TravelMain.jsp')" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
+			<%
+				} else if(wish!=null&&wish.equals("false")){ 
+			%><
+				<h2>즐겨찾기 삭제되었습니다.</h2>
+				<button onclick="location.replace('01TravelMain.jsp')" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
+			<%
+				int memberNum = 2;
+				Wish delwish = service.configureWish(memberNum, blog.getBlogNum());
+	  			service.deleteWish(delwish);
 				}
 			%>
+			 
 			<div class="clear"></div>
 		</main>
         <footer>

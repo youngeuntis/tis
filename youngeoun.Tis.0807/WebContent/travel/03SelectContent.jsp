@@ -1,3 +1,4 @@
+<%@page import="youngun.tis.travel.blog.domain.Wish"%>
 <%@page import="youngun.tis.travel.blog.dao.BlogDaoImpl"%>
 <%@page import="youngun.tis.travel.blog.service.SearchService"%>
 <%@page import="youngun.tis.travel.blog.dao.BlogDao"%>
@@ -447,54 +448,7 @@
 				<% 
 						}
 				%>
-				            <!-- <div>
-				                <img data-u="image" src="../res/img/travelImg/spain.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/spain.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/g.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/g.jpg" />
-				            </div> -->
-				            <!-- <div>
-				                <img data-u="image" src="../res/img/travelImg/p.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/p.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/pr.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/pr.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/spain.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/spain.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/g.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/g.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/p.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/p.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/pr.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/pr.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/g.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/g.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/p.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/p.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/pr.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/pr.jpg" />
-				            </div>
-				            <div>
-				                <img data-u="image" src="../res/img/travelImg/spain.jpg" />
-				                <img data-u="thumb" src="../res/img/travelImg/spain.jpg" />
-				            </div> -->
+				   
 				            <a data-u="any" href="https://www.jssor.com" style="display:none">bootstrap slider</a>
 				        </div>
 				        <!-- Thumbnail Navigator -->
@@ -520,6 +474,7 @@
                 <div class="content_buttons">
                     <a href="02BlogMain.jsp?blogNum=<%=selectBlog.getBlogNum() %>" class="action-button shadow animate blue">수정</a>
                     <button onclick="delBlog()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">삭제</button>
+                    
                 </div>
            <%
            		selectBlog.setHits(selectBlog.getHits()+1);
@@ -530,8 +485,21 @@
                     <h2><%=selectBlog.getBlogTitle() %></h2>
                 </div>
                 
-                
+          <%
+          		int memberNum = 2;
+          		if(service.configureWish(memberNum, Integer.parseInt(blogNum))==null){
+          %>
+          		<button onclick="addWish()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">즐겨찾기 추가♥</button>
+   		  <% 
+        		}else{
+          %>
+          		<button onclick="delWish()" class="action-button shadow animate blue" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">즐겨찾기 삭제</button>
+          <%
+          			
+        		}
+          %>
                 <div class="content_content">
+                	
                    <%=selectBlog.getBlogContent() %>
                 </div>
             </div>
@@ -565,12 +533,24 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/js/index.js"></script>
 	<script>
-        function delBlog(){
+		var isOnOff = false;
+        
+		function delBlog(){
             var answer = confirm("확인을 누르시면 데이터가 삭제됩니다.삭제를 원하십니까?")
             if(answer==true){
             	location.replace("01TravelMain.jsp?del=y");
             }
             return false;
+        }
+        function addWish(){
+        	alert('즐겨찾기에 추가되었습니다.');
+        	isOnOff = true;
+        	location.replace("01TravelMain.jsp?wish="+isOnOff);
+        }
+        function delWish(){
+        	alert('즐겨찾기에 삭제되었습니다.');
+        	isOnOff = false;
+        	location.replace("01TravelMain.jsp?wish="+isOnOff);
         }
     </script>
 </body>
