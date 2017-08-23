@@ -9,7 +9,6 @@ import youngun.tis.mypage.domain.Wishlist;
 public class WishlistServiceImpl implements WishlistService {
 	private WishlistDao wishlistDao;
 	
-	
 	public WishlistServiceImpl() {
 		this.wishlistDao = new WishlistDaoImpl();
 	}
@@ -17,9 +16,6 @@ public class WishlistServiceImpl implements WishlistService {
 	@Override
 	public List<Wishlist> findWishlist(int memberNum) {
 		
-		
-		
-		return wishlistDao.selectWishlist(memberNum);
-	
+		return wishlistDao.selectWishlist(memberNum);	
 	}
 }

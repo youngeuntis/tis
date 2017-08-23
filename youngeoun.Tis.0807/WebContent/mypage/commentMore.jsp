@@ -1,5 +1,12 @@
+<%@page import="youngun.tis.mypage.domain.Comment"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.mypage.service.CommentMoreServiceImpl"%>
+<%@page import="youngun.tis.mypage.dao.CommentMoreDaoImpl"%>
+<%@page import="youngun.tis.mypage.service.CommentMoreService"%>
+<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -335,7 +342,14 @@
 
 
 		<!-- 메인 작업부분 -->
-
+		<%
+		
+			int memberNum = dto.getMemberNum();
+		
+			CommentMoreService commentMoreService = new CommentMoreServiceImpl();
+			List<Comment> commentReply = commentMoreService.findCommentMore(memberNum);
+		
+		%>
 		<main>
 		<div id="container">
 			<div id="content">
@@ -343,23 +357,20 @@
 					<h2>My 댓글</h2>
 					<p class="contxt">회원님의 댓글을 전부 보여드립니다.</p>
 				</div>
-
+				
 				<div class="table">
 					<table class="board">
 						<tr>
 							<th class="boardNums">번호</th>
 							<th class="boardTexts">댓글 내용</th>
 						</tr>
-
+						
+						<%for(int i=0; i<=commentReply.size(); i++){ %>
 						<tr>
-							<td class="boardNum">1</td>
-							<td class="boardText">와 여기 너무 좋네요</td>
+							<td class="boardNum"><%=commentReply.get(i).getQnaReplyNum() %></td>
+							<td class="boardText"><%=commentReply.get(i).getQnaReplyCont() %></td>
 						</tr>
-
-						<tr>
-							<td class="boardNum">2</td>
-							<td class="boardText">와 여기 너무 좋네요</td>
-						</tr>
+						<%} %>
 
 					</table>
 

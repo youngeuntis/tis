@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Blog {
 	int blogNum;
-	String memberNum;
+	int memberNum;
 	String blogTitle;
 	String blogContent;
 	String continentCode;
@@ -43,11 +43,11 @@ public class Blog {
 		this.blogDate = blogDate;
 	}
 
-	public String getMemberNum() {
+	public int getMemberNum() {
 		return memberNum;
 	}
 
-	public void setMemberNum(String memberNum) {
+	public void setMemberNum(int memberNum) {
 		this.memberNum = memberNum;
 	}
 

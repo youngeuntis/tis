@@ -2,15 +2,19 @@ package youngun.tis.mypage.service;
 
 import java.util.List;
 
+import youngun.tis.mypage.dao.CommentMoreDao;
+import youngun.tis.mypage.dao.CommentMoreDaoImpl;
 import youngun.tis.mypage.domain.Comment;
 
 public class CommentMoreServiceImpl implements CommentMoreService {
+	private CommentMoreDao commentMoreDao;
+	
+	public CommentMoreServiceImpl() {
+		this.commentMoreDao = new CommentMoreDaoImpl();
+	}
 
-	
-	
 	@Override
 	public List<Comment> findCommentMore(int memberNum) {
-		// TODO Auto-generated method stub
-		return null;
+		return commentMoreDao.selectComment(memberNum);
 	}
 }

@@ -2,7 +2,7 @@ package youngun.tis.mypage.domain;
 
 public class Comment {
 	private int memberNum; 			//회원번호
-	private String qnaReplyNum; 	//댓글번호
+	private String qnaReplyNum; 	//댓글번호(pk)
 	private String qnaReplyCont;	//댓글내용
 	
 	public Comment() {}
