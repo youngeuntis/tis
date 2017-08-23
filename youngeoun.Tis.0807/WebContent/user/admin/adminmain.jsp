@@ -396,10 +396,10 @@
 					<div class="memberDataBcheck"><input type="checkbox"></div>
 					<div class="memberDataBid"><p><%=Muser.get(i).getUserId() %></p></div>
 					<div class="memberDataBname"><p><%=Muser.get(i).getUserName()%></p></div>
-					<div class="memberDataBjoindate"><p></p></div>
-					<div class="memberDataBvisitdate"><p></p></div>
-					<div class="memberDataBwhite"><p></p></div>
-					<div class="memberDataBcoment"><p></p></div>
+					<div class="memberDataBjoindate"><p><%=Muser.get(i).getJoinDate() %></p></div>
+					<div class="memberDataBvisitdate"><p><%=Muser.get(i).getUntilvisit() %></p></div>
+					<div class="memberDataBwhite"><p><%=Muser.get(i).getWriteCount() %></p></div>
+					<div class="memberDataBcoment"><p><%=Muser.get(i).getReplCount() %></p></div>
 					<div class="memberDataBvisitcount"><p></p></div>
 				<%} %>
 

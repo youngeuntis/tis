@@ -4,6 +4,9 @@
     pageEncoding="UTF-8"%>
 <%
 	List<User> Fuser = (List<User>)session.getAttribute("Fuser");
+	
+	
+
 %>
 <!doctype html>
 
@@ -302,10 +305,10 @@
                       <div class="memberDataBcheck"><input type="checkbox"></div>
                       <div class="memberDataBid"><p><%=Fuser.get(i).getUserId() %></p></div>
                       <div class="memberDataBname"><p><%=Fuser.get(i).getUserName() %></p></div>
-                      <div class="memberDataBjoindate"><p></p></div>
-                      <div class="memberDataBvisitdate"><p></p></div>
-                      <div class="memberDataBwhite"><p></p></div>
-                      <div class="memberDataBcoment"><p></p></div>
+                      <div class="memberDataBjoindate"><p><%=Fuser.get(i).getJoinDate()%></p></div>
+                      <div class="memberDataBvisitdate"><p><%=Fuser.get(i).getUntilvisit() %></p></div>
+                      <div class="memberDataBwhite"><p><%=Fuser.get(i).getWriteCount() %></p></div>
+                      <div class="memberDataBcoment"><p><%=Fuser.get(i).getReplCount() %></p></div>
                       <div class="memberDataBvisitcount"><p></p></div>
              <%} %>
              </div>

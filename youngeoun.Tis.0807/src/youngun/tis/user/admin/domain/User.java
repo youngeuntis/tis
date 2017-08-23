@@ -1,23 +1,52 @@
 package youngun.tis.user.admin.domain;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class User {
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 	private String userId;     //아이디
 	private String userName;   //이름
 	private int memberNum;     //
 	private String blackReason;
+	private String untilvisit;
+	private String joinDate;
+	private String writeCount;
+	private String replCount;
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public String getReplCount() {
+		return replCount;
+	}
+
+	public void setReplCount(String replCount) {
+		this.replCount = replCount;
+	}
+
+	public String getWriteCount() {
+		return writeCount;
+	}
+
+	public void setWriteCount(String writeCount) {
+		this.writeCount = writeCount;
+	}
+
+	public String getUntilvisit() {
+		return untilvisit;
+	}
+
+	public void setUntilvisit(Date untilvisit) {
+		this.untilvisit = sdf.format(untilvisit);
+	}
+
+	public String getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = sdf.format(joinDate);
+	}
+
 	public String getBlackReason() {
 		return blackReason;
 	}
@@ -60,6 +89,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + "]";
+		return "User [userId=" + userId + ", userName=" + userName + ", memberNum=" + memberNum + ", blackReason="
+				+ blackReason + ", untilvisit=" + untilvisit + ", joinDate=" + joinDate + "]";
 	}
+	
 }

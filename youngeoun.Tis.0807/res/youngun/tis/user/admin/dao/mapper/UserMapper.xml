@@ -8,6 +8,10 @@
 		<id property="memberNum" column="member_num" />
 		<result property="userName" column="user_name"/>
 		<result property="userId" column="user_id"/>
+		<result property="untilvisit" column="until_visit"/>
+		<result property="joinDate" column="join_date"/>
+		<result property="writeCount" column="write_count"/>
+		<result property="replCount" column="repl_count"/>
 	</resultMap>
 	
 	<!-- 제재회원 리절트 맵  -->
@@ -37,15 +41,20 @@
 		<id property="memberNum" column="member_num" />
 		<result property="userName" column="user_name"/>
 		<result property="userId" column="user_id"/>
+		<result property="untilvisit" column="until_visit"/>
+		<result property="joinDate" column="join_date"/>
+		<result property="writeCount" column="write_count"/>
+		<result property="replCount" column="repl_count"/>
 	</resultMap>
 	
 	
 	
 	
 	<select id="getUsers" resultMap="userMap">
-		select * 
-		from members
-		order by member_num
+		select e.user_name, e.user_id, e.until_visit, e.join_date, w.write_count, r.repl_count
+		from members e, writeCount w, replCount r
+        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+        order by e.member_num
 	</select>
 	
 	
@@ -67,10 +76,11 @@
 		where GRADE_NUM = 'g01'
 	</select>
 	
-	<select id="getMainUsers" resultMap="MainUserMap">
-		select * 
-		from members
-		order by member_num
+	<select id="getMainUsers" resultMap="MainUserMap" parameterType="String">
+		select e.user_name, e.user_id, e.until_visit, e.join_date, w.write_count, r.repl_count
+		from members e, writeCount w, replCount r
+        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+        order by e.member_num
 	</select>
 	
 </mapper>
