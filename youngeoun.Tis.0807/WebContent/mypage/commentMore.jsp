@@ -365,7 +365,7 @@
 							<th class="boardTexts">댓글 내용</th>
 						</tr>
 						
-						<%for(int i=0; i<=commentReply.size(); i++){ %>
+						<%for(int i=0; i<commentReply.size(); i++){ %>
 						<tr>
 							<td class="boardNum"><%=commentReply.get(i).getQnaReplyNum() %></td>
 							<td class="boardText"><%=commentReply.get(i).getQnaReplyCont() %></td>
