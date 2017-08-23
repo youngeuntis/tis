@@ -12,6 +12,6 @@
 	<select id="selectComment" parameterType="String" resultMap="qnaMap">
 		select qna_reply_num qnaReplyNum, member_num memberNum, qna_reply_content qnaReplyCont
 		from qna_replies
-		where mumber_num = #{memberNum}
+		where member_num = #{memberNum}
 	</select>
 </mapper>
