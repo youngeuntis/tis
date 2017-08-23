@@ -3,17 +3,10 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="youngun.tis.user.management.dao.mapper.UserMapper">
 	
-	<resultMap id="userMap" type="user">
-		<id property="memberNum" column="member_num" />
-		<result property="userName" column="user_name"/>
-		<result property="userId" column="user_id"/>
-		<result property="password" column="pw"/>
-	</resultMap>
-	
+	<!-- id중복확인 -->
 	<resultMap id="selectIdMap" type="user">
 		<result property="userId" column="user_id"/>
 	</resultMap>
-	
 	
 	<select id="selectUserId" parameterType="String" resultMap="selectIdMap">
 		select user_id userId
@@ -27,5 +20,28 @@
 		values(mem_num_seq.nextval, #{userName}, #{userId}, #{password}, #{birth}, #{phoneNum}, #{email}, #{nickName}, #{gender}, sysdate)
 	</insert>
 	
+	<!-- 마지막번호찾기 -->
+	<resultMap id="selectNumMap" type="user">
+		<result property="memberNum" column="member_num"/>
+	</resultMap>
 	
+	<select id="selectUserNum" resultMap="selectNumMap">
+		select max(member_num) memberNum
+		from members
+	</select>
+	
+	<!-- 글작성 개수  -->
+	<insert id="createWriteSpace" parameterType="int">
+		insert into writecount
+		values(#{userNum}, 0)
+	</insert>
+	
+	
+	<!-- 댓글 개수  -->
+	<insert id="createReplSpace" parameterType="int">
+		insert into replcount
+		values(#{userNum}, 0)
+	</insert>
+	
+		
 </mapper>

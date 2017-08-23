@@ -39,11 +39,12 @@ public class SearchService {
   		}
 		return selectBlog;
 	}
-	public void writeBlog(Blog blog,String title, String content,String continent, String country,Matcher m){
+	public void writeBlog(Blog blog,String title, String content,String continent, String country,Matcher m, int memberNum){
 		blog.setContinentCode(continent);
 		blog.setNationCode(country);
 		blog.setBlogTitle(title);
 		blog.setBlogContent(content);
+		blog.setMemberNum(memberNum);
 		String strImg = "";
 		int repeat =0;
 		while(m.find()){

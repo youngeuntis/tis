@@ -338,17 +338,18 @@
 			String continent = request.getParameter("continent");
 			String country = request.getParameter("country");
 			String blogNum = request.getParameter("blogNum");
+			String userNum = request.getParameter("userNum");
 			Pattern p = Pattern.compile("(http://i.imgur.com/)+(([a-zA-Z0-9]*.jpg)|([a-zA-Z0-9]*.png)|([a-zA-Z0-9]*.jpeg))");
 			Matcher m = p.matcher(content);
 			List<Blog> blogs = blogDao.getBlogListNoPara();
 			Blog blog = null;
 			if(blogNum == null){
 				blog = new Blog();
-				service.writeBlog(blog, title, content, continent, country, m);
+				service.writeBlog(blog, title, content, continent, country, m, Integer.parseInt(userNum));
 				blogDao.insertInfo(blog);
 			}else{
 				blog = service.searchBlog(blogs, blogNum);
-				service.writeBlog(blog, title, content, continent, country, m);
+				service.writeBlog(blog, title, content, continent, country, m, Integer.parseInt(userNum));
 				service.modifyBlog(blog);
 			}
 			
@@ -367,7 +368,7 @@
         	<button onclick="move()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
         	<script>
         		function move(){
-        			location.replace("01TravelMain.jsp");
+        			history.go(-2);
         		}
         	</script>
 		</main>
