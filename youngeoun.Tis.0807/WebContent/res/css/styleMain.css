@@ -74,7 +74,7 @@ opacity:0; transition:all 0.5s ease; z-index:-10;}
 .right_nav .right_nav_join{float:right; margin-left:10px; margin-bottom : 5px;}
 .right_nav .right_nav_search {width : 270px;}
 .right_nav #nav_search{height:30px; width:220px; float: left; border:0.5px solid rgba(11,50,0,0.7);}
-.right_nav #search_button{float: left; width :30px; height : 30px; background-image: url("../img/button/button.png"); background-repeat: no-repeat; background-position: center; background-color: #fff; border:0.5px solid rgba(11,50,0,0.7);}
+.right_nav #search_button{float: left; width :30px; height : 30px; background-repeat: no-repeat; background-position: center; background-color: #fff; border:0.5px solid rgba(11,50,0,0.7);}
 
 
 

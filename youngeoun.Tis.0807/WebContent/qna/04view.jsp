@@ -13,9 +13,9 @@ PostMapper postMapper = Configuration.getMapper(PostMapper.class);
 String qnaNum = request.getParameter("qna_num");
 int postNo = 0;
 if(qnaNum!=null) postNo = Integer.parseInt(qnaNum);
+
 String content = postMapper.getContent(postNo);
 String title = postMapper.getTitle(postNo);
-
 Post post = new Post();
 postMapper.updateCnt(postNo);
 
@@ -35,219 +35,12 @@ postMapper.updateCnt(postNo);
     <script type="text/javascript" src="../res/js/custom.js"></script>
     <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
+    <script src="https://use.fontawesome.com/e5f23f0337.js"></script>
     <!--end main_menu_nav-->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 	<style type="text/css">
-	* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-
-  -webkit-box-sizing: border-box;
- 	-moz-box-sizing: border-box;
-}
-
-body{
-  background-color: #dee1e3;
-  font-family: "Roboto", "Tahoma", "Arial", sans-serif;,
-}
-
-.text-right{ text-align: right; }
-
-.comments-app{
-  margin: 50px auto;
-  max-width: 680px;
-  padding: 0 50px;
-  width: 100%;
-}
-
-.comments-app h1{
-  color: #191919;
-  margin-bottom: 1.5em;
-  text-align: center;
-  text-shadow: 0 0 2px rgba(152, 152, 152, 1);
-}
-
-.comment-form{  }
-.comment-form .comment-avatar{  }
-
-.comment-form .form{ margin-left: 100px; }
-
-.comment-form .form .form-row{ margin-bottom: 10px; }
-.comment-form .form .form-row:last-child{ margin-bottom: 0; }
-
-.comment-form .form .input{
-  background-color: #fcfcfc;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
-  color: #555f77;
-  font-family: inherit;
-  font-size: 14px;
-  padding: 5px 10px;
-  outline: none;
-  width: 100%;
-
-  -webkit-transition: 350ms box-shadow;
-  -moz-transition: 350ms box-shadow;
-  -ms-transition: 350ms box-shadow;
-  -o-transition: 350ms box-shadow;
-  transition: 350ms box-shadow;
-}
-
-.comment-form .form textarea.input{
-  height: 100px;
-  padding: 15px;
-}
-
-.comment-form .form label{
-  color: #555f77;
-  font-family: inherit;
-  font-size: 14px;
-}
-
-.comment-form .form input[type=submit]{
-  background-color: #555f77;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
-  color: #fff;
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  outline: none;
-  padding: 6px 15px;
-
-  -webkit-transition: 350ms box-shadow;
-  -moz-transition: 350ms box-shadow;
-  -ms-transition: 350ms box-shadow;
-  -o-transition: 350ms box-shadow;
-  transition: 350ms box-shadow;
-}
-
-.comment-form .form .input:focus,
-.comment-form .form input[type=submit]:focus,
-.comment-form .form input[type=submit]:hover{
-  box-shadow: 0 2px 6px rgba(121, 137, 148, .55);
-}
-
-.comment-form .form.ng-submitted .input.ng-invalid,
-.comment-form .form .input.ng-dirty.ng-invalid{
-  box-shadow: 0 2px 6px rgba(212, 47, 47, .55) !important;
-}
-
-.comment-form .form .input.disabled {
-    background-color: #E8E8E8;
-}
-
-
-.comments{  }
-
-.comment-form,
-.comment{
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 0;
-}
-
-.comment-form .comment-avatar,
-.comment .comment-avatar{
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-  height: 80px;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  width: 80px;
-}
-
-.comment-form .comment-avatar img,
-.comment .comment-avatar img{
-  display: block;
-  height: auto;
-  width: 100%;
-}
-
-.comment .comment-box{
-  background-color: #fcfcfc;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
-  margin-left: 100px;
-  min-height: 60px;
-  position: relative;
-  padding: 15px;
-}
-
-.comment .comment-box:before,
-.comment .comment-box:after{
-  border-width: 10px 10px 10px 0;
-  border-style: solid;
-  border-color: transparent #FCFCFC;
-  content: "";
-  left: -10px;
-  position: absolute;
-  top: 20px;
-}
-
-.comment .comment-box:before{
-  border-color: transparent rgba(0, 0, 0, .05);
-   top: 22px;
-}
-
-.comment .comment-text{
-  color: #555f77;
-  font-size: 15px;
-  margin-bottom: 25px;
-}
-
-.comment .comment-footer{
-  color: #acb4c2;
-  font-size: 13px;
-}
-
-.comment .comment-footer:after{
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.comment .comment-footer a{
-  color: #acb4c2;
-  text-decoration: none;
-
-  -webkit-transition: 350ms color;
-  -moz-transition: 350ms color;
-  -ms-transition: 350ms color;
-  -o-transition: 350ms color;
-  transition: 350ms color;
-}
-
-.comment .comment-footer a:hover{
-  color: #555f77;
-  text-decoration: underline;
-}
-
-.comment .comment-info{
-  float: left;
-  width: 85%;
-}
-
-.comment .comment-author{ }
-.comment .comment-date{ }
-
-.comment .comment-date:before{
-  content: "|";
-  margin: 0 10px;
-}
-
-.comment-actions{
-  float: left;
-  text-align: right;
-  width: 15%;
-}
+	
 .abc{
     background-color: #fcfcfc;
     border-radius: 4px;
@@ -529,13 +322,13 @@ body{
                         <p><%= content %></p>
                       
                     </div>
-                    <div class="board_buttons">
-                        <a href="01qnaMain.jsp"><button type="button">목록으로</button></a>
-                        <a href="05modified.jsp?qna_num=<%=postNo%>"><button type="button">수정</button></a>
-                        <a href="07delSucssess.jsp?qna_num=<%=postNo%>" onclick="aler()"><button type="button">삭제</button></a>
+                    <div class="board_button" style="float:right;">
+                        <a href="01qnaMain.jsp"><button type="button" class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px;">목록으로</button></a>
+                        <a href="05modified.jsp?qna_num=<%=postNo%>"><button type="button" class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px;">수정</button></a>
+                        <a href="07delSucssess.jsp?qna_num=<%=postNo%>" onclick="aler()"><button type="button" class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px;">삭제</button></a>
                     </div>
                 </div> 
-                 <div class="comment-form">
+                 <div class="comment-form" style="margin-top:100px;">
 				    <div class="comment-avatar">
 				      <img src="http://lorempixel.com/200/200/people">
 				    </div>
@@ -554,14 +347,30 @@ body{
                              	
               		String replyContent ="";
                 	replyContent = request.getParameter("qna_reply_content");
-                	
-                	if(replyContent != null) {
-                	Reply reply = new Reply();
+					
+                	int replyNo = 0;
+                	String replyNum = request.getParameter("qna_reply_num");
+                	if(replyNum!=null) replyNo = Integer.parseInt(replyNum);
+                	String delCheck = "";
+					delCheck = request.getParameter("checkDelete");
+					
+					Reply repp = (Reply)session.getAttribute("replyDB");                	
+                	Reply reply = null;
+					if(repp==null && replyContent != null) {
+                	reply = new Reply();
                 	reply.setReplyContent(replyContent);
                 	reply.setPostNo(postNo);
+                	reply.setReplyNo(replyNo);
                 	replyMapper.inputReply(reply);
                 	session.setAttribute("replyDB", reply);
-                	}  
+                	}else{
+                		reply = repp;
+                	}
+					
+                	
+                	if(delCheck != null && replyNo != 0){
+                		replyMapper.delReply(replyNo);
+                	}
                 	
                    	List<Reply> replies = replyMapper.selectReplies(postNo);
                 	for(int i=0; i<replies.size(); i++){
@@ -571,17 +380,37 @@ body{
 				      	<img src="http://lorempixel.com/200/200/people">
 				    </div>	
                 	<div class="abc">
-                		<p><%=replies.get(i).getReplyContent() %></p>
-                		<p><%=replies.get(i).getReplyNo() %></p>
-                		<p><%=replies.get(i).getReplyDate() %>
+                	 <div class="reply-font">
+                	 		<form action="04view.jsp">
+								<button>
+									<i class="fa fa-times" aria-hidden="true"></i>
+									<input type="hidden" name="qna_num" value="<%=postNo%>">
+									<input type="hidden" name="qna_reply_num" value=<%=replies.get(i).getReplyNo()%>>
+									<input type="hidden" name="checkDelete" value="yes">
+								</button>
+							</form>
+							
+								<button onclick="writeNow();">
+									<i class="fa fa-pencil" aria-hidden="true"></i>
+								</button>
+								
+								
+					 </div>
+          				<p><%=replies.get(i).getReplyContent() %></p>
+                		<%-- <p><%=replies.get(i).getReplyNo() %></p> --%>
+                		<p style="text-align: right;"><%=replies.get(i).getReplyDate() %>
+                		
                 	</div>
-                </div>               
+                </div>  
+                <div id="here"></div>             
                 <%
                 	}
                 %>
                 <script type="text/javascript">
-            
-
+                function writeNow(){
+                	var str = "<div class=\"form-row\"><textarea name=\"qna_reply_content\" class=\"input\" placeholder=\"Add comment...\" required></textarea></div>";
+                	document.getElementById("here").innerHTML = str;
+                }
                 </script>
         </main>
         <footer>

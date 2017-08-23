@@ -38,6 +38,7 @@ margin: 0 auto;}
 	margin:0 auto;
 }
 .writeButton{
+	width:300px;
 	margin: 0 auto;
 	text-align:right;
 }
@@ -116,7 +117,10 @@ body{
   text-shadow: 0 0 2px rgba(152, 152, 152, 1);
 }
 
-.comment-form{  }
+.comment-form{
+width:700px;
+margin-left: 150px;	
+}
 .comment-form .comment-avatar{  }
 
 .comment-form .form{ margin-left: 100px; }
@@ -295,10 +299,16 @@ body{
   text-align: right;
   width: 15%;
 }
+
+.reply-font form{
+	/* text-align: right; */
+	float: right;
+	display: inline-block;
+}
 <!-- 게시판 조회 부분-->
 .board_content{
     max-width:1000px;
-    height:auto;
+    height:500px;
     overflow: hidden;
     margin-bottom: 30px;
     margin: 0 auto;
@@ -334,7 +344,8 @@ body{
 }
 .board_content .board_buttons{
     margin: 0 auto;
-    width: 100px;
+    width: 1000px;
+    height: auto;
     float: right;
 }
 .board_mod{
@@ -347,6 +358,7 @@ body{
 .writing{
     position: relative;
     max-width: 1000px;
+    height:auto;
     text-align: center;
     vertical-align: middle;
     margin: 0 auto;
@@ -382,7 +394,7 @@ body{
 
 .writing .board_content textarea{
     font-size: 18px;
-    background: url('../img/QNA.png');
+   /*  background: url('../img/QNA.png'); */
 }
 
 

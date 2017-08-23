@@ -14,4 +14,9 @@
 		insert into qna_replies
 		values(qna_reply_seq.nextval, #{postNo} , 4 , #{replyContent}, sysdate)
 	</insert>
+	
+	<delete id="delReply" parameterType="int">
+		delete qna_replies
+		where qna_reply_num=#{replyNo}
+	</delete>
 </mapper>
