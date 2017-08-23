@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="youngun.tis.mypage.dao.mapper.CommentMoreMapper">
-	<resultMap id="qnaMap" type="youngun.tis.mypage.domain.Comment">
+	<resultMap id="qnaMap" type="commnet">
 		<id property="qnaReplyNum" column="qna_reply_num" />
 		<result property="memberNum" column="mumber_num"/>
 		<result property="qnaReplyCont" column="qna_reply_content"/>
 	</resultMap>
 	
 	
-	<select id="getQnaReply" parameterType="String" resultMap="qnaMap">
+	<select id="selectComment" parameterType="String" resultMap="qnaMap">
 		select qna_reply_num qnaReplyNum, mumber_num memberNum, qna_reply_content qnaReplyCont
 		from qna_replies
 		where mumber_num = #{memberNum}
