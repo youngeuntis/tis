@@ -406,7 +406,8 @@
 					<button onclick="location.replace('01TravelMain.jsp')" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
 			<%
 				}else if(wish!=null&&wish.equals("true")){
-					service.addWish(blog.getBlogNum());
+					Wish wishClass = new Wish(blog, dto);
+					service.addWish(wishClass);
 			%>
 				<h2>즐겨찾기 추가되었습니다.</h2>
 				<button onclick="location.replace('01TravelMain.jsp')" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
@@ -416,8 +417,7 @@
 				<h2>즐겨찾기 삭제되었습니다.</h2>
 				<button onclick="location.replace('01TravelMain.jsp')" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
 			<%
-				int memberNum = 2;
-				Wish delwish = service.configureWish(memberNum, blog.getBlogNum());
+				Wish delwish = service.configureWish(dto.getMemberNum(), blog.getBlogNum());
 	  			service.deleteWish(delwish);
 				}
 			%>

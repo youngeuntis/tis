@@ -52,8 +52,8 @@ public class BlogDaoImpl implements BlogDao{
 		return blogMapper.deleteBlog(blog);
 	}
 	@Override
-	public int insertWish(int blogNum) {
-		return blogMapper.insertWish(blogNum);
+	public int insertWish(Wish wish) {
+		return blogMapper.insertWish(wish);
 	}
 	@Override
 	public List<Wish> selectWish(int memberNum) {
