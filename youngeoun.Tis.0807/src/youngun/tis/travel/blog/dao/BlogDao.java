@@ -14,7 +14,7 @@ public interface BlogDao {
 	public int updateInfo(Blog blog);
 	public int updateHits(Blog blog);
 	public int deleteBlog(Blog blog);
-	public int insertWish(int blogNum);
+	public int insertWish(Wish wish);
 	public List<Wish> selectWish(int memberNum);
 	public int deleteWish(Wish wish);
 }

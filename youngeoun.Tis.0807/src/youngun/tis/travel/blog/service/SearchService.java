@@ -61,8 +61,8 @@ public class SearchService {
 		blogDao.deleteBlog(blog);
 	}
 	
-	public void addWish(int blogNum){
-		blogDao.insertWish(blogNum);
+	public void addWish(Wish wish){
+		blogDao.insertWish(wish);
 	}
 	
 	public Wish configureWish(int memberNum, int blogNum){

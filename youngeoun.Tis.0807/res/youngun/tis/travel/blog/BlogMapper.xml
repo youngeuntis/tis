@@ -27,12 +27,6 @@
 	order by info_num
 	</select>
 	
-	<!-- <select id="getBlogList" parameterType="string" resultType="Blog" >
-		select info_num blogNum, info_title blogTitle, info_img img, nation_code nationCode
-		from infomations
-		where nation_code like #{nationCode}
-		order by info_num
-	</select> -->
 	
 	<select id="getBlogListContinent" parameterType="string" resultType="Blog" >
 		select info_num blogNum, info_title blogTitle, info_img img, nation_code nationCode
@@ -53,8 +47,8 @@
 		delete from infomations where info_num=#{blogNum}
 	</delete>
 	
-	<insert id="insertWish" parameterType="int">
-		insert into info_wishlists values(wish_seq.nextval, #{blogNum}, 2)	
+	<insert id="insertWish" parameterType="youngun.tis.travel.blog.domain.Wish">
+		insert into info_wishlists values(wish_seq.nextval, #{infoNum}, #{memberNum})	
 	</insert>
 	
 	<select id="selectWish" parameterType="int" resultType="youngun.tis.travel.blog.domain.Wish">

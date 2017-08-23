@@ -514,8 +514,7 @@
                 </div>
                 
           <%
-          		int memberNum = 2;
-          		if(service.configureWish(memberNum, Integer.parseInt(blogNum))==null){
+          		if(service.configureWish(dto.getMemberNum(), Integer.parseInt(blogNum))==null){
           %>
           		<button onclick="addWish()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">즐겨찾기 추가♥</button>
    		  <% 
