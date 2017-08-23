@@ -20,10 +20,9 @@ public class UserDaoImpl implements UserDao {
 	//아이디 중복 확인
 	@Override
 	public User selectUserId(String userId) {
-		System.out.println("dao" + userId);
+		//System.out.println("daoimplid : " + userId);
 		return userMapper.selectUserId(userId);
 	}
-	
 	
 	//회원가입
 	@Override
@@ -31,7 +30,30 @@ public class UserDaoImpl implements UserDao {
 		//System.out.println("dao" + user);
 		return userMapper.insertUser(user);
 	}
+	
+	//회원 마지막 번호 찾기
+	@Override
+	public User selectUserNum() {
+//		User aa = userMapper.selectUserNum();
+//		System.out.println("daoimpl aa = "+aa);
+//		return aa;
+		return userMapper.selectUserNum();
+	}
 
+	//작성글 개수 공간
+	@Override
+	public void createWriteSpace(int userNum) {
+		//System.out.println("WriteSpace : "+userNum);
+		userMapper.createWriteSpace(userNum);
+	}
+	
+	//댓글 개수 공간
+	@Override
+	public void createReplSpace(int userNum) {
+		userMapper.createReplSpace(userNum);
+	}
+	
+	
 	@Override
 	public boolean updateUser(String userId) {
 		return false;
@@ -41,5 +63,8 @@ public class UserDaoImpl implements UserDao {
 	public boolean deleteUser(String userId) {
 		return false;
 	}
+
+
+
 
 }

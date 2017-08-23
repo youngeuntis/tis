@@ -8,4 +8,7 @@ public interface UserDao {
 	int insertUser(User user); //회원가입
 	boolean updateUser(String userId);
 	boolean deleteUser(String userId);
+	User selectUserNum();
+	void createWriteSpace(int userNum);
+	void createReplSpace(int userNum);
 }
