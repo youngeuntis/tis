@@ -7,6 +7,7 @@ import youngun.tis.user.management.domain.User;
 public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	private int check;
+	private int userNum;
 	
 	private boolean flag = false; //성공여부
 	
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
 			vo = new User();
 			vo.setFlag(false);
 		}else{
-				vo.setFlag(true);
+			vo.setFlag(true);
 		}
 		return vo.isFlag();
 	}
@@ -40,20 +41,39 @@ public class UserServiceImpl implements UserService {
 	//회원 가입
 	@Override
 	public boolean saveUser(User user) {
-		System.out.println("serviceuser" + user);
+		System.out.println("serviceuser : " + user);
 		
 		check = userDao.insertUser(user);
 		
-		System.out.println("service" + check);
+		System.out.println("service : " + check);
 		
 		if(check!=1){
 			flag=false;
 		}else{
+			userNum = findUserNum().getMemberNum();
+			writeUser(userNum);
+			replUser(userNum);
 			flag=true;
 		}
 		return flag;
 	}
-
+	
+	//마지막 유저번호 찾기
+	public User findUserNum(){
+		return userDao.selectUserNum();
+		
+	}
+	
+	//글작성 개수 공간생성
+	public void writeUser(int userNum){
+		userDao.createWriteSpace(userNum);
+	}
+	
+	//댓글 개수 공간생성
+	public void replUser(int userNum){
+		userDao.createReplSpace(userNum);
+	}
+	
 	@Override
 	public boolean modifyUser(String userId) {
 		// TODO Auto-generated method stub
