@@ -723,6 +723,7 @@ main{
     width: 100%;
     overflow: hidden;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .wishlist_list{

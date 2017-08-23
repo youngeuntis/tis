@@ -1,11 +1,19 @@
 package youngun.tis.travel.blog.domain;
 
+import youngun.tis.user.login.domain.Login;
+
 public class Wish {
 	private int wishNum;
 	private int infoNum;
 	private int memberNum;
 	
+	
+	
 	public Wish(){}
+	public Wish(Blog blog,Login login){
+		this.infoNum = blog.getBlogNum();
+		this.memberNum = login.getMemberNum(); 
+	}
 
 	public int getWishNum() {
 		return wishNum;
@@ -30,6 +38,8 @@ public class Wish {
 	public void setMemberNum(int memberNum) {
 		this.memberNum = memberNum;
 	}
+
+
 	
 	
 }

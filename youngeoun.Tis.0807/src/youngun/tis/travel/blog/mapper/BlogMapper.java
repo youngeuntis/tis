@@ -14,7 +14,7 @@ public interface BlogMapper {
 	public int updateInfo(Blog blog);
 	public int updateHits(Blog blog);
 	public int deleteBlog(Blog blog);
-	public int insertWish(int blogNum);
+	public int insertWish(Wish wish);
 	public List<Wish> selectWish(int memNum);
 	public int deleteWish(Wish wish);
 }
