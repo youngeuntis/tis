@@ -39,7 +39,7 @@
 	
 	<!-- 댓글 개수  -->
 	<insert id="createReplSpace" parameterType="int">
-		insert into writecount
+		insert into replcount
 		values(#{userNum}, 0)
 	</insert>
 	
