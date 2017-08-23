@@ -400,10 +400,10 @@
 				<!-- 찜 목록 -->
 				<%
 					/* wishlist 가져오기 */
-					/* 
+					
 					int memberNum = dto.getMemberNum();
-					 */
-					int memberNum = 66;
+					
+					/* int memberNum = 66; */
 					WishlistService wishService = new WishlistServiceImpl();
 					List<Wishlist> wishlist = wishService.findWishlist(memberNum);
 					
@@ -423,12 +423,12 @@
 							<% for(int i=0;i<3;i++){ %>
 							<div class="wishlist_list">
 								<div class="wishlist_img">
-									<a href="#"> <!--진우 글보기 루트?글번호=<%-- <%=wishlist.get(i).getInfoNum%> --%> -->
+									<a href="../travel/03SelectContent.jsp?blognum=<%=wishlist.get(i).getWishInfoNum()%>"> <!--진우 글보기 루트?글번호=<%-- <%=wishlist.get(i).getInfoNum%> --%> -->
 										<img src="<%=wishlist.get(i).getWishImg()%>" alt="찜목록">
 									</a>
 								</div>
 								<div class="wishlist_name">
-									<a href="">
+									<a href="../travel/03SelectContent.jsp?blognum=<%=wishlist.get(i).getWishInfoNum()%>">
 										<p><%=wishlist.get(i).getWishTitle() %></p>
 									</a>
 								</div>

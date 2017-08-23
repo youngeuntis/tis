@@ -1,10 +1,12 @@
 
+<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@page import="youngun.tis.mypage.domain.Wishlist"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.mypage.service.WishlistServiceImpl"%>
 <%@page import="youngun.tis.mypage.service.WishlistService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -342,10 +344,10 @@
 		
 		<%
 			/* wishlist 가져오기 */
-			/* 
+			
 			int memberNum = dto.getMemberNum();
-			 */
-			int memberNum = 66;
+			
+			/* int memberNum = 66; */
 			WishlistService wishService = new WishlistServiceImpl();
 			List<Wishlist> wishlist = wishService.findWishlist(memberNum);		
 		%>
@@ -362,13 +364,13 @@
 				<% for(int i=0; i<wishlist.size(); i++){ %>
 					<div class="wishlist">
 						<div class="wishlistImg">
-							<a href="#"> <img src="<%=wishlist.get(i).getWishImg() %>"
-								alt=" 찜 목록" />
+							<a href="../travel/03SelectContent.jsp?blognum=<%=wishlist.get(i).getWishInfoNum() %>"> 
+							<img src="<%=wishlist.get(i).getWishImg() %>" alt=" 찜 목록" />
 							</a>
 						</div>
 
 						<div class="wishlistName">
-							<a href="#">
+							<a href="../travel/03SelectContent.jsp?blognum=<%=wishlist.get(i).getWishInfoNum() %>">
 								<p><%=wishlist.get(i).getWishTitle() %></p>
 							</a>
 						</div>
@@ -377,7 +379,7 @@
 				
 				</div>
 				
-				<div class="prev-next">
+				<!-- <div class="prev-next">
 
 					<table summary="페이지 네비게이션" class="Nnavi" align="center">
 						<tbody>
@@ -387,7 +389,7 @@
 							</tr>
 						</tbody>
 					</table>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
