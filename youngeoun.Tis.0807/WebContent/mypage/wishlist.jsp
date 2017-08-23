@@ -361,7 +361,10 @@
 
 				<div class="listcontainer">
 				
-				<% for(int i=0; i<wishlist.size(); i++){ %>
+				<% 
+					if(wishlist.size() != 0){
+						for(int i=0; i<wishlist.size(); i++){ 
+				%>
 					<div class="wishlist">
 						<div class="wishlistImg">
 							<a href="../travel/03SelectContent.jsp?blognum=<%=wishlist.get(i).getWishInfoNum() %>"> 
@@ -375,7 +378,10 @@
 							</a>
 						</div>
 					</div>
-				<%} %>
+				<%
+						}
+					}
+				%>
 				
 				</div>
 				

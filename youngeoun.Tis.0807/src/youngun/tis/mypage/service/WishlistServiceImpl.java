@@ -15,6 +15,7 @@ public class WishlistServiceImpl implements WishlistService {
 
 	@Override
 	public List<Wishlist> findWishlist(int memberNum) {
+		
 		return wishlistDao.selectWishlist(memberNum);	
 	}
 }

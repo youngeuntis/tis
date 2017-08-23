@@ -4,13 +4,13 @@
 <mapper namespace="youngun.tis.mypage.dao.mapper.CommentMoreMapper">
 	<resultMap id="qnaMap" type="commnet">
 		<id property="qnaReplyNum" column="qna_reply_num" />
-		<result property="memberNum" column="mumber_num"/>
+		<result property="memberNum" column="member_num"/>
 		<result property="qnaReplyCont" column="qna_reply_content"/>
 	</resultMap>
 	
 	
 	<select id="selectComment" parameterType="String" resultMap="qnaMap">
-		select qna_reply_num qnaReplyNum, mumber_num memberNum, qna_reply_content qnaReplyCont
+		select qna_reply_num qnaReplyNum, member_num memberNum, qna_reply_content qnaReplyCont
 		from qna_replies
 		where mumber_num = #{memberNum}
 	</select>
