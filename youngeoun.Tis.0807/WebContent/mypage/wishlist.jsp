@@ -345,7 +345,7 @@
 			/* 
 			int memberNum = dto.getMemberNum();
 			 */
-			int memberNum = 2;
+			int memberNum = 66;
 			WishlistService wishService = new WishlistServiceImpl();
 			List<Wishlist> wishlist = wishService.findWishlist(memberNum);		
 		%>
