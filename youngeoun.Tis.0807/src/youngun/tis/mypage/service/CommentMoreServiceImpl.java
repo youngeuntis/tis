@@ -13,7 +13,12 @@ public class CommentMoreServiceImpl implements CommentMoreService {
 		this.commentMoreDao = new CommentMoreDaoImpl();
 	}
 
-	@Override
+	@Override //rev댓글
+	public List<Comment> findRevCommentMore(int memberNum) {
+		return commentMoreDao.selectRevCommnet(memberNum);
+	}
+
+	@Override //qna댓글
 	public List<Comment> findCommentMore(int memberNum) {
 		return commentMoreDao.selectComment(memberNum);
 	}

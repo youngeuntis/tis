@@ -345,10 +345,10 @@
 		<%
 		
 			int memberNum = dto.getMemberNum();
-		
+					
 			CommentMoreService commentMoreService = new CommentMoreServiceImpl();
 			List<Comment> commentReply = commentMoreService.findCommentMore(memberNum);
-		
+			List<Comment> commentRevReply = commentMoreService.findRevCommentMore(memberNum);
 		%>
 		<main>
 		<div id="container">
@@ -358,6 +358,7 @@
 					<p class="contxt">회원님의 댓글을 전부 보여드립니다.</p>
 				</div>
 				
+				<!--qna 댓글  -->
 				<div class="table">
 					<table class="board">
 						<tr>
@@ -365,12 +366,18 @@
 							<th class="boardTexts">댓글 내용</th>
 						</tr>
 						
-						<%for(int i=0; i<commentReply.size(); i++){ %>
+						<%
+							if(commentReply.size() != 0){
+								for(int i=0; i<commentReply.size(); i++){ %>
 						<tr>
 							<td class="boardNum"><%=commentReply.get(i).getQnaReplyNum() %></td>
 							<td class="boardText"><%=commentReply.get(i).getQnaReplyCont() %></td>
 						</tr>
-						<%} %>
+						<%
+							}
+						}else{%>
+							<h2> 댓글이 없습니다.</h2>
+						<%}%>
 
 					</table>
 
@@ -387,6 +394,45 @@
 					</div>
 
 				</div>
+				
+				<!--rev 댓글  -->
+				<div class="table">
+					<table class="board">
+						<tr>
+							<th class="boardNums">번호</th>
+							<th class="boardTexts">댓글 내용</th>
+						</tr>
+						
+						<%
+							if(commentRevReply.size() != 0){
+								for(int i=0; i<commentRevReply.size(); i++){ %>
+						<tr>
+							<td class="boardNum"><%=commentRevReply.get(i).getRevReplyNum() %></td>
+							<td class="boardText"><%=commentRevReply.get(i).getRevReplyCont() %></td>
+						</tr>
+						<%
+							}
+						}else{%>
+							<h2> 댓글이 없습니다.</h2>
+						<%}%>
+
+					</table>
+
+					<div class="prev-next">
+
+						<table summary="페이지 네비게이션" class="Nnavi" align="center">
+							<tbody>
+								<tr>
+									<td class="on"><a href="#" class="m-tcol-p">1</a></td>
+									<td><a href="#" class="m-tcol-c">2</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				
+				
 			</div>
 		</div>
 		</main>

@@ -13,7 +13,12 @@ public class CommentMoreDaoImpl implements CommentMoreDao {
 		this.commentMoreMapper = Configuration.getMapper(CommentMoreMapper.class);
 	}
 
-	@Override
+	@Override	//rev댓글
+	public List<Comment> selectRevCommnet(int memberNum) {
+		return commentMoreMapper.selectRevCommnet(memberNum);
+	}
+
+	@Override	//qna댓글
 	public List<Comment> selectComment(int memberNum) {
 		return commentMoreMapper.selectComment(memberNum);
 	}
