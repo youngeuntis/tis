@@ -18,11 +18,25 @@
 		from members
 		where user_id = #{userId}
 	</select>
-	
+<!-- 	
 	<update id="updateUserUntilVisit">
 		update members 
 		set until_visit = sysdate
   		where user_id = #{userId}
 	</update>
+ -->	
+	
+	<!-- 접속회수 최근접속일 -->	
+	<update id="updateUserUntilVisit">
+		update members 
+		set until_visit = sysdate,
+		    visitcount = (SELECT visitcount FROM members where user_id = #{userId})+1
+		<![CDATA[
+		where until_visit<=(
+		select until_visit
+		from members
+		where until_visit <= sysdate-0.5 and user_id = #{userId}) and user_id = #{userId}
+		]]>
+	</update>	
 		
 </mapper>
