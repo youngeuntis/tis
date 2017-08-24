@@ -13,7 +13,6 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
-
 <html>
 
 <head>

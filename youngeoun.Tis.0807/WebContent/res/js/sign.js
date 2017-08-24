@@ -104,7 +104,7 @@ function sendIt() {
     for (i = 0; i < document.sign.userNickname.value.length; i++) {
         ch = document.sign.userNickname.value.charAt(i);
         if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {
-            alert("아이디는 대소문자, 숫자만 입력가능합니다.");
+            alert("닉네임는 대소문자, 숫자만 입력가능합니다.");
             document.sign.userNickname.focus();
             document.sign.userNickname.select();
             return;

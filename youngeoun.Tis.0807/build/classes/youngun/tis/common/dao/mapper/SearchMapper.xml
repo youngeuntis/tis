@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="youngun.tis.common.dao.mapper.SearchMapper">
+	
+	<!-- 글찾기 -->
+	<resultMap id="selectContentMap" type="search">
+		<result property="writingNum" column="info_num"/>
+		<result property="searchContent" column="info_content"/>
+		<result property="repDate" column="info_date"/>
+	</resultMap>
+	
+	<select id="selectContent" parameterType="string" resultMap="selectContentMap">
+		select info_num writingNum, info_content searchContent, info_date repDate
+		from infomations
+		where info_content like '%' || #{content} || '%' or info_title like '%' || #{content} || '%'
+	</select>	
+		
+</mapper>

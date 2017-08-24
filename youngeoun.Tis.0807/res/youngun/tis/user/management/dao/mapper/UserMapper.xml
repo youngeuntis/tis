@@ -16,8 +16,8 @@
 	
 	<!-- 회원가입  -->
 	<insert id="insertUser" parameterType="user">
-		insert into members(member_num, user_name, user_id, pw, birth, phone_num, email, nickname, gender, join_date)
-		values(mem_num_seq.nextval, #{userName}, #{userId}, #{password}, #{birth}, #{phoneNum}, #{email}, #{nickName}, #{gender}, sysdate)
+		insert into members(member_num, user_name, user_id, pw, birth, phone_num, email, nickname, gender, join_date, UNTIL_VISIT)
+		values(mem_num_seq.nextval, #{userName}, #{userId}, #{password}, #{birth}, #{phoneNum}, #{email}, #{nickName}, #{gender}, sysdate, (sysdate-1))
 	</insert>
 	
 	<!-- 마지막번호찾기 -->

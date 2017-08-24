@@ -9,6 +9,9 @@
 	<typeAliases>
 		<typeAlias alias="login" type="youngun.tis.user.login.domain.Login" />
 		<typeAlias alias="user" type="youngun.tis.user.management.domain.User" />
+		<typeAlias alias="search" type="youngun.tis.common.domain.Search" />
+		
+		
 		<typeAlias alias="Auser" type="youngun.tis.user.admin.domain.User" />
 		
 		
@@ -56,6 +59,7 @@
 		<!-- 준식 -->		
 		<mapper resource="youngun/tis/user/login/dao/mapper/LoginMapper.xml" />
 		<mapper resource="youngun/tis/user/management/dao/mapper/UserMapper.xml" />
+		<mapper resource="youngun/tis/common/dao/mapper/SearchMapper.xml" />
 		
 		<!-- 영근 -->
 		<mapper resource="youngun/tis/user/admin/dao/mapper/UserMapper.xml" />

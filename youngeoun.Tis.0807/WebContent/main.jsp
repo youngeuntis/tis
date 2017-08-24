@@ -301,9 +301,9 @@
 
 					<!-- main_search -->
 					<div class="right_nav_search">
-						<form method="get">
+						<form method="get" action="common/search.jsp">
 							<div>
-								<input id="nav_search" type="search" name="search_keyword"
+								<input id="nav_search" type="search" name="keyWord"
 									placeholder="여행지를 검색" maxlength="255">
 							</div>
 							<div>

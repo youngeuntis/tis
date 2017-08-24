@@ -354,9 +354,7 @@ postMapper.updateCnt(postNo);
                 	String delCheck = "";
 					delCheck = request.getParameter("checkDelete");
 								                	
-					  
-					
-					
+
                 	Reply reply = null;
 					if(replyContent != null) {
                 	reply = new Reply();
@@ -386,12 +384,23 @@ postMapper.updateCnt(postNo);
 										<i class="fa fa-times" aria-hidden="true"></i>
 										<input type="hidden" name="qna_num" value="<%=postNo%>">
 										<input type="hidden" name="qna_reply_num" value=<%=replies.get(i).getReplyNo()%>>
+<<<<<<< HEAD
 										<input type="hidden" name="checkDelete" value="yes">
 									</button>
 								</form>	
 									<button onclick="writeNow();">
 										<i class="fa fa-pencil" aria-hidden="true"></i>
 									</button>							
+=======
+										<input type="hidden" name="checkDelete" value="delete">
+									</button>
+								</form>	
+									<button onclick="writeNow();">
+										<i class="fa fa-pencil" aria-hidden="true"></i>
+										<input type="hidden" name="checkDelete" value="modify">
+									</button>	
+									<%String check =request.getParameter("checkDelete"); %>						
+>>>>>>> branch 'master' of https://github.com/youngeuntis/tis
 						 </div>	 
           				<p><%=replies.get(i).getReplyContent() %></p>
                 		<%-- <p><%=replies.get(i).getReplyNo() %></p> --%>
@@ -402,6 +411,7 @@ postMapper.updateCnt(postNo);
                 <%
                 	}
                 %>
+<<<<<<< HEAD
                 <script type="text/javascript">
                 function writeNow(){
                 	var str = '<div class="upReply"> \
@@ -411,6 +421,8 @@ postMapper.updateCnt(postNo);
                 	document.getElementById("here").innerHTML = str;
                 }
                 </script>
+=======
+>>>>>>> branch 'master' of https://github.com/youngeuntis/tis
         </main>
         <footer>
             <div class="footer_nav">
@@ -441,6 +453,21 @@ postMapper.updateCnt(postNo);
     <!--main_login-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/js/index.js"></script>
+		    <script language='javascript'>
+		
+		function noEvent() {
+		if (event.keyCode == 116) {
+		event.keyCode= 2;
+		return false;
+		}
+		else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82))
+		{
+		return false;
+		}
+		}
+		document.onkeydown = noEvent;
+		
+		</script>
 
 </body>
 </html>
