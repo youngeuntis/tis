@@ -39,11 +39,12 @@ public class SearchService {
   		}
 		return selectBlog;
 	}
-	public void writeBlog(Blog blog,String title, String content,String continent, String country,Matcher m){
+	public void writeBlog(Blog blog,String title, String content,String continent, String country,Matcher m, int memberNum){
 		blog.setContinentCode(continent);
 		blog.setNationCode(country);
 		blog.setBlogTitle(title);
 		blog.setBlogContent(content);
+		blog.setMemberNum(memberNum);
 		String strImg = "";
 		int repeat =0;
 		while(m.find()){
@@ -61,8 +62,8 @@ public class SearchService {
 		blogDao.deleteBlog(blog);
 	}
 	
-	public void addWish(int blogNum){
-		blogDao.insertWish(blogNum);
+	public void addWish(Wish wish){
+		blogDao.insertWish(wish);
 	}
 	
 	public Wish configureWish(int memberNum, int blogNum){

@@ -2,14 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="youngun.tis.travel.blog.mapper.BlogMapper">
-	<insert id="insertBlog" parameterType="Blog">
-		insert into travelInfors
-		values(blog_seq.nextval,#{blogTitle},#{blogContent})
-	</insert>
-	
 	<insert id="insertInfo" parameterType="Blog">
 	insert into infomations values(
-	trainfo_seq.nextVal,2,#{continentCode},#{nationCode},null,#{blogTitle},#{blogContent},sysdate,#{img},null,0)
+	trainfo_seq.nextVal,#{memberNum},#{continentCode},#{nationCode},null,#{blogTitle},#{blogContent},sysdate,#{img},null,0)
 	</insert>
 	
 	<select id="getBlogList" parameterType="string" resultType="Blog">
@@ -27,12 +22,6 @@
 	order by info_num
 	</select>
 	
-	<!-- <select id="getBlogList" parameterType="string" resultType="Blog" >
-		select info_num blogNum, info_title blogTitle, info_img img, nation_code nationCode
-		from infomations
-		where nation_code like #{nationCode}
-		order by info_num
-	</select> -->
 	
 	<select id="getBlogListContinent" parameterType="string" resultType="Blog" >
 		select info_num blogNum, info_title blogTitle, info_img img, nation_code nationCode
@@ -53,8 +42,8 @@
 		delete from infomations where info_num=#{blogNum}
 	</delete>
 	
-	<insert id="insertWish" parameterType="int">
-		insert into info_wishlists values(wish_seq.nextval, #{blogNum}, 2)	
+	<insert id="insertWish" parameterType="youngun.tis.travel.blog.domain.Wish">
+		insert into info_wishlists values(wish_seq.nextval, #{infoNum}, #{memberNum})	
 	</insert>
 	
 	<select id="selectWish" parameterType="int" resultType="youngun.tis.travel.blog.domain.Wish">

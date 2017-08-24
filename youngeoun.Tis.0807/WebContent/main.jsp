@@ -74,7 +74,7 @@
 									<div>
 										<h4>대한민국</h4>
 										<ul>
-											<li><a href="travel/01TravelMain.jsp">서울</a></li>
+											<li><a href="travel/05TravelAfter.jsp?continent=대한민국&nation=서울">서울</a></li>
 											<li><a href="travel/01TravelMain.jsp">경기</a></li>
 											<li><a href="travel/01TravelMain.jsp">제주</a></li>
 											<li><a href="travel/01TravelMain.jsp">부산</a></li>
