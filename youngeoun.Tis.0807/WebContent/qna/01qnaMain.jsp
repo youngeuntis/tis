@@ -351,7 +351,7 @@
              <col width="140" />
              <col width="110" />
         </colgroup>
-			<thead>
+			<thead style="background-color: #e0e0eb;">
 				<tr style= "height:50px;">
 					<th style="width:50px">번호</th>
 					<th>제목</th>
@@ -363,11 +363,11 @@
 			<tbody>
 				<c:forEach var="post" items="${posts}">
 					<tr style= "height:50px;">
-						<td>${post.postNo}</td>
-						<td><a href="04view.jsp?qna_num=${post.postNo}">${post.title}</a></td>
-						<td>${post.writer}</td>
-						<td>${post.regDate}</td>
-						<td><span class="badge">${post.viewCnt}</span></td>
+						<td style= "color : black;">${post.postNo}</td>
+						<td style= "color : black;"><a href="04view.jsp?qna_num=${post.postNo}" style= "color : black;">${post.title}</a></td>
+						<td style= "color : black;">${post.writer}</td>
+						<td style= "color : black;">${post.regDate}</td>
+						<td style= "color : black;"><span class="badge">${post.viewCnt}</span></td>
 					</tr>
 				</c:forEach>
 			</tbody>

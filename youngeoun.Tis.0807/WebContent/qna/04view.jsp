@@ -353,18 +353,18 @@ postMapper.updateCnt(postNo);
                 	if(replyNum!=null) replyNo = Integer.parseInt(replyNum);
                 	String delCheck = "";
 					delCheck = request.getParameter("checkDelete");
+								                	
+					  
 					
-					Reply repp = (Reply)session.getAttribute("replyDB");                	
+					
                 	Reply reply = null;
-					if(repp==null && replyContent != null) {
+					if(replyContent != null) {
                 	reply = new Reply();
                 	reply.setReplyContent(replyContent);
                 	reply.setPostNo(postNo);
                 	reply.setReplyNo(replyNo);
                 	replyMapper.inputReply(reply);
-                	session.setAttribute("replyDB", reply);
-                	}else{
-                		reply = repp;
+                	session.setAttribute("replyDB", reply);	
                 	}
 					
                 	
@@ -378,37 +378,36 @@ postMapper.updateCnt(postNo);
                 <div class="comment-form">   
                 	<div class="comment-avatar">
 				      	<img src="http://lorempixel.com/200/200/people">
-				    </div>	
-                	<div class="abc">
-                	 <div class="reply-font">
-                	 		<form action="04view.jsp">
-								<button>
-									<i class="fa fa-times" aria-hidden="true"></i>
-									<input type="hidden" name="qna_num" value="<%=postNo%>">
-									<input type="hidden" name="qna_reply_num" value=<%=replies.get(i).getReplyNo()%>>
-									<input type="hidden" name="checkDelete" value="yes">
-								</button>
-							</form>
-							
-								<button onclick="writeNow();">
-									<i class="fa fa-pencil" aria-hidden="true"></i>
-								</button>
-								
-								
-					 </div>
+				    </div>	    
+                	<div class="abc">	
+	                	 <div class="reply-font">
+	                	 		<form action="04view.jsp">
+									<button>
+										<i class="fa fa-times" aria-hidden="true"></i>
+										<input type="hidden" name="qna_num" value="<%=postNo%>">
+										<input type="hidden" name="qna_reply_num" value=<%=replies.get(i).getReplyNo()%>>
+										<input type="hidden" name="checkDelete" value="yes">
+									</button>
+								</form>	
+									<button onclick="writeNow();">
+										<i class="fa fa-pencil" aria-hidden="true"></i>
+									</button>							
+						 </div>	 
           				<p><%=replies.get(i).getReplyContent() %></p>
                 		<%-- <p><%=replies.get(i).getReplyNo() %></p> --%>
                 		<p style="text-align: right;"><%=replies.get(i).getReplyDate() %>
-                		
-                	</div>
+                	</div>	
                 </div>  
-                <div id="here"></div>             
+                             
                 <%
                 	}
                 %>
                 <script type="text/javascript">
                 function writeNow(){
-                	var str = "<div class=\"form-row\"><textarea name=\"qna_reply_content\" class=\"input\" placeholder=\"Add comment...\" required></textarea></div>";
+                	var str = '<div class="upReply"> \
+                				<textarea> \
+                				</textarea> \
+                			   </div>';
                 	document.getElementById("here").innerHTML = str;
                 }
                 </script>
