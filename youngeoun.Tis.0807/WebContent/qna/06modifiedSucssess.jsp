@@ -339,6 +339,20 @@ session.setAttribute("qnaUpDB", post);
     <!--main_login-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/js/index.js"></script>
-
+		    <script language='javascript'>
+		
+		function noEvent() {
+		if (event.keyCode == 116) {
+		event.keyCode= 2;
+		return false;
+		}
+		else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82))
+		{
+		return false;
+		}
+		}
+		document.onkeydown = noEvent;
+		
+		</script>
 </body>
 </html>
