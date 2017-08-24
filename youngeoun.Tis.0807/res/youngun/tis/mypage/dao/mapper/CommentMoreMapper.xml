@@ -13,5 +13,7 @@
 		select qna_reply_num qnaReplyNum, member_num memberNum, qna_reply_content qnaReplyCont
 		from qna_replies
 		where member_num = #{memberNum}
+		order by qna_reply_num ASC
 	</select>
+
 </mapper>

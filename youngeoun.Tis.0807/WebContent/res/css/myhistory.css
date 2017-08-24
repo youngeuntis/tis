@@ -63,8 +63,9 @@ tr,th,td{
 }
 
 .board{
-    margin: 0 auto;
+    /* margin: 0 auto; */
     overflow: hidden;
+    width: 800px;
 }
 
 .prev-next {
@@ -75,7 +76,7 @@ tr,th,td{
 table.Nnavi {
     height: 13px;
     border-collapse: collapse;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 tbody {

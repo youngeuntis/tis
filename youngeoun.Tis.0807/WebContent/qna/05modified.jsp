@@ -343,14 +343,13 @@ String title = postMapper.getTitle(postNo);
 							style="width: 1000px; height: 50px; font-size:19px;"><%=title %></textarea>
 					</div>
 					<div class="board_content">
-						<textarea name="qna_content" style="width: 1000px; height: 500px;"
-							><%=content %></textarea>
+						<textarea name="qna_content" style="width: 1000px; height: 500px;"><%=content %></textarea>
 					</div>
-						<div class="writeButton" align="center">
-                        	<input type="radio" name="open_check" value="1" checked/>공개
+						<div class="board_button" style="float:right;">
+                        	<input type="radio" name="open_check" value="1" checked />공개
 							<input type="radio" name="open_check" value="0"/>비공개
-                            <button type="submit">수정</button>
-                            <input type="button" value="목록으로" onclick="move('01qnaMain.jsp');">
+                            <button type="submit" class="action-button shadow animate blue" style="padding: 10px 10px;">수정</button>
+                            <input type="button" value="목록으로" class="action-button shadow animate blue" style="padding: 10px 10px;" onclick="move('01qnaMain.jsp');">
                         </div>
 					</div>
 				</div>

@@ -341,12 +341,12 @@
 						</script>
                         <textarea name="qna_content" style="width:1000px; height: 650px;" placeholder="내용을 입력하세요."></textarea>
                         </div>
-                   		<div class="writeButton" align="center" style="margin-bottom:100px ;">
+                   		<div class="board_button" align="center" style="margin-top: 15px; float: right;">
                         	<!-- <input type="file" name="qna_img"> -->
                         	<input type="radio" name="open_check" value="1" checked/>공개
 							<input type="radio" name="open_check" value="0"/>비공개
-                            <button type="submit">등록</button>
-                            <input type="button" value="뒤로" onclick="move('01qnaMain.jsp');">
+                            <button type="submit" class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px;">등록</button>
+                            <input type="button" class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px;" value="뒤로" onclick="move('01qnaMain.jsp');">
                     	</div>
                     </div>
                 </form>

@@ -352,7 +352,7 @@
              <col width="110" />
         </colgroup>
 			<thead>
-				<tr>
+				<tr style= "height:50px;">
 					<th style="width:50px">번호</th>
 					<th>제목</th>
 					<th>작성자</th>
@@ -362,7 +362,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="post" items="${posts}">
-					<tr>
+					<tr style= "height:50px;">
 						<td>${post.postNo}</td>
 						<td><a href="04view.jsp?qna_num=${post.postNo}">${post.title}</a></td>
 						<td>${post.writer}</td>
@@ -390,11 +390,11 @@
 					<li><a href="01qnaMain?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
 				</c:if>
 			</ul>
-		</div>
-		<div class=boardButton style="float:right;">
-        	<input type=button value="글쓰기"  onclick="move('02insert.jsp');">
-			<input type=button value="내 글">
-			<input type=button value="내 댓글">
+			<div class=boardButton style="float:right;">
+        	<input class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px; margin-top: 15px;" type=button value="글쓰기"  onclick="move('02insert.jsp');">
+			<input class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px; margin-top: 15px;" type=button value="내 글">
+			<input class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px; margin-top: 15px;" type=button value="내 댓글">
+			</div>
 		</div>
 	</div>
         </main>
