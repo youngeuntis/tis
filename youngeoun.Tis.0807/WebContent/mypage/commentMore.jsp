@@ -1,3 +1,4 @@
+<%@page import="youngun.tis.mypage.domain.Page"%>
 <%@page import="youngun.tis.mypage.domain.Comment"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.mypage.service.CommentMoreServiceImpl"%>
@@ -349,6 +350,8 @@
 			CommentMoreService commentMoreService = new CommentMoreServiceImpl();
 			List<Comment> commentReply = commentMoreService.findCommentMore(memberNum);
 			List<Comment> commentRevReply = commentMoreService.findRevCommentMore(memberNum);
+			Page pageQnaRe = new Page(commentReply.size(),10);
+			Page pageRevRe = new Page(commentRevReply.size(),10);
 		%>
 		<main>
 		<div id="container">
@@ -367,8 +370,13 @@
 						</tr>
 						
 						<%
-							if(commentReply.size() != 0){
-								for(int i=0; i<commentReply.size(); i++){ %>
+						String pageIndex = request.getParameter("page");
+						if(pageIndex == null) pageIndex="1";
+						int pageIndexInt = Integer.parseInt(pageIndex);
+						int k = 0;
+						if(commentReply.size() != 0){
+							for(int i=pageQnaRe.getPageNum()*(pageIndexInt-1); i<pageIndexInt*pageQnaRe.getPageNum(); i++){ %>
+						
 						<tr>
 							<td class="boardNum"><%=commentReply.get(i).getQnaReplyNum() %></td>
 							<td class="boardText"><a href="../qna/09replySucssess.jsp?qna_reply_num=<%=commentReply.get(i).getQnaReplyNum() %>">
@@ -387,8 +395,14 @@
 						<table summary="페이지 네비게이션" class="Nnavi" align="center">
 							<tbody>
 								<tr>
-									<td class="on"><a href="#" class="m-tcol-p">1</a></td>
-									<td><a href="#" class="m-tcol-c">2</a></td>
+								<%
+									
+									for(int i=0; i<pageQnaRe.getPageCnt(); i++){
+								%>
+									<td class="on"><a href="commentMore.jsp?page=<%=i+1 %>" class="m-tcol-p"><%=i+1 %></a></td>
+								<%
+									}
+								%>
 								</tr>
 							</tbody>
 						</table>
@@ -430,8 +444,13 @@
 						<table summary="페이지 네비게이션" class="Nnavi" align="center">
 							<tbody>
 								<tr>
-									<td class="on"><a href="#" class="m-tcol-p">1</a></td>
-									<td><a href="#" class="m-tcol-c">2</a></td>
+								<%
+									for(int i=0; i<pageRevRe.getPageCnt(); i++){
+								%>
+									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+								<%
+									}
+								%>
 								</tr>
 							</tbody>
 						</table>
