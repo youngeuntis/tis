@@ -8,7 +8,10 @@ public class Search {
 	private int writingNum;  //글번호
 	private String searchContent; //검색 내용
 	private String repDate;    //작성일
+	private String title;      //글제목
 	
+
+
 	public Search() {
 	}
 	
@@ -35,6 +38,13 @@ public class Search {
 	}
 	public void setRepDate(Date repDate) {
 		this.repDate = sdf.format(repDate);
+	}
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	@Override

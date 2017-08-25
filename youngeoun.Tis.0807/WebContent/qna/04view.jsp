@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="youngun.tis.qna.domain.Reply"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.qna.dao.mapper.ReplyMapper"%>
@@ -353,24 +354,41 @@ postMapper.updateCnt(postNo);
                 	if(replyNum!=null) replyNo = Integer.parseInt(replyNum);
                 	String delCheck = "";
 					delCheck = request.getParameter("checkDelete");
-								                	
-
+					     	
+					List<Reply> oldReplies = (List<Reply>)session.getAttribute("replies");
+					Reply oldRep = (Reply)session.getAttribute("reply");
                 	Reply reply = null;
+                	String changeable = request.getParameter("index");
+                	out.print(changeable);
 					if(replyContent != null) {
-                	reply = new Reply();
-                	reply.setReplyContent(replyContent);
-                	reply.setPostNo(postNo);
-                	reply.setReplyNo(replyNo);
-                	replyMapper.inputReply(reply);
-                	session.setAttribute("replyDB", reply);	
-                	}
+							reply = new Reply();
+							reply.setReplyContent(replyContent);
+		                	reply.setPostNo(postNo);
+		                	reply.setReplyNo(replyNo);
+		                	session.setAttribute("reply", reply);
+		                	if((oldRep==null||!oldRep.getReplyContent().equals(replyContent))&&changeable==null)
+		             		   	replyMapper.inputReply(reply);
+		            }
 					
+					if(changeable!=null){
+						for(int i=0; i<oldReplies.size(); i++){
+							String stri = i+"";
+							if(stri.equals(changeable)){
+								reply = new Reply();
+								reply.setReplyContent(replyContent);
+			                	reply.setPostNo(postNo);
+			                	reply.setReplyNo(replyNo);
+								replyMapper.updateReply(reply);
+							}
+						}
+					}
                 	
                 	if(delCheck != null && replyNo != 0){
                 		replyMapper.delReply(replyNo);
                 	}
                 	
                    	List<Reply> replies = replyMapper.selectReplies(postNo);
+                   	session.setAttribute("replies", replies);
                 	for(int i=0; i<replies.size(); i++){
                 %>
                 <div class="comment-form">   
@@ -386,15 +404,16 @@ postMapper.updateCnt(postNo);
 										<input type="hidden" name="qna_reply_num" value=<%=replies.get(i).getReplyNo()%>>
 										<input type="hidden" name="checkDelete" value="yes">
 									</button>
+									
 								</form>	
-									<button onclick="writeNow();">
+									<button onclick="writeNow<%=i%>();">
 										<i class="fa fa-pencil" aria-hidden="true"></i>
 									</button>							
 
 										<input type="hidden" name="checkDelete" value="delete">
 									</button>
 						 </div>	 
-          				<p><%=replies.get(i).getReplyContent() %></p>
+          				<div id="con<%=i%>"><%=replies.get(i).getReplyContent() %></div>
                 		<%-- <p><%=replies.get(i).getReplyNo() %></p> --%>
                 		<p style="text-align: right;"><%=replies.get(i).getReplyDate() %>
                 	</div>	
@@ -404,14 +423,17 @@ postMapper.updateCnt(postNo);
                 	}
                 %>
                 <script type="text/javascript">
-                function writeNow(){
-                	var str = '<div class="upReply"> \
-                				<textarea> \
-                				</textarea> \
-                			   </div>';
-                	document.getElementById("here").innerHTML = str;
+                <% 
+                for(int i=0; i<replies.size(); i++){
+                %>
+	                function writeNow<%=i%>(){
+	                	document.getElementById("con<%=i%>").innerHTML = "<form action=04view.jsp><textarea name=qna_reply_content cols=60 rows=5><%=replies.get(i).getReplyContent()%></textarea><input type=submit><input type=hidden name=qna_num value=<%=postNo%>><input type=hidden name=index value=<%=i%>><input type=hidden name=qna_reply_num value=<%=replies.get(i).getReplyNo()%>></form>";
+	                }
+	            <%
                 }
+                %>
                 </script>
+                
         </main>
         <footer>
             <div class="footer_nav">

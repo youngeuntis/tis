@@ -12,10 +12,8 @@
 	
 	SearchService searchService = new SearchServiceImpl();
 	List<Search> contentlist = searchService.findAllContent(keyWord);
-	
+	List<Search> newContentList = searchService.findNewContent(keyWord);
 %>
-
-
 <!doctype html>
 <html>
 <head>
@@ -26,8 +24,8 @@
 			인도네시아, 프랑스, 스페인, 이탈리아, 영국">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Design Your TRip</title>
-    <link rel="stylesheet" href="../res/css/mypage.css">
-	<link rel="stylesheet" href="../res/css/myhistory.css">
+    <link rel="stylesheet" href="../res/css/styleMain.css">
+	<link rel="stylesheet" href="../res/css/search.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
@@ -75,15 +73,31 @@
 					</div>	
 					<hr>
 					<table class="board">
+					<%if(newContentList.size() != 0){ %>
 						<tr>
 							<th class="boardNums">번호</th>
-							<th class="boardTexts">내용</th>
+							<th class="boardTexts">글제목</th>
+							<th class="boardregs">작성 날짜</th>
 						</tr>
-						
+							<%for(int i=0;i<newContentList.size();i++){ %>
 						<tr>
-							<td class="boardNum"></td>
-							<td class="boardText"></td>
+							<td class="boardNum"><%=newContentList.get(i).getWritingNum() %></td>
+							<td class="boardText">
+							<a href="../travel/03SelectContent.jsp?blognum=<%=newContentList.get(i).getWritingNum()%>">
+								<%=newContentList.get(i).getTitle() %>
+							</a></td>
+							<td class="boardreg"><%=newContentList.get(i).getRepDate() %></td>
 						</tr>
+						<%	
+							}
+					}else{
+					%>
+						<tr>
+							<td class="boardText">검색내용이 없습니다.</td>
+						</tr>
+					<%						
+					}
+					%>
 					</table>
 					<br><br>
 					
@@ -93,21 +107,31 @@
 					</div>
 					
 					<hr>
+					
 					<table class="board">
-						
+					<%if(contentlist.size() != 0){ %>
 						<tr>
 							<th class="boardNums">번호</th>
-							<th class="boardTexts">내용</th>
+							<th class="boardTexts">글제목</th>
+							<th class="boardregs">작성 날짜</th>
 						</tr>
-						
-						<%for(int i=0;i<contentlist.size();i++){ %>
+							<%for(int i=0;i<contentlist.size();i++){ %>
 						<tr>
 							<td class="boardNum"><%=contentlist.get(i).getWritingNum() %></td>
-							<td class="boardText"><%=contentlist.get(i).getSearchContent() %></td>
+							<td class="boardText"><a href="../travel/03SelectContent.jsp?blognum=<%=contentlist.get(i).getWritingNum()%>"><%=contentlist.get(i).getTitle() %></a></td>
+							<td class="boardreg"><%=contentlist.get(i).getRepDate() %></td>
 						</tr>
-						<%} %>
+						<%	
+							}
+					}else{
+					%>
+						<tr>
+							<td class="boardText">검색내용이 없습니다.</td>
+						</tr>
+					<%						
+					}
+					%>
 					</table>					
-
 				</div>
 			</div>
 		</div>   
