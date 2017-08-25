@@ -292,7 +292,8 @@
 
 
         <div class="slideshow-container">
-
+			<h1 style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);                                                                   
+     font-size:5rem;  color: white;  z-index: 2; text-align: center;">여행후기</h1>
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
@@ -332,7 +333,7 @@
 					<script>
 	                    function deleteReview(){
 	                        var answer = confirm("삭제하시겠습니까? 확인을 누르시면 글이 삭제 됩니다.")
-	                        if(answer) location.replace("02reviewMain.jsp");
+	                        if(answer) location.replace("reviewMain.jsp");
 	                    }
             		</script>
             </table>
@@ -341,12 +342,12 @@
 					<script>
 	                    function changeReview(){
 	                        var answer = confirm("수정하시겠습니까? 확인을 누르시면 수정 페이지로 이동합니다.")
-	                        if(answer) location.replace("04reviewModify.jsp");
+	                        if(answer) location.replace("reviewModify.jsp");
 	                    }
             		</script>
             </table>
             <table class="type15">
-            	<th><a href="02reviewMain.jsp"/>목록으로</th>
+            	<th><a href="reviewMain.jsp"/>목록으로</th>
 			</table>
 			
 			
