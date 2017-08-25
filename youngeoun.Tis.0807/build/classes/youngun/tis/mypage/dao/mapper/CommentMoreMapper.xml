@@ -23,7 +23,7 @@
 	</select>
 	
 	<!-- rev댓글 select -->
-	<select id="selectRevComment" parameterType="String" resultMap="qnaMap">
+	<select id="selectRevComment" parameterType="String" resultMap="revMap">
 		select review_reply_num revReplyNum, member_num memberNum, review_reply_content revReplyCont
 		from review_replies
 		where member_num = #{memberNum}

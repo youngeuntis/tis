@@ -15,7 +15,7 @@ public class CommentMoreServiceImpl implements CommentMoreService {
 
 	@Override //rev댓글
 	public List<Comment> findRevCommentMore(int memberNum) {
-		return commentMoreDao.selectRevCommnet(memberNum);
+		return commentMoreDao.selectRevComment(memberNum);
 	}
 
 	@Override //qna댓글

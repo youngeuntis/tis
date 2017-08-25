@@ -14,8 +14,8 @@ public class CommentMoreDaoImpl implements CommentMoreDao {
 	}
 
 	@Override	//rev댓글
-	public List<Comment> selectRevCommnet(int memberNum) {
-		return commentMoreMapper.selectRevCommnet(memberNum);
+	public List<Comment> selectRevComment(int memberNum) {
+		return commentMoreMapper.selectRevComment(memberNum);
 	}
 
 	@Override	//qna댓글

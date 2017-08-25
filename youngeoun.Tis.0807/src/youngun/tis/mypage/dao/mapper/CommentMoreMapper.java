@@ -6,5 +6,5 @@ import youngun.tis.mypage.domain.Comment;
 
 public interface CommentMoreMapper {
 	List<Comment> selectComment(int memberNum);		//qna댓글
-	List<Comment> selectRevCommnet(int memberNum);	//rev댓글
+	List<Comment> selectRevComment(int memberNum);	//rev댓글
 }

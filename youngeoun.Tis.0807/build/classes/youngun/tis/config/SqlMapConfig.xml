@@ -28,6 +28,7 @@
 		<typeAlias alias="profile" type="youngun.tis.mypage.domain.Profile"/>
 		<typeAlias alias="wishlist" type="youngun.tis.mypage.domain.Wishlist"/>
 		<typeAlias alias="commnet" type="youngun.tis.mypage.domain.Comment"/>
+		<typeAlias alias="notis" type="youngun.tis.mypage.domain.Post"/>
 		 
 	</typeAliases>	
  
@@ -80,11 +81,11 @@
 		<!-- 성묵  -->		
 		<mapper resource="youngun/tis/mypage/dao/mapper/WishlistMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/CommentMoreMapper.xml" />
+		<mapper resource="youngun/tis/mypage/dao/mapper/PostMoreMapper.xml" />
 
 <!-- 	
 		<mapper resource="youngun/tis/mypage/dao/mapper/ProfileMapper.xml" />
-		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" />
-		<mapper resource="youngun/tis/mypage/dao/mapper/PostMapper.xml" /> 
+		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" /> 
  -->		
 	</mappers>
 </configuration>

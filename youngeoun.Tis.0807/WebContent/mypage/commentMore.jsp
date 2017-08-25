@@ -363,7 +363,7 @@
 					<table class="board">
 						<tr>
 							<th class="boardNums">번호</th>
-							<th class="boardTexts">댓글 내용</th>
+							<th class="boardTexts">Q&amp;A 댓글 내용</th>
 						</tr>
 						
 						<%
@@ -371,12 +371,13 @@
 								for(int i=0; i<commentReply.size(); i++){ %>
 						<tr>
 							<td class="boardNum"><%=commentReply.get(i).getQnaReplyNum() %></td>
-							<td class="boardText"><%=commentReply.get(i).getQnaReplyCont() %></td>
+							<td class="boardText"><a href="../qna/09replySucssess.jsp?qna_reply_num=<%=commentReply.get(i).getQnaReplyNum() %>">
+							<%=commentReply.get(i).getQnaReplyCont() %></a></td>
 						</tr>
 						<%
 							}
 						}else{%>
-							<h2> 댓글이 없습니다.</h2>
+							<h2>작성한 Q&amp;A의 댓글이 없습니다.</h2>
 						<%}%>
 
 					</table>
@@ -400,20 +401,26 @@
 					<table class="board">
 						<tr>
 							<th class="boardNums">번호</th>
-							<th class="boardTexts">댓글 내용</th>
+							<th class="boardTexts">여행후기 댓글 내용</th>
+						</tr>
+						
+						
+						<%
+						if(commentRevReply.size() != 0){
+							for(int i=0; i<commentRevReply.size(); i++){ %>
+						
+						<tr>
+							<td class="boardNum"><%=commentRevReply.get(i).getRevReplyNum() %></td>
+							<td class="boardText"><a href="../review/reviewMain.jsp?review_reply_num=<%=commentRevReply.get(i).getRevReplyNum() %>">
+							<%=commentRevReply.get(i).getRevReplyCont() %></td>
 						</tr>
 						
 						<%
-							if(commentRevReply.size() != 0){
-								for(int i=0; i<commentRevReply.size(); i++){ %>
-						<tr>
-							<td class="boardNum"><%=commentRevReply.get(i).getRevReplyNum() %></td>
-							<td class="boardText"><%=commentRevReply.get(i).getRevReplyCont() %></td>
-						</tr>
-						<%
 							}
 						}else{%>
-							<h2> 댓글이 없습니다.</h2>
+						<tr>
+							<h2>작성한 여행후기의 댓글이 없습니다.</h2>
+						</tr>
 						<%}%>
 
 					</table>
