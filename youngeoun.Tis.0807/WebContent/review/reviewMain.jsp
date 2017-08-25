@@ -305,7 +305,8 @@
         
        
         <div class="slideshow-container">
-				
+			<h1 style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);                                                                   
+     font-size:5rem;  color: white;  z-index: 2; text-align: center;">여행후기</h1>
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
@@ -325,7 +326,7 @@
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
         </div> 
-       
+     
          <select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();" style="width:165px;height:50px;font-size:20px; margin-right: 5px; margin-top:0px; font-weight: bold;  border: 3px solid black;
                 border-radius: 0px; -webkit-appearance: none;">
                 		<option selected disabled>--국가--</option>
@@ -384,10 +385,12 @@
                     		}
                     	}
                     	</script>
-        
-     <main>
-		<a href="05reviewView.jsp">
+          
+         
+     <!-- <main>
+		<a href="reviewView.jsp">
 			<table class="type02">
+					
 				<tr>
 					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
 					<th>스페인 여행 후기 입니다.</th>
@@ -441,13 +444,13 @@
 					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
 				</tr>
 			</table></a>
-			<a href="03reviewInsert.jsp">
+			<a href="reviewInsert.jsp">
                 <table class="type03">
 				<tr>
 					<th>글쓰기</th>
 				</tr>
 			</table></a>
-		</main>
+		</main> -->
             
   
         <footer>

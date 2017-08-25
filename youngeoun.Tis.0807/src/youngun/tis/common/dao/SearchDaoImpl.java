@@ -15,7 +15,13 @@ public class SearchDaoImpl implements SearchDao {
 
 	@Override
 	public List<Search> selectContent(String content) {
-		System.out.println("serachDao : "+ content);
+		//System.out.println("serachDao : "+ content);
 		return searchMapper.selectContent(content);
+	}
+
+	@Override
+	public List<Search> selectNewContent(String content) {
+		System.out.println("serachDao : "+ content);
+		return searchMapper.selectNewContent(content);
 	}
 }

@@ -17,7 +17,7 @@
 	area_code areaCode, review_title reviewTitle, review_content reviewContent, review_date reviewDate, review_img reviewImg,
 	review_video, review_hits reviewHits from reviews_notices
 	where nation_code like #{country}
-	order by info_num
+	order by review_num
 	</select>
 	
 	<select id="getReviewListNoPara" resultType="Review">
