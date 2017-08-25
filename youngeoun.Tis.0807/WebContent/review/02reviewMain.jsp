@@ -1,6 +1,18 @@
+<%@page import="youngun.tis.review.service.SearchService"%>
+<%@page import="youngun.tis.user.login.domain.Login"%>
+<%@page import="youngun.tis.review.domain.Review"%>
+<%@page import="youngun.tis.review.domain.PageReview"%>
+<%@page import="youngun.tis.review.domain.Country"%>
+<%@page import="youngun.tis.review.dao.ReviewDaoImpl"%>
+<%@page import="youngun.tis.review.dao.ReviewDao"%>
+<%@page import="youngun.tis.review.dao.TravelDao"%>
+<%@page import="youngun.tis.review.mapper.ReviewMapper"%>
+<%@page import="youngun.tis.review.mapper.TravelMapper"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.config.Configuration"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-
+    pageEncoding="utf-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -15,12 +27,16 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/review.css">
+    <link rel="stylesheet" href="../res/css/selectOption.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
+    <script type="text/javascript" src="../res/js/indexOption.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
+
+            
 
 <body>
 
@@ -212,9 +228,13 @@
                     </ul>
                 </div>
 
-                <div class="right_nav">
+               <div class="right_nav">
                     <!-- main_join -->
-                    <div class="right_nav_join"><a>회원가입</a></div><!-- end join -->
+                    <%if(dto == null){ %>
+                    <div class="right_nav_join"><a>회원가입</a>
+                    </div>
+                    <%} %>
+                    <!-- end join -->
                     
                     <!-- main_login -->
 								<div id ="login">
@@ -243,16 +263,30 @@
 										</section>
 									</section>
 								</div>
-								<div class="overlay"></div>
-								<div class="demo">
-								  <a id="launch" class="fbbutton" href="#">로그인</a>
-								</div>
-								<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-
-								<script src="../res/js/index.js"></script>
-
+					
+					<%if(dto != null){ %>
+						<div class="demo">
+							<a id="my" class="my" href="mypage/myPage.jsp"><label>마이페이지</label></a>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
+							</a>
+							<%if(dto.getUserId().equals("admin")){ %>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>관리자페이지</label>
+							</a>
+							<%} %>
+						</div>
+						<%}else{ %>
+						<div class="demo">
+							<a id="launch" class="fbbutton" href="#">로그인</a>
+						</div>
+						<%} %>
+						<script
+							src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+	
+						<script src="res/js/index.js"></script>
+						<div class="clear"></div>
                     
-                    <div class="clear"></div>
                     
                     <!-- main_search -->
                     <div class="right_nav_search">
@@ -268,10 +302,10 @@
                 </div><!--end .right_nav -->
             </div><!--end .Center-->
         </header>
-
-
+        
+       
         <div class="slideshow-container">
-
+				
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
@@ -279,11 +313,10 @@
             <div class="mySlides fade">
                 <img src="../res/img/travelImg/m.jpg" style="width:100%; ">
             </div>
-
             <div class="mySlides fade">
                 <img src="../res/img/travelImg/g.jpg" style="width:100%; ">
             </div>
-
+			
             <div class="mySlides fade">
                 <img src="../res/img/travelImg/pr.jpg" style="width:100%;">
             </div>
@@ -291,61 +324,132 @@
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-        </div>
-		
-		
-		<!-- 메인 작업부분 -->
-		
-		<main>
-          <div class="selectbox">
-                <select id="nation" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
+        </div> 
+       
+         <select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();" style="width:165px;height:50px;font-size:20px; margin-right: 5px; margin-top:0px; font-weight: bold;  border: 3px solid black;
                 border-radius: 0px; -webkit-appearance: none;">
-                        <option selected value="NATION">국가별</option>
-                        <option value="KOREA">한국</option>
-                        <option value="JAPAN">일본</option>
-                        <option value="USA">미국</option>
-                        <option value="SPAIN">스페인</option>
-                </select>
-                <select id="area" style="width:165px;height:50px;font-size:20px;
-                font-weight: bold;  border: 3px solid black;
-                border-radius: 0px; -webkit-appearance: none;">
-                        <option selected value="AREA">지역별</option>
-                        <option value="">서울</option>
-                        <option value="">대전</option>
-                        <option value="">대구</option>
-                        <option value="">부산</option>
-                </select>
-            </div>
-			<table class="type11">
-					<th rowspan="2">메인 사진을 업로드 해 주세요<p><input type="file" name="uploadFile1" style =  "display:none;">
-                    <img src="../res/img/123.jpg" onclick="document.all.uploadFile1.click();"></p></th>
-            </table>
-            <table class="type12">   
-                <td>
-                    <textarea name="titleinput" style="width:100%; height:100%; ">제목 입력</textarea>
-                </td>
-            <table class="type13">
-					<th>글 내용안의 동영상 사진 음악 등 업로드
-                        <p><input type="file" name="uploadFile2" style =  "display:none;">
-                        <img src="../res/img/DYTR.png"
-                        onclick="document.all.uploadFile2.click();"></p>
-                        <p><input type="file" name="uploadFile3" style =  "display:none;">
-                        <img src="../res/img/DYTR.png"
-                        onclick="document.all.uploadFile3.click();"></p>
-                    </th>
-            </table> 
-            <table class="type14">
-                <td><textarea name="titleinput" style="width:100%; height:100%; ">내용 입력</textarea></td>
+                		<option selected disabled>--국가--</option>
+                    	<option value="c2">유럽</option>
+                    	<option value="c3">미대양주</option>
+                    	<option value="c1">아시아</option>
+                    </select>
+        <select class="editorSelect" id="subSelect" name="country" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;" placeholder="지역" >
+                    	
+                    </select>
+                    <script>
+                    	function subCategory(){
+                    		var x = document.getElementById("mySelect").value;
+                    		<%
+                    			TravelDao travelDao = new TravelDao();
+                    		
+								List<Country> countries = travelDao.getCountryList("c1");
+								List<Country> countries2 = travelDao.getCountryList("c2");
+								List<Country> countries3 = travelDao.getCountryList("c3");
+            				%>
+            				
+                    		if(x=="c1"){
+                    			<%
+                    			String str = "";
+            					for(int i=0; i< countries.size(); i++){
+	            				%>
+	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str; 
+                    		}else if(x=="c2"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries2.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}else if(x=="c3"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries3.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}
+                    	}
+                    	</script>
+        
+     <main>
+		<a href="05reviewView.jsp">
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
 			</table>
-			<table class="type15">
-				<th><a href="review.jsp"/>등록</th>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+             </table>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
             </table>
-            <table class="type15">
-                <th><a href="reviewMain.jsp"/>취소</th>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
 			</table>
-            </table>
-        </main>
-
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+			</table>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+			</table></a>
+			<a href="03reviewInsert.jsp">
+                <table class="type03">
+				<tr>
+					<th>글쓰기</th>
+				</tr>
+			</table></a>
+		</main>
+            
+  
         <footer>
             <div class="footer_nav">
                 

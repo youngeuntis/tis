@@ -1,24 +1,18 @@
+<%@page import="youngun.tis.review.service.SearchService"%>
+<%@page import="youngun.tis.user.login.domain.Login"%>
+<%@page import="youngun.tis.review.domain.Review"%>
+<%@page import="youngun.tis.review.domain.PageReview"%>
+<%@page import="youngun.tis.review.domain.Country"%>
+<%@page import="youngun.tis.review.dao.ReviewDaoImpl"%>
+<%@page import="youngun.tis.review.dao.ReviewDao"%>
+<%@page import="youngun.tis.review.dao.TravelDao"%>
+<%@page import="youngun.tis.review.mapper.ReviewMapper"%>
+<%@page import="youngun.tis.review.mapper.TravelMapper"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.config.Configuration"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%-- 
-<%
-	Page myPage = null;
-	String currentPage = request.getParameter("currentPage");
-	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
-	else myPage = new Page();
-	
-	PostMapper postMapper = Configuration.getMapper(PostMapper.class);
-	PostDao postDao = new PostDaoImpl(postMapper);
-	
-	PageService pageService = new PageServiceImpl(5, myPage);
-	pageContext.setAttribute("pageMaker", pageService);
-	PostService postService = new PostServiceImpl(postDao);
-	List<Post> posts = postService.listPosts(myPage);
-	pageContext.setAttribute("posts", posts);
-%> --%> 
+    pageEncoding="utf-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -33,6 +27,7 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/review.css">
+    <link rel="stylesheet" href="../res/css/selectOption.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
@@ -232,7 +227,11 @@
 
                 <div class="right_nav">
                     <!-- main_join -->
-                    <div class="right_nav_join"><a>회원가입</a></div><!-- end join -->
+                    <%if(dto == null){ %>
+                    <div class="right_nav_join"><a>회원가입</a>
+                    </div>
+                    <%} %>
+                    <!-- end join -->
                     
                     <!-- main_login -->
 								<div id ="login">
@@ -261,16 +260,30 @@
 										</section>
 									</section>
 								</div>
-								<div class="overlay"></div>
-								<div class="demo">
-								  <a id="launch" class="fbbutton" href="#">로그인</a>
-								</div>
-								<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-
-								<script src="../res/js/index.js"></script>
-
+					
+					<%if(dto != null){ %>
+						<div class="demo">
+							<a id="my" class="my" href="mypage/myPage.jsp"><label>마이페이지</label></a>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
+							</a>
+							<%if(dto.getUserId().equals("admin")){ %>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>관리자페이지</label>
+							</a>
+							<%} %>
+						</div>
+						<%}else{ %>
+						<div class="demo">
+							<a id="launch" class="fbbutton" href="#">로그인</a>
+						</div>
+						<%} %>
+						<script
+							src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+	
+						<script src="res/js/index.js"></script>
+						<div class="clear"></div>
                     
-                    <div class="clear"></div>
                     
                     <!-- main_search -->
                     <div class="right_nav_search">
@@ -314,32 +327,138 @@
 		
 		<!-- 메인 작업부분 -->
 		
-		<main>
-            <table class="type31">
-					<th><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-            </table> 
-            <table class="type32">
-                    <th>제목이 들어갑니다.</th>
-            </table>
-            <table class="type33">
-                <td>내용이 들어갑니다.</td>
-			</table>
-			<table class="type34">
-				<th><a href="reviewMain.jsp"/>확인</th>
-            </table>
+		
+		
+		
+		
+		
+        <main>
+           <!--  <div class="selectbox">
+                <select id="nation" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                        <option selected value="NATION">국가별</option>
+                        <option value="KOREA">한국</option>
+                        <option value="JAPAN">일본</option>
+                        <option value="USA">미국</option>
+                        <option value="SPAIN">스페인</option>
+                </select>
+                <select id="area" style="width:165px;height:50px;font-size:20px;
+                font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                        <option selected value="AREA">지역별</option>
+                        <option value="">서울</option>
+                        <option value="">대전</option>
+                        <option value="">대구</option>
+                        <option value="">부산</option>
+                </select>
+            </div> -->
             
-            <table class="type41">
-                <th>댓글</th>
+            <div style="margin-top:5px;">
+            
+		<select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();" style="width:165px;height:50px;font-size:20px; margin-right: 5px; margin-top:0px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                		<option selected disabled>--국가--</option>
+                    	<option value="c2">유럽</option>
+                    	<option value="c3">미대양주</option>
+                    	<option value="c1">아시아</option>
+                    </select>
+        <select class="editorSelect" id="subSelect" name="country" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;" placeholder="지역" >
+                    	
+                    </select>
+                    <script>
+                    	function subCategory(){
+                    		var x = document.getElementById("mySelect").value;
+                    		<%
+                    			TravelDao travelDao = new TravelDao();
+								List<Country> countries = travelDao.getCountryList("c1");
+								List<Country> countries2 = travelDao.getCountryList("c2");
+								List<Country> countries3 = travelDao.getCountryList("c3");
+								List<Country> countries4 = travelDao.getCountryList("c6");
+            				%>
+            				
+                    		if(x=="c1"){
+                    			<%
+                    			String str = "";
+            					for(int i=0; i< countries.size(); i++){
+	            				%>
+	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str; 
+                    		}else if(x=="c2"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries2.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}else if(x=="c3"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries3.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}
+                    	}
+                    	</script>
+        
+		
+            
+            </div>
+            
+			<table class="type11">
+					<th rowspan="2">메인 사진을 업로드 해 주세요<p><input type="file" name="uploadFile1" style =  "display:none;">
+                    <img src="../res/img/123.jpg" onclick="document.all.uploadFile1.click();"></p></th>
             </table>
-            <table class="type42">
-                <tr>
-                    <th rowspan="2"></th>
-                    <td><a href="review.jsp"/>수정</td>
-                </tr>
-                <tr>
-                    <td><a href="review.jsp"/>삭제</td>
-                </tr>
-            </table>            
+            <table class="type12">   
+                <td>
+                    <textarea name="titleinput" style="width:100%; height:100%; ">제목 입력</textarea>
+                </td>
+            <table class="type13">
+					<th>글 내용안의 동영상 사진 음악 등 업로드
+                        <p><input type="file" name="uploadFile2" style =  "display:none;">
+                        <img src="../res/img/DYTR.png"
+                        onclick="document.all.uploadFile2.click();"></p>
+                        <p><input type="file" name="uploadFile3" style =  "display:none;">
+                        <img src="../res/img/DYTR.png"
+                        onclick="document.all.uploadFile3.click();"></p>
+                    </th>
+            </table> 
+            <table class="type14">
+                <td><textarea name="titleinput" style="width:100%; height:100%; ">내용 입력</textarea></td>
+			</table>
+			<table class="type15">
+				
+				<th onclick="registrationReview()" >등록</th>
+					<script>
+	                    function registrationReview(){
+	                        var answer = confirm("등록되었습니다 확인을 누르시면 메인페이지로 이동합니다.")
+	                        if(answer) location.replace("02reviewMain.jsp");
+	                    }
+            		</script>
+            </table>
+            <table class="type15">
+            	<th onclick="cancelMove()"> 취소 </th>
+            		<script>
+	                    function cancelMove(){
+	                        var answer = confirm("확인을 누르시면 작성중이던 글이 저장되지 않고 이전 페이지로 돌아갑니다.취소를 원하십니까?")
+	                        if(answer) location.replace("02reviewMain.jsp");
+	                    }
+            		</script>
+			</table>
+            </table>
         </main>
 
         <footer>

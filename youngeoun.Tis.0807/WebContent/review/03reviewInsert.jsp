@@ -1,6 +1,18 @@
+<%@page import="youngun.tis.review.service.SearchService"%>
+<%@page import="youngun.tis.user.login.domain.Login"%>
+<%@page import="youngun.tis.review.domain.Review"%>
+<%@page import="youngun.tis.review.domain.PageReview"%>
+<%@page import="youngun.tis.review.domain.Country"%>
+<%@page import="youngun.tis.review.dao.ReviewDaoImpl"%>
+<%@page import="youngun.tis.review.dao.ReviewDao"%>
+<%@page import="youngun.tis.review.dao.TravelDao"%>
+<%@page import="youngun.tis.review.mapper.ReviewMapper"%>
+<%@page import="youngun.tis.review.mapper.TravelMapper"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.config.Configuration"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-
+    pageEncoding="utf-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -17,14 +29,11 @@
     <link rel="stylesheet" href="../res/css/review.css">
     <link rel="stylesheet" href="../res/css/selectOption.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
-    <script type="text/javascript" src="../res/js/indexOption.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
-
-            
 
 <body>
 
@@ -218,23 +227,13 @@
 
                 <div class="right_nav">
                     <!-- main_join -->
-                    <div class="right_nav_join"><a>회원가입</a></div><!-- end join -->
+                    <%if(dto == null){ %>
+                    <div class="right_nav_join"><a>회원가입</a>
+                    </div>
+                    <%} %>
+                    <!-- end join -->
                     
                     <!-- main_login -->
-                <div class="centerSelect2" style="margin-top:200px;">
-	              <select name="sources2" id="sources2" class="custom-select2 sources2" placeholder="----국가----">
-	                <option value="대한민국">대한민국</option>
-	                <option value="유럽">유럽</option>
-	                <option value="미대양주">미대양주</option>
-	                <option value="아시아">아시아</option>
-	              </select>
-	            </div>
-	            
-				<div class="centerSelect" style="margin-top:200px;">
-	              <select name="sources" id="sources" class="custom-select sources" placeholder="----지역----">
-	              </select>
-	            </div>
-	            
 								<div id ="login">
 									  <section class="modal signup badge-overlay-signin">
 										<a class="btn-close badge-overlay-close" id="closepopup" href="#">✖</a>
@@ -261,16 +260,30 @@
 										</section>
 									</section>
 								</div>
-								<div class="overlay"></div>
-								<div class="demo">
-								  <a id="launch" class="fbbutton" href="#">로그인</a>
-								</div>
-								<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-
-								<script src="../res/js/index.js"></script>
-
+					
+					<%if(dto != null){ %>
+						<div class="demo">
+							<a id="my" class="my" href="mypage/myPage.jsp"><label>마이페이지</label></a>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
+							</a>
+							<%if(dto.getUserId().equals("admin")){ %>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>관리자페이지</label>
+							</a>
+							<%} %>
+						</div>
+						<%}else{ %>
+						<div class="demo">
+							<a id="launch" class="fbbutton" href="#">로그인</a>
+						</div>
+						<%} %>
+						<script
+							src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+	
+						<script src="res/js/index.js"></script>
+						<div class="clear"></div>
                     
-                    <div class="clear"></div>
                     
                     <!-- main_search -->
                     <div class="right_nav_search">
@@ -314,162 +327,114 @@
 		
 		<!-- 메인 작업부분 -->
 		
+				
+        <main>
+           <div style="margin-top:5px;">
+            
+		<select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();" style="width:165px;height:50px;font-size:20px; margin-right: 5px; margin-top:0px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                		<option selected disabled>--국가--</option>
+                    	<option value="c2">유럽</option>
+                    	<option value="c3">미대양주</option>
+                    	<option value="c1">아시아</option>
+                    </select>
+        <select class="editorSelect" id="subSelect" name="country" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;" placeholder="지역" >
+                    	
+                    </select>
+                    <script>
+                    	function subCategory(){
+                    		var x = document.getElementById("mySelect").value;
+                    		<%
+                    			TravelDao travelDao = new TravelDao();
+								List<Country> countries = travelDao.getCountryList("c1");
+								List<Country> countries2 = travelDao.getCountryList("c2");
+								List<Country> countries3 = travelDao.getCountryList("c3");
+								List<Country> countries4 = travelDao.getCountryList("c6");
+            				%>
+            				
+                    		if(x=="c1"){
+                    			<%
+                    			String str = "";
+            					for(int i=0; i< countries.size(); i++){
+	            				%>
+	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str; 
+                    		}else if(x=="c2"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries2.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}else if(x=="c3"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries3.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}
+                    	}
+                    	</script>
+        
 		
-		
-<main>
-            <div class = "aaa">
-                <h1>여행 후기 여백 공간</h1>
+            
             </div>
-			<a href="review.jsp">
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
-			</table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
-             </table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
+            
+			<table class="type11">
+					<th rowspan="2">메인 사진을 업로드 해 주세요<p><input type="file" name="uploadFile1" style =  "display:none;">
+                    <img src="../res/img/123.jpg" onclick="document.all.uploadFile1.click();"></p></th>
             </table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
+            <table class="type12">   
+                <td>
+                    <textarea name="titleinput" style="width:100%; height:100%; ">제목 입력</textarea>
+                </td>
+            <table class="type13">
+					<th>글 내용안의 동영상 사진 음악 등 업로드
+                        <p><input type="file" name="uploadFile2" style =  "display:none;">
+                        <img src="../res/img/DYTR.png"
+                        onclick="document.all.uploadFile2.click();"></p>
+                        <p><input type="file" name="uploadFile3" style =  "display:none;">
+                        <img src="../res/img/DYTR.png"
+                        onclick="document.all.uploadFile3.click();"></p>
+                    </th>
+            </table> 
+            <table class="type14">
+                <td><textarea name="titleinput" style="width:100%; height:100%; ">내용 입력</textarea></td>
 			</table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
+			<table class="type15">
+				
+				<th onclick="registrationReview()" >등록</th>
+					<script>
+	                    function registrationReview(){
+	                        var answer = confirm("등록되었습니다 확인을 누르시면 메인페이지로 이동합니다.")
+	                        if(answer) location.replace("02reviewMain.jsp");
+	                    }
+            		</script>
+            </table>
+            <table class="type15">
+            	<th onclick="cancelMove()"> 취소 </th>
+            		<script>
+	                    function cancelMove(){
+	                        var answer = confirm("확인을 누르시면 작성중이던 글이 저장되지 않고 이전 페이지로 돌아갑니다.취소를 원하십니까?")
+	                        if(answer) location.replace("02reviewMain.jsp");
+	                    }
+            		</script>
 			</table>
-			<table class="type02">
-				<tr>
-					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-					<th>스페인 여행 후기 입니다.</th>
-				</tr>
-				<tr>
-					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
-				</tr>
-			</table></a>
-			<a href="reviewInsert.jsp">
-                <table class="type03">
-				<tr>
-					<th>글쓰기</th>
-				</tr>
-			</table></a>
-            <div id="page_index">
-                <ul>
-                    <li><a href="#">&laquo;prev</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li><a href="#">next&raquo;</a></li>
-                </ul>   
-        </div>
-        
-        
-	    	<script>
-		    	$(".custom-select").each(function() {
-		    		  var classes = $(this).attr("class"),
-		    		      id      = $(this).attr("id"),
-		    		      name    = $(this).attr("name");
-		    		  var template =  '<div class="' + classes + '">';
-		    		      template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
-		    		      template += '<div class="custom-options">';
-		    		      $(this).find("option").each(function() {
-		    		        template += '<a href=05TravelAfter.jsp?continent='+$(this).attr("value")+'>'+'<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
-		    		      });
-		    		  template += '</div></div>';
-		    		  
-		    		  $(this).wrap('<div class="custom-select-wrapper"></div>');
-		    		  $(this).hide();
-		    		  $(this).after(template);
-		    		});
-		    		$(".custom-option:first-of-type").hover(function() {
-		    		  $(this).parents(".custom-options").addClass("option-hover");
-		    		}, function() {
-		    		  $(this).parents(".custom-options").removeClass("option-hover");
-		    		});
-		    		$(".custom-select-trigger").on("click", function() {
-		    		  $('html').one('click',function() {
-		    		    $(".custom-select").removeClass("opened");
-		    		  });
-		    		  $(this).parents(".custom-select").toggleClass("opened");
-		    		  event.stopPropagation();
-		    		});
-		    		$(".custom-option").on("click", function() {
-		    		  $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
-		    		  $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
-		    		  $(this).addClass("selection");
-		    		  $(this).parents(".custom-select").removeClass("opened");
-		    		});
-		    		
-		    		
-		    		
-		    		$(".custom-select2").each(function() {
-		    			  var classes = $(this).attr("class"),
-		    			      id      = $(this).attr("id"),
-		    			      name    = $(this).attr("name");
-		    			  var template =  '<div class="' + classes + '">';
-		    			      template += '<span class="custom-select-trigger2">' + $(this).attr("placeholder") + '</span>';
-		    			      template += '<div class="custom-options2">';
-		    			      $(this).find("option").each(function() {
-		    			        template += '<a href=05TravelAfter.jsp?continent='+$(this).attr("value")+'>'+'<span class="custom-option2 ' + $(this).attr("class") + '" data-value2="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
-		    			      });
-		    			  template += '</div></div>';
-		    			  
-		    			  $(this).wrap('<div class="custom-select-wrapper2"></div>');
-		    			  $(this).hide();
-		    			  $(this).after(template);
-		    			});
-		    			$(".custom-option2:first-of-type").hover(function() {
-		    			  $(this).parents(".custom-options2").addClass("option-hover2");
-		    			}, function() {
-		    			  $(this).parents(".custom-options2").removeClass("option-hover2");
-		    			});
-		    			$(".custom-select-trigger2").on("click", function() {
-		    			  $('html').one('click',function() {
-		    			    $(".custom-select2").removeClass("opened2");
-		    			  });
-		    			  $(this).parents(".custom-select2").toggleClass("opened2");
-		    			  event.stopPropagation();
-		    			});
-		    			$(".custom-option").on("click", function() {
-		    			  $(this).parents(".custom-select-wrapper2").find("select").val($(this).data("value"));
-		    			  $(this).parents(".custom-options2").find(".custom-option2").removeClass("selection2");
-		    			  $(this).addClass("selection2");
-		    			  $(this).parents(".custom-select2").removeClass("opened2");
-		    			});
-	    	</script>
-        
+            </table>
         </main>
 
         <footer>

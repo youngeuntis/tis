@@ -1,6 +1,18 @@
+<%-- <%@page import="youngun.tis.review.service.SearchService"%>
+<%@page import="youngun.tis.user.login.domain.Login"%>
+<%@page import="youngun.tis.review.domain.Review"%>
+<%@page import="youngun.tis.review.domain.PageReview"%>
+<%@page import="youngun.tis.review.domain.Country"%>
+<%@page import="youngun.tis.review.dao.ReviewDaoImpl"%>
+<%@page import="youngun.tis.review.dao.ReviewDao"%>
+<%@page import="youngun.tis.review.dao.TravelDao"%>
+<%@page import="youngun.tis.review.mapper.ReviewMapper"%>
+<%@page import="youngun.tis.review.mapper.TravelMapper"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.config.Configuration"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-
+    pageEncoding="utf-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -15,12 +27,16 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/review.css">
+    <link rel="stylesheet" href="../res/css/selectOption.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
+    <script type="text/javascript" src="../res/js/indexOption.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
+
+            
 
 <body>
 
@@ -212,9 +228,13 @@
                     </ul>
                 </div>
 
-                <div class="right_nav">
+               <div class="right_nav">
                     <!-- main_join -->
-                    <div class="right_nav_join"><a>회원가입</a></div><!-- end join -->
+                    <%if(dto == null){ %>
+                    <div class="right_nav_join"><a>회원가입</a>
+                    </div>
+                    <%} %>
+                    <!-- end join -->
                     
                     <!-- main_login -->
 								<div id ="login">
@@ -243,16 +263,30 @@
 										</section>
 									</section>
 								</div>
-								<div class="overlay"></div>
-								<div class="demo">
-								  <a id="launch" class="fbbutton" href="#">로그인</a>
-								</div>
-								<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-
-								<script src="../res/js/index.js"></script>
-
+					
+					<%if(dto != null){ %>
+						<div class="demo">
+							<a id="my" class="my" href="mypage/myPage.jsp"><label>마이페이지</label></a>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
+							</a>
+							<%if(dto.getUserId().equals("admin")){ %>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>관리자페이지</label>
+							</a>
+							<%} %>
+						</div>
+						<%}else{ %>
+						<div class="demo">
+							<a id="launch" class="fbbutton" href="#">로그인</a>
+						</div>
+						<%} %>
+						<script
+							src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+	
+						<script src="res/js/index.js"></script>
+						<div class="clear"></div>
                     
-                    <div class="clear"></div>
                     
                     <!-- main_search -->
                     <div class="right_nav_search">
@@ -268,8 +302,8 @@
                 </div><!--end .right_nav -->
             </div><!--end .Center-->
         </header>
-
-
+        
+       
         <div class="slideshow-container">
 
             <div class="mySlides fade" style="display:block;">
@@ -291,63 +325,80 @@
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-        </div>
-		
-		
-		<!-- 메인 작업부분 -->
-		
-		
-		
-        <main>
-            <div class="selectbox">
-                <select id="nation" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
-                border-radius: 0px; -webkit-appearance: none;">
-                        <option selected value="NATION">국가별</option>
-                        <option value="KOREA">한국</option>
-                        <option value="JAPAN">일본</option>
-                        <option value="USA">미국</option>
-                        <option value="SPAIN">스페인</option>
-                </select>
-                <select id="area" style="width:165px;height:50px;font-size:20px;
-                font-weight: bold;  border: 3px solid black;
-                border-radius: 0px; -webkit-appearance: none;">
-                        <option selected value="AREA">지역별</option>
-                        <option value="">서울</option>
-                        <option value="">대전</option>
-                        <option value="">대구</option>
-                        <option value="">부산</option>
-                </select>
+        </div> 
+        
+        <div class="centerSelect" style="margin-left : -160px;">
+         <select name="sources" id="sources" class="custom-select sources" style = "margin-top: -500px;" >
+                		<option selected disabled>--국가--</option>
+                    	<option value="c2">유럽</option>
+                    	<option value="c3">미대양주</option>
+                    	<option value="c1">아시아</option>
+                    </select>
+         
+  
+              
             </div>
-			<table class="type11">
-					<th rowspan="2">메인 사진을 업로드 해 주세요<p><input type="file" name="uploadFile1" style =  "display:none;">
-                    <img src="../res/img/123.jpg" onclick="document.all.uploadFile1.click();"></p></th>
-            </table>
-            <table class="type12">   
-                <td>
-                    <textarea name="titleinput" style="width:100%; height:100%; ">제목 입력</textarea>
-                </td>
-            <table class="type13">
-					<th>글 내용안의 동영상 사진 음악 등 업로드
-                        <p><input type="file" name="uploadFile2" style =  "display:none;">
-                        <img src="../res/img/DYTR.png"
-                        onclick="document.all.uploadFile2.click();"></p>
-                        <p><input type="file" name="uploadFile3" style =  "display:none;">
-                        <img src="../res/img/DYTR.png"
-                        onclick="document.all.uploadFile3.click();"></p>
-                    </th>
-            </table> 
-            <table class="type14">
-                <td><textarea name="titleinput" style="width:100%; height:100%; ">내용 입력</textarea></td>
-			</table>
-			<table class="type15">
-				<th><a href="review.jsp"/>등록</th>
-            </table>
-            <table class="type15">
-                <th><a href="reviewMain.jsp"/>취소</th>
-			</table>
-            </table>
-        </main>
-
+            
+	    	<script>
+		    	$(".custom-select").each(function() {
+		    		  var classes = $(this).attr("class"),
+		    		      id      = $(this).attr("id"),
+		    		      name    = $(this).attr("name");
+		    		  var template =  '<div class="' + classes + '">';
+		    		      template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+		    		      template += '<div class="custom-options">';
+		    		      $(this).find("option").each(function() {
+		    		        template += '<a href=02reviewMain.jsp?continent='+$(this).attr("value")+'>'+'<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
+		    		      });
+		    		  template += '</div></div>';
+		    		  
+		    		  $(this).wrap('<div class="custom-select-wrapper"></div>');
+		    		  $(this).hide();
+		    		  $(this).after(template);
+		    		});
+		    		$(".custom-option:first-of-type").hover(function() {
+		    		  $(this).parents(".custom-options").addClass("option-hover");
+		    		}, function() {
+		    		  $(this).parents(".custom-options").removeClass("option-hover");
+		    		});
+		    		$(".custom-select-trigger").on("click", function() {
+		    		  $('html').one('click',function() {
+		    		    $(".custom-select").removeClass("opened");
+		    		  });
+		    		  $(this).parents(".custom-select").toggleClass("opened");
+		    		  event.stopPropagation();
+		    		});
+		    		$(".custom-option").on("click", function() {
+		    		  $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
+		    		  $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+		    		  $(this).addClass("selection");
+		    		  $(this).parents(".custom-select").removeClass("opened");
+		    		});
+	    	</script>
+    		
+                   <main>
+                    <%
+         				String isDel = request.getParameter("del");
+         	        	Review review = (Review)session.getAttribute("Review");
+         	        	ReviewDao reviewDao = new ReviewDaoImpl();
+         				SearchService service = new SearchService(reviewDao);
+         				if(isDel==null){
+         			%>
+         			<h2>여행 후기 게시판입니다.</h2><br>
+    				<h2>국가를 선택해주세요</h2>
+         			<% 
+         				}else if(isDel!=null&&isDel.equals("y")){
+         				
+         				service.eleminateReview(review);
+         			%>
+         					<h1> 삭제가 완료 되었습니다.</h1>
+         					<button onclick="location.replace('02reviewMain.jsp')" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
+         			<%
+         				}
+         			%>
+				</main>
+            
+  
         <footer>
             <div class="footer_nav">
                 
@@ -377,4 +428,4 @@
 
 </body>
 
-</html>
+</html> --%>
