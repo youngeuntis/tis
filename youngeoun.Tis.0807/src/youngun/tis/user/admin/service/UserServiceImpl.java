@@ -4,6 +4,7 @@ import java.util.List;
 
 import youngun.tis.user.admin.dao.UserDao;
 import youngun.tis.user.admin.dao.UserDaoImpl;
+import youngun.tis.user.admin.domain.Page;
 import youngun.tis.user.admin.domain.User;
 
 public class UserServiceImpl implements UserService {
@@ -16,15 +17,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findUsers() {
+	public List<User> findUsers(Page page) {
 		
-		return userDao.getUsers();
+		return userDao.getUsers(page);
 	}
 	
 	@Override
-	public List<User> blindUsers() {
+	public List<User> blindUsers(Page page) {
 		
-		return userDao.getblindUsers();
+		return userDao.getblindUsers(page);
 	}
 	
 	@Override

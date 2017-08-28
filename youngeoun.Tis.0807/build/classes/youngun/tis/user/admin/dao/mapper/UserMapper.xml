@@ -12,6 +12,7 @@
 		<result property="joinDate" column="join_date"/>
 		<result property="writeCount" column="write_count"/>
 		<result property="replCount" column="repl_count"/>
+		<result property="visitCount" column="visitcount"/>
 	</resultMap>
 	
 	<!-- 제재회원 리절트 맵  -->
@@ -46,23 +47,33 @@
 		<result property="writeCount" column="write_count"/>
 		<result property="replCount" column="repl_count"/>
 	</resultMap>
-	
-	
-	
-	
-	<select id="getUsers" resultMap="userMap">
-		select e.user_name, e.user_id, e.until_visit, e.join_date, w.write_count, r.repl_count
-		from members e, writeCount w, replCount r
-        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
-        order by e.member_num
+
+
+	<select id="getUsers" resultMap="userMap" parameterType="page">
+			<![CDATA[
+			select*from(
+		    	select rownum as rnum, x.*from(
+		    		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
+					from members e, writeCount w, replCount r
+			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+			        order by e.member_num
+		     )x where rownum <= #{rowCnt}*#{currentPage}
+		    )where rnum > #{rowCnt}*(#{currentPage}-1)
+		]]>
+	</select>
+
+	<select id="getblindUsers" resultMap="blindUserMap" parameterType="page">
+	<![CDATA[
+	select*from(
+		 select rownum as rnum, x.*from(
+			select e.USER_NAME, e.USER_ID, e.grade_num, b.BLACK_REASON 
+			from members e, blacklist b 
+			where e.grade_num like 'b' || '%'
+		)x where rownum <= #{rowCnt}*#{currentPage}
+		)where rnum > #{rowCnt}*(#{currentPage}-1)
+		]]>
 	</select>
 	
-	
-	<select id="getblindUsers" resultMap="blindUserMap">
-		select e.USER_NAME, e.USER_ID, b.BLACK_REASON 
-		from members e, blacklist b
-		where e.MEMBER_NUM = b.MEMBER_NUM
-	</select>
 	
 	<select id="getFblindUsers" resultMap="FblindUserMap">
 		select e.USER_NAME, e.USER_ID, e.grade_num, b.BLACK_REASON 

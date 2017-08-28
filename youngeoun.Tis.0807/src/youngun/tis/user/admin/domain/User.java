@@ -13,8 +13,17 @@ public class User {
 	private String joinDate;
 	private String writeCount;
 	private String replCount;
+	private String visitCount;
 	
 	
+	public String getVisitCount() {
+		return visitCount;
+	}
+
+	public void setVisitCount(String visitCount) {
+		this.visitCount = visitCount;
+	}
+
 	public String getReplCount() {
 		return replCount;
 	}

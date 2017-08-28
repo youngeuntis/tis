@@ -1,10 +1,39 @@
+<%@page import="youngun.tis.user.admin.service.PageServiceImpl"%>
+<%@page import="youngun.tis.user.admin.service.PageService"%>
+<%@page import="youngun.tis.user.admin.domain.Page"%>
+<%@page import="youngun.tis.user.admin.service.UserServiceImpl"%>
+<%@page import="youngun.tis.user.admin.service.UserService"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.user.admin.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	List<User> Buser = (List<User>)session.getAttribute("Buser");
+	Page myPage = null;
+	String currentPage = request.getParameter("currentPage");
+	String rowCnt = "2";
+	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage),Integer.parseInt(rowCnt));
+	else myPage = new Page(1,Integer.parseInt(rowCnt));
+	
+	UserService userService = new UserServiceImpl();
+	PageService pageService = new PageServiceImpl(5, myPage, 2);
+	pageContext.setAttribute("pageMaker", pageService);
+	
+	List<User> posts = userService.blindUsers(myPage);
+	pageContext.setAttribute("posts", posts);
 %>
+
+
+<style type="text/css">
+    .text-center{text-align:center;}
+	.pagination>li{display:inline-block;}
+	.pagination>li>a,.pagination>li>span{
+		position:relative;float:left;
+		padding:5px 10px;
+		margin-left:0px;
+		line-height:1;
+		color:#000;}
+</style>
 <!doctype html>
 
 <html>
@@ -261,9 +290,9 @@
         
 <div class="adminMenu">
 	<ul id="gnb">
-				<li><a href="adminmainControl.jsp"><h2>메인</h2></a></li>
-				<li><a href="adminFullControl.jsp"><h2>회원 관리</h2></a></li>
-				<li><a href="adminBlindControl.jsp"><h2>제재 회원 관리</h2></a></li>
+				<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
+				<li><a href="adminFull.jsp"><h2>회원 관리</h2></a></li>
+				<li><a href="adminBlind.jsp"><h2>제재 회원 관리</h2></a></li>
 				<li><a href="adminForcedBlindControl.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
 				<li><a href="adminStepControl.jsp"><h2>스텝 관리</h2></a></li>
 	</ul>
@@ -295,25 +324,41 @@
              </div>
               
              
-             <div class="mainB2blind"> 
-              <%for(int i=0;i<Buser.size();i++){ %>
+            <div class="mainB2blind"> 
+  			<c:forEach var="post" items="${posts}">
                        <div class="memberblindDataBcheck"><p><input type="checkbox"></p></div>
-                       <div class="memberblindDataBid"><p><%=Buser.get(i).getUserId() %></p></div>
-                       <div class="memberblindDataBname"><p><%=Buser.get(i).getUserName() %></p></div>
-                       <div class="memberblindDataBre"><p><%=Buser.get(i).getBlackReason() %></p></div>
+                       <div class="memberblindDataBid"><p>${post.userId}</p></div>
+                       <div class="memberblindDataBname"><p>${post.userName}</p></div>
+                       <div class="memberblindDataBre"><p>${post.blackReason }</p></div>
                        <div class="memberblindDataBdate"><p></p></div>
                        <div class="memberblindDataBenddate"><p></p></div>
                        <div class="memberblindDataBadmin"><p></p></div>
-                <%} %>
+            </c:forEach>      
             </div>
                      
-             <div class="memberNum"><a>◀ 1 2 3 4 5 ▶</a></div>
-             <div class="mainBbutton">
-              
-              </div>
-             
-             
-              
+           
+              <div class="memberNum">
+					<div class="memberNumin">
+						
+			<ul class="pagination">
+				<c:if test="${pageMaker.prev}">
+					<li><a href="adminBlind.jsp?currentPage=${pageMaker.startPage-1}&#mainAa1">&laquo;</a></li>
+				</c:if>
+				
+				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+					<li <c:out value ="${pageMaker.page.currentPage==idx? 'class=active':'' }"/>>
+						<a href="adminBlind.jsp?currentPage=${idx}&#mainAa1">${idx}</a>
+					</li>
+				</c:forEach>
+				
+				<c:if test="${pageMaker.next}">
+					<li><a href="adminBlind.jsp?currentPage=${pageMaker.endPage+1}&#mainAa1">&raquo;</a></li>
+				</c:if>
+			</ul>
+	
+					</div>
+					
+				</div>
         </div>
          <div class="mainBoption">
                     <ul id="gnb5">
