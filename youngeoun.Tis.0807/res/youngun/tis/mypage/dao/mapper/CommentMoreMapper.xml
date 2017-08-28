@@ -19,7 +19,7 @@
 		select qna_reply_num qnaReplyNum, member_num memberNum, qna_reply_content qnaReplyCont
 		from qna_replies
 		where member_num = #{memberNum}
-		order by qna_reply_num ASC
+		order by qna_reply_num DESC
 	</select>
 	
 	<!-- rev댓글 select -->
@@ -27,7 +27,7 @@
 		select review_reply_num revReplyNum, member_num memberNum, review_reply_content revReplyCont
 		from review_replies
 		where member_num = #{memberNum}
-		order by review_reply_num ASC
+		order by review_reply_num DESC
 	</select>
 
 </mapper>
