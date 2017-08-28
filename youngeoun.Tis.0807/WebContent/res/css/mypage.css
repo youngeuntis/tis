@@ -13,7 +13,7 @@ blockquote:before, blockquote:after, q:before, q:after { content: ""; }
 blockquote, q { -webkit-hyphens: none; -moz-hyphens: none; -ms-hyphens: none; hyphens: none; quotes: none; }
 a img { border: 0; }
 a, input { outline: none; }
-a { color: #ccc;  }
+a { color: #ccc; text-decoration: none; }
 a:hover { text-decoration: none; }
 h1, h2, h3, h4, h5, h6 { margin: 5px 0px 15px 0px; clear: both; font-weight: lighter; }
 h1 { font-size: 36px; }

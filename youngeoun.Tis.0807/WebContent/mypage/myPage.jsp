@@ -6,6 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%Login dto = (Login) session.getAttribute("Login");%>
+<%System.out.print("dto profile?: "+dto.getProfileImg()); %>
 <!DOCTYPE HTML>
 <html>
 

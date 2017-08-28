@@ -64,6 +64,7 @@
 		
 		<!-- 영근 -->
 		<mapper resource="youngun/tis/user/admin/dao/mapper/UserMapper.xml" />
+		<mapper resource="youngun/tis/user/admin/dao/mapper/PageMapper.xml" />
 		
 		<!-- 영빈 -->
 		<mapper resource="youngun/tis/qna/dao/mapper/PostMapper.xml" />
