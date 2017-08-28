@@ -22,7 +22,7 @@
 							<div class="sub_ham">
 								<h4>커뮤니티</h4>
 								<ul>
-									<li><a href="../review/01reviewMain.html">후기</a></li>
+									<li><a href="../review/reviewMain.jsp">후기</a></li>
 								</ul>
 							</div>
 							<div class="sub_ham" id="sub_ham_event">
@@ -34,7 +34,7 @@
 							<div class="sub_ham">
 								<h4>문의사항</h4>
 								<ul>
-									<li><a href="../qna/01qnaMain.html">Q&amp;A</a></li>
+									<li><a href="../qna/01qnaMain.jsp">Q&amp;A</a></li>
 									<li><a href="../qna/08faqlist.html">FAQ</a></li>
 								</ul>
 							</div>
@@ -190,7 +190,7 @@
 							<div class="sub_comunity"
 								style="display: block; margin-top: -25px; margin-left: 40px; margin-right: 20px;">
 								<h4>
-									<a href="../review/01reviewMain.html">후기</a>
+									<a href="../review/reviewMain.jsp">후기</a>
 								</h4>
 							</div>
 							<div class="sub_comunity"
@@ -238,7 +238,7 @@
 							<div class="sub_comunity"
 								style="position: relative; margin-left: 80px; margin-right: 20px; display: block; float: left;">
 								<h4>
-									<a href="../qna/01qnaMain.html">Q&amp;A</a>
+									<a href="../qna/01qnaMain.jsp">Q&amp;A</a>
 								</h4>
 							</div>
 							<div class="sub_comunity"
@@ -296,12 +296,12 @@
 			<%if(dto != null){ %>
 
 			<div class="demo">
-				<a id="my" class="my" href="mypage/myPage.jsp"><label>마이페이지</label></a>
+				<a id="my" class="my" href="../mypage/myPage.jsp"><label>마이페이지</label></a>
 				<a id="launch" class="fbbutton"
-					href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
+					href="../user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
 				</a> <%if(dto.getUserId().equals("admin")){ %> <a id="launch"
 					class="fbbutton"
-					href="user/login/loginoutControl.jsp?action=logout"><label>관리자페이지</label>
+					href="../user/admin/adminmain.jsp"><label>관리자페이지</label>
 				</a> <%} %>
 			</div>
 			<%}else{ %>
