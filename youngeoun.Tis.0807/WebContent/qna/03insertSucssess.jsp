@@ -24,7 +24,11 @@
 	postMapper.write(post);
 	
 	session.setAttribute("qnaDB", post);
+		
+	response.sendRedirect("01qnaMain.jsp");
 %>
+
+<!-- 
 <!doctype html>
 
 <html>
@@ -42,9 +46,9 @@
     <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
-    <!--main_menu_nav-->
+    main_menu_nav
     <script src="../res/js/modernizr.custom.js"></script>
-    <!--end main_menu_nav-->
+    end main_menu_nav
 
 </head>
 
@@ -60,7 +64,7 @@
                 <div id="cbp-hrmenu" class="cbp-hrmenu">
                     <ul>
                         <li>
-							<!-- 햄버거 -->
+							햄버거
                             <a href="#"><i class="fa fa-bars"></i></a>
                             <div class="cbp-hrsub" style="width:600px; left:545px;">
                                 <div class="cbp-hrsub-inner" style="width:600px;">
@@ -85,9 +89,9 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <!-- /cbp-hrsub-inner -->
+                                /cbp-hrsub-inner
                             </div>
-                            <!-- /cbp-hrsub -->
+                            /cbp-hrsub
                         </li>
                         <li>
                             <a href="#">여행지</a>
@@ -184,9 +188,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /cbp-hrsub-inner -->
+                                /cbp-hrsub-inner
                             </div>
-                            <!-- /cbp-hrsub -->
+                            /cbp-hrsub
                         </li>
                         <li>
                             <a href="#">커뮤니티</a>
@@ -239,10 +243,10 @@
                 </div>
 
                 <div class="right_nav">
-                    <!-- main_join -->
-                    <div class="right_nav_join"><a>회원가입</a></div><!-- end join -->
+                    main_join
+                    <div class="right_nav_join"><a>회원가입</a></div>end join
                     
-                    <!-- main_login -->
+                    main_login
 								<div id ="login">
 									  <section class="modal signup badge-overlay-signin">
 										<a class="btn-close badge-overlay-close" id="closepopup" href="#">✖</a>
@@ -280,19 +284,19 @@
                     
                     <div class="clear"></div>
                     
-                    <!-- main_search -->
+                    main_search
                     <div class="right_nav_search">
                         <form method="get">
                             <div>
                                 <input id="nav_search" type="search" name="search_keyword" placeholder="여행지를 검색" maxlength="255">
                             </div>
                             <div>
-                                <button id="search_button" type="submit"><!--검색--></button>
+                                <button id="search_button" type="submit">검색</button>
                             </div>
                         </form>
-                    </div><!--end .right_nav_search -->
-                </div><!--end .right_nav -->
-            </div><!--end .Center-->
+                    </div>end .right_nav_search
+                </div>end .right_nav
+            </div>end .Center
         </header>
 
         <div class="slideshow-container">
@@ -301,7 +305,7 @@
                 <img src="../res/img/faq1.jpg" style="width:100%; ">
             </div>
         </div>
-
+		
         <main>
             <div class="successMsg">
                 <br><br><br><br><br><br><br><br><br><br><br><br>
@@ -329,9 +333,9 @@
             </div>
         </footer>
     </div>
-    <!-- end fullweb -->
+    end fullweb
 
-    <!--main_menu_nav-->
+    main_menu_nav
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../res/js/cbpHorizontalMenu.min.js"></script>
     <script>
@@ -340,9 +344,23 @@
         });
     </script>
 
-    <!--main_login-->
+    main_login
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/js/index.js"></script>
-
+			    <script language='javascript'>
+		
+		function noEvent() {
+		if (event.keyCode == 116) {
+		event.keyCode= 2;
+		return false;
+		}
+		else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82))
+		{
+		return false;
+		}
+		}
+		document.onkeydown = noEvent;
+		
+		</script>
 </body>
-</html>
+</html> -->

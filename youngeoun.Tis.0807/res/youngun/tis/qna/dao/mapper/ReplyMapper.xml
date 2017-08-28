@@ -19,4 +19,10 @@
 		delete qna_replies
 		where qna_reply_num=#{replyNo}
 	</delete>
+	
+	<update id="updateReply" parameterType="youngun.tis.qna.domain.Reply">
+		update qna_replies
+		set qna_reply_content=#{replyContent}
+		where qna_reply_num=#{replyNo}
+	</update>
 </mapper>

@@ -9,6 +9,9 @@
 	<typeAliases>
 		<typeAlias alias="login" type="youngun.tis.user.login.domain.Login" />
 		<typeAlias alias="user" type="youngun.tis.user.management.domain.User" />
+		<typeAlias alias="search" type="youngun.tis.common.domain.Search" />
+		
+		
 		<typeAlias alias="Auser" type="youngun.tis.user.admin.domain.User" />
 		
 		
@@ -25,6 +28,7 @@
 		<typeAlias alias="profile" type="youngun.tis.mypage.domain.Profile"/>
 		<typeAlias alias="wishlist" type="youngun.tis.mypage.domain.Wishlist"/>
 		<typeAlias alias="commnet" type="youngun.tis.mypage.domain.Comment"/>
+		<typeAlias alias="notis" type="youngun.tis.mypage.domain.Post"/>
 		 
 	</typeAliases>	
  
@@ -56,6 +60,7 @@
 		<!-- 준식 -->		
 		<mapper resource="youngun/tis/user/login/dao/mapper/LoginMapper.xml" />
 		<mapper resource="youngun/tis/user/management/dao/mapper/UserMapper.xml" />
+		<mapper resource="youngun/tis/common/dao/mapper/SearchMapper.xml" />
 		
 		<!-- 영근 -->
 		<mapper resource="youngun/tis/user/admin/dao/mapper/UserMapper.xml" />
@@ -76,11 +81,11 @@
 		<!-- 성묵  -->		
 		<mapper resource="youngun/tis/mypage/dao/mapper/WishlistMapper.xml" />
 		<mapper resource="youngun/tis/mypage/dao/mapper/CommentMoreMapper.xml" />
+		<mapper resource="youngun/tis/mypage/dao/mapper/PostMoreMapper.xml" />
 
 <!-- 	
 		<mapper resource="youngun/tis/mypage/dao/mapper/ProfileMapper.xml" />
-		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" />
-		<mapper resource="youngun/tis/mypage/dao/mapper/PostMapper.xml" /> 
+		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" /> 
  -->		
 	</mappers>
 </configuration>

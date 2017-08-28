@@ -55,11 +55,15 @@ tr,th,td{
     font-size: 15px;
     border-bottom: 1px solid #c15020;
 }
-.boardText:hover{
+.boardText a{
+	color: black;
+	text-decoration: none;
+}
+.boardText a:hover{
     width: 400px;
     font-size: 16px;
     color: cornflowerblue;
-    border-bottom: 1px solid #c15020;
+    text-decoration: none;
 }
 
 .board{

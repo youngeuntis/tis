@@ -256,7 +256,7 @@
 			<!-- signup -->
 			<%if(dto == null){ %>
 			<div class="right_nav_join">
-				<a href="user/signup/signup.jsp">회원가입</a>
+				<a href="../user/signup/signup.jsp">회원가입</a>
 			</div>
 			<%} %>
 			<!-- end join -->
@@ -268,7 +268,7 @@
 					<section id="signup">
 						<h2>Login</h2>
 						<form id="login-email" class="badge-login-form"
-							action="user/login/loginoutControl.jsp" method="POST">
+							action="../user/login/loginoutControl.jsp" method="POST">
 							<input type="hidden" name="action" value="login"> <input
 								type="hidden" id="jsid-login-form-next-url" name="next" value="">
 							<input type="hidden" name="location" value="1">
@@ -317,9 +317,9 @@
 
 			<!-- main_search -->
 			<div class="right_nav_search">
-				<form method="get">
+				<form method="get" action="../common/search.jsp">
 					<div>
-						<input id="nav_search" type="search" name="search_keyword"
+						<input id="nav_search" type="search" name="keyWord"
 							placeholder="여행지를 검색" maxlength="255">
 					</div>
 					<div>

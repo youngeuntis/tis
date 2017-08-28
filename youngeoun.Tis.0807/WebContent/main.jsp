@@ -13,17 +13,14 @@
 	content="해외여행, 자유여행, 싱가포르, 싱가폴
 			파리, 미국, 미주, 미국 자유여행, 일본, 태국, 하와이, 대만, 홍콩, 베트남, 필리핀,
 			인도네시아, 프랑스, 스페인, 이탈리아, 영국">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Design Your TRip</title>
 <link rel="stylesheet" href="res/css/styleMain.css">
 <script type="text/javascript" src="res/js/custom.js"></script>
-<link
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <script src="res/js/modernizr.custom.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="http://fonts.googleapis.com/earlyaccess/hanna.css">
+<link rel="stylesheet" type="text/css"	href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
 
@@ -301,9 +298,9 @@
 
 					<!-- main_search -->
 					<div class="right_nav_search">
-						<form method="get">
+						<form method="get" action="common/search.jsp">
 							<div>
-								<input id="nav_search" type="search" name="search_keyword"
+								<input id="nav_search" type="search" name="keyWord"
 									placeholder="여행지를 검색" maxlength="255">
 							</div>
 							<div>

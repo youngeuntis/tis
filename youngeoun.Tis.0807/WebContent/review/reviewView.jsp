@@ -1,24 +1,10 @@
+<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.config.Configuration"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%-- 
-<%
-	Page myPage = null;
-	String currentPage = request.getParameter("currentPage");
-	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
-	else myPage = new Page();
-	
-	PostMapper postMapper = Configuration.getMapper(PostMapper.class);
-	PostDao postDao = new PostDaoImpl(postMapper);
-	
-	PageService pageService = new PageServiceImpl(5, myPage);
-	pageContext.setAttribute("pageMaker", pageService);
-	PostService postService = new PostServiceImpl(postDao);
-	List<Post> posts = postService.listPosts(myPage);
-	pageContext.setAttribute("posts", posts);
-%> --%> 
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -232,7 +218,11 @@
 
                 <div class="right_nav">
                     <!-- main_join -->
-                    <div class="right_nav_join"><a>회원가입</a></div><!-- end join -->
+                    <%if(dto == null){ %>
+                    <div class="right_nav_join"><a>회원가입</a>
+                    </div>
+                    <%} %>
+                    <!-- end join -->
                     
                     <!-- main_login -->
 								<div id ="login">
@@ -261,16 +251,29 @@
 										</section>
 									</section>
 								</div>
-								<div class="overlay"></div>
-								<div class="demo">
-								  <a id="launch" class="fbbutton" href="#">로그인</a>
-								</div>
-								<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-
-								<script src="../res/js/index.js"></script>
-
-                    
-                    <div class="clear"></div>
+					
+					<%if(dto != null){ %>
+						<div class="demo">
+							<a id="my" class="my" href="mypage/myPage.jsp"><label>마이페이지</label></a>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
+							</a>
+							<%if(dto.getUserId().equals("admin")){ %>
+							<a id="launch" class="fbbutton"
+								href="user/login/loginoutControl.jsp?action=logout"><label>관리자페이지</label>
+							</a>
+							<%} %>
+						</div>
+						<%}else{ %>
+						<div class="demo">
+							<a id="launch" class="fbbutton" href="#">로그인</a>
+						</div>
+						<%} %>
+						<script
+							src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+	
+						<script src="res/js/index.js"></script>
+						<div class="clear"></div>
                     
                     <!-- main_search -->
                     <div class="right_nav_search">
@@ -289,7 +292,8 @@
 
 
         <div class="slideshow-container">
-
+			<h1 style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);                                                                   
+     font-size:5rem;  color: white;  z-index: 2; text-align: center;">여행후기</h1>
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
@@ -324,22 +328,44 @@
             <table class="type33">
                 <td>내용이 들어갑니다.</td>
 			</table>
-			<table class="type34">
-				<th><a href="reviewMain.jsp"/>확인</th>
+            <table class="type15">
+				<th onclick="deleteReview()" >삭제</th>
+					<script>
+	                    function deleteReview(){
+	                        var answer = confirm("삭제하시겠습니까? 확인을 누르시면 글이 삭제 됩니다.")
+	                        if(answer) location.replace("reviewMain.jsp");
+	                    }
+            		</script>
             </table>
-            
+            <table class="type15">
+				<th onclick="changeReview()" >수정</th>
+					<script>
+	                    function changeReview(){
+	                        var answer = confirm("수정하시겠습니까? 확인을 누르시면 수정 페이지로 이동합니다.")
+	                        if(answer) location.replace("reviewModify.jsp");
+	                    }
+            		</script>
+            </table>
+            <table class="type15">
+            	<th><a href="reviewMain.jsp"/>목록으로</th>
+			</table>
+			
+			
+			
+			<!-- 
             <table class="type41">
                 <th>댓글</th>
             </table>
             <table class="type42">
                 <tr>
                     <th rowspan="2"></th>
-                    <td><a href="review.jsp"/>수정</td>
+                    <td><a href="03reviewView.jsp"/>수정</td>
                 </tr>
                 <tr>
-                    <td><a href="review.jsp"/>삭제</td>
+                    <td><a href="03reviewView.jsp"/>삭제</td>
                 </tr>
-            </table>            
+            </table>             -->
+            
         </main>
 
         <footer>

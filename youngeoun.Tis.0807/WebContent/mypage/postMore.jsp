@@ -1,5 +1,12 @@
+<%@page import="youngun.tis.mypage.domain.Page"%>
+<%@page import="youngun.tis.mypage.domain.Post"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.mypage.service.PostMoreServiceImpl"%>
+<%@page import="youngun.tis.mypage.service.PostMoreService"%>
+<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 <html>
 
@@ -333,7 +340,14 @@
 
 
 		<!-- 메인 작업부분 -->
-
+		<%
+			int member = dto.getMemberNum();
+			
+			PostMoreService postMoreService = new PostMoreServiceImpl();
+			List<Post> qnaNotis = postMoreService.findContentQna(member);
+			List<Post> revNotis = postMoreService.findContentRev(member);
+			List<Post> blogNotis = postMoreService.findContentTravel(member);
+		%>
 		<main>
 		<div id="container">
 			<div id="content">
@@ -341,23 +355,32 @@
 					<h2>My 게시물</h2>
 					<p class="contxt">회원님의 게시물을 전부 보여드립니다.</p>
 				</div>
-
+				
+				<!-- Blog -->
 				<div class="table">
 					<table class="board">
 						<tr>
 							<th class="boardNums">번호</th>
-							<th class="boardTexts">게시물 제목</th>
+							<th class="boardTexts">여행정보 게시물 제목</th>
 						</tr>
-
+						
+						<%
+							if(blogNotis.size() != 0){
+								for(int i=0; i<blogNotis.size(); i++){
+						%>
 						<tr>
-							<td class="boardNum">1</td>
-							<td class="boardText">와 여기 너무 좋네요</td>
+							<td class="boardNum"><%=blogNotis.get(i).getTravPostNum() %></td>
+							<td class="boardText">
+							<a href="../travel/03SelectContent.jsp?blognum=<%=blogNotis.get(i).getTravPostNum() %>">
+							<%=blogNotis.get(i).getTravPostTitle() %></a></td>
 						</tr>
-
-						<tr>
-							<td class="boardNum">2</td>
-							<td class="boardText">와 여기 너무 좋네요</td>
-						</tr>
+						<%
+							}
+						}else{%>
+							<h2>작성한 여행정보 게시물이 없습니다</h2>
+						<%
+						}
+						%>
 
 					</table>
 
@@ -366,8 +389,112 @@
 						<table summary="페이지 네비게이션" class="Nnavi" align="center">
 							<tbody>
 								<tr>
-									<td class="on"><a href="#" class="m-tcol-p">1</a></td>
-									<td><a href="#" class="m-tcol-c">2</a></td>
+								<%
+									Page pageBlogPost = new Page(blogNotis.size(),5);
+									for(int i=0; i<pageBlogPost.getPageCnt(); i++){
+								%>
+									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+								<%
+									}
+								%>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				
+				<!-- Review -->
+				<div class="table">
+					<table class="board">
+						<tr>
+							<th class="boardNums">번호</th>
+							<th class="boardTexts">여행후기 게시물 제목</th>
+						</tr>
+
+						<%
+							if(revNotis.size() != 0){
+								for(int i=0; i<revNotis.size(); i++){
+						%>
+						<tr>
+							<td class="boardNum"><%=revNotis.get(i).getRevPostNum() %></td>
+							<td class="boardText">
+							<a href="../review/reviewMain.jsp?reivewNum=<%=revNotis.get(i).getRevPostNum() %>">
+							<%=revNotis.get(i).getRevPostTitle() %></a></td>
+						</tr>
+						<%
+							}
+						}else{%>
+							<h2>작성한 여행후기 게시물이 없습니다</h2>
+						<%
+						}
+						%>
+
+
+					</table>
+
+					<div class="prev-next">
+
+						<table summary="페이지 네비게이션" class="Nnavi" align="center">
+							<tbody>
+								<tr>
+								<%
+									Page pageRevPost = new Page(revNotis.size(),5);
+									for(int i=0; i<pageRevPost.getPageCnt(); i++){
+								%>
+									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+								<%
+									}
+								%>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				
+				<!-- QNA  -->
+				<div class="table">
+					<table class="board">
+						<tr>
+							<th class="boardNums">번호</th>
+							<th class="boardTexts">Q&amp;A 게시물 제목</th>
+						</tr>
+
+						<%
+							if(qnaNotis.size() != 0){
+								for(int i=0; i<qnaNotis.size(); i++){
+						%>
+						<tr>
+							<td class="boardNum"><%=qnaNotis.get(i).getQnaPostNum() %></td>
+							<td class="boardText">
+							<a href="../qna/04view.jsp?qna_num=<%=qnaNotis.get(i).getQnaPostNum() %>">
+							<%=qnaNotis.get(i).getQnaPostTitle() %></a></td>
+						</tr>
+						<%
+							}
+						}else{%>
+							<h2>작성한 Q&amp;A 게시물이 없습니다</h2>
+						<%
+						}
+						%>
+
+
+					</table>
+
+					<div class="prev-next">
+
+						<table summary="페이지 네비게이션" class="Nnavi" align="center">
+							<tbody>
+								<tr>
+								<%
+									Page pageQnaPost = new Page(qnaNotis.size(),5);
+									for(int i=0; i<pageQnaPost.getPageCnt(); i++){
+								%>
+									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+								<%
+									}
+								%>
 								</tr>
 							</tbody>
 						</table>

@@ -2,21 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="youngun.tis.mypage.dao.mapper.PostMoreMapper">
-	<resultMap id="userMap" type="profile">
-		<id property="memberNum" column="member_num" />
-		<result property="userName" column="user_name"/>
-		<result property="userId" column="user_id"/>
-		<result property="password" column="pw"/>
-		<result property="email" column="email"/>
-		<result property="PH" column="phone_num"/>
-		<result property="nickName" column="nickname"/>
-		<result property="profileImg" column="profile_img"/>
+	<resultMap id="qnaNoti" type="notis">
+		<id property="qnaPostNum" column="qna_num" />
+		<result property="qnaPostTitle" column="qna_title"/>
+		<result property="memberNum" column="member_num"/>
 	</resultMap>
 	
+	<resultMap id="revNoti" type="notis">
+		<id property="revPostNum" column="review_num" />
+		<result property="revPostTitle" column="review_title"/>
+		<result property="memberNum" column="member_num"/>
+	</resultMap>
 	
-	<select id="getUser" parameterType="String" resultMap="userMap">
-		select user_id userId, user_name userName, pw password, email, phone_num PH, nickname nickName, profile_img profileImg
-		from members
-		where user_id = #{userId}
+	<resultMap id="bolgNoti" type="notis">
+		<id property="travPostNum" column="info_num" />
+		<result property="travPostTitle" column="info_title"/>
+		<result property="memberNum" column="member_num"/>
+	</resultMap>
+	
+	<select id="selectQna" parameterType="String" resultMap="qnaNoti">
+		select qna_num qnaPostNum, member_num memberNum, qna_title qnaPostTitle
+		from qna_notices
+		where member_num = #{memberNum}
+		order by qna_num ASC
+	</select>
+	
+	<select id="selectRev" parameterType="String" resultMap="revNoti">
+		select review_num revPostNum, review_title revPostTitle, 
+			   member_num memberNum
+		from reviews_notices
+		where member_num = #{memberNum}
+		order by review_num ASC
+	</select>
+	
+	<select id="selectTravel" parameterType="String" resultMap="bolgNoti">
+		select info_num travPostNum, info_title travPostTitle, 
+			   member_num memberNum
+		from infomations
+		where member_num = #{memberNum}
+		order by info_num ASC
 	</select>
 </mapper>

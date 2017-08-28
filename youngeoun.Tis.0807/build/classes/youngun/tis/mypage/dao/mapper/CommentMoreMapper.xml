@@ -8,12 +8,26 @@
 		<result property="qnaReplyCont" column="qna_reply_content"/>
 	</resultMap>
 	
+	<resultMap id="revMap" type="commnet">
+		<id property="revReplyNum" column="review_reply_num" />
+		<result property="memberNum" column="member_num"/>
+		<result property="revReplyCont" column="review_reply_content"/>
+	</resultMap>
 	
+	<!-- qna댓글 select  -->
 	<select id="selectComment" parameterType="String" resultMap="qnaMap">
 		select qna_reply_num qnaReplyNum, member_num memberNum, qna_reply_content qnaReplyCont
 		from qna_replies
 		where member_num = #{memberNum}
 		order by qna_reply_num ASC
+	</select>
+	
+	<!-- rev댓글 select -->
+	<select id="selectRevComment" parameterType="String" resultMap="revMap">
+		select review_reply_num revReplyNum, member_num memberNum, review_reply_content revReplyCont
+		from review_replies
+		where member_num = #{memberNum}
+		order by review_reply_num ASC
 	</select>
 
 </mapper>
