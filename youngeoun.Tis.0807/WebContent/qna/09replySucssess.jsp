@@ -2,7 +2,7 @@
 <%@page import="youngun.tis.qna.dao.mapper.ReplyMapper"%>
 <%@page import="youngun.tis.qna.domain.Reply"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%
 		String qnaNum = request.getParameter("qna_num");
 		int postNo = 0;
