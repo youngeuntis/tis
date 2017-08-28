@@ -1,9 +1,17 @@
+<%@page import="youngun.tis.review.service.SearchService"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
+<%@page import="youngun.tis.review.domain.Review"%>
+<%@page import="youngun.tis.review.domain.PageReview"%>
+<%@page import="youngun.tis.review.domain.Country"%>
+<%@page import="youngun.tis.review.dao.ReviewDaoImpl"%>
+<%@page import="youngun.tis.review.dao.ReviewDao"%>
+<%@page import="youngun.tis.review.dao.TravelDao"%>
+<%@page import="youngun.tis.review.mapper.ReviewMapper"%>
+<%@page import="youngun.tis.review.mapper.TravelMapper"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.config.Configuration"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" trimDirectiveWhitespaces="true"%>
 <% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
@@ -19,12 +27,16 @@
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
     <link rel="stylesheet" href="../res/css/review.css">
+    <link rel="stylesheet" href="../res/css/selectOption.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
+    <script type="text/javascript" src="../res/js/indexOption.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 
 </head>
+
+            
 
 <body>
 
@@ -216,7 +228,7 @@
                     </ul>
                 </div>
 
-                <div class="right_nav">
+               <div class="right_nav">
                     <!-- main_join -->
                     <%if(dto == null){ %>
                     <div class="right_nav_join"><a>회원가입</a>
@@ -275,6 +287,7 @@
 						<script src="res/js/index.js"></script>
 						<div class="clear"></div>
                     
+                    
                     <!-- main_search -->
                     <div class="right_nav_search">
                         <form method="get">
@@ -289,8 +302,8 @@
                 </div><!--end .right_nav -->
             </div><!--end .Center-->
         </header>
-
-
+        
+       
         <div class="slideshow-container">
 			<h1 style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);                                                                   
      font-size:5rem;  color: white;  z-index: 2; text-align: center;">여행후기</h1>
@@ -301,11 +314,10 @@
             <div class="mySlides fade">
                 <img src="../res/img/travelImg/m.jpg" style="width:100%; ">
             </div>
-
             <div class="mySlides fade">
                 <img src="../res/img/travelImg/g.jpg" style="width:100%; ">
             </div>
-
+			
             <div class="mySlides fade">
                 <img src="../res/img/travelImg/pr.jpg" style="width:100%;">
             </div>
@@ -313,61 +325,134 @@
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-        </div>
-		
-		
-		<!-- 메인 작업부분 -->
-		
-		<main>
-            <table class="type31">
-					<th><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
-            </table> 
-            <table class="type32">
-                    <th>제목이 들어갑니다.</th>
-            </table>
-            <table class="type33">
-                <td>내용이 들어갑니다.</td>
+        </div> 
+     
+         <select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();" style="width:165px;height:50px;font-size:20px; margin-right: 5px; margin-top:0px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;">
+                		<option selected disabled>--국가--</option>
+                    	<option value="c2">유럽</option>
+                    	<option value="c3">미대양주</option>
+                    	<option value="c1">아시아</option>
+                    </select>
+        <select class="editorSelect" id="subSelect" name="country" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
+                border-radius: 0px; -webkit-appearance: none;" placeholder="지역" >
+                    	
+                    </select>
+                    <script>
+                    	function subCategory(){
+                    		var x = document.getElementById("mySelect").value;
+                    		<%
+                    			TravelDao travelDao = new TravelDao();
+                    		
+								List<Country> countries = travelDao.getCountryList("c1");
+								List<Country> countries2 = travelDao.getCountryList("c2");
+								List<Country> countries3 = travelDao.getCountryList("c3");
+            				%>
+            				
+                    		if(x=="c1"){
+                    			<%
+                    			String str = "";
+            					for(int i=0; i< countries.size(); i++){
+	            				%>
+	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str; 
+                    		}else if(x=="c2"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries2.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}else if(x=="c3"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries3.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}
+                    	}
+                    	</script>
+          
+         
+     <!-- <main>
+		<a href="reviewView.jsp">
+			<table class="type02">
+					
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
 			</table>
-            <table class="type15">
-				<th onclick="deleteReview()" >삭제</th>
-					<script>
-	                    function deleteReview(){
-	                        var answer = confirm("삭제하시겠습니까? 확인을 누르시면 글이 삭제 됩니다.")
-	                        if(answer) location.replace("reviewMain2.jsp");
-	                    }
-            		</script>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+             </table>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
             </table>
-            <table class="type15">
-				<th onclick="changeReview()" >수정</th>
-					<script>
-	                    function changeReview(){
-	                        var answer = confirm("수정하시겠습니까? 확인을 누르시면 수정 페이지로 이동합니다.")
-	                        if(answer) location.replace("reviewModify.jsp");
-	                    }
-            		</script>
-            </table>
-            <table class="type15">
-            	<th><a href="reviewMain2.jsp"/>목록으로</th>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
 			</table>
-			
-			
-			
-			<!-- 
-            <table class="type41">
-                <th>댓글</th>
-            </table>
-            <table class="type42">
-                <tr>
-                    <th rowspan="2"></th>
-                    <td><a href="03reviewView.jsp"/>수정</td>
-                </tr>
-                <tr>
-                    <td><a href="03reviewView.jsp"/>삭제</td>
-                </tr>
-            </table>             -->
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+			</table>
+			<table class="type02">
+				<tr>
+					<th rowspan="2"><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th>스페인 여행 후기 입니다.</th>
+				</tr>
+				<tr>
+					<td>스페인은 킹왕짱ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ재밌다</td>
+				</tr>
+			</table></a>
+			<a href="reviewInsert.jsp">
+                <table class="type03">
+				<tr>
+					<th>글쓰기</th>
+				</tr>
+			</table></a>
+		</main> -->
             
-        </main>
-
+  
         <footer>
             <div class="footer_nav">
                 
