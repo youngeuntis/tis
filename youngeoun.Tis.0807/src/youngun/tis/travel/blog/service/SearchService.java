@@ -1,5 +1,6 @@
 package youngun.tis.travel.blog.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -80,4 +81,27 @@ public class SearchService {
 		return blogDao.deleteWish(wish);
 	}
 	
+	//조회수순으로 정렬하기
+	public List<Blog> sortArrayByViewCnt(List<Blog> blogList){
+		//배열 복사
+		List<Blog> blogListNew = new ArrayList<>();
+		for(int i=0; i<blogList.size(); i++){
+			blogListNew.add(blogList.get(i));
+			System.out.println(blogListNew);
+		}
+		//조회 순으로 정렬
+		for(int j=0; j<blogListNew.size()-1; j++){
+			for(int i=0; i<blogListNew.size(); i++){
+				if((i+1)==blogListNew.size()) break;
+				if(blogListNew.get(i).getHits() < blogListNew.get(i+1).getHits()){
+					Blog tmp = blogListNew.get(i);
+					blogListNew.set(i, blogListNew.get(i+1));
+					blogListNew.set(i+1, tmp);
+				}
+			}
+		}
+		System.out.println(blogListNew);
+		
+		return blogListNew;
+	}
 }

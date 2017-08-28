@@ -231,11 +231,10 @@
 				    </div>
 				    <!-- #endregion Jssor Slider End -->
             <div class="travel_content">
-                
+          
                 <div class="content_buttons">
                     <a href="02BlogMain.jsp?blogNum=<%=selectBlog.getBlogNum() %>" class="action-button shadow animate blue">수정</a>
                     <button onclick="delBlog()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">삭제</button>
-                    
                 </div>
            <%
            		selectBlog.setHits(selectBlog.getHits()+1);

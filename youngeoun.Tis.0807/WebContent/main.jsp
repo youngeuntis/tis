@@ -1,3 +1,8 @@
+<%@page import="youngun.tis.travel.blog.domain.Blog"%>
+<%@page import="java.util.List"%>
+<%@page import="youngun.tis.travel.blog.service.SearchService"%>
+<%@page import="youngun.tis.travel.blog.dao.BlogDaoImpl"%>
+<%@page import="youngun.tis.travel.blog.dao.BlogDao"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
@@ -28,7 +33,7 @@
 		<header>
 			<div class="Center">
 				<div class="site-logo">
-					<img src="../res/img/logo/DYTR.png"
+					<img src="res/img/logo/DYTR.png"
 						style="display: inline-block; width: 15%; height: auto; margin-top: -15px;">
 					<h1>
 						<a href="main.jsp">Design Your Trip</a>
@@ -385,19 +390,26 @@
 			<h1 class="bestTitle">Best Travel Content</h1>
 			<div class="bestDiv">
 				<h2 class="bestDivIneer">
-					<a href="travel/03.html">
-						<div class="best1">
-							<img src="res/img/mainslide/g.jpg">
-							<h3>그리스 산토리니</h3>
-							<p>강추강추추추추추</p>
+			<%
+				BlogDao blogDao = new BlogDaoImpl(); //OR 맵핑
+				SearchService service = new SearchService(blogDao); //서비스 객체 생성 
+				List<Blog> allBlogList = blogDao.getBlogListNoPara(); //모든 블로그 리스트
+				List<Blog> blogListNew = service.sortArrayByViewCnt(allBlogList); // 조회 많은 순으로 정렬된 ArrayList
+				for(int i=0; i<4; i++){
+			%>
+					<a href="travel/03SelectContent.jsp?blognum=<%=blogListNew.get(i).getBlogNum()%>">
+						<div class="best<%=i%>">
+							<img src="<%=blogListNew.get(i).getImg()%>">
+							<h3><%=blogListNew.get(i).getBlogTitle() %></h3>
 						</div>
 					</a>
-					<div class="best2"></div>
-					<div class="best3"></div>
-					<div class="best4"></div>
+			<%
+				}
+			%>
 				</h2>
 			</div>
 		</div>
+		
 		<hr style="width: 400px; margin: 0 auto; border: 1px solid #DC4D28;">
 		<div class="best">
 			<h1 class="bestTitle">Hot Event</h1>

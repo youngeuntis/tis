@@ -35,7 +35,7 @@
 	</update>
 	<!-- 게시글 수정 -->
 	<update id="updateInfo" parameterType="Blog">
-		update infomations set info_title = #{blogTitle}, info_content=#{blogContent}, info_img=#{img} where info_num=#{blogNum} 
+		update infomations set info_title = #{blogTitle}, info_content=#{blogContent}, continent_code =#{continentCode}, nation_code=#{nationCode}, info_img=#{img} where info_num=#{blogNum} 
 	</update>
 	
 	<delete id="deleteBlog" parameterType="Blog">

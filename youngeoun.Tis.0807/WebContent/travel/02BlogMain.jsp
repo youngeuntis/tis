@@ -87,6 +87,7 @@
 			List<Blog> blogs = blogDao.getBlogListNoPara();
 			String blogNum = request.getParameter("blogNum");
 			String continent = request.getParameter("continent");
+			String category = null;
 			if(blogNum == null){
 				title = "";
 				content = "";
@@ -94,8 +95,16 @@
 				selectBlog = service.searchBlog(blogs, blogNum);			
 				title = selectBlog.getBlogTitle();
 				content = selectBlog.getBlogContent();
+				
+				 
+				 if(selectBlog.getContinentCode().contains("c1")) category="아시아";
+				 else if(selectBlog.getContinentCode().contains("c2")) category="유럽";
+				 else if(selectBlog.getContinentCode().contains("c6")) category="대한민국";
+				 else if(selectBlog.getContinentCode().contains("c3")) category="미대양주";
 			}
-			
+			 			 
+			 
+			 
 		%>
 		
         <main>
@@ -109,27 +118,27 @@
                     </div>
                     <select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();">
                     <%
+                   
+                    if(continent!=null){
                     	switch(continent){
                     	case "대한민국" : out.print("<option value=\"c6\" selected>대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
                     	case "유럽" : out.print("<option value=\"c6\">대한민국</option><option value=\"c2\" selected>유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
                     	case "미대양주": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\">아시아</option>"); break;
                     	case "아시아": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\" selected>아시아</option>"); break;
                     	}
+                    }else{
+                    	switch(category){
+                    	case "대한민국" : out.print("<option value=\"c6\" selected>대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "유럽" : out.print("<option value=\"c6\">대한민국</option><option value=\"c2\" selected>유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "미대양주": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "아시아": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\" selected>아시아</option>"); break;
+                    	}
+                    }
                     %>
-                    	<!-- <option value="c6">대한민국</option>
-                    	<option value="c2">유럽</option>
-                    	<option value="c3">미대양주</option>
-                    	<option value="c1">아시아</option> -->
+                    
                     </select>
                     <select class="editorSelect" id="subSelect" name="country">
-                 <!--    	<option value="n49">서울</option>
-                    	<option value="n50">부산</option>
-                    	<option value="n51">제주</option>
-                    	<option value="n52">경기</option>
-                    	<option value="n53">강원도</option>
-                    	<option value="n54">충청도</option>
-                    	<option value="n55">전라도</option>
-                    	<option value="n56">경상도</option> -->
+                
                     </select>
                     <%
                    			TravelDao travelDao = new TravelDao();
@@ -146,10 +155,16 @@
                     			<%
                     			String str = "";
             					for(int i=0; i< countries.size(); i++){
+            						if(blogNum != null&&selectBlog.getNationCode().equals(countries.get(i).getNationalCode())){
 	            				%>
-	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
+	            						str += "<option value=\"<%=countries.get(i).getNationalCode()%>\" selected><%=countries.get(i).getCountryName()%></option>";
 	            				<%
-	            					}
+            						}else{
+            					%>
+            							str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
+            					<%
+            						}
+            					}
 	            				%>
                     			var str = <%=str%>
                     			document.getElementById("subSelect").innerHTML =str; 
@@ -157,10 +172,16 @@
                     			<%
                     			str = "";
             					for(int i=0; i< countries2.size(); i++){
+            						if(blogNum != null&&selectBlog.getNationCode().equals(countries2.get(i).getNationalCode())){
 	            				%>
-	            				str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
+	            						str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\" selected><%=countries2.get(i).getCountryName()%></option>";
 	            				<%
-	            					}
+            						}else{
+            					%>
+            							str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
+            					<%
+            						}
+            					}
 	            				%>
                     			var str = <%=str%>
                     			document.getElementById("subSelect").innerHTML =str;
@@ -168,25 +189,40 @@
                     			<%
                     			str = "";
             					for(int i=0; i< countries3.size(); i++){
+            						if(blogNum != null&&selectBlog.getNationCode().equals(countries3.get(i).getNationalCode())){
 	            				%>
-	            				str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
+	            						str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\" selected><%=countries3.get(i).getCountryName()%></option>";
 	            				<%
-	            					}
+            						}else{
+            					%>
+            							str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
+            					<%
+            						}
+            					}
 	            				%>
                     			var str = <%=str%>
                     			document.getElementById("subSelect").innerHTML =str;
                     		}else if(firstSel=="c6"){
                     			<%
                     			str = "";
+                    
             					for(int i=0; i< countries4.size(); i++){
+            						if(blogNum != null&&selectBlog.getNationCode().equals(countries4.get(i).getNationalCode())){
 	            				%>
-	            				str += "<option value=\"<%=countries4.get(i).getNationalCode()%>\"><%=countries4.get(i).getCountryName()%></option>";
+	            						str += "<option value=\"<%=countries4.get(i).getNationalCode()%>\" selected><%=countries4.get(i).getCountryName()%></option>";
 	            				<%
-	            					}
+            						}else{
+            					%>
+            							str += "<option value=\"<%=countries4.get(i).getNationalCode()%>\"><%=countries4.get(i).getCountryName()%></option>";
+            					<%
+            						}
+            					}
 	            				%>
                     			var str = <%=str%>
                     			document.getElementById("subSelect").innerHTML =str;
-                    		}           			
+                    		}    
+                    		
+                    		
                     	function subCategory(){
                     		var x = document.getElementById("mySelect").value;
                     		            				
