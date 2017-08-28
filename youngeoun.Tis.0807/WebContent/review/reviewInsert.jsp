@@ -302,7 +302,8 @@
 
 
         <div class="slideshow-container">
-
+			<h1 style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);                                                                   
+     font-size:5rem;  color: white;  z-index: 2; text-align: center;">여행후기</h1>
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
@@ -421,7 +422,7 @@
 					<script>
 	                    function registrationReview(){
 	                        var answer = confirm("등록되었습니다 확인을 누르시면 메인페이지로 이동합니다.")
-	                        if(answer) location.replace("02reviewMain.jsp");
+	                        if(answer) location.replace("reviewMain.jsp");
 	                    }
             		</script>
             </table>
@@ -430,7 +431,7 @@
             		<script>
 	                    function cancelMove(){
 	                        var answer = confirm("확인을 누르시면 작성중이던 글이 저장되지 않고 이전 페이지로 돌아갑니다.취소를 원하십니까?")
-	                        if(answer) location.replace("02reviewMain.jsp");
+	                        if(answer) location.replace("reviewMain.jsp");
 	                    }
             		</script>
 			</table>

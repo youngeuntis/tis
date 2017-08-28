@@ -1,3 +1,4 @@
+<%@page import="youngun.tis.mypage.domain.Page"%>
 <%@page import="youngun.tis.mypage.domain.Post"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.mypage.service.PostMoreServiceImpl"%>
@@ -345,7 +346,7 @@
 			PostMoreService postMoreService = new PostMoreServiceImpl();
 			List<Post> qnaNotis = postMoreService.findContentQna(member);
 			List<Post> revNotis = postMoreService.findContentRev(member);
-			List<Post> BlogNotis = postMoreService.findContentTravel(member);
+			List<Post> blogNotis = postMoreService.findContentTravel(member);
 		%>
 		<main>
 		<div id="container">
@@ -364,14 +365,14 @@
 						</tr>
 						
 						<%
-							if(BlogNotis.size() != 0){
-								for(int i=0; i<BlogNotis.size(); i++){
+							if(blogNotis.size() != 0){
+								for(int i=0; i<blogNotis.size(); i++){
 						%>
 						<tr>
-							<td class="boardNum"><%=BlogNotis.get(i).getTravPostNum() %></td>
+							<td class="boardNum"><%=blogNotis.get(i).getTravPostNum() %></td>
 							<td class="boardText">
-							<a href="../travel/03SelectContent.jsp?blognum=<%=BlogNotis.get(i).getTravPostNum() %>">
-							<%=BlogNotis.get(i).getTravPostTitle() %></a></td>
+							<a href="../travel/03SelectContent.jsp?blognum=<%=blogNotis.get(i).getTravPostNum() %>">
+							<%=blogNotis.get(i).getTravPostTitle() %></a></td>
 						</tr>
 						<%
 							}
@@ -388,8 +389,14 @@
 						<table summary="페이지 네비게이션" class="Nnavi" align="center">
 							<tbody>
 								<tr>
-									<td class="on"><a href="#" class="m-tcol-p">1</a></td>
-									<td><a href="#" class="m-tcol-c">2</a></td>
+								<%
+									Page pageBlogPost = new Page(blogNotis.size(),5);
+									for(int i=0; i<pageBlogPost.getPageCnt(); i++){
+								%>
+									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+								<%
+									}
+								%>
 								</tr>
 							</tbody>
 						</table>
@@ -431,8 +438,14 @@
 						<table summary="페이지 네비게이션" class="Nnavi" align="center">
 							<tbody>
 								<tr>
-									<td class="on"><a href="#" class="m-tcol-p">1</a></td>
-									<td><a href="#" class="m-tcol-c">2</a></td>
+								<%
+									Page pageRevPost = new Page(revNotis.size(),5);
+									for(int i=0; i<pageRevPost.getPageCnt(); i++){
+								%>
+									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+								<%
+									}
+								%>
 								</tr>
 							</tbody>
 						</table>
@@ -474,8 +487,14 @@
 						<table summary="페이지 네비게이션" class="Nnavi" align="center">
 							<tbody>
 								<tr>
-									<td class="on"><a href="#" class="m-tcol-p">1</a></td>
-									<td><a href="#" class="m-tcol-c">2</a></td>
+								<%
+									Page pageQnaPost = new Page(qnaNotis.size(),5);
+									for(int i=0; i<pageQnaPost.getPageCnt(); i++){
+								%>
+									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+								<%
+									}
+								%>
 								</tr>
 							</tbody>
 						</table>

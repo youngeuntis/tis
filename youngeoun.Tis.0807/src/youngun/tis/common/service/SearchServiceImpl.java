@@ -19,4 +19,10 @@ public class SearchServiceImpl implements SearchService {
 		return searchDao.selectContent(content);
 	}
 
+
+	@Override
+	public List<Search> findNewContent(String content) {
+		return searchDao.selectNewContent(content);
+	}
+
 }
