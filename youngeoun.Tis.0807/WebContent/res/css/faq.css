@@ -70,10 +70,11 @@ Main components
 }
 
 .cd-faq-categories a {
+  font-size:25px;
   position: relative;
   display: block;
   overflow: hidden;
-  height: 50px;
+  height: 70px;
   line-height: 50px;
   padding: 0 28px 0 16px;
   background-color: #4e5359;
@@ -83,6 +84,10 @@ Main components
   white-space: nowrap;
   border-bottom: 1px solid #555b61;
   text-overflow: ellipsis;
+}
+
+.cd-faq-categories li a {
+	font-size:25px;
 }
 .cd-faq-categories a::before, .cd-faq-categories a::after {
   /* plus icon on the right */
@@ -354,7 +359,7 @@ Main components
 
 .cd-faq-items li a{
     font-size: 22px;
-    color: #a9c056;
+    color: navy;
     text-decoration: none;
 }
 

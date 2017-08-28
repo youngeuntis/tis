@@ -119,7 +119,7 @@ postMapper.updateCnt(postNo);
 					Reply oldRep = (Reply)session.getAttribute("reply");
                 	Reply reply = null;
                 	String changeable = request.getParameter("index");
-                	out.print(changeable);
+                	
 					if(replyContent != null) {
 							reply = new Reply();
 							reply.setReplyContent(replyContent);
