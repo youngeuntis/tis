@@ -8,6 +8,7 @@ import youngun.tis.review.dao.ReviewDaoImpl;
 import youngun.tis.review.domain.Review;
 import youngun.tis.review.domain.Country;
 import youngun.tis.review.mapper.ReviewMapper;
+import youngun.tis.travel.blog.domain.Blog;
 
 public class SearchService {
 
@@ -51,8 +52,11 @@ public class SearchService {
 			repeat++;
 		}
 		review.setReviewImg(strImg);
+		
+		
+		
 	}
-	public void modifyBlog(Review review){
+	public void modifyReview(Review review){
 		reviewDao.updateInfo(review);
 	}
 	

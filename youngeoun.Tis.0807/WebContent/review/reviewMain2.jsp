@@ -318,7 +318,6 @@
 				nationName = (nationName==null)? "--Country--" : nationName;
 				
 				
-				
           		String index="";
 				if(continentCode.equals("대한민국")) index = "%c6%";
 				else if(continentCode.equals("유럽")) index = "%c2%";
@@ -550,7 +549,7 @@
 						if(reviewNotice.size()!=0){
 							for(int i=0; i<pageReview.getPageAmount(); i++){
 				%>
-								<a href="NewFile.jsp?continent=<%= continentCode %>&nation=<%=nationName %>&page=<%=i %>" style="color:black;"><li><%=i+1 %></li></a>	
+								<a href="reviewMain2.jsp?continent=<%= continentCode %>&nation=<%=nationName %>&page=<%=i %>" style="color:black;"><li><%=i+1 %></li></a>	
 				<%			
 							}	
 						}
