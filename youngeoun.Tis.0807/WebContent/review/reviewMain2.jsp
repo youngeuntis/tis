@@ -364,7 +364,7 @@
     			      template += '<span class="custom-select-trigger2">' + $(this).attr("placeholder") + '</span>';
     			      template += '<div class="custom-options2">';
     			      $(this).find("option").each(function() {
-    			        template += '<a href=NewFile.jsp?continent='+$(this).attr("value")+'>'+'<span class="custom-option2 ' + $(this).attr("class") + '" data-value2="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
+    			        template += '<a href=reviewMain2.jsp?continent='+$(this).attr("value")+'>'+'<span class="custom-option2 ' + $(this).attr("class") + '" data-value2="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
     			      });
     			  template += '</div></div>';
     			  
@@ -400,7 +400,7 @@
 		    		      template += '<span class="custom-select-trigger3">' + $(this).attr("placeholder") + '</span>';
 		    		      template += '<div class="custom-options3">';
 		    		      $(this).find("option").each(function() {
-		    		        template += '<a href=NewFile.jsp?continent=<%=continentCode%>&nation='+$(this).attr("value")+'>'+'<span class="custom-option3 ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
+		    		        template += '<a href=reviewMain2.jsp?continent=<%=continentCode%>&nation='+$(this).attr("value")+'>'+'<span class="custom-option3 ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>' +'</a>';
 		    		      });
 		    		  template += '</div></div>';
 		    		  
@@ -475,7 +475,7 @@
 		
         <main>
 			<div class="travel_main">
-				<center><h1><%= continentCode %>여행기</h1></center>
+				<center><h1><%= continentCode %> 여행 후기</h1></center>
 				
 				<%if(dto!=null){ %>
                 <a href="reviewInsert.jsp?userNum=<%=dto.getMemberNum() %>&continent=<%=continentCode %>" class="action-button shadow animate blue"  style="margin-left: 90px;">글작성</a>
