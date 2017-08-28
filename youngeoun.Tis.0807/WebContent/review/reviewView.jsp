@@ -272,7 +272,7 @@
 						<script
 							src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 	
-						<script src="res/js/index.js"></script>
+						<script src="res/js/index.js"></script>.
 						<div class="clear"></div>
                     
                     <!-- main_search -->
