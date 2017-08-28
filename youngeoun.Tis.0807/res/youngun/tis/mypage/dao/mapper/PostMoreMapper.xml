@@ -24,7 +24,7 @@
 		select qna_num qnaPostNum, member_num memberNum, qna_title qnaPostTitle
 		from qna_notices
 		where member_num = #{memberNum}
-		order by qna_num ASC
+		order by qna_num DESC
 	</select>
 	
 	<select id="selectRev" parameterType="String" resultMap="revNoti">
@@ -32,7 +32,7 @@
 			   member_num memberNum
 		from reviews_notices
 		where member_num = #{memberNum}
-		order by review_num ASC
+		order by review_num DESC
 	</select>
 	
 	<select id="selectTravel" parameterType="String" resultMap="bolgNoti">
@@ -40,6 +40,6 @@
 			   member_num memberNum
 		from infomations
 		where member_num = #{memberNum}
-		order by info_num ASC
+		order by info_num DESC
 	</select>
 </mapper>
