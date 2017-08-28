@@ -392,6 +392,7 @@
 
 
 				<div class="mainB2">
+				
 				<%for(int i=0;i<10;i++){ %>
 					<div class="memberDataBcheck"><input type="checkbox"></div>
 					<div class="memberDataBid"><p><%=Muser.get(i).getUserId() %></p></div>
