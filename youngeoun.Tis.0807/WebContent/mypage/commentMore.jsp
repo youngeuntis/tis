@@ -360,7 +360,7 @@
 					<h2>My 댓글</h2>
 					<p class="contxt">회원님의 댓글을 전부 보여드립니다.</p>
 				</div>
-				
+
 				<!--qna 댓글  -->
 				<div class="table">
 					<table class="board">
@@ -368,25 +368,29 @@
 							<th class="boardNums">번호</th>
 							<th class="boardTexts">Q&amp;A 댓글 내용</th>
 						</tr>
-						
+
 						<%
-						String pageIndex = request.getParameter("page");
-						if(pageIndex == null) pageIndex="1";
-						int pageIndexInt = Integer.parseInt(pageIndex);
-						int k = 0;
-						if(commentReply.size() != 0){
-							for(int i=pageQnaRe.getPageNum()*(pageIndexInt-1); i<pageIndexInt*pageQnaRe.getPageNum(); i++){ %>
+						String pageCommentIndex = request.getParameter("page");
+						if(pageCommentIndex == null) pageCommentIndex="1";
+						int pageIndexInt = Integer.parseInt(pageCommentIndex);
 						
+						if(commentReply.size() != 0){						
+							for(int i=pageQnaRe.getPageNum()*(pageIndexInt-1); i<pageIndexInt*pageQnaRe.getPageNum(); i++){
+								if(i>=commentReply.size()) break;			
+						%>
 						<tr>
 							<td class="boardNum"><%=commentReply.get(i).getQnaReplyNum() %></td>
-							<td class="boardText"><a href="../qna/09replySucssess.jsp?qna_reply_num=<%=commentReply.get(i).getQnaReplyNum() %>">
-							<%=commentReply.get(i).getQnaReplyCont() %></a></td>
+							<td class="boardText"><a
+								href="../qna/09replySucssess.jsp?qna_reply_num=<%=commentReply.get(i).getQnaReplyNum() %>">
+									<%=commentReply.get(i).getQnaReplyCont() %></a></td>
 						</tr>
 						<%
 							}
 						}else{%>
-							<h2>작성한 Q&amp;A의 댓글이 없습니다.</h2>
-						<%}%>
+						<h2>작성한 Q&amp;A의 댓글이 없습니다.</h2>
+						<%
+						}						
+						%>
 
 					</table>
 
@@ -396,10 +400,10 @@
 							<tbody>
 								<tr>
 								<%
-									
 									for(int i=0; i<pageQnaRe.getPageCnt(); i++){
 								%>
-									<td class="on"><a href="commentMore.jsp?page=<%=i+1 %>" class="m-tcol-p"><%=i+1 %></a></td>
+									<td class="on"><a href="commentMore.jsp?page=<%=i+1 %>"
+										class="m-tcol-p"><%=i+1 %></a></td>
 								<%
 									}
 								%>
@@ -409,7 +413,7 @@
 					</div>
 
 				</div>
-				
+
 				<!--rev 댓글  -->
 				<div class="table">
 					<table class="board">
@@ -417,24 +421,29 @@
 							<th class="boardNums">번호</th>
 							<th class="boardTexts">여행후기 댓글 내용</th>
 						</tr>
-						
-						
+
+
 						<%
-						if(commentRevReply.size() != 0){
-							for(int i=0; i<commentRevReply.size(); i++){ %>
+						String pageRevCommentIndex = request.getParameter("page");
+						if(pageRevCommentIndex == null) pageRevCommentIndex="1";
+						int pageRevIndexInt = Integer.parseInt(pageRevCommentIndex);
 						
+						if(commentRevReply.size() != 0){
+							for(int i=pageRevRe.getPageNum()*(pageRevIndexInt-1); i<pageRevIndexInt*pageRevRe.getPageNum(); i++){
+								if(i>=commentRevReply.size()) break;			
+						%>
+
 						<tr>
 							<td class="boardNum"><%=commentRevReply.get(i).getRevReplyNum() %></td>
-							<td class="boardText"><a href="../review/reviewMain.jsp?review_reply_num=<%=commentRevReply.get(i).getRevReplyNum() %>">
-							<%=commentRevReply.get(i).getRevReplyCont() %></td>
+							<td class="boardText"><a
+								href="../review/reviewMain.jsp?review_reply_num=<%=commentRevReply.get(i).getRevReplyNum() %>">
+									<%=commentRevReply.get(i).getRevReplyCont() %></td>
 						</tr>
-						
+
 						<%
 							}
-						}else{%>
-						<tr>
-							<h2>작성한 여행후기의 댓글이 없습니다.</h2>
-						</tr>
+						}else{%>						
+							<h2>작성한 여행후기의 댓글이 없습니다.</h2>						
 						<%}%>
 
 					</table>
@@ -444,11 +453,11 @@
 						<table summary="페이지 네비게이션" class="Nnavi" align="center">
 							<tbody>
 								<tr>
-								<%
+									<%
 									for(int i=0; i<pageRevRe.getPageCnt(); i++){
 								%>
 									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
-								<%
+									<%
 									}
 								%>
 								</tr>
@@ -457,8 +466,8 @@
 					</div>
 
 				</div>
-				
-				
+
+
 			</div>
 		</div>
 		</main>
