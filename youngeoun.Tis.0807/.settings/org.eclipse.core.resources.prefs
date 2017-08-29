@@ -3,6 +3,7 @@
 >>>>>>>=branch 'master' of https\://github.com/youngeuntis/tis
 eclipse.preferences.version=1
 encoding//WebContent/headerNav.jsp=UTF-8
+encoding//WebContent/qna/08faqlist.jsp=UTF-8
 encoding//WebContent/res/css/review.css=UTF-8
 encoding//WebContent/travel/04BlogAfter.jsp=UTF-8
 encoding/<project>=UTF-8
