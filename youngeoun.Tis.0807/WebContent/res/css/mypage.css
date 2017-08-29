@@ -1,6 +1,6 @@
 /* --** Reset CSS **-- */
 * { margin: 0px; padding: 0px; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { border: 0; font-family: inherit; font-size: 100%; font-weight: inherit; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { border: 0; -family: inherit; font-size: 100%; font-weight: inherit; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
 html, body, button, input, select, textarea { font-family: Arial; font-size: 12px; color: #8c506e; }
 ul, ol { margin-top: 0; margin-bottom: 10px; }
@@ -730,7 +730,7 @@ main{
 	display: inline-block;
     width: 300px;
     margin: 15px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .wishlist_img {
