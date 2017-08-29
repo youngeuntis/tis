@@ -251,8 +251,8 @@
             </div>
             <script>
                     function cancelMove(){
-                        var answer = confirm("확인을 누르시면 데이터가 삭제됩니다.삭제를 원하십니까?")
-                        if(answer) location.replace("reviewMain2.jsp");
+                        var answer = confirm("확인을 누르시면 이전 페이지로 이동합니다. 이동를 원하십니까?")
+                        if(answer) history.go(-1);
                     }
             </script>
 		</main>
