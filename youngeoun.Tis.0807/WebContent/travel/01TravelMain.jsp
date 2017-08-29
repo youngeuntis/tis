@@ -1,3 +1,4 @@
+<%@page import="youngun.tis.travel.blog.dao.TravelDao"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
 <%@page import="youngun.tis.travel.blog.domain.Wish"%>
 <%@page import="youngun.tis.travel.blog.service.SearchService"%>
@@ -130,9 +131,18 @@
 				}else if(isDel!=null&&isDel.equals("y")){
 				
 				service.eleminateBlog(blog);
+				TravelDao travelDao = new TravelDao();
+				Country country = travelDao.searchParam("%"+blog.getNationCode()+"%");
+				
 			%>
 					<h1> 삭제가 완료 되었습니다.</h1>
-					<button onclick="javascript:history.back();" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
+					<button onclick="move();" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
+					<script>
+						function move(){
+							location.replace("05TravelAfter.jsp?continent=<%=country.getNationalCode()%>&nation=<%=country.getCountryName()%>");
+						}
+					</script>
+					
 			<%
 				}else if(wish!=null&&wish.equals("true")){
 					Wish wishClass = new Wish(blog, dto);

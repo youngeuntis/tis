@@ -4,6 +4,7 @@ import java.util.List;
 
 import youngun.tis.travel.blog.domain.Blog;
 import youngun.tis.travel.blog.domain.Wish;
+import youngun.tis.user.login.domain.Login;
 
 public interface BlogDao {
 	public int insertBlog(Blog blog);
@@ -17,4 +18,5 @@ public interface BlogDao {
 	public int insertWish(Wish wish);
 	public List<Wish> selectWish(int memberNum);
 	public int deleteWish(Wish wish);
+	public Login getUser(int userNum);
 }

@@ -33,6 +33,6 @@
 		if(delCheck != null && replyNo != 0){
 			replyMapper.delReply(replyNo);
 			
-		response.sendRedirect("04qnaMain.jsp");
+		response.sendRedirect("04view.jsp");
 }
 %>

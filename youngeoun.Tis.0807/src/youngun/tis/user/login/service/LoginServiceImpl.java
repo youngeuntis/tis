@@ -52,6 +52,9 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public Login findUserPw(String userEmail) {
+		int viewPw = 4;
+		String tmp = "";
+		String pw = "";
 		Login vo = loginDao.getUserPw(userEmail);
 		
 		if(vo==null){
@@ -59,7 +62,12 @@ public class LoginServiceImpl implements LoginService {
 			vo.setFlag(false);
 		}else{
 			if(vo.getEmail().equals(email)){
+				for(int i=0; i<viewPw;i++){
+					tmp += vo.getPassword().charAt(i);
+				}
+				pw = tmp + "*************";
 				vo.setFlag(true);
+				vo.setPassword(pw);
 			}else{
 				vo.setFlag(false);
 			}

@@ -35,7 +35,7 @@
 								<h4>문의사항</h4>
 								<ul>
 									<li><a href="../qna/01qnaMain.jsp">Q&amp;A</a></li>
-									<li><a href="../qna/08faqlist.html">FAQ</a></li>
+									<li><a href="../qna/08faqlist.jsp">FAQ</a></li>
 								</ul>
 							</div>
 						</div>
@@ -244,7 +244,7 @@
 							<div class="sub_comunity"
 								style="display: block; margin-top: -25px; margin-right: 20px;">
 								<h4>
-									<a href="../qna/08faqlist.html">FAQ</a>
+									<a href="../qna/08faqlist.js">FAQ</a>
 								</h4>
 							</div>
 						</div>

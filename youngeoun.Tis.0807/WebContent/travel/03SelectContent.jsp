@@ -240,8 +240,14 @@
            		selectBlog.setHits(selectBlog.getHits()+1);
            		blogDao.updateHits(selectBlog);
            		session.setAttribute("Blog", selectBlog);
-           %>     
-           <div class="content_title">
+           		
+           %>   
+           		<div class="blogInfo" style="float:right;">  
+           		<p style="font-size:20px;">hits : <%=selectBlog.getHits() %></p>
+           		<p style="font-size:20px;">작성자 : <%=service.printNickName(selectBlog.getMemberNum()) %></p>
+           		</div>
+           		<div class="clear"></div>
+           		<div class="content_title">
                     <h2><%=selectBlog.getBlogTitle() %></h2>
                 </div>
                 
@@ -258,6 +264,7 @@
         			}	
         		}
           %>
+          		
                 <div class="content_content">
                 	
                    <%=selectBlog.getBlogContent() %>

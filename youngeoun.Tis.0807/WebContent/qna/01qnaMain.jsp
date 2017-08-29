@@ -23,7 +23,7 @@
 	PostMapper postMapper = Configuration.getMapper(PostMapper.class);
 	PostDao postDao = new PostDaoImpl(postMapper);
 	
-	PageService pageService = new PageServiceImpl(5, myPage);
+	PageService pageService = new PageServiceImpl(10, myPage);
 	pageContext.setAttribute("pageMaker", pageService);
 	PostService postService = new PostServiceImpl(postDao);
 	List<Post> posts = postService.listPosts(myPage);

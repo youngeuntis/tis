@@ -78,8 +78,13 @@ opacity:0; transition:all 0.5s ease; z-index:-10;}
 
 
 .best h3{
-	color: rgba(20,22,54,0.6);
+	color: chocolate;
 	margin-top: 30px;
+	margin-bottom: -10px;
+}
+
+.best p{
+	color: rgba(120,62,54,0.8);
 }
 
 .slideshow-container{

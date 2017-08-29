@@ -58,14 +58,20 @@ th{
 .btn_area_btm{
     position: relative;
     left: 75px;
+    margin-top: 15px;
 }
 .btn_file{
-    margin: 15px;
-    color: rgba(20,22,54,0.6);
+    margin: 11px;
 }
 
 .btn_model{
 	color: rgba(20,22,54,0.6);
+	cursor: pointer;
+}
+
+.btn_model:hover{
+	color: rgba(220,62,54,1);
+	cursor: pointer;
 }
 
 .btn_wrap a{

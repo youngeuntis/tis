@@ -1,3 +1,5 @@
+<%@page import="youngun.tis.travel.blog.domain.Country"%>
+<%@page import="youngun.tis.travel.blog.dao.TravelDao"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.travel.blog.dao.BlogDaoImpl"%>
@@ -95,11 +97,15 @@
 		
 		
         <main>
+        <%
+        	TravelDao travelDao = new TravelDao();
+        	Country con = travelDao.searchParam("%"+country+"%");
+        %>
         	<h2>글이 등록되었습니다.</h2>
         	<button onclick="move()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">메인으로</button>
         	<script>
         		function move(){
-        			history.go(-2);
+        			location.replace("05TravelAfter.jsp?continent=<%=con.getNationalCode()%>&nation=<%=con.getCountryName()%>")	
         		}
         	</script>
 		</main>

@@ -58,6 +58,8 @@
 				else if(continentCode.equals("아시아")) index = "%c1%";
 
 				List<Country> countries = travelDao.getCountryList(index);
+				
+				
 		%>
 		
 
@@ -190,14 +192,15 @@
 		
 		<%
 			BlogDao blogDao = new BlogDaoImpl();
+			SearchService service = new SearchService(blogDao);
 			//대륙별 데이터 조회
 			String indexCountry = "%" + index +"%";
 			List<Blog> informations = blogDao.getBlogListContinent(indexCountry);
 			
 			//나라별 데이터 조회
 			if(!(nationName.equals("--Country--"))){
-				SearchService searchService = new SearchService();
-				indexCountry = searchService.transferCode(countries, nationName);
+				//SearchService searchService = new SearchService();
+				indexCountry = service.transferCode(countries, nationName);
 				informations = blogDao.getBlogList(indexCountry);
 				
 			}
@@ -225,7 +228,9 @@
 	                        <a href="03SelectContent.jsp?blognum=<%=informations.get(i).getBlogNum() %>">
 							<div class="box1" >
 								<img src="<%=informations.get(i).getImg()%>" style="width:290px; height:200px; margin-bottom : 30px;">
-								<h3><%=informations.get(i).getBlogTitle() %></h3>
+								<h3 style="color : chocolate;"><%=informations.get(i).getBlogTitle() %></h3>
+								<p style="font-size:12px; display:inline;">Hits : <%=informations.get(i).getHits() %></p>
+								<p style="font-size:12px; display:inline;">작성자 : <%=service.printNickName(informations.get(i).getMemberNum()) %></p>
 							</div>
 	                        </a>
                 <%
@@ -256,7 +261,9 @@
 							<a href="03SelectContent.jsp?blognum=<%=informations.get(i).getBlogNum() %>">
 							<div class="box1" >
 								<img src="<%=informations.get(i).getImg()%>" style="width:290px; height:200px; margin-bottom : 30px;">
-								<h3><%=informations.get(i).getBlogTitle() %></h3>
+								<h3 style="color : chocolate;"><%=informations.get(i).getBlogTitle() %></h3>
+								<p style="font-size:12px; display:inline;">Hits : <%=informations.get(i).getHits() %></p>
+								<p style="font-size:12px; display:inline;">작성자 : <%=service.printNickName(informations.get(i).getMemberNum()) %></p>
 							</div>
 			                </a>
 				<%			

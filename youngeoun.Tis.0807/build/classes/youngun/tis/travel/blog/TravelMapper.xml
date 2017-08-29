@@ -7,5 +7,15 @@
 		where continent_code like #{continentName}
 	</select>
 	
+	<select id="searchParam" parameterType="string" resultMap="joinParam">
+		select co.continent_name,na.nation_name 
+		from nations na, continents co 
+		where co.continent_code=na.continent_code and na.nation_code like #{param}
+	</select>
+	
+	<resultMap type="youngun.tis.travel.blog.domain.Country" id="joinParam">
+		<result property="nationalCode" column="continent_name"/>
+		<result property="countryName" column="nation_name"/>
+	</resultMap>
 	
 </mapper>
