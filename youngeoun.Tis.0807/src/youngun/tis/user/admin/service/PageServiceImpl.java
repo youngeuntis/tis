@@ -35,7 +35,7 @@ public class PageServiceImpl implements PageService {
 			case 2 : this.totRowCnt =  pageDao.getBlindRowCnt(); break;
 		}
 		System.out.println("getTotRowCnt : "+this.totRowCnt);
-		
+
 	}
 
 	

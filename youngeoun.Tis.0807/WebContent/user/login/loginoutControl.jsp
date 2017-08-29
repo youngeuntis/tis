@@ -39,6 +39,7 @@
 		}else{
 			System.out.print("됨");
 			session.setAttribute("Login", login);
+			session.setMaxInactiveInterval(20*60);
 			response.sendRedirect("../../main.jsp");
 		}
 	}else if(action.equals("logout")){
