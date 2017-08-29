@@ -83,6 +83,10 @@ opacity:0; transition:all 0.5s ease; z-index:-10;}
 	margin-bottom: -10px;
 }
 
+.best p{
+	color: rgba(120,62,54,0.8);
+}
+
 .slideshow-container{
 	position : relative;
 	margin : auto;
