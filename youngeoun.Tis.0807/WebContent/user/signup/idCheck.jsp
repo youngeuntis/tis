@@ -56,7 +56,7 @@
 			<a> 알 림 </a>
 		</div>
 		<div class="blindMassage">
-			<form action="idCheck.jsp" method="post">
+			<form action="idCheck.jsp" method="post" style="margin-top: 50px">
            		<input type="text" name="userId" id="userId" value="<%=userId%>">
            		<input type="submit" value="중복체크">
        		</form>

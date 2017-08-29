@@ -5,4 +5,5 @@ import youngun.tis.user.login.domain.Login;
 public interface LoginDao {
 	Login getUser(String userId);
 	int updateUserUntilVisit(String userId);
+	Login getUserPw(String userEmail);
 }

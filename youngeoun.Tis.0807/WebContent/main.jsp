@@ -310,9 +310,13 @@
 											id="login-email-password" type="password" name="login_user_pw"
 											value="">
 									</div>
+									<script type="text/javascript">
+									function checkid() {
+										window.open("user/login/pwCheck.jsp", "", "width=600, height=280");
+									}
+									</script>
 									<div class="btn-container">
-										<input type="submit" value="Log in" onclick=""> <a
-											class="forgot-password" href="" onclick="">Forgot Password</a>
+										<a class="forgot-password" href="#" onclick="javascript:checkid()" >Forgot Password</a>
 									</div>
 								</form>
 							</section>
@@ -327,7 +331,7 @@
 						<a id="launch" class="fbbutton"
 							href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
 						</a> <%if(dto.getUserId().equals("admin")){ %> <a id="launch" class="fbbutton"
-							href="user/admin/adminmain.jsp"><label>관리자페이지</label>
+							href="user/admin/adminmain.jsp"><label style="margin-right: 10px">관리자페이지</label>
 						</a> <%} %>
 					</div>
 					<%}else{ %>
@@ -419,7 +423,6 @@
 						<div class="best1">
 							<img src="res/img/mainslide/g.jpg">
 							<h3>그리스 산토리니</h3>
-							<p>강추강추추추추추</p>
 						</div>
 					</a>
 					<div class="best2"></div>

@@ -296,12 +296,12 @@
 			<%if(dto != null){ %>
 
 			<div class="demo">
-				<a id="my" class="my" href="../mypage/myPage.jsp">마이페이지</a>
+				<a id="my" class="my" href="../mypage/myPage.jsp"><label>마이페이지</label></a>
 				<a id="launch" class="fbbutton"
-					href="../user/login/loginoutControl.jsp?action=logout">로그아웃
+					href="../user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
 				</a> <%if(dto.getUserId().equals("admin")){ %> <a id="launch"
 					class="fbbutton"
-					href="../user/admin/adminmain.jsp">관리자페이지
+					href="../user/admin/adminmain.jsp"><label style="margin-right: 10px">관리자페이지</label>
 				</a> <%} %>
 			</div>
 			<%}else{ %>

@@ -300,7 +300,7 @@
 					href="../../user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
 				</a> <%if(dto.getUserId().equals("admin")){ %> <a id="launch"
 					class="fbbutton"
-					href="../../user/admin/adminmain.jsp"><label>관리자페이지</label>
+					href="../../user/admin/adminmain.jsp"><label style="margin-right: 10px">관리자페이지</label>
 				</a> <%} %>
 			</div>
 			<%}else{ %>
