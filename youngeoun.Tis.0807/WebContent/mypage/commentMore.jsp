@@ -95,7 +95,7 @@
 						</tr>
 
 						<%
-						String pageCommentIndex = request.getParameter("page");
+						String pageCommentIndex = request.getParameter("pageQnaReCnt");
 						if(pageCommentIndex == null) pageCommentIndex="1";
 						int pageIndexInt = Integer.parseInt(pageCommentIndex);
 						
@@ -127,7 +127,7 @@
 								<%
 									for(int i=0; i<pageQnaRe.getPageCnt(); i++){
 								%>
-									<td class="on"><a href="commentMore.jsp?page=<%=i+1 %>"
+									<td class="on"><a href="commentMore.jsp?pageQnaReCnt=<%=i+1 %>"
 										class="m-tcol-p"><%=i+1 %></a></td>
 								<%
 									}
@@ -138,7 +138,7 @@
 					</div>
 
 				</div>
-
+<%-- 
 				<!--rev 댓글  -->
 				<div class="table">
 					<table class="board">
@@ -149,7 +149,7 @@
 
 
 						<%
-						String pageRevCommentIndex = request.getParameter("page");
+						String pageRevCommentIndex = request.getParameter("pageRevReCnt");
 						if(pageRevCommentIndex == null) pageRevCommentIndex="1";
 						int pageRevIndexInt = Integer.parseInt(pageRevCommentIndex);
 						
@@ -169,7 +169,9 @@
 							}
 						}else{%>						
 							<h2>작성한 여행후기의 댓글이 없습니다.</h2>						
-						<%}%>
+						<%
+							}
+						%>
 
 					</table>
 
@@ -178,11 +180,13 @@
 						<table summary="페이지 네비게이션" class="Nnavi" align="center">
 							<tbody>
 								<tr>
-									<%
+								<%
 									for(int i=0; i<pageRevRe.getPageCnt(); i++){
 								%>
-									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
-									<%
+									<td class="on"><a href="commentMore.jsp?pageRevReCnt=<%=i+1 %>" 
+									class="m-tcol-p"><%=i+1 %></a></td>
+									
+								<%
 									}
 								%>
 								</tr>
@@ -191,7 +195,7 @@
 					</div>
 
 				</div>
-
+ --%>
 
 			</div>
 		</div>

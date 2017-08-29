@@ -77,6 +77,10 @@ opacity:0; transition:all 0.5s ease; z-index:-10;}
 .right_nav #search_button{float: left; width :30px; height : 30px; background-repeat: no-repeat; background-position: center; background-color: #fff; border:0.5px solid rgba(11,50,0,0.7);}
 
 
+.best h3{
+	color: rgba(20,22,54,0.6);
+	margin-top: 30px;
+}
 
 .slideshow-container{
 	position : relative;
