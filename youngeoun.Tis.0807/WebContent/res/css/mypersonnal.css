@@ -99,6 +99,6 @@ caption{
     margin-right: 20px;
 }
 
-.btn2 .btn3{
+.btn2, .btn3{
 	color: rgba(20,22,54,0.6);
 }
