@@ -6,21 +6,19 @@ public class Post {
 	private int postNo;
 	private String title;
 	private String content;
-	private String writer;
 	private Date regDate;
 	private int viewCnt;
-	private String qnaImg;
 	private String openCheck;
+	private int userNum;
 	
-	public String getQnaImg() {
-		return qnaImg;
+
+	public int getUserNum() {
+		return userNum;
 	}
 
-	public void setQnaImg(String qnaImg) {
-		this.qnaImg = qnaImg;
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
 	}
-
-
 
 	public String getOpenCheck() {
 		return openCheck;
@@ -32,9 +30,8 @@ public class Post {
 
 	public Post(){}
 	
-	public Post(String writer, String title, String content) {
+	public Post(String title, String content) {
 		super();
-		this.writer = writer;
 		this.title = title;
 		this.content = content;
 	}
@@ -59,12 +56,6 @@ public class Post {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
 	}
 	public Date getRegDate() {
 		return regDate;

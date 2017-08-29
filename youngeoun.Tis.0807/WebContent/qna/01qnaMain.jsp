@@ -101,8 +101,7 @@
                 <img src="../res/img/faq1.jpg" style="width:100%; ">
             </div>
         </div>
-
-        <main>
+		<main>
             <div class = "board" style=" height:400px;">
 	 <table class="boardTable" bgcolor="white" border-style="outset">
 	   <colgroup>
@@ -125,7 +124,7 @@
 					<tr style= "height:50px;">
 						<td style= "color : black;">${post.postNo}</td>
 						<td style= "color : black;"><a href="04view.jsp?qna_num=${post.postNo}" style= "color : black;">${post.title}</a></td>
-						<td style= "color : black;">${post.writer}</td>
+						<td style= "color : black;">${post.userNum}</td>
 						<td style= "color : black;">${post.regDate}</td>
 						<td style= "color : black;"><span class="badge">${post.viewCnt}</span></td>
 					</tr>

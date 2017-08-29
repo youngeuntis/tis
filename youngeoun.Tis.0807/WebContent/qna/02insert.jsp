@@ -48,67 +48,28 @@
 <body>
     <div id="fullweb">
         <%@include file="../headerNav.jsp" %>
-
         <div class="slideshow-container">
-
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/faq1.jpg" style="width:100%; ">
             </div>
-
             <main>
                 <form action="03insertSucssess.jsp">
                     <div class="writing">
                         <div class="board_title">
                             <input type="text" name="qna_title" placeholder="제목을 입력하세요." style="width:1000px; height: 50px;"/>
-                        </div>
-                        <div class="board_content" style="width:1000px; height: 800px;">     
-                        <article style="width:1000px; height: 270px;">
-						  <p id="status"><!-- File API & FileReader API not supported --></p>
-						  <p><input type=file name="qna_img" id="inp"></p>
-						  <div id="holder" style="width:300px; height:200px; overflow:hidden;"></div>
-						</article>
-						<script>
-						var upload = document.getElementById("inp"),
-						    holder = document.getElementById('holder'),
-						    state = document.getElementById('status');
-						
-						if (typeof window.FileReader === 'undefined') {
-						  state.className = 'fail';
-						} else {
-						  state.className = 'success';
-						  /* state.innerHTML = 'File API & FileReader available'; */
-						}
-						 
-						upload.onchange = function (e) {
-						  e.preventDefault();
-						
-						  var file = upload.files[0],
-						      reader = new FileReader();
-						  reader.onload = function (event) {
-						    var img = new Image();
-						    img.src = event.target.result;
-						    // note: no onload required since we've got the dataurl...I think! :)
-						    if (img.width > 200) { // holder width
-						      img.width = 200;
-						    }
-						    holder.innerHTML = '';
-						    holder.appendChild(img);
-						  };
-						  reader.readAsDataURL(file);
-						
-						  return false;
-						};
-						</script>
+                        </div>              
+                        <div class="board_content" style="width:1000px; height: 650px;">     
                         <textarea name="qna_content" style="width:1000px; height: 650px;" placeholder="내용을 입력하세요."></textarea>
                         </div>
                    		<div class="board_button" align="center" style="margin-top: 15px; float: right;">
-                        	<!-- <input type="file" name="qna_img"> -->
+                        	<!-- <input type="file" name="qna_img"> -->     
                         	<input type="radio" name="open_check" value="1" checked/>공개
 							<input type="radio" name="open_check" value="0"/>비공개
                             <button type="submit" class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px;">등록</button>
                             <input type="button" class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px;" value="뒤로" onclick="move('01qnaMain.jsp');">
                     	</div>
                     </div>
+                    <input type="hidden" name="userNum" value="<%=dto.getMemberNum() %>">
                 </form>
             </main>
 
