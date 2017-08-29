@@ -11,7 +11,7 @@
 <%@page import="java.util.List"%>
 <%@page import="youngun.tis.config.Configuration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+    pageEncoding="UTF-8"%>
 <% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
@@ -26,20 +26,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Design Your TRip</title>
     <link rel="stylesheet" href="../res/css/styleMain.css">
-    <link rel="stylesheet" href="../res/css/review.css">
-    <link rel="stylesheet" href="../res/css/selectOption.css">
+    <link rel="stylesheet" href="../res/css/travelMain.css">
     <script type="text/javascript" src="../res/js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/modernizr.custom.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
-
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
+    <style>
+    .editorSelect{
+    	background-color: #5c9cd8;
+    	margin-bottom : 5px;
+    	font-size : 15px;
+    	height : 25px;
+    	color : #fff;
+    }
+    </style>
+	
 </head>
 
 <body>
+     
     <div id="fullweb">
         <%@include file="../headerNav.jsp" %>
-        <div class="slideshow-container">
-			<h1 style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); font-size:5rem;  color: white;  z-index: 2; text-align: center;">여행후기</h1>
+        <div class="picture">
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
@@ -61,57 +69,124 @@
 
         </div>
 		
-		
 		<!-- 메인 작업부분 -->
+		<script src="../res/js/nicEdit.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        bkLib.onDomLoaded(function() {
+
+            new nicEditor({fullPanel : true}).panelInstance('area2');
+        });
+        </script>
+            
+		<%
+			Review selectReview = null;
+			String title = "";
+			String content= "";
+			ReviewDao reviewDao = new ReviewDaoImpl();
+			SearchService service = new SearchService(reviewDao);
+			List<Review> reviews = reviewDao.getReviewListNoPara();
+			String reviewNum = request.getParameter("reviewNum");
+			String continent = request.getParameter("continent");
+			String category = null;
+			selectReview = service.searchReview(reviews, reviewNum);			
+			title = selectReview.getReviewTitle();
+			content = selectReview.getReviewContent();
+			
+		%>
 		
         <main>
-           <!--  <div class="selectbox">
-                <select id="nation" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
-                border-radius: 0px; -webkit-appearance: none;">
-                        <option selected value="NATION">국가별</option>
-                        <option value="KOREA">한국</option>
-                        <option value="JAPAN">일본</option>
-                        <option value="USA">미국</option>
-                        <option value="SPAIN">스페인</option>
-                </select>
-                <select id="area" style="width:165px;height:50px;font-size:20px;
-                font-weight: bold;  border: 3px solid black;
-                border-radius: 0px; -webkit-appearance: none;">
-                        <option selected value="AREA">지역별</option>
-                        <option value="">서울</option>
-                        <option value="">대전</option>
-                        <option value="">대구</option>
-                        <option value="">부산</option>
-                </select>
-            </div> -->
-            
-            <div style="margin-top:5px;">
-            
-		<select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();" style="width:165px;height:50px;font-size:20px; margin-right: 5px; margin-top:0px; font-weight: bold;  border: 3px solid black;
-                border-radius: 0px; -webkit-appearance: none;">
-                		<option selected disabled>--국가--</option>
-                    	<option value="c2">유럽</option>
-                    	<option value="c3">미대양주</option>
-                    	<option value="c1">아시아</option>
+            <div class="editor" style="position: relative; height: 900px; width:1200px; left:50%; margin-left: -600px;">
+                <form action="reviewInsert2.jsp" method="get">
+                   
+                    <div style="width:1200px; overflow : hidden;">
+                    <textarea cols="60" style="width:1300px; height:20px;" name="review_title"><%=title %></textarea>
+                    </div>
+                    <select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();">
+                    <%
+                   
+                    if(continent!=null){
+                    	switch(continent){
+                    	case "대한민국" : out.print("<option value=\"c6\" selected>대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "유럽" : out.print("<option value=\"c6\">대한민국</option><option value=\"c2\" selected>유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "미대양주": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "아시아": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\" selected>아시아</option>"); break;
+                    	}
+                    }else{
+                    	switch(category){
+                    	case "대한민국" : out.print("<option value=\"c6\" selected>대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "유럽" : out.print("<option value=\"c6\">대한민국</option><option value=\"c2\" selected>유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "미대양주": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "아시아": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\" selected>아시아</option>"); break;
+                    	}
+                    }
+                    %>
+                    
                     </select>
-        <select class="editorSelect" id="subSelect" name="country" style="width:165px;height:50px;font-size:20px; margin-right: 5px; font-weight: bold;  border: 3px solid black;
-                border-radius: 0px; -webkit-appearance: none;" placeholder="지역" >
-                    	
+                    <select class="editorSelect" id="subSelect" name="country">
+                 
                     </select>
+                    <%
+                   			TravelDao travelDao = new TravelDao();
+							List<Country> countries = travelDao.getCountryList("c1");
+							List<Country> countries2 = travelDao.getCountryList("c2");
+							List<Country> countries3 = travelDao.getCountryList("c3");
+							List<Country> countries4 = travelDao.getCountryList("c6");
+          			%>
                     <script>
-                    	function subCategory(){
-                    		var x = document.getElementById("mySelect").value;
-                    		<%
-                    			TravelDao travelDao = new TravelDao();
-								List<Country> countries = travelDao.getCountryList("c1");
-								List<Country> countries2 = travelDao.getCountryList("c2");
-								List<Country> countries3 = travelDao.getCountryList("c3");
-								List<Country> countries4 = travelDao.getCountryList("c6");
-            				%>
+                    	var firstSel = document.getElementById("mySelect").value;
+                   		
             				
-                    		if(x=="c1"){
+                    		if(firstSel=="c1"){
                     			<%
                     			String str = "";
+            					for(int i=0; i< countries.size(); i++){
+	            				%>
+	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str; 
+                    		}else if(firstSel=="c2"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries2.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}else if(firstSel=="c3"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries3.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}else if(firstSel=="c6"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries4.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries4.get(i).getNationalCode()%>\"><%=countries4.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
+                    		}           			
+                    	function subCategory(){
+                    		var x = document.getElementById("mySelect").value;
+                    		            				
+                    		if(x=="c1"){
+                    			<%
+                    			str = "";
             					for(int i=0; i< countries.size(); i++){
 	            				%>
 	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
@@ -142,57 +217,52 @@
 	            				%>
                     			var str = <%=str%>
                     			document.getElementById("subSelect").innerHTML =str;
+                    		}else if(x=="c6"){
+                    			<%
+                    			str = "";
+            					for(int i=0; i< countries4.size(); i++){
+	            				%>
+	            				str += "<option value=\"<%=countries4.get(i).getNationalCode()%>\"><%=countries4.get(i).getCountryName()%></option>";
+	            				<%
+	            					}
+	            				%>
+                    			var str = <%=str%>
+                    			document.getElementById("subSelect").innerHTML =str;
                     		}
                     	}
-                    	</script>
-        
-		
-            
+                    </script>
+                    <textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; left: 50%; overflow:scroll;" name="review_content"><%=content %></textarea>
+                    <% 
+                    	if(reviewNum != null){
+                    %>
+                    <input type="hidden" name="reviewNum" value="<%=reviewNum%>">
+                    <% 
+                    	}
+                    %>
+                    <input type="hidden" name="userNum" value="<%=dto.getMemberNum() %>">
+                    <button type="submit" class="action-button shadow animate blue" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">저장</button>
+                </form>
+                	<button onclick="cancelMove()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">취소</button>
             </div>
+            <script>
+                    function cancelMove(){
+                        var answer = confirm("확인을 누르시면 이전 페이지로 이동합니다. 이동를 원하십니까?")
+                        if(answer) history.go(-1);
+                    }
+            </script>
             
-			<table class="type11">
-					<th rowspan="2">메인 사진을 업로드 해 주세요<p><input type="file" name="uploadFile1" style =  "display:none;">
-                    <img src="../res/img/123.jpg" onclick="document.all.uploadFile1.click();"></p></th>
-            </table>
-            <table class="type12">   
-                <td>
-                    <textarea name="titleinput" style="width:100%; height:100%; ">제목 입력</textarea>
-                </td>
-            <table class="type13">
-					<th>글 내용안의 동영상 사진 음악 등 업로드
-                        <p><input type="file" name="uploadFile2" style =  "display:none;">
-                        <img src="../res/img/DYTR.png"
-                        onclick="document.all.uploadFile2.click();"></p>
-                        <p><input type="file" name="uploadFile3" style =  "display:none;">
-                        <img src="../res/img/DYTR.png"
-                        onclick="document.all.uploadFile3.click();"></p>
-                    </th>
-            </table> 
-            <table class="type14">
-                <td><textarea name="titleinput" style="width:100%; height:100%; ">내용 입력</textarea></td>
-			</table>
-			<table class="type15">
-				
-				<th onclick="registrationReview()" >등록</th>
-					<script>
-	                    function registrationReview(){
-	                        var answer = confirm("등록되었습니다 확인을 누르시면 메인페이지로 이동합니다.")
-	                        if(answer) location.replace("reviewMain2.jsp");
-	                    }
-            		</script>
-            </table>
-            <table class="type15">
-            	<th onclick="cancelMove()"> 취소 </th>
-            		<script>
-	                    function cancelMove(){
-	                        var answer = confirm("확인을 누르시면 작성중이던 글이 저장되지 않고 이전 페이지로 돌아갑니다.취소를 원하십니까?")
-	                        if(answer) location.replace("reviewMain2.jsp");
-	                    }
-            		</script>
-			</table>
-            </table>
-        </main>
-
+            <form action="reviewInsert2.jsp" method="post">
+			<input type="text" name ="review_title" placeholder="<%=selectReview.getReviewTitle()%>">
+			<textarea name=review_content><%=selectReview.getReviewContent() %></textarea>
+			
+			<input type="hidden" name="reviewNum" value="<%=selectReview.getReviewNum() %>">
+			<input type="hidden" name="continent" value="<%=selectReview.getContinentCode()%>">
+			<input type="hidden" name="country" value="<%=selectReview.getNationCode()%>">
+			<input type="submit">
+	</form>
+		</main>
+		
+        <div class="clear"></div>
         <footer>
             <div class="footer_nav">
                 
@@ -207,7 +277,7 @@
 
                 <p> copyright DESIGN YOUR TRIP</p>
             </div>
-        </footer>
+        </footer> <!--p태그로 잡으면 안되나봐 -->
 
     </div> <!-- end fullweb -->
 
@@ -219,7 +289,7 @@
     <!--main_login-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="../res/js/index.js"></script>
-
+	
 </body>
 
 </html>
