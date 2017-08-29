@@ -21,5 +21,18 @@ public class PageDaoImpl implements PageDao {
 		System.out.println("getBlindRow 하하하");
 		return pageMapper.getBlindRowCnt();
 	}
+	
+	@Override
+	public int getFBlindRowCnt() {
+		System.out.println("getFBlindRow F블라인드");
+		return pageMapper.getFBlindRowCnt();
+	}
+	
+	@Override
+	public int getStepRowCnt() {
+		System.out.println("getFBlindRow F블라인드");
+		return pageMapper.getStepRowCnt();
+	}
+
 
 }

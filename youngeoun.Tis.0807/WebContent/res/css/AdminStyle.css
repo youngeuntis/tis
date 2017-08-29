@@ -69,15 +69,15 @@ div.admin{
 /*<!-- ------------------------------전체 사이즈--------------------------------- -->*/
     .main{
             width: 1400px;
-            height: 960px;
+            height: 850px;
             margin-left: 0px;
-            margin-top: 200px;
+            margin-top: 100px;
             
          }
 /*<!-- ------------------------------위 3개 사이즈--------------------------------- -->*/
     .mainA{
             width: 1200px;
-             height: 327px;
+            height: 327px;
             margin-left: 100px;
             margin-top: 0px;
             color: #000;
@@ -187,7 +187,7 @@ div.admin{
         width: 70px;
         height: 21px;
         margin-left: 9px;
-        margin-top: 0px;
+        margin-top: 10px;
         float: left;
         background: #fff;
       
@@ -207,12 +207,13 @@ div.admin{
         width: 31px;
         height: 29px;
         margin-left: 0px;
-        margin-top: 0px;
+        margin-top: 5px;
         float: left;
         
     }
     #member_button{
         background-image: url(../img/button/button.png);
+        margin-top: 5px;
         width: 29px;
         height: 28px;
         background-color: #fff;

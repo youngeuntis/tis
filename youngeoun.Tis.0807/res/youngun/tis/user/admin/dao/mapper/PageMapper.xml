@@ -9,5 +9,16 @@
 	<select id="getBlindRowCnt" resultType="int">
 		select count(*) from members where grade_num like 'b' || '%'
 	</select>
+	
+	<select id="getFBlindRowCnt" resultType="int">
+		select count(*) from members where grade_num like 'f' || '%'
+	</select>
+	
+	<select id="getStepRowCnt" resultType="int">
+		select count(*) from members where grade_num like 'g01' or grade_num like 'g02'
+	</select>
+	
+	
+	
 
 </mapper>

@@ -1,7 +1,5 @@
-<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -26,23 +24,41 @@
 
 <body>
 
-    <div id="fullweb">
-        <%@include file="../../headerNavAdmin.jsp"%>
+  <div id="fullweb">
+		<header>
+			<div class="Center">
+				<div class="site-logo">
+					<img src="../../res/img/DYTR.png"
+						style="display: inline-block; width: 15%; height: auto; margin-top: -15px;">
+					<h1>
+						<a href="../../main.jsp">Design Your Trip</a>
+					</h1>
+				</div>
+			</div>
+			<div id="cbp-hrmenu" class="cbp-hrmenu" >
+			<ul style=" width: 900px; height: 80px;
+			margin-left: 80px;">
+				<li><a href="adminmain.jsp">메인</a></li>
+				<li><a href="adminFull.jsp">회원 관리</a></li>
+				<li><a href="adminBlind.jsp">제재 회원 관리</a></li>
+				<li><a href="adminForcedBlind.jsp">강퇴 회원 관리</a></li>
+				<li><a href="adminStep.jsp">스텝 관리</a></li>
+			
+			</ul>
+			</div>
+		</header>
+
+
+    
+		
+		
 		<!-- 메인 작업부분 -->
 		
 		
 		
         <main>
         
-<div class="adminMenu">
-	<ul id="gnb">
-				<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
-				<li><a href="adminFull.jsp"><h2>회원 관리</h2></a></li>
-				<li><a href="adminBlind.jsp"><h2>제재 회원 관리</h2></a></li>
-				<li><a href="adminForcedBlindControl.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
-				<li><a href="adminStepControl.jsp"><h2>스텝 관리</h2></a></li>
-	</ul>
-</div>
+
      <div class="main">
        <div class="mainB"><h1>최근 제재 회원순</h1>
             <div class="mainSerch">

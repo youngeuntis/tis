@@ -8,7 +8,12 @@ import youngun.tis.user.admin.domain.User;
 public interface UserService {
 	List<User> findUsers(Page page);
 	List<User> blindUsers(Page page);
-	List<User> FblindUsers();
-	List<User> StepUsers();
-	List<User> MainUsers();
+	List<User> FblindUsers(Page page);
+	List<User> StepUsers(Page page);
+	List<User> MainUsers(Page page);
+	List<User> MainSubUsers();
+	List<User> MainSubUsers2();
+	List<User> UntilJoinUsers(Page page);
+	List<User> UntilVisitUsers(Page page);
+	
 }
