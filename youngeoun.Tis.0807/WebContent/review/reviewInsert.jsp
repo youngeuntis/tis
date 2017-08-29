@@ -48,7 +48,6 @@
     <div id="fullweb">
         <%@include file="../headerNav.jsp" %>
         <div class="picture">
-			    		
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
@@ -70,7 +69,6 @@
 
         </div>
 		
-		
 		<!-- 메인 작업부분 -->
 		<script src="../res/js/nicEdit.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -89,6 +87,7 @@
 			List<Review> reviews = reviewDao.getReviewListNoPara();
 			String reviewNum = request.getParameter("reviewNum");
 			String continent = request.getParameter("continent");
+			String category = null;
 			if(reviewNum == null){
 				title = "";
 				content = "";
@@ -103,35 +102,33 @@
         <main>
             <div class="editor" style="position: relative; height: 900px; width:1200px; left:50%; margin-left: -600px;">
                 <form action="reviewInsert2.jsp" method="get">
-                    
-                    <!-- <input type="text" name="editor_title" style="width:1200px;">
-                    </div> -->
+                   
                     <div style="width:1200px; overflow : hidden;">
-                    <textarea cols="60" style="width:1300px; height:20px;" name="editor_title"><%=title %></textarea>
+                    <textarea cols="60" style="width:1300px; height:20px;" name="review_title"><%=title %></textarea>
                     </div>
                     <select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();">
                     <%
+                   
+                    if(continent!=null){
                     	switch(continent){
                     	case "대한민국" : out.print("<option value=\"c6\" selected>대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
                     	case "유럽" : out.print("<option value=\"c6\">대한민국</option><option value=\"c2\" selected>유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
                     	case "미대양주": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\">아시아</option>"); break;
                     	case "아시아": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\" selected>아시아</option>"); break;
                     	}
+                    }else{
+                    	switch(category){
+                    	case "대한민국" : out.print("<option value=\"c6\" selected>대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "유럽" : out.print("<option value=\"c6\">대한민국</option><option value=\"c2\" selected>유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "미대양주": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\">아시아</option>"); break;
+                    	case "아시아": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\" selected>아시아</option>"); break;
+                    	}
+                    }
                     %>
-                    	<!-- <option value="c6">대한민국</option>
-                    	<option value="c2">유럽</option>
-                    	<option value="c3">미대양주</option>
-                    	<option value="c1">아시아</option> -->
+                    
                     </select>
                     <select class="editorSelect" id="subSelect" name="country">
-                 <!--    	<option value="n49">서울</option>
-                    	<option value="n50">부산</option>
-                    	<option value="n51">제주</option>
-                    	<option value="n52">경기</option>
-                    	<option value="n53">강원도</option>
-                    	<option value="n54">충청도</option>
-                    	<option value="n55">전라도</option>
-                    	<option value="n56">경상도</option> -->
+                 
                     </select>
                     <%
                    			TravelDao travelDao = new TravelDao();
@@ -239,7 +236,7 @@
                     		}
                     	}
                     </script>
-                    <textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; left: 50%; overflow:scroll;" name="editor_content"><%=content %></textarea>
+                    <textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; left: 50%; overflow:scroll;" name="review_content"><%=content %></textarea>
                     <% 
                     	if(reviewNum != null){
                     %>
