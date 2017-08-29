@@ -58,16 +58,28 @@ th{
 .btn_area_btm{
     position: relative;
     left: 75px;
+    margin-top: 15px;
 }
 .btn_file{
-    margin-right: 15px;
+    margin: 11px;
+}
+
+.btn_model{
+	color: rgba(20,22,54,0.6);
+	cursor: pointer;
+}
+
+.btn_model:hover{
+	color: rgba(220,62,54,1);
+	cursor: pointer;
 }
 
 .btn_wrap a{
-    font-size: 20px;
-    margin-right: 30px;
+    font-size: 30px;
+    margin-right: 20px;
     position: relative;
     top: 30px;
+    color: rgba(20,22,54,0.6);
 }
 
 #inpNickname{

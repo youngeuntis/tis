@@ -14,7 +14,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page session="true"%>
-<% Login dto = (Login)session.getAttribute("Login"); %>
+<% 
+	Login dto = (Login)session.getAttribute("Login"); 
+	//int loginMemberNum = dto.getMemberNum();
+%>
 
 <!doctype html>
 
@@ -183,7 +186,8 @@
               		String blogNum = request.getParameter("blognum");
               		List<Blog> blogs = blogDao.getBlogListNoPara();
               		Blog selectBlog = service.searchBlog(blogs, blogNum);
-  					List<String> imgStr = new ArrayList<>();
+              		int blogUserNum = selectBlog.getMemberNum();
+              		List<String> imgStr = new ArrayList<>();
               		
   					if(selectBlog.getImg() != null){
 	              		StringTokenizer sh = new StringTokenizer(selectBlog.getImg(), ",");
@@ -232,16 +236,24 @@
 				    <!-- #endregion Jssor Slider End -->
             <div class="travel_content">
           
+          	<%if(dto != null && (blogUserNum == dto.getMemberNum())){ %>
                 <div class="content_buttons">
                     <a href="02BlogMain.jsp?blogNum=<%=selectBlog.getBlogNum() %>" class="action-button shadow animate blue">수정</a>
                     <button onclick="delBlog()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">삭제</button>
                 </div>
+          	<%} %>
            <%
            		selectBlog.setHits(selectBlog.getHits()+1);
            		blogDao.updateHits(selectBlog);
            		session.setAttribute("Blog", selectBlog);
-           %>     
-           <div class="content_title">
+           		
+           %>   
+           		<div class="blogInfo" style="float:right;">  
+           		<p style="font-size:20px;">hits : <%=selectBlog.getHits() %></p>
+           		<p style="font-size:20px;">작성자 : <%=service.printNickName(selectBlog.getMemberNum()) %></p>
+           		</div>
+           		<div class="clear"></div>
+           		<div class="content_title">
                     <h2><%=selectBlog.getBlogTitle() %></h2>
                 </div>
                 
@@ -258,6 +270,7 @@
         			}	
         		}
           %>
+          		
                 <div class="content_content">
                 	
                    <%=selectBlog.getBlogContent() %>

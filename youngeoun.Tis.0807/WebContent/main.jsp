@@ -62,7 +62,7 @@
 										<h4>문의사항</h4>
 										<ul>
 											<li><a href="qna/01qnaMain.jsp">Q&amp;A</a></li>
-											<li><a href="qna/08faqlist.html">FAQ</a></li>
+											<li><a href="qna/08faqlist.jsp">FAQ</a></li>
 										</ul>
 									</div>
 								</div>
@@ -271,7 +271,7 @@
 									<div class="sub_comunity"
 										style="display: block; margin-top: -25px; margin-right: 20px;">
 										<h4>
-											<a href="qna/08faqlist.html">FAQ</a>
+											<a href="qna/08faqlist.jsp">FAQ</a>
 										</h4>
 									</div>
 								</div>
@@ -310,9 +310,14 @@
 											id="login-email-password" type="password" name="login_user_pw"
 											value="">
 									</div>
+									<script type="text/javascript">
+									function checkid() {
+										window.open("user/login/pwCheck.jsp", "", "width=600, height=280");
+									}
+									</script>
 									<div class="btn-container">
-										<input type="submit" value="Log in" onclick=""> <a
-											class="forgot-password" href="" onclick="">Forgot Password</a>
+									<input type="submit" value="Log in">
+										<a class="forgot-password" href="#" onclick="javascript:checkid()" >Forgot Password</a>
 									</div>
 								</form>
 							</section>
@@ -327,7 +332,7 @@
 						<a id="launch" class="fbbutton"
 							href="user/login/loginoutControl.jsp?action=logout"><label>로그아웃</label>
 						</a> <%if(dto.getUserId().equals("admin")){ %> <a id="launch" class="fbbutton"
-							href="user/admin/adminmain.jsp"><label>관리자페이지</label>
+							href="user/admin/adminmain.jsp"><label style="margin-right: 10px">관리자페이지</label>
 						</a> <%} %>
 					</div>
 					<%}else{ %>
@@ -400,7 +405,9 @@
 					<a href="travel/03SelectContent.jsp?blognum=<%=blogListNew.get(i).getBlogNum()%>">
 						<div class="best<%=i%>">
 							<img src="<%=blogListNew.get(i).getImg()%>">
-							<h3><%=blogListNew.get(i).getBlogTitle() %></h3>
+							<h3 style="color:chocolate;"><%=blogListNew.get(i).getBlogTitle() %></h3>
+							<p style="font-size:12px; display:inline;">Hits : <%=blogListNew.get(i).getHits()%></p>
+							<p style="font-size:12px; display:inline;">작성자 : <%=service.printNickName(blogListNew.get(i).getMemberNum())%></p>
 						</div>
 					</a>
 			<%
@@ -419,7 +426,6 @@
 						<div class="best1">
 							<img src="res/img/mainslide/g.jpg">
 							<h3>그리스 산토리니</h3>
-							<p>강추강추추추추추</p>
 						</div>
 					</a>
 					<div class="best2"></div>

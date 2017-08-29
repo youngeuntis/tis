@@ -87,7 +87,6 @@ public class SearchService {
 		List<Blog> blogListNew = new ArrayList<>();
 		for(int i=0; i<blogList.size(); i++){
 			blogListNew.add(blogList.get(i));
-			System.out.println(blogListNew);
 		}
 		//조회 순으로 정렬
 		for(int j=0; j<blogListNew.size()-1; j++){
@@ -100,8 +99,11 @@ public class SearchService {
 				}
 			}
 		}
-		System.out.println(blogListNew);
 		
 		return blogListNew;
+	}
+	
+	public String printNickName(int userNum){
+		return blogDao.getUser(userNum).getNickName();
 	}
 }

@@ -18,6 +18,11 @@ public class TravelDao implements TravelMapper{
 	public List<Country> getCountryList(String continentCode) {
 		return travelMapper.getCountryList(continentCode);
 	}
+
+	@Override
+	public Country searchParam(String nationCode) {
+		return travelMapper.searchParam(nationCode);
+	}
 	
 	
 }

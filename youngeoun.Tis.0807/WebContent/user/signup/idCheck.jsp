@@ -51,19 +51,19 @@
 
 </head>
 <body>
-	<div class="blindMain">
-		<div class="blindTitle">
+	<div class="main">
+		<div class="title">
 			<a> 알 림 </a>
 		</div>
-		<div class="blindMassage">
-			<form action="idCheck.jsp" method="post">
+		<div class="massage">
+			<form action="idCheck.jsp" method="post" style="margin-top: 50px">
            		<input type="text" name="userId" id="userId" value="<%=userId%>">
            		<input type="submit" value="중복체크">
        		</form>
         <br>
         <span><%=msg %></span>
 		</div>
-		<div class="blindbutton">
+		<div class="button">
      		<input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
      		<input id="cancelBtn" type="button" value="취소" onclick="window.close()">
 		</div>

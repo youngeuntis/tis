@@ -93,7 +93,7 @@
 						</tr>
 						
 						<%
-						String pageBlogNotisIndex = request.getParameter("page");
+						String pageBlogNotisIndex = request.getParameter("pageBlogCnt");
 						if(pageBlogNotisIndex == null) pageBlogNotisIndex="1";
 						int pageBlogIndexInt = Integer.parseInt(pageBlogNotisIndex);
 						
@@ -126,7 +126,7 @@
 								<%
 									for(int i=0; i<pageBlogNotis.getPageCnt(); i++){
 								%>
-									<td class="on"><a href="postMore.jsp?page=<%=i+1 %>" 
+									<td class="on"><a href="postMore.jsp?pageBlogCnt=<%=i+1 %>" 
 										class="m-tcol-p"><%=i+1 %></a></td>
 								<%
 									}
@@ -147,9 +147,10 @@
 						</tr>
 
 						<%
-						String pageRevNotisIndex = request.getParameter("page");
+						String pageRevNotisIndex = request.getParameter("pageRevCnt");
 						if(pageRevNotisIndex == null) pageRevNotisIndex="1";
 						int pageRevNotisIndexInt = Integer.parseInt(pageRevNotisIndex);
+						
 							if(revNotis.size() != 0){
 								for(int i=pageRevNotis.getPageNum()*(pageRevNotisIndexInt-1); 
 										i<pageRevNotisIndexInt*pageRevNotis.getPageNum(); i++){
@@ -158,7 +159,7 @@
 						<tr>
 							<td class="boardNum"><%=revNotis.get(i).getRevPostNum() %></td>
 							<td class="boardText">
-							<a href="../review/reviewMain.jsp?reivewNum=<%=revNotis.get(i).getRevPostNum() %>">
+							<a href="../review/reviewMain2.jsp?reivewNum=<%=revNotis.get(i).getRevPostNum() %>">
 							<%=revNotis.get(i).getRevPostTitle() %></a></td>
 						</tr>
 						<%
@@ -178,10 +179,10 @@
 							<tbody>
 								<tr>
 								<%
-									Page pageRevPost = new Page(revNotis.size(),5);
-									for(int i=0; i<pageRevPost.getPageCnt(); i++){
+									for(int i=0; i<pageRevNotis.getPageCnt(); i++){
 								%>
-									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+									<td class="on"><a href="postMore.jsp?pageRevCnt=<%=i+1 %>" 
+										class="m-tcol-p"><%=i+1 %></a></td>
 								<%
 									}
 								%>
@@ -201,8 +202,14 @@
 						</tr>
 
 						<%
+						String pageQnaNotisIndex = request.getParameter("pageQnaCnt");
+						if(pageQnaNotisIndex == null) pageQnaNotisIndex="1";
+						int pageQnaNotisIndexInt = Integer.parseInt(pageQnaNotisIndex);
+						
 							if(qnaNotis.size() != 0){
-								for(int i=0; i<qnaNotis.size(); i++){
+								for(int i=pageQnaNotis.getPageNum()*(pageQnaNotisIndexInt-1); 
+										i<pageQnaNotisIndexInt*pageQnaNotis.getPageNum(); i++){
+									if(i>=qnaNotis.size()) break;
 						%>
 						<tr>
 							<td class="boardNum"><%=qnaNotis.get(i).getQnaPostNum() %></td>
@@ -227,10 +234,10 @@
 							<tbody>
 								<tr>
 								<%
-									Page pageQnaPost = new Page(qnaNotis.size(),5);
-									for(int i=0; i<pageQnaPost.getPageCnt(); i++){
+									for(int i=0; i<pageQnaNotis.getPageCnt(); i++){
 								%>
-									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+									<td class="on"><a href="postMore.jsp?pageQnaCnt=<%=i+1 %>" 
+										class="m-tcol-p"><%=i+1 %></a></td>
 								<%
 									}
 								%>

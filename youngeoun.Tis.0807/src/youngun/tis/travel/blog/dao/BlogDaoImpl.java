@@ -6,6 +6,7 @@ import youngun.tis.config.Configuration;
 import youngun.tis.travel.blog.domain.Blog;
 import youngun.tis.travel.blog.domain.Wish;
 import youngun.tis.travel.blog.mapper.BlogMapper;
+import youngun.tis.user.login.domain.Login;
 
 public class BlogDaoImpl implements BlogDao{
 	private BlogMapper blogMapper;
@@ -62,6 +63,10 @@ public class BlogDaoImpl implements BlogDao{
 	@Override
 	public int deleteWish(Wish wish) {
 		return blogMapper.deleteWish(wish);
+	}
+	@Override
+	public Login getUser(int userNum) {
+		return blogMapper.getUser(userNum);
 	}
 	
 

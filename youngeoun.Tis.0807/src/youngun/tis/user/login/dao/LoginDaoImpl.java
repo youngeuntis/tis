@@ -18,5 +18,10 @@ public class LoginDaoImpl implements LoginDao {
 	public int updateUserUntilVisit(String userId){
 		return loginMapper.updateUserUntilVisit(userId);
 	}
+
+	@Override
+	public Login getUserPw(String userEmail) {
+		return loginMapper.getUserPw(userEmail);
+	}
 	
 }

@@ -18,6 +18,21 @@
 		from members
 		where user_id = #{userId}
 	</select>
+	
+	
+	<resultMap id="userPwMap" type="login">
+		<result property="password" column="pw"/>
+		<result property="email" column="email"/>
+	</resultMap>
+	
+	
+	<select id="getUserPw" parameterType="String" resultMap="userPwMap">
+		select pw password, email
+		from members
+		where email = #{userEmail}
+	</select>
+	
+	
 <!-- 	
 	<update id="updateUserUntilVisit">
 		update members 
