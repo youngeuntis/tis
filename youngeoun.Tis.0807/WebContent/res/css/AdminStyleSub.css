@@ -132,11 +132,12 @@ div.admin{
             width: 1400px;
             height: 870px;
             margin-left: 0px;
-            margin-top: 200px;
+            margin-top: 100px;
          }
 /*------공용 안쪽 공간--------*/
     .mainB{
             width: 1200px;
+             height: 800px;
             margin-left: 100px;
             margin-top: 0px;
             float: left;
@@ -247,8 +248,9 @@ div.admin{
     .memberDataBcheck{
             text-align:center;
             font:18px "굴림", Gulim;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
+            margin-top: 4px;
             float: left;
             background: #fff;
     }
@@ -323,8 +325,9 @@ div.admin{
     .memberblindDataBcheck{
             text-align:center;
             font:18px "굴림", Gulim;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
+            margin-top: 4px;
             float: left;
             background: #fff;
     }
@@ -391,8 +394,9 @@ div.admin{
     .memberforcedblindDataBcheck{
             text-align:center;
             font:18px "굴림", Gulim;
-            width: 20px;
-            height: 20px;
+             width: 16px;
+            height: 16px;
+            margin-top: 4px;
             float: left;
             background: #fff;
     }
@@ -451,8 +455,9 @@ div.admin{
     .memberstepDataBcheck{
             text-align:center;
             font:18px "굴림", Gulim;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
+            margin-top: 4px;
             float: left;
             background: #fff;
     }

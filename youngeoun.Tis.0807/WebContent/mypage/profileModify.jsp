@@ -92,6 +92,7 @@
 												<input type="file" id="inputImge" name="profileImg" accept="image/*">
 											</span> 
 											<a href="#" class="btn_model">삭제</a>
+
 										</p>
 									</div>
 								</td>

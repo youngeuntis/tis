@@ -6,7 +6,7 @@ public class Reply {
 	private int replyNo;
 	private Date replyDate;
 	private String replyContent;
-	private String writer;
+	private int userNum;
 	private int postNo;
 	public int getReplyNo() {
 		return replyNo;
@@ -26,11 +26,11 @@ public class Reply {
 	public void setReplyContent(String replyContent) {
 		this.replyContent = replyContent;
 	}
-	public String getWriter() {
-		return writer;
+	public int getUserNum() {
+		return userNum;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
 	}
 	public int getPostNo() {
 		return postNo;

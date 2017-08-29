@@ -549,7 +549,7 @@
 						if(reviewNotice.size()!=0){
 							for(int i=0; i<pageReview.getPageAmount(); i++){
 				%>
-								<a href="reviewMain2.jsp?continent=<%= continentCode %>&nation=<%=nationName %>&page=<%=i %>" style="color:black;"><li><%=i+1 %></li></a>	
+								<a href="reviewView.jsp?continent=<%= continentCode %>&nation=<%=nationName %>&page=<%=i %>" style="color:black;"><li><%=i+1 %></li></a>	
 				<%			
 							}	
 						}

@@ -46,7 +46,7 @@
 		<result property="joinDate" column="join_date"/>
 		<result property="writeCount" column="write_count"/>
 		<result property="replCount" column="repl_count"/>
-	</resultMap>
+	</resultMap> 
 
 
 	<select id="getUsers" resultMap="userMap" parameterType="page">
@@ -66,32 +66,93 @@
 	<![CDATA[
 	select*from(
 		 select rownum as rnum, x.*from(
-			select e.USER_NAME, e.USER_ID, e.grade_num, b.BLACK_REASON 
-			from members e, blacklist b 
-			where e.grade_num like 'b' || '%'
+			select user_id, useR_name, BLACK_REASON 
+			from (select m.user_id, m.user_name, b.BLACK_REASON
+       	    from members m, blacklist b
+        	where m.grade_num like 'b' || '%' and m.MEMBER_NUM = b.MEMBER_NUM and m.GRADE_NUM = b.GRADE_NUM
+        	ORDER by b.BLACKLIST_NUM DESC
+			)where rowid in (select max(rowid) from blacklist group by member_num)
 		)x where rownum <= #{rowCnt}*#{currentPage}
 		)where rnum > #{rowCnt}*(#{currentPage}-1)
 		]]>
 	</select>
 	
 	
-	<select id="getFblindUsers" resultMap="FblindUserMap">
-		select e.USER_NAME, e.USER_ID, e.grade_num, b.BLACK_REASON 
-		from members e, blacklist b
-		where e.MEMBER_NUM = b.MEMBER_NUM and e.GRADE_NUM = 'f01'
+	<select id="getFblindUsers" resultMap="FblindUserMap" parameterType="page">
+	<![CDATA[
+	select*from(
+		 select rownum as rnum, x.*from(
+			select user_id, useR_name, BLACK_REASON 
+			from (select m.user_id, m.user_name, b.BLACK_REASON
+       	    from members m, blacklist b
+        	where m.grade_num like 'f' || '%' and m.MEMBER_NUM = b.MEMBER_NUM and m.GRADE_NUM = b.GRADE_NUM
+        	ORDER by b.BLACKLIST_NUM DESC
+			)where rowid in (select max(rowid) from blacklist group by member_num)
+		)x where rownum <= #{rowCnt}*#{currentPage}
+		)where rnum > #{rowCnt}*(#{currentPage}-1)
+		]]>
 	</select>
 	
-	<select id="getStepUsers" resultMap="StepUserMap">
-		select USER_NAME, USER_ID
-		from members
-		where GRADE_NUM = 'g01'
+	<select id="getStepUsers" resultMap="StepUserMap" parameterType="page">
+	<![CDATA[
+	select*from(
+		select rownum as rnum, x.*from(
+		
+		select USER_NAME, USER_ID 
+   		from members 
+   		where grade_num like 'g01' or grade_num like 'g02'
+   		
+   	)x where rownum <= #{rowCnt}*#{currentPage}
+	)where rnum > #{rowCnt}*(#{currentPage}-1)
+	]]>
 	</select>
 	
-	<select id="getMainUsers" resultMap="MainUserMap" parameterType="String">
-		select e.user_name, e.user_id, e.until_visit, e.join_date, w.write_count, r.repl_count
-		from members e, writeCount w, replCount r
-        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
-        order by e.member_num
+	
+	
+	<select id="getMainSubUsers" resultMap="userMap" parameterType="String">
+	
+		    		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
+					from members e, writeCount w, replCount r
+			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+			        order by e.until_visit desc
+		 
+	</select>
+	
+		<select id="getMainSubUsers2" resultMap="userMap" parameterType="String">
+		
+		    		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
+					from members e, writeCount w, replCount r
+			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+			        order by e.join_date desc
+		
+	</select>
+	
+	
+	<select id="getUntilVisitUsers" resultMap="userMap" parameterType="page">
+			<![CDATA[
+			select*from(
+		    	select rownum as rnum, x.*from(
+		    		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
+					from members e, writeCount w, replCount r
+			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+			        order by e.until_visit desc
+		     )x where rownum <= #{rowCnt}*#{currentPage}
+		    )where rnum > #{rowCnt}*(#{currentPage}-1)
+		]]>
+	</select>
+	
+	
+	<select id="getUntilJoinUsers" resultMap="userMap" parameterType="page">
+			<![CDATA[
+			select*from(
+		    	select rownum as rnum, x.*from(
+		    		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
+					from members e, writeCount w, replCount r
+			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+			        order by e.join_date desc
+		     )x where rownum <= #{rowCnt}*#{currentPage}
+		    )where rnum > #{rowCnt}*(#{currentPage}-1)
+		]]>
 	</select>
 	
 </mapper>

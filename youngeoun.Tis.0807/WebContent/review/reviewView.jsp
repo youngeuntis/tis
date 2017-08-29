@@ -1,7 +1,18 @@
+<%@page import="java.util.StringTokenizer"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="youngun.tis.review.service.SearchService"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
+<%@page import="youngun.tis.review.domain.Review"%>
+<%@page import="youngun.tis.review.domain.PageReview"%>
+<%@page import="youngun.tis.review.domain.Country"%>
+<%@page import="youngun.tis.review.dao.ReviewDaoImpl"%>
+<%@page import="youngun.tis.review.dao.ReviewDao"%>
+<%@page import="youngun.tis.review.dao.TravelDao"%>
+<%@page import="youngun.tis.review.mapper.ReviewMapper"%>
+<%@page import="youngun.tis.review.mapper.TravelMapper"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.StringTokenizer"%>
 <%@page import="youngun.tis.config.Configuration"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <% Login dto = (Login)session.getAttribute("Login"); %>
@@ -54,24 +65,39 @@
         </div>
 		
 		
-		<!-- 메인 작업부분 -->
-		
-		<main>
+			    <%
+				    ReviewDao reviewDao = new ReviewDaoImpl();
+				    SearchService service = new SearchService(reviewDao);
+				    String continentCode = request.getParameter("continent");
+              		String reviewNum = request.getParameter("reviewNum");
+              		List<Review> reviews = reviewDao.getReviewListNoPara();
+              		Review selectReview = service.searchReview(reviews, reviewNum);
+  					List<String> imgStr = new ArrayList<>();
+              		
+  					if(selectReview.getReviewImg() != null){
+	              		StringTokenizer sh = new StringTokenizer(selectReview.getReviewImg(), ",");
+	            		while(sh.hasMoreTokens()){
+	            			imgStr.add(sh.nextElement().toString());
+	            		}
+  					}
+                %>
+                
+                <main>
             <table class="type31">
-					<th><img src="../res/img/123.jpg" style="width:100%; height: 300px;"></th>
+					<th><img src="<%=selectReview.getReviewImg() %>" style="width:100%; height: 300px;"></th>
             </table> 
             <table class="type32">
-                    <th>제목이 들어갑니다.</th>
+                    <th><%=selectReview.getReviewTitle() %></th>
             </table>
             <table class="type33">
-                <td>내용이 들어갑니다.</td>
+                <td><%=selectReview.getReviewContent() %></td>
 			</table>
             <table class="type15">
 				<th onclick="deleteReview()" >삭제</th>
 					<script>
 	                    function deleteReview(){
 	                        var answer = confirm("삭제하시겠습니까? 확인을 누르시면 글이 삭제 됩니다.")
-	                        if(answer) location.replace("reviewMain2.jsp");
+	                       if(answer) location.replace("reviewMain2.jsp?reviewNum=<%=selectReview.getReviewNum()%>");
 	                    }
             		</script>
             </table>
@@ -80,59 +106,50 @@
 					<script>
 	                    function changeReview(){
 	                        var answer = confirm("수정하시겠습니까? 확인을 누르시면 수정 페이지로 이동합니다.")
-	                        if(answer) location.replace("reviewModify.jsp");
+	                        if(answer) location.replace("reviewModify.jsp?reviewNum=<%=selectReview.getReviewNum()%>");
 	                    }
             		</script>
             </table>
             <table class="type15">
-            	<th><a href="reviewMain2.jsp"/>목록으로</th>
+            	<th onclick="backPage()" >목록으로</th>
+					<script>
+					function backPage(){
+                        var answer = confirm("확인을 누르시면 이전페이지로 이동합니다. 이동을 원하십니까?")
+                        if(answer) history.go(-1);
+                    }
+            		</script>
 			</table>
-			
-			
-			
-			<!-- 
-            <table class="type41">
-                <th>댓글</th>
-            </table>
-            <table class="type42">
-                <tr>
-                    <th rowspan="2"></th>
-                    <td><a href="03reviewView.jsp"/>수정</td>
-                </tr>
-                <tr>
-                    <td><a href="03reviewView.jsp"/>삭제</td>
-                </tr>
-            </table>             -->
-            
+
         </main>
-
-        <footer>
-            <div class="footer_nav">
                 
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">제휴제안</a></li>
-                        <li><a href="#">이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-            
-
-                <p> copyright DESIGN YOUR TRIP</p>
-            </div>
-        </footer>
-
-    </div> <!-- end fullweb -->
-
-    <!--main_menu_nav-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../res/js/cbpHorizontalMenu.min.js"></script>
-    <script>$(function() {cbpHorizontalMenu.init();});</script>
-
-    <!--main_login-->
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-    <script src="../res/js/index.js"></script>
-
-</body>
+		
+			<footer>
+	            <div class="footer_nav">
+	                
+	                    <ul>
+	                        <li><a href="#">회사소개</a></li>
+	                        <li><a href="#">제휴제안</a></li>
+	                        <li><a href="#">이용약관</a></li>
+	                        <li><a href="#">개인정보처리방침</a></li>
+	                        <li><a href="#">고객센터</a></li>
+	                    </ul>
+	            
+	
+	                <p> copyright DESIGN YOUR TRIP</p>
+	            </div>
+	        </footer>
+	
+	    </div> <!-- end fullweb -->
+	
+	    <!--main_menu_nav-->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script src="../res/js/cbpHorizontalMenu.min.js"></script>
+	    <script>$(function() {cbpHorizontalMenu.init();});</script>
+	
+	    <!--main_login-->
+	    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+	    <script src="../res/js/index.js"></script>
+	</body>
 
 </html>
+		

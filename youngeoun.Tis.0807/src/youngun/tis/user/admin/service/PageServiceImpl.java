@@ -33,9 +33,11 @@ public class PageServiceImpl implements PageService {
 		switch(number){
 			case 1 : this.totRowCnt =  pageDao.getTotRowCnt(); break;
 			case 2 : this.totRowCnt =  pageDao.getBlindRowCnt(); break;
+			case 3 : this.totRowCnt =  pageDao.getStepRowCnt(); break;
+			
 		}
 		System.out.println("getTotRowCnt : "+this.totRowCnt);
-
+		
 	}
 
 	

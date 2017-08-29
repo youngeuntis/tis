@@ -29,20 +29,43 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List<User> FblindUsers(){
+	public List<User> FblindUsers(Page page){
 		
-		return userDao.getFblindUsers();
+		return userDao.getFblindUsers(page);
 	}
 	
 	@Override
-	public List<User> StepUsers(){
+	public List<User> StepUsers(Page page){
 		
-		return userDao.getStepUsers();
+		return userDao.getStepUsers(page);
 	}
 	
 	@Override
-	public List<User> MainUsers(){
+	public List<User> MainUsers(Page page){
 		
-		return userDao.getMainUsers();
+		return userDao.getMainUsers(page);
+	}
+	
+	@Override
+	public List<User> MainSubUsers(){
+		
+		return userDao.getMainSubUsers();
+	}
+	@Override
+	public List<User> MainSubUsers2(){
+		
+		return userDao.getMainSubUsers2();
+	}
+	
+	@Override
+	public List<User> UntilJoinUsers(Page page){
+		
+		return userDao.getUntilJoinUsers(page);
+	}
+	
+	@Override
+	public List<User> UntilVisitUsers(Page page){
+		
+		return userDao.getUntilVisitUsers(page);
 	}
 }

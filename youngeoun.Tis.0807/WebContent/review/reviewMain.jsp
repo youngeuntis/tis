@@ -119,8 +119,7 @@
 				SearchService service = new SearchService(reviewDao);
 				if(isDel==null){
 			%>
-				<h2>DYTR(Design Your Trip)은 여러분이 여행정보를 쉽고 빠르게 획득할 수 있도록 설계된 사이트입니다.</h2><br>
-				<h2>상단의 메뉴에서 나라를 직접 선택하시거나 카테고리를 통해 검색하시면 되겠습니다.</h2>
+				<h1>대륙을 선택해 주세요</h1>
 			<% 
 				}else if(isDel!=null&&isDel.equals("y")){
 				

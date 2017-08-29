@@ -13,13 +13,14 @@
 	String title = request.getParameter("qna_title");
 	String content = request.getParameter("qna_content");
 	String openCheck = request.getParameter("open_check");
-	String qnaImg = request.getParameter("qna_img");
+	int userNum = Integer.parseInt(request.getParameter("userNum"));
 	
 	Post post = new Post();
 	post.setTitle(title);
 	post.setContent(content);
 	post.setOpenCheck(openCheck);
-	post.setQnaImg(qnaImg);
+	post.setUserNum(userNum);
+	
 	
 	postMapper.write(post);
 	

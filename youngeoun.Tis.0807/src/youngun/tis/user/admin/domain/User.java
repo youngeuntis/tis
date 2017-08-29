@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+	SimpleDateFormat sdf = new SimpleDateFormat("yy. MM. dd");
 	private String userId;     //아이디
 	private String userName;   //이름
 	private int memberNum;     //

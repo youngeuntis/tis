@@ -30,7 +30,9 @@
 
 	
 	<select id="getReviewListContinent" parameterType="string" resultType="Review" >
-		select review_num reviewNum, review_title reviewTitle, review_img reviewImg, nation_code nationCode
+		select review_num reviewNum, member_num memberNum, continent_code continentCode, nation_code nationCode,
+		area_code areaCode, review_title reviewTitle, review_content reviewContent, review_date reviewDate, review_img reviewImg,
+		review_video, review_hits reviewHits 
 		from reviews_notices
 		where continent_code like #{continentCode}
 		order by review_num
