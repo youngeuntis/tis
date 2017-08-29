@@ -29,7 +29,7 @@
 	<select id="getUserPw" parameterType="String" resultMap="userPwMap">
 		select pw password, email
 		from members
-		where user_id = #{userId}
+		where email = #{userEmail}
 	</select>
 	
 	

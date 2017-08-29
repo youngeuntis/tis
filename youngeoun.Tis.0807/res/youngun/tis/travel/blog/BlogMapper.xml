@@ -24,7 +24,9 @@
 	
 	
 	<select id="getBlogListContinent" parameterType="string" resultType="Blog" >
-		select info_num blogNum, info_title blogTitle, info_img img, nation_code nationCode
+		select info_num blogNum, member_num memberNum, continent_code continentCode, nation_code nationCode,
+		area_code areaCode, info_title blogTitle, info_content blogContent, info_date blogDate, info_img img,
+		info_video, info_hits hits
 		from infomations
 		where continent_code like #{continentCode}
 		order by info_num
@@ -53,4 +55,9 @@
 	<delete id="deleteWish" parameterType="youngun.tis.travel.blog.domain.Wish">
 		delete from info_wishlists where info_wish_num = #{wishNum}
 	</delete>
+	
+	<select id="getUser" parameterType="int" resultType="login">
+		select member_num memberNum, user_name userName, user_id userId, nickname nickName from members
+		where member_num = #{userNum}
+	</select>
 </mapper>

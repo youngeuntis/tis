@@ -10,14 +10,15 @@
 	boolean flag = false;
 	String userPw = null;
 	String userEmail = request.getParameter("userEmail");
-	System.out.print("userEmail : "+userEmail);	
-	if(userEmail!=null && !userEmail.equals("")){
-		
+	
+	if(userEmail != null && !userEmail.equals("")){
+			
 		LoginService pwSelect = new LoginServiceImpl(userEmail);
 		Login user = (Login)pwSelect.findUserPw(userEmail);
 		
 		flag = user.isFlag();
 		userPw = user.getPassword();
+		System.out.print("flag = "+ flag);
 	}
 %>
 
@@ -27,30 +28,55 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../res/css/idCheck.css" />
 	<title>비밀번호 찾기</title>
+	
+
+<script type="text/javascript">
+function asd() {
+	
+	alert("hhhh");
+	var email = document.email.userEmail.value;
+	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+	if (regex.test(email) === false) {
+        alert("이메일 형식으로 입력해 주세요.");
+        document.email.userEmail.focus();
+        return;
+	}
+	
+	document.email.submit();
+}
+</script>
+
 
 </head>
 <body>
-	<div class="blindMain">
-		<div class="blindTitle">
+	<div class="main">
+		<div class="title">
 			<a> 비 밀 번 호 찾 기 </a>
 		</div>
 		
-		<div class="blindMassage">
-			<%if(userEmail==null){ %>
-			<form action="pwCheck.jsp" method="post" style="margin : 50px ">
-           		<input type="text" name="userEmail">
-           		<input type="submit" value="비밀번호 찾기">
+		<div class="massage">
+			<%if(userEmail == null || !flag){ %>
+			
+			<form id="email" name="email" action="pwCheck.jsp" method="post" style="margin : 50px ">
+           		<input type="text" name="userEmail" id="userEmail">
+           		<input type="button" value="비밀번호 찾기" onclick='asd()'>
        		</form>
-       		<%}else if(!flag){ %>
+       			<%if(userEmail != null){ %>
+       			<div class="chMassge">
+       			<span><%=userEmail %> 은 없는 이메일 입니다.</span>
+       			</div>
+       			<%} %>
        		
-       		<span></span>
-       		
-       		<%} %>
+       		<%}else if(flag){ %>
+       		<div class="chMassge">
+	       		<span>찾으신 비밀번호는 : <%=userPw %> 입니다.</span>
+       		</div>
+       		<%}%>
 		</div>
 		
-		<div class="blindbutton">
-     		<input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
-     		<input id="cancelBtn" type="button" value="취소" onclick="window.close()">
+		<div class="button">
+     		<input id="cancelBtn" type="button" value="확인" onclick="window.close()">
 		</div>
 	</div>
 </body>

@@ -316,6 +316,7 @@
 									}
 									</script>
 									<div class="btn-container">
+									<input type="submit" value="Log in">
 										<a class="forgot-password" href="#" onclick="javascript:checkid()" >Forgot Password</a>
 									</div>
 								</form>
@@ -404,7 +405,9 @@
 					<a href="travel/03SelectContent.jsp?blognum=<%=blogListNew.get(i).getBlogNum()%>">
 						<div class="best<%=i%>">
 							<img src="<%=blogListNew.get(i).getImg()%>">
-							<h3><%=blogListNew.get(i).getBlogTitle() %></h3>
+							<h3 style="color:chocolate;"><%=blogListNew.get(i).getBlogTitle() %></h3>
+							<p style="font-size:12px; display:inline;">Hits : <%=blogListNew.get(i).getHits()%></p>
+							<p style="font-size:12px; display:inline;">작성자 : <%=service.printNickName(blogListNew.get(i).getMemberNum())%></p>
 						</div>
 					</a>
 			<%
