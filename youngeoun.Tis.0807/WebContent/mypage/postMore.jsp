@@ -72,6 +72,9 @@
 			List<Post> qnaNotis = postMoreService.findContentQna(member);
 			List<Post> revNotis = postMoreService.findContentRev(member);
 			List<Post> blogNotis = postMoreService.findContentTravel(member);
+			Page pageQnaNotis = new Page(qnaNotis.size(),5);
+			Page pageRevNotis = new Page(revNotis.size(),5);
+			Page pageBlogNotis = new Page(blogNotis.size(),5);
 		%>
 		<main>
 		<div id="container">
@@ -90,8 +93,14 @@
 						</tr>
 						
 						<%
+						String pageBlogNotisIndex = request.getParameter("page");
+						if(pageBlogNotisIndex == null) pageBlogNotisIndex="1";
+						int pageBlogIndexInt = Integer.parseInt(pageBlogNotisIndex);
+						
 							if(blogNotis.size() != 0){
-								for(int i=0; i<blogNotis.size(); i++){
+								for(int i=pageBlogNotis.getPageNum()*(pageBlogIndexInt-1); 
+										i<pageBlogIndexInt*pageBlogNotis.getPageNum(); i++){
+									if(i>=blogNotis.size()) break;
 						%>
 						<tr>
 							<td class="boardNum"><%=blogNotis.get(i).getTravPostNum() %></td>
@@ -115,10 +124,10 @@
 							<tbody>
 								<tr>
 								<%
-									Page pageBlogPost = new Page(blogNotis.size(),5);
-									for(int i=0; i<pageBlogPost.getPageCnt(); i++){
+									for(int i=0; i<pageBlogNotis.getPageCnt(); i++){
 								%>
-									<td class="on"><a href="#" class="m-tcol-p"><%=i+1 %></a></td>
+									<td class="on"><a href="postMore.jsp?page=<%=i+1 %>" 
+										class="m-tcol-p"><%=i+1 %></a></td>
 								<%
 									}
 								%>
@@ -138,8 +147,13 @@
 						</tr>
 
 						<%
+						String pageRevNotisIndex = request.getParameter("page");
+						if(pageRevNotisIndex == null) pageRevNotisIndex="1";
+						int pageRevNotisIndexInt = Integer.parseInt(pageRevNotisIndex);
 							if(revNotis.size() != 0){
-								for(int i=0; i<revNotis.size(); i++){
+								for(int i=pageRevNotis.getPageNum()*(pageRevNotisIndexInt-1); 
+										i<pageRevNotisIndexInt*pageRevNotis.getPageNum(); i++){
+									if(i>=revNotis.size()) break;
 						%>
 						<tr>
 							<td class="boardNum"><%=revNotis.get(i).getRevPostNum() %></td>

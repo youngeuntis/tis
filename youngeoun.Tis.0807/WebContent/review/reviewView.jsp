@@ -31,7 +31,7 @@
         <%@include file="../headerNav.jsp" %>
         <div class="slideshow-container">
 			<h1 style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);                                                                   
-     font-size:5rem;  color: white;  z-index: 2; text-align: center;">여행후기</h1>
+     			font-size:5rem;  color: white;  z-index: 2; text-align: center;">여행후기</h1>
             <div class="mySlides fade" style="display:block;">
                 <img src="../res/img/travelImg/p.jpg" style="width:100%; ">
             </div>
