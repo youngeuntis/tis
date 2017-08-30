@@ -22,6 +22,13 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUsers(page);
 	}
 	
+	
+	@Override
+	public User findUser(String userId) {
+		
+		return userDao.getUser(userId);
+	}
+	
 	@Override
 	public List<User> blindUsers(Page page) {
 		

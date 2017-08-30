@@ -47,4 +47,9 @@ public class UserDaoImpl implements UserDao {
 		return userMapper.getUntilVisitUsers(page);
 	}
 
+	@Override
+	public User getUser(String userId) {
+		return userMapper.getUser(userId);
+	}
+
 }

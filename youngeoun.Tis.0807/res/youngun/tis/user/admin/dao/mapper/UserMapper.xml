@@ -155,4 +155,12 @@
 		]]>
 	</select>
 	
+	
+	<select id="getUser" resultMap="userMap" parameterType="string">
+		select user_id, member_num
+		from members
+		where user_id = #{userId}
+	</select>
+	
+	
 </mapper>

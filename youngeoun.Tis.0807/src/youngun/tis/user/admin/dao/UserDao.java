@@ -17,5 +17,6 @@ public interface UserDao {
 	List<User> getMainUsers(Page page);
 	List<User> getUntilJoinUsers(Page page);
 	List<User> getUntilVisitUsers(Page page);
+	User getUser(String userId);
 	
 }

@@ -18,4 +18,10 @@ public class FunctionDaoImpl implements FunctionDao {
 		return functionMapper.updateUser(user);
 	}
 
+
+	@Override
+	public int insetBlackList(User user) {
+		return functionMapper.insetBlackList(user);
+	}
+
 }

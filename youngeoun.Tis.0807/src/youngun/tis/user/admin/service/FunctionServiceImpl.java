@@ -9,15 +9,22 @@ public class FunctionServiceImpl implements FunctionService {
 	private User user;
 	
 	
-	public FunctionServiceImpl(String userId, String gradeNum, String reason) {
+	public FunctionServiceImpl(String userId, String gradeNum, String reason, int memberNum) {
 		this.functionDao = new FunctionDaoImpl();
-		this.user = new User(userId, gradeNum, reason);
+		this.user = new User(userId, gradeNum, reason, memberNum);
 	}
 
 
 	@Override
-	public void changeGrade() {
+	public int changeGrade() {
 		functionDao.updateUser(user);
+		return saveBlackList(user);
+	}
+
+
+	@Override
+	public int saveBlackList(User user) {
+		return functionDao.insetBlackList(user);
 	}
 
 }

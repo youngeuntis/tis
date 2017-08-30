@@ -18,10 +18,11 @@ public class User {
 	
 	
 	
-	public User(String userId, String blackReason, String gradeNum) {
+	public User(String userId, String blackReason, String gradeNum, int memberNum) {
 		this.userId = userId;
 		this.blackReason = blackReason;
 		this.gradeNum = gradeNum;
+		this.memberNum = memberNum;
 	}
 
 	

@@ -14,4 +14,5 @@ public interface UserMapper {
 	List<User> getFblindUsers(Page page);
 	List<User> getStepUsers(Page page);
 	List<User> getMainUsers(Page page);
+	User getUser(String userId);
 }
