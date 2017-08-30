@@ -22,15 +22,29 @@ public class UserDaoImpl implements UserDao {
 		return userMapper.getblindUsers(page);
 	}
 	
-	public List<User> getFblindUsers(){
-		return userMapper.getFblindUsers();
+	public List<User> getFblindUsers(Page page){
+		return userMapper.getFblindUsers(page);
 	}
 	
-	public List<User> getStepUsers(){
-		return userMapper.getStepUsers();
+	public List<User> getStepUsers(Page page){
+		return userMapper.getStepUsers(page);
 	}
 	
-	public List<User> getMainUsers(){
-		return userMapper.getMainUsers();
+	public List<User> getMainUsers(Page page){
+		return userMapper.getMainUsers(page);
 	}
+	
+	public List<User> getMainSubUsers(){
+		return userMapper.getMainSubUsers();
+	}
+	public List<User> getMainSubUsers2(){
+		return userMapper.getMainSubUsers2();
+	}
+	public List<User> getUntilJoinUsers(Page page){
+		return userMapper.getUntilJoinUsers(page);
+	}
+	public List<User> getUntilVisitUsers(Page page){
+		return userMapper.getUntilVisitUsers(page);
+	}
+
 }

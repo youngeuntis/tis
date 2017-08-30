@@ -1,3 +1,5 @@
+
+
 package youngun.tis.user.admin.dao;
 
 import java.util.List;
@@ -7,9 +9,13 @@ import youngun.tis.user.admin.domain.User;
 
 public interface UserDao {
 	List<User> getUsers(Page page);
+	List<User> getMainSubUsers();
+	List<User> getMainSubUsers2();
 	List<User> getblindUsers(Page page);
-	List<User> getFblindUsers();
-	List<User> getStepUsers();
-	List<User> getMainUsers();
+	List<User> getFblindUsers(Page page);
+	List<User> getStepUsers(Page page);
+	List<User> getMainUsers(Page page);
+	List<User> getUntilJoinUsers(Page page);
+	List<User> getUntilVisitUsers(Page page);
 	
 }

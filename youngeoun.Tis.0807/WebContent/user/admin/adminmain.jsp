@@ -1,4 +1,3 @@
-<%@page import="youngun.tis.user.login.domain.Login"%>
 <%@page import="youngun.tis.user.admin.service.PageServiceImpl"%>
 <%@page import="youngun.tis.user.admin.service.PageService"%>
 <%@page import="youngun.tis.user.admin.domain.Page"%>
@@ -8,13 +7,11 @@
 <%@page import="youngun.tis.user.admin.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<% Login dto = (Login)session.getAttribute("Login"); %>
 <%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Page myPage = null;
 	String currentPage = request.getParameter("currentPage");
 	String rowCnt = "10";
-	//String rowCnt = "10";
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage),Integer.parseInt(rowCnt));
 	else myPage = new Page(1, Integer.parseInt(rowCnt));
 	
@@ -23,8 +20,14 @@
 	pageContext.setAttribute("pageMaker", pageService);
 	
 	List<User> posts = userService.findUsers(myPage);
+	List<User> posts2 = userService.MainSubUsers();
+	List<User> posts3 = userService.MainSubUsers2();
 	pageContext.setAttribute("posts", posts);
 %>
+
+
+
+
 
 
 <style type="text/css">
@@ -60,20 +63,39 @@
 
 <body>
 
-	<div id="fullweb">
-		<%@include file="../../headerNavAdmin.jsp"%>
+		<div id="fullweb">
+		<header>
+			<div class="Center">
+				<div class="site-logo">
+					<img src="../../res/img/DYTR.png"
+						style="display: inline-block; width: 15%; height: auto; margin-top: -15px;">
+					<h1>
+						<a href="../../main.jsp">Design Your Trip</a>
+					</h1>
+				</div>
+			</div>
+			<div id="cbp-hrmenu" class="cbp-hrmenu" >
+			<ul style=" width: 900px; height: 80px;
+			margin-left: 80px;">
+				<li><a href="adminmain.jsp">메인</a></li>
+				<li><a href="adminFull.jsp">회원 관리</a></li>
+				<li><a href="adminBlind.jsp">제재 회원 관리</a></li>
+				<li><a href="adminForcedBlind.jsp">강퇴 회원 관리</a></li>
+				<li><a href="adminStep.jsp">스텝 관리</a></li>
+			
+			</ul>
+			</div>
+		</header>
+
+
+
+
+
+
 		<!-- 메인 작업부분 -->
 		<main>
 
-		<div class="adminMenu">
-			<ul id="gnb">
-				<li><a href="adminmain.jsp"><h2>메인</h2></a></li>
-				<li><a href="adminFull.jsp"><h2>회원 관리</h2></a></li>
-				<li><a href="adminBlind.jsp"><h2>제재 회원 관리</h2></a></li>
-				<li><a href="adminForcedBlindControl.jsp"><h2>강제 탈퇴 회원 관리</h2></a></li>
-				<li><a href="adminStepControl.jsp"><h2>스텝 관리</h2></a></li>
-			</ul>
-		</div>
+		
 		<div class="main">
 
 			<div class="mainA">
@@ -85,22 +107,15 @@
 						<li><a href="#">아이디▼</a></li>
 						<li><a href="#">이름▼</a></li>
 					</ul>
+					
+					
+					
 					<div class="mainAa1" id="mainAa1">
-
-
-
-						<div class="memberDataAdate">
-							<p>2017.08.08</p>
-						</div>
-						<div class="memberDataAid">
-							<p>TIS1234</p>
-						</div>
-						<div class="memberDataAname">
-							<p>길동잉</p>
-						</div>
-
-
-
+						<%for(int i=0; i < 8;i++){ %>
+						<div class="memberDataAdate"><p><%=posts2.get(i).getUntilvisit() %> </p></div>
+						<div class="memberDataAid"><p><%=posts2.get(i).getUserId() %></p></div>
+						<div class="memberDataAname"><p><%=posts2.get(i).getUserName() %></p></div>
+						<%} %>
 					</div>
 					<div class="mainAbutton">
 						<a href="adminUntilVisit.jsp">더보기</a>
@@ -115,16 +130,11 @@
 						<li><a href="#">이름▼</a></li>
 					</ul>
 					<div class="mainAa1">
-						<div class="memberDataAdate">
-							<p>2017.08.08</p>
-						</div>
-						<div class="memberDataAid">
-							<p>TIS1234</p>
-						</div>
-						<div class="memberDataAname">
-							<p>길동잉</p>
-						</div>
-
+						<%for(int i=0; i < 8;i++){ %>
+						<div class="memberDataAdate"><p><%=posts3.get(i).getJoinDate() %> </p></div>
+						<div class="memberDataAid"><p><%=posts3.get(i).getUserId() %></p></div>
+						<div class="memberDataAname"><p><%=posts3.get(i).getUserName() %></p></div>
+						<%} %>
 					</div>
 					<div class="mainAbutton" id="mainAbutton">
 						<a href="adminUntilJoin.jsp">더보기</a>
@@ -140,12 +150,11 @@
 					</ul>
 					
 					<div class="mainAa1">
-					
-						<div class="memberDataAdate"><p>2017.08.08</p></div>
-						<div class="memberDataAid"><p></p></div>
-						<div class="memberDataAname"><p></p></div>
-					
-					
+						<%for(int i=0; i < 8;i++){ %>
+						<div class="memberDataAdate"><p><%=posts2.get(i).getJoinDate() %> </p></div>
+						<div class="memberDataAid"><p><%=posts2.get(i).getUserId() %></p></div>
+						<div class="memberDataAname"><p><%=posts2.get(i).getUserName() %></p></div>
+						<%} %>
 					</div>
 					<div class="mainAbutton">
 						<a href="adminUntilBlind.jsp">더보기</a>
@@ -189,14 +198,16 @@
 				
 				<div class="mainB2" id="mainB2">
 				<c:forEach var="post" items="${posts}">
-					<div class="memberDataBcheck"><input type="checkbox"></div>
-					<div class="memberDataBid"><p>${post.userId} </p></div>
-					<div class="memberDataBname"><p>${post.userName}</p></div>
-					<div class="memberDataBjoindate"><p>${post.joinDate}</p></div>
-					<div class="memberDataBvisitdate"><p>${post.untilvisit}</p></div>
-					<div class="memberDataBwhite"><p>${post.writeCount}</p></div>
-					<div class="memberDataBcoment"><p>${post.replCount}</p></div>
-					<div class="memberDataBvisitcount"><p>${post.visitCount}</p></div>
+					<div class="memberDataBcheck"><p><input type="checkbox" id="Autocheck"></p></div>
+					<div class="memberDataBid">
+					<label for="Autocheck">${post.userId}</label> </div>
+					<div class="memberDataBname">
+					<label for="Autocheck">${post.userName}</label></div>
+					<div class="memberDataBjoindate">${post.joinDate}</div>
+					<div class="memberDataBvisitdate">${post.untilvisit}</div>
+					<div class="memberDataBwhite">${post.writeCount}</div>
+					<div class="memberDataBcoment">${post.replCount}</div>
+					<div class="memberDataBvisitcount">${post.visitCount}</div>
 				</c:forEach>
 				</div>
 				
@@ -205,17 +216,17 @@
 						<div class="text-center" style="text-align:center;">
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
-					<li><a href="adminmain.jsp?currentPage=${pageMaker.startPage-1}&#mainAa1">&laquo;</a></li>
+					<li><a href="adminmain.jsp?currentPage=${pageMaker.startPage-1}&#mainBb">&laquo;</a></li>
 				</c:if>
 				
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 					<li <c:out value ="${pageMaker.page.currentPage==idx? 'class=active':'' }"/>>
-						<a href="adminmain.jsp?currentPage=${idx}&#mainAa1">${idx}</a>
+						<a href="adminmain.jsp?currentPage=${idx}&#mainBb">${idx}</a>
 					</li>
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next}">
-					<li><a href="adminmain.jsp?currentPage=${pageMaker.endPage+1}&#mainAa1">&raquo;</a></li>
+					<li><a href="adminmain.jsp?currentPage=${pageMaker.endPage+1}&#mainBb">&raquo;</a></li>
 				</c:if>
 			</ul>
 		</div>
