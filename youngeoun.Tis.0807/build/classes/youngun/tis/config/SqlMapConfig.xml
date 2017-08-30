@@ -86,7 +86,7 @@
 
 <!-- 	
 		<mapper resource="youngun/tis/mypage/dao/mapper/ProfileMapper.xml" />
-		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" /> 
- -->		
+-->
+		<mapper resource="youngun/tis/mypage/dao/mapper/PersonalMapper.xml" /> 		
 	</mappers>
 </configuration>

@@ -9,14 +9,18 @@
 <%
 	
 	int memberNum = dto.getMemberNum();
+	
 	String email = request.getParameter("myLetterEmail");
-	System.out.println("email"+email);
+	System.out.println("memberNum : " + memberNum);
+	System.out.println("email : "+email);
 	if(email != null){
 		PersonalService personalService = new PersonalServiceImpl(memberNum, email);
 		personalService.changeEmail();
+		dto.setEmail(email);
 	}
 
 %>
+
 <!doctype html>
 
 <html>
@@ -157,7 +161,7 @@ function cancelChange(obj){
 }
 
 function setEmail(){
-	var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	var re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]*.[a-zA-Z]{2,3}$/;
 
 	if (document.getElementById("myLetterEmail").value == "" || document.getElementById("myLetterEmail").value.replace(/^\s+/, "") == "") {
 		document.getElementById("e_myLetterEmail").innerHTML =  "자주쓰는 메일을 정확하게 입력해 주세요.";
@@ -497,7 +501,7 @@ function setEmail(){
 
 												<p class="btn_area_btm">
 													<a href="#" onclick="telnone();return false;" class="btn_model">
-													<b id="b_txt_phoneNo_reg" class="btn3">수정완료</b></a> 
+													<b id="b_txt_phoneNo_reg" class="btn3" onclick="checkEmail();">수정완료</b></a> 
 													
 													<a href="#" onclick="telnone();return false;" class="btn_model">
 													<b id="b_txt_phoneNo_cncl" class="btn2">수정취소</b></a>
@@ -530,15 +534,34 @@ function setEmail(){
 											<p class="contxt_desc">변경할 이메일 주소를 입력하세요.(예 :
 												abc@naver.com)</p>
 											<p class="contxt_webctrl">
-											<form id="updateEmail" action="personnalModify.jsp" method="post">
+											<form id="updateEmail" action="personnalModify.jsp" method="get">
 											<input type="text" name="myLetterEmail" id="myLetterEmail"
-													value="" style="width: 254px">
+													style="width: 254px">
 											</p>
 											<p id="e_myLetterEmail" class="contxt_alert"></p>
 											<p class="btn_area_btm">
-												<a href="#updateEmail" onclick="setEmail();return false;" class="btn_model">
+												<a href="#updateEmail" onclick="checkEmail();" class="btn_model">
 												<b class="btn3">수정완료</b></a> 
-												
+												<script>
+												function checkEmail(){
+													var inputVal=document.getElementById("myLetterEmail").value;
+											        
+											        var url = [".com",".net",".co.kr"];
+											        var at = "@";
+											        var check = false;
+											        var check2 = false;
+											        if(inputVal.indexOf(at)>0) check=true;
+											        
+											        for(var i=0; i<url.length; i++){
+											            if(inputVal.indexOf(url[i])>0)check2=true;
+											        }
+											        if(check&&check2){
+											            document.getElementById("updateEmail").submit();
+											        }else{
+											            document.getElementById("e_myLetterEmail").innerHTML="잘못입력했습니다. 다시 입력해주세요"
+											        }
+												}
+												</script>
 												<a href="#" onclick="emailnone();return false;" class="btn_model">
 												<b class="btn2">수정취소</b></a>
 											</p>

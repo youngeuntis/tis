@@ -19,7 +19,7 @@ public class PersonalServiceImpl implements PersonalService {
 	//이메일 수정
 	@Override
 	public void changeEmail() {
-		personalDao.updateEmail(personal);
+		System.out.println("처리:"+personalDao.updateEmail(personal));
 	}
 	
 }
