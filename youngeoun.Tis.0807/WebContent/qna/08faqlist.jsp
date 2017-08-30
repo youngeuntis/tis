@@ -28,20 +28,15 @@
     <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
     <!--end main_menu_nav-->
-
 </head>
-
 <body>
 	<div id="fullweb">
 		<%@include file="../headerNav.jsp" %>
 		<div class="slideshow-container">
-
 			<div class="mySlides fade" style="display: block;">
 				<img src="../res/img/faq1.jpg" style="width: 100%;">
 			</div>
-
 		</div>
-
 		<main>
 		<div class="cd-faq">
 			<ul class="cd-faq-categories">
@@ -51,7 +46,6 @@
 				<li><a href="#events">이벤트관련</a></li>
 			</ul>
 			<!-- cd-faq-categories -->
-
 			<div class="cd-faq-items">
 				<ul id="account" class="cd-faq-group">
 					<li class="cd-faq-title">
@@ -66,7 +60,6 @@
 								호텔은 해당일 픽업 관련 정보를 주고 받고 있기 때문입니다. 추가로 변경, 확인 등의 요청도 호텔측에 가능합니다.
 							</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">How do I sign up?</a>
 						<div class="cd-faq-content">
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -81,7 +74,6 @@
 								consequuntur, saepe voluptas quaerat deleniti. Repellendus magni
 								sint temporibus, accusantium rem commodi?</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">Can I remove a
 							post?</a>
 						<div class="cd-faq-content">
@@ -91,7 +83,6 @@
 								magnam, reiciendis, saepe obcaecati ex vero quaerat distinctio
 								velit.</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">How do reviews
 							work?</a>
 						<div class="cd-faq-content">
@@ -103,7 +94,6 @@
 						</div> <!-- cd-faq-content --></li>
 				</ul>
 				<!-- cd-faq-group -->
-
 				<ul id="review" class="cd-faq-group">
 					<li class="cd-faq-title">
 						<h2>후기관련</h2>
@@ -122,7 +112,6 @@
 								praesentium voluptatibus, accusantium a mollitia necessitatibus
 								nostrum voluptatem numquam modi ab, sint rem.</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">How do I upload
 							files from my phone or tablet?</a>
 						<div class="cd-faq-content">
@@ -142,7 +131,6 @@
 								natus? Eligendi explicabo eos, perferendis voluptatibus hic sed
 								ipsam rerum maiores officia! Beatae, molestias!</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">How do I link to a
 							file or folder?</a>
 						<div class="cd-faq-content">
@@ -154,7 +142,6 @@
 						</div> <!-- cd-faq-content --></li>
 				</ul>
 				<!-- cd-faq-group -->
-
 				<ul id="board" class="cd-faq-group">
 					<li class="cd-faq-title">
 						<h2>게시판관련</h2>
@@ -181,7 +168,6 @@
 								nesciunt illo id quis reprehenderit obcaecati voluptates
 								corrupti, minus! Possimus, perspiciatis!</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">How do I delete my
 							account?</a>
 						<div class="cd-faq-content">
@@ -196,7 +182,6 @@
 								deserunt. Mollitia non ut libero unde accusamus praesentium sint
 								maiores, illo, nemo aliquid?</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">How do I change my
 							account settings?</a>
 						<div class="cd-faq-content">
@@ -206,7 +191,6 @@
 								magnam, reiciendis, saepe obcaecati ex vero quaerat distinctio
 								velit.</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">I forgot my
 							password. How do I reset it?</a>
 						<div class="cd-faq-content">
@@ -223,7 +207,6 @@
 						</div> <!-- cd-faq-content --></li>
 				</ul>
 				<!-- cd-faq-group -->
-
 				<ul id="events" class="cd-faq-group">
 					<li class="cd-faq-title">
 						<h2>이벤트관련</h2>
@@ -242,7 +225,6 @@
 								praesentium voluptatibus, accusantium a mollitia necessitatibus
 								nostrum voluptatem numquam modi ab, sint rem.</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">Why did my credit
 							card or PayPal payment fail?</a>
 						<div class="cd-faq-content">
@@ -264,7 +246,6 @@
 								possimus dolorum. Eaque architecto doloremque aliquid quae
 								cumque, vitae perferendis enim, iure fugiat, soluta aut!</p>
 						</div> <!-- cd-faq-content --></li>
-
 					<li><a class="cd-faq-trigger" href="#0">Why does my bank
 							statement show multiple charges for one upgrade?</a>
 						<div class="cd-faq-content">
@@ -282,8 +263,6 @@
 		</div>
 		</main>
 		<!-- cd-faq -->
-
-
 		<footer>
 			<div class="footer_nav">
 
@@ -294,13 +273,10 @@
 					<li><a href="#">개인정보처리방침</a></li>
 					<li><a href="#">고객센터</a></li>
 				</ul>
-
-
 				<p>copyright DESIGN YOUR TRIP</p>
 			</div>
 		</footer>
 	</div>
 	<!-- end fullweb -->
 </body>
-
 </html>
