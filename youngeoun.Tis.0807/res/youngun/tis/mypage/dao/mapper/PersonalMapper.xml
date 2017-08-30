@@ -2,20 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="youngun.tis.mypage.dao.mapper.PersonalMapper">
-	<resultMap id="personalMap" type="youngun.tis.mypage.domain.personal">
-		<result property="userId" column="user_id"/>
-		<result property="userPw" column="pw"/>
-		<result property="userEmail" column="email"/>
-		<result property="userPh" column="phone_num"/>
-	</resultMap>
-	
-	
-	<select id="getPersonal" parameterType="String" resultMap="personalMap">
-		select user_id userId, pw userPw, email userEmail, phone_num userPh
-		from members
-		where user_id = #{userId}
-	</select>
-	
-	
+	<update id="updateEmail" parameterType="youngun.tis.mypage.domain.Personal">
+		update members
+		set email = #{userEmail}
+		where member_num = #{memberNum}
+	</update>
+
 	
 </mapper>

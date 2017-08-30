@@ -2,6 +2,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <% Login dto = (Login)session.getAttribute("Login"); %>
+<%
+	String memberNum ="";
+	if(dto==null){
+%>
+		<script>
+			alert("로그인이 필요합니다.");
+			location.replace("01qnaMain.jsp");
+		</script>
+<%
+	}else{
+		memberNum = ""+dto.getMemberNum();
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +82,7 @@
                             <input type="button" class="action-button shadow animate blue" style="padding: 10px 10px; font-size:15px;" value="뒤로" onclick="move('01qnaMain.jsp');">
                     	</div>
                     </div>
-                    <input type="hidden" name="userNum" value="<%=dto.getMemberNum() %>">
+                    <input type="hidden" name="userNum" value="<%=memberNum %>">
                 </form>
             </main>
 

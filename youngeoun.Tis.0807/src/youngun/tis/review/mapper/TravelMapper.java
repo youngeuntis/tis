@@ -6,4 +6,5 @@ import youngun.tis.review.domain.Country;
 
 public interface TravelMapper {
 	public List<Country> getCountryList(String continentCode);
+	public Country searchParam(String nationCode);
 }

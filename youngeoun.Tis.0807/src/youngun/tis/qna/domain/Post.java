@@ -10,7 +10,16 @@ public class Post {
 	private int viewCnt;
 	private String openCheck;
 	private int userNum;
+	private String nickName;
 	
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 
 	public int getUserNum() {
 		return userNum;

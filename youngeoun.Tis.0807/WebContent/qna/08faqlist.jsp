@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../res/css/faq.css">
     <!-- modernizr -->
     <script src="../res/js/modernizr.js"></script>
+    
     <script type="text/javascript" src="js/custom.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../res/js/jquery-2.1.1.js"></script>
@@ -28,6 +29,7 @@
     <!--main_menu_nav-->
     <script src="../res/js/modernizr.custom.js"></script>
     <!--end main_menu_nav-->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
 	<div id="fullweb">
@@ -278,5 +280,18 @@
 		</footer>
 	</div>
 	<!-- end fullweb -->
+	
+	<!--main_menu_nav-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../res/js/cbpHorizontalMenu.min.js"></script>
+    <script>
+        $(function() {
+            cbpHorizontalMenu.init();
+        });
+    </script>
+
+    <!--main_login-->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script src="../res/js/index.js"></script>
 </body>
 </html>
