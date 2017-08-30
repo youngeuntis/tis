@@ -14,8 +14,26 @@ public class User {
 	private String writeCount;
 	private String replCount;
 	private String visitCount;
+	private String gradeNum;
 	
 	
+	
+	public User(String userId, String blackReason, String gradeNum) {
+		this.userId = userId;
+		this.blackReason = blackReason;
+		this.gradeNum = gradeNum;
+	}
+
+	
+	
+	public String getGradeNum() {
+		return gradeNum;
+	}
+
+	public void setGradeNum(String gradeNum) {
+		this.gradeNum = gradeNum;
+	}
+
 	public String getVisitCount() {
 		return visitCount;
 	}

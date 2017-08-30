@@ -31,6 +31,7 @@
     .text-center{text-align:center;}
 	.pagination>li{display:inline-block;}
 	.pagination>li>a,.pagination>li>span{
+        height: 20px;
 		position:relative;float:left;
 		padding:5px 10px;
 		margin-left:0px;
@@ -138,7 +139,7 @@
 			</div>
                      
            <div class="memberNum">
-					<div class="memberNumin">
+				
 						
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
@@ -156,7 +157,7 @@
 				</c:if>
 			</ul>
 	
-					</div>
+					
 					
 				</div>
              

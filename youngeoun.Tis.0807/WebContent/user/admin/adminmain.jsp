@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%
 	Page myPage = null;
 	String currentPage = request.getParameter("currentPage");
@@ -23,13 +24,10 @@
 	List<User> posts2 = userService.MainSubUsers();
 	List<User> posts3 = userService.MainSubUsers2();
 	pageContext.setAttribute("posts", posts);
+	System.out.print(posts);	
+	
+	
 %>
-
-
-
-
-
-
 <style type="text/css">
     .text-center{text-align:center;}
 	.pagination>li{display:inline-block;}
@@ -86,13 +84,9 @@
 			</ul>
 			</div>
 		</header>
-
-
-
-
-
-
-		<!-- 메인 작업부분 -->
+		
+		
+<!-- 메인 작업부분 -->
 		<main>
 
 		
@@ -197,17 +191,21 @@
 
 				
 				<div class="mainB2" id="mainB2">
-				<c:forEach var="post" items="${posts}">
-					<div class="memberDataBcheck"><p><input type="checkbox" id="Autocheck"></p></div>
+				<c:forEach var="post" items="${posts}" begin="0" end="${posts.size()}">
+				
+					<div class="memberDataBcheck"><p>
+						<input type="checkbox" id="${post}" name="blackCh" value="${post.userId}"></p></div> 
+						
 					<div class="memberDataBid">
-					<label for="Autocheck">${post.userId}</label> </div>
+						<label for="${post}">${post.userId}</label> </div>
 					<div class="memberDataBname">
-					<label for="Autocheck">${post.userName}</label></div>
+						<label for="${post}">${post.userName}</label></div>
 					<div class="memberDataBjoindate">${post.joinDate}</div>
 					<div class="memberDataBvisitdate">${post.untilvisit}</div>
 					<div class="memberDataBwhite">${post.writeCount}</div>
 					<div class="memberDataBcoment">${post.replCount}</div>
 					<div class="memberDataBvisitcount">${post.visitCount}</div>
+					
 				</c:forEach>
 				</div>
 				
@@ -237,6 +235,20 @@
 				</div>
 
 			</div>
+			<script type="text/javascript">
+			function chchch() {
+				var test
+				$('input:checkbox[name="blackCh"]').each(function(){
+					if(this.checked){
+						test = this.value;
+						$('#19').val(test);
+					}
+					location.replace('javascript:blindMassage(625, 285, "'+ test +'")');
+				});
+			}
+			
+			</script>
+			
 			<div class="mainBoption">
 				<ul id="gnb4">
 					<li><a href="javascript:blindMassage(625, 285)" >제재</a></li>
@@ -244,6 +256,12 @@
 					<li><a href="javascript:popUpEmail(620, 670)" >메일</a></li>
 					<li><a href="javascript:popUpMassage(420, 350)" >쪽지</a></li>
 					<li><a href="javascript:StepMassage(620, 285)" >스텝 기능</a></li>
+					
+					
+					<input type="text" id="19" name="19" value="test">
+					
+					<li><input type="button" onclick="chchch()" value="Test"></li>
+					
 				</ul>
 			</div>
 
@@ -272,10 +290,9 @@
 				<p>copyright DESIGN YOUR TRIP</p>
 			</div>
 		</footer>
-		<!--p태그로 잡으면 안되나봐 -->
 
 	</div>
-	<!-- end fullweb -->
+
 
 	<!--main_menu_nav-->
 	<script

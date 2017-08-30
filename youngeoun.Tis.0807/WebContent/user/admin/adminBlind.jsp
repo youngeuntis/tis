@@ -26,7 +26,9 @@
 
 <style type="text/css">
     .text-center{text-align:center;}
-	.pagination>li{display:inline-block;}
+	.pagination>li{display:inline-block;
+	}
+		
 	.pagination>li>a,.pagination>li>span{
 		position:relative;float:left;
 		padding:5px 10px;
