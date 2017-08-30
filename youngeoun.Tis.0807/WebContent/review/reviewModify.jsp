@@ -42,7 +42,6 @@
     </style>
 	
 </head>
-
 <body>
      
     <div id="fullweb">
@@ -68,228 +67,54 @@
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
         </div>
-		
-		<!-- 메인 작업부분 -->
-		<script src="../res/js/nicEdit.js" type="text/javascript"></script>
+        
+        <script src="../res/js/nicEdit.js" type="text/javascript"></script>
         <script type="text/javascript">
         bkLib.onDomLoaded(function() {
 
             new nicEditor({fullPanel : true}).panelInstance('area2');
         });
         </script>
-            
-		<%
-			Review selectReview = null;
-			String title = "";
-			String content= "";
-			ReviewDao reviewDao = new ReviewDaoImpl();
-			SearchService service = new SearchService(reviewDao);
-			List<Review> reviews = reviewDao.getReviewListNoPara();
-			String reviewNum = request.getParameter("reviewNum");
-			String continent = request.getParameter("continent");
-			String category = null;
-			selectReview = service.searchReview(reviews, reviewNum);			
-			title = selectReview.getReviewTitle();
-			content = selectReview.getReviewContent();
+        
+	<% 
+		ReviewDao reviewDao = new ReviewDaoImpl();
+	    SearchService service = new SearchService(reviewDao);
+	    String continent = request.getParameter("continent");
+		String category = null;
+    
+		String reviewNum = request.getParameter("reviewNum");
+		List<Review> reviews = reviewDao.getReviewListNoPara();
+		Review selectReview = service.searchReview(reviews, reviewNum);
+	%>
+	<div class="editor" style="position: relative; height: 900px; width:1200px; left:50%; margin-left: -600px;">
+		<form action="reviewInsert2.jsp" method="post">
+			<div style="width:1200px; overflow : hidden;  margin-top:10px;" >
+	        	<textarea cols="60" style="width:1300px; height:20px;" name="review_title"><%=selectReview.getReviewTitle()%></textarea>
+	        </div>
 			
-		%>
-		
-        <main>
-            <div class="editor" style="position: relative; height: 900px; width:1200px; left:50%; margin-left: -600px;">
-                <form action="reviewInsert2.jsp" method="get">
-                   
-                    <div style="width:1200px; overflow : hidden;">
-                    <textarea cols="60" style="width:1300px; height:20px;" name="review_title"><%=title %></textarea>
-                    </div>
-                    <select class="editorSelect" id="mySelect" name="continent" onchange="subCategory();">
-                    <%
-                   
-                    if(continent!=null){
-                    	switch(continent){
-                    	case "대한민국" : out.print("<option value=\"c6\" selected>대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
-                    	case "유럽" : out.print("<option value=\"c6\">대한민국</option><option value=\"c2\" selected>유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
-                    	case "미대양주": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\">아시아</option>"); break;
-                    	case "아시아": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\" selected>아시아</option>"); break;
-                    	}
-                    }else{
-                    	switch(category){
-                    	case "대한민국" : out.print("<option value=\"c6\" selected>대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
-                    	case "유럽" : out.print("<option value=\"c6\">대한민국</option><option value=\"c2\" selected>유럽</option><option value=\"c3\">미대양주</option><option value=\"c1\">아시아</option>"); break;
-                    	case "미대양주": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\">아시아</option>"); break;
-                    	case "아시아": out.print("<option value=\"c6\">대한민국</option><option value=\"c2\">유럽</option><option value=\"c3\" selected>미대양주</option><option value=\"c1\" selected>아시아</option>"); break;
-                    	}
-                    }
-                    %>
-                    
-                    </select>
-                    <select class="editorSelect" id="subSelect" name="country">
-                 
-                    </select>
-                    <%
-                   			TravelDao travelDao = new TravelDao();
-							List<Country> countries = travelDao.getCountryList("c1");
-							List<Country> countries2 = travelDao.getCountryList("c2");
-							List<Country> countries3 = travelDao.getCountryList("c3");
-							List<Country> countries4 = travelDao.getCountryList("c6");
-          			%>
-                    <script>
-                    	var firstSel = document.getElementById("mySelect").value;
-                   		
-            				
-                    		if(firstSel=="c1"){
-                    			<%
-                    			String str = "";
-            					for(int i=0; i< countries.size(); i++){
-	            				%>
-	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
-	            				<%
-	            					}
-	            				%>
-                    			var str = <%=str%>
-                    			document.getElementById("subSelect").innerHTML =str; 
-                    		}else if(firstSel=="c2"){
-                    			<%
-                    			str = "";
-            					for(int i=0; i< countries2.size(); i++){
-	            				%>
-	            				str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
-	            				<%
-	            					}
-	            				%>
-                    			var str = <%=str%>
-                    			document.getElementById("subSelect").innerHTML =str;
-                    		}else if(firstSel=="c3"){
-                    			<%
-                    			str = "";
-            					for(int i=0; i< countries3.size(); i++){
-	            				%>
-	            				str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
-	            				<%
-	            					}
-	            				%>
-                    			var str = <%=str%>
-                    			document.getElementById("subSelect").innerHTML =str;
-                    		}else if(firstSel=="c6"){
-                    			<%
-                    			str = "";
-            					for(int i=0; i< countries4.size(); i++){
-	            				%>
-	            				str += "<option value=\"<%=countries4.get(i).getNationalCode()%>\"><%=countries4.get(i).getCountryName()%></option>";
-	            				<%
-	            					}
-	            				%>
-                    			var str = <%=str%>
-                    			document.getElementById("subSelect").innerHTML =str;
-                    		}           			
-                    	function subCategory(){
-                    		var x = document.getElementById("mySelect").value;
-                    		            				
-                    		if(x=="c1"){
-                    			<%
-                    			str = "";
-            					for(int i=0; i< countries.size(); i++){
-	            				%>
-	            					str += "<option value=\"<%=countries.get(i).getNationalCode()%>\"><%=countries.get(i).getCountryName()%></option>";
-	            				<%
-	            					}
-	            				%>
-                    			var str = <%=str%>
-                    			document.getElementById("subSelect").innerHTML =str; 
-                    		}else if(x=="c2"){
-                    			<%
-                    			str = "";
-            					for(int i=0; i< countries2.size(); i++){
-	            				%>
-	            				str += "<option value=\"<%=countries2.get(i).getNationalCode()%>\"><%=countries2.get(i).getCountryName()%></option>";
-	            				<%
-	            					}
-	            				%>
-                    			var str = <%=str%>
-                    			document.getElementById("subSelect").innerHTML =str;
-                    		}else if(x=="c3"){
-                    			<%
-                    			str = "";
-            					for(int i=0; i< countries3.size(); i++){
-	            				%>
-	            				str += "<option value=\"<%=countries3.get(i).getNationalCode()%>\"><%=countries3.get(i).getCountryName()%></option>";
-	            				<%
-	            					}
-	            				%>
-                    			var str = <%=str%>
-                    			document.getElementById("subSelect").innerHTML =str;
-                    		}else if(x=="c6"){
-                    			<%
-                    			str = "";
-            					for(int i=0; i< countries4.size(); i++){
-	            				%>
-	            				str += "<option value=\"<%=countries4.get(i).getNationalCode()%>\"><%=countries4.get(i).getCountryName()%></option>";
-	            				<%
-	            					}
-	            				%>
-                    			var str = <%=str%>
-                    			document.getElementById("subSelect").innerHTML =str;
-                    		}
-                    	}
-                    </script>
-                    <textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; left: 50%; overflow:scroll;" name="review_content"><%=content %></textarea>
-                    <% 
-                    	if(reviewNum != null){
-                    %>
-                    <input type="hidden" name="reviewNum" value="<%=reviewNum%>">
-                    <% 
-                    	}
-                    %>
-                    <input type="hidden" name="userNum" value="<%=dto.getMemberNum() %>">
-                    <button type="submit" class="action-button shadow animate blue" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">저장</button>
-                </form>
-                	<button onclick="cancelMove()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">취소</button>
-            </div>
+			
+			
+			 <%-- <select class="editorSelect" id="mySelect" name="continent" value="<%=selectReview.getNationCode()%>" onchange="subCategory();">
+             </select>
+             <select class="editorSelect" id="subSelect" name="country" value="<%=selectReview.getNationCode()%>">
+             </select> --%>
+            
+			<div>
+				<textarea cols="60" id="area2" style="height: 800px; width:1200px; position:relative; overflow:scroll;" name="review_content"><%=selectReview.getReviewContent() %></textarea>
+			</div>
+			
+				<input type="hidden" name="reviewNum" value="<%=selectReview.getReviewNum() %>">
+				<input type="hidden" name="continent" value="<%=selectReview.getContinentCode()%>">
+				<input type="hidden" name="country" value="<%=selectReview.getNationCode()%>">
+				<button type="submit" class="action-button shadow animate blue" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">저장</button>
+		</form>
+				<button onclick="cancelMove()" class="action-button shadow animate red" style="border-top : 0px; border-left:0px; border-right:0px; font-family:hanna; font-size:20px;">취소</button>
+   </div>
             <script>
                     function cancelMove(){
                         var answer = confirm("확인을 누르시면 이전 페이지로 이동합니다. 이동를 원하십니까?")
                         if(answer) history.go(-1);
                     }
             </script>
-            
-            <form action="reviewInsert2.jsp" method="post">
-			<input type="text" name ="review_title" placeholder="<%=selectReview.getReviewTitle()%>">
-			<textarea name=review_content><%=selectReview.getReviewContent() %></textarea>
-			
-			<input type="hidden" name="reviewNum" value="<%=selectReview.getReviewNum() %>">
-			<input type="hidden" name="continent" value="<%=selectReview.getContinentCode()%>">
-			<input type="hidden" name="country" value="<%=selectReview.getNationCode()%>">
-			<input type="submit">
-	</form>
-		</main>
-		
-        <div class="clear"></div>
-        <footer>
-            <div class="footer_nav">
-                
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">제휴제안</a></li>
-                        <li><a href="#">이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-            
-
-                <p> copyright DESIGN YOUR TRIP</p>
-            </div>
-        </footer> <!--p태그로 잡으면 안되나봐 -->
-
-    </div> <!-- end fullweb -->
-
-    <!--main_menu_nav-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../res/js/cbpHorizontalMenu.min.js"></script>
-    <script>$(function() {cbpHorizontalMenu.init();});</script>
-
-    <!--main_login-->
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-    <script src="../res/js/index.js"></script>
-	
 </body>
-
 </html>

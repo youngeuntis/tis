@@ -94,12 +94,6 @@
 			</table>
             <table class="type15">
 				<th onclick="deleteReview()" >삭제</th>
-					<script>
-	                    function deleteReview(){
-	                        var answer = confirm("삭제하시겠습니까? 확인을 누르시면 글이 삭제 됩니다.")
-	                       if(answer) location.replace("reviewMain2.jsp?reviewNum=<%=selectReview.getReviewNum()%>");
-	                    }
-            		</script>
             </table>
             <table class="type15">
 				<th onclick="changeReview()" >수정</th>
@@ -149,6 +143,19 @@
 	    <!--main_login-->
 	    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 	    <script src="../res/js/index.js"></script>
+	   
+	   <script>
+					var isOnOff = false;
+					
+	                    function deleteReview(){
+	                        var answer = confirm("삭제하시겠습니까? 확인을 누르시면 글이 삭제 됩니다.")
+	                       if(answer==true){
+	                    	   location.replace("reviewMain.jsp?del=y");
+	                       }
+	                        return false;
+	                    }
+     	</script>
+	   
 	</body>
 
 </html>
