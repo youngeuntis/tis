@@ -1,3 +1,6 @@
+<%@page import="youngun.tis.travel.blog.service.SearchService"%>
+<%@page import="youngun.tis.travel.blog.dao.BlogDaoImpl"%>
+<%@page import="youngun.tis.travel.blog.dao.BlogDao"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
 <%@page import="youngun.tis.qna.dao.PostDaoImpl"%>
 <%@page import="youngun.tis.qna.dao.PostDao"%>
@@ -119,12 +122,19 @@
 					<th style="width:50px">조회수</th>
 				</tr>
 			</thead>
+			<%
+				BlogDao blogDao = new BlogDaoImpl();
+				SearchService service = new SearchService(blogDao);
+				for(int i=0; i<posts.size(); i++){
+					posts.get(i).setNickName(service.printNickName(posts.get(i).getUserNum()));
+				}
+			%>
 			<tbody>
 				<c:forEach var="post" items="${posts}">
 					<tr style= "height:50px;">
 						<td style= "color : black;">${post.postNo}</td>
 						<td style= "color : black;"><a href="04view.jsp?qna_num=${post.postNo}" style= "color : black;">${post.title}</a></td>
-						<td style= "color : black;">${post.userNum}</td>
+						<td style= "color : black;">${post.nickName}</td>
 						<td style= "color : black;">${post.regDate}</td>
 						<td style= "color : black;"><span class="badge">${post.viewCnt}</span></td>
 					</tr>
