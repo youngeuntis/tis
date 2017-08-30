@@ -88,9 +88,11 @@
 										</div>
 										<p class="btn_area_btm">
 											<span class="btn_file"> 
-											<label for="inputImge"class="btn_model">사진변경</label> 
-											<input type="file" id="inputImge" name="profileImg" accept="image/*">
-											</span> <a href="#" class="btn_model">삭제</a>
+												<label for="inputImge" class="btn_model">사진변경</label> 
+												<input type="file" id="inputImge" name="profileImg" accept="image/*">
+											</span> 
+											<a href="#" class="btn_model">삭제</a>
+
 										</p>
 									</div>
 								</td>
