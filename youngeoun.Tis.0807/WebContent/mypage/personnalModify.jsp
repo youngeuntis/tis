@@ -1,7 +1,22 @@
+<%@page import="youngun.tis.mypage.service.PersonalServiceImpl"%>
+<%@page import="youngun.tis.mypage.service.PersonalService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
 <% Login dto = (Login)session.getAttribute("Login"); %>
+
+
+<%
+	
+	int memberNum = dto.getMemberNum();
+	String email = request.getParameter("myLetterEmail");
+	System.out.println("email"+email);
+	if(email != null){
+		PersonalService personalService = new PersonalServiceImpl(memberNum, email);
+		personalService.changeEmail();
+	}
+
+%>
 <!doctype html>
 
 <html>
@@ -30,6 +45,139 @@
 <script src="../res/js/modernizr.custom.js"></script>
 <script src="../res/js/click.js"></script>
 
+<script>
+function setInternationalCode(obj, viewTarget, param){
+	if(param == ''){
+		var index = document.getElementById(obj).selectedIndex;
+		document.getElementById(viewTarget).innerHTML = "+" + document.getElementById(obj).options[index].value;
+	}else{
+		document.getElementById(viewTarget).innerHTML = "+" + param;
+		for(index=0; index < document.getElementById(obj).length; index++){
+		   if(document.getElementById(obj).options[index].value == param ){
+		       document.getElementById(obj).options[index].selected = true;
+		       break; 
+		   }
+		}
+	}
+}
+
+function checkAuthNoForChangePhoneNo() {
+	if(document.getElementById("isPhoneYn").value == "Y"){
+		clickcr(this,'inf.mphonecomplete','','',window.event);
+	}else{
+		clickcr(this,'inf.mphoneregcomplete','','',window.event);
+	}
+	
+	if(document.getElementById("isPhoneYn").value == "N" && document.getElementById("phoneNo").value == "" && document.getElementById("authNo").disabled == true){
+		document.getElementById("e_phoneNo").innerHTML =  "삭제하실 휴대전화 번호가 없습니다.";
+		return;
+	}
+	
+	if((document.getElementById("phoneNo").value != "" && document.getElementById("phoneNo").value.length >= 7) && document.getElementById("authNo").disabled == true){
+		document.getElementById("e_phoneNo").innerHTML =  "[인증] 버튼을 클릭하여, 인증번호를 받아주세요.";
+		document.getElementById("e_authNo").innerHTML =  "";
+		return;
+	}
+	
+	if(document.getElementById("phoneNo").value == "" && document.getElementById("authNo").disabled == true){
+		if(!confirm("휴대전화번호를 삭제하시겠습니까?")){
+			document.getElementById("phoneNo").focus();
+			return;
+		}
+	}
+	
+	if(document.getElementById("phoneAuthYn").value == "N" && document.getElementById("phoneNo").value.length < 7 && document.getElementById("phoneNo").value.length != 0){
+		document.getElementById("e_phoneNo").innerHTML =  "휴대전화 번호를 정확하게 입력하세요.";
+		document.getElementById("e_authNo").innerHTML =  "";
+		document.getElementById("phoneNo").focus();
+		return;
+	}
+	
+	if(document.getElementById("authNo").disabled == false && document.getElementById("authNo").value.length < 6){
+		if(document.getElementById("authNo").value.length == 0){
+			document.getElementById("e_authNo").innerHTML =  "인증번호를 입력해 주세요.";
+		}else{
+			document.getElementById("e_authNo").innerHTML =  "인증번호를 정확하게 입력해 주세요.";		
+		}
+		document.getElementById("e_phoneNo").innerHTML =  "";
+		document.getElementById("authNo").focus();
+		return;
+	}
+		
+	checkAuthNo();
+}
+
+function cancelChange(obj){
+    if(obj == "myLetterEmail") {
+		document.getElementById("p_" + obj).style.display = "block";
+		document.getElementById("d_" + obj).style.display="none";
+		document.getElementById(obj).value = document.getElementById("bEmail").value;
+		document.getElementById("e_" + obj).innerHTML = "";
+		
+		clickcr(this,'inf.primarycancel','','',window.event);
+	}
+	
+	if(obj == "pswdEmail") {
+		if(document.getElementById("i_" + obj).style.display == "block"){
+			clickcr(this,'inf.emailcancel','','',window.event);	
+		}else{
+			if(document.getElementById("isEmailYn").value == "Y"){
+				clickcr(this,'inf.recoverycancel','','',window.event);
+			}else{
+				clickcr(this,'inf.recoveryregcancel','','',window.event);
+			}
+		}
+			
+		document.getElementById("p_" + obj).style.display = "block";
+		document.getElementById("i_" + obj).style.display = "none";
+		document.getElementById("d_" + obj).style.display = "none";
+		document.getElementById("confirmPswdEmail").value = ""; 		
+		document.getElementById(obj).value = ""; 	
+		document.getElementById("e_" + obj + "1").innerHTML = "";
+		document.getElementById("e_" + obj + "2").innerHTML = "";	
+	}
+	
+	if(obj == "phoneNo") {
+		document.getElementById("d_" + obj).style.display = "none";
+		document.getElementById("p_" + obj).style.display = "block";
+		document.getElementById(obj).value = "";
+		if(document.getElementById("authNo").disabled == false) {
+			document.getElementById("authNo").value = "";
+		}
+		document.getElementById("authNo").disabled = true;
+		document.getElementById("e_" + obj).innerHTML = "";
+		document.getElementById("e_authNo").innerHTML = "";	
+		
+		if(document.getElementById("isPhoneYn").value == "Y"){
+			clickcr(this,'inf.mphonecancel','','',window.event);
+		}else{
+			clickcr(this,'inf.mphoneregcancel','','',window.event);
+		}
+	}	
+}
+
+function setEmail(){
+	var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+	if (document.getElementById("myLetterEmail").value == "" || document.getElementById("myLetterEmail").value.replace(/^\s+/, "") == "") {
+		document.getElementById("e_myLetterEmail").innerHTML =  "자주쓰는 메일을 정확하게 입력해 주세요.";
+		document.getElementById("myLetterEmail").focus();
+		document.getElementById("myLetterEmail").value = "";
+		return;
+	}
+	
+	if (document.getElementById("myLetterEmail").value.replace(/^\s+/, "") != re){
+		document.getElementById("e_myLetterEmail").innerHTML =  "이메일 형식이 올바르지 않습니다.";
+		document.getElementById("myLetterEmail").focus();
+		document.getElementById("myLetterEmail").value = "";
+		return;
+	}
+	document.updateEmail.submit();
+}
+
+
+
+</script>
 
 </head>
 
@@ -346,15 +494,14 @@
 													onkeydown="check_num_ajax2('authNo', '2', 'e_authNo','e_phoneNo');"
 													disabled="" class="focus" style="width: 254px">
 											</p>
-											<form action="03.html" method="get">
+
 												<p class="btn_area_btm">
-													<a href="#" onclick="telnone();return false;"
-														class="btn_model"><b id="b_txt_phoneNo_reg"
-														class="btn3">수정완료</b></a> <a href="#"
-														onclick="telnone();return false;" class="btn_model"><b
-														id="b_txt_phoneNo_cncl" class="btn2">수정취소</b></a>
+													<a href="#" onclick="telnone();return false;" class="btn_model">
+													<b id="b_txt_phoneNo_reg" class="btn3">수정완료</b></a> 
+													
+													<a href="#" onclick="telnone();return false;" class="btn_model">
+													<b id="b_txt_phoneNo_cncl" class="btn2">수정취소</b></a>
 												</p>
-											</form>
 										</div>
 										<p id="p_phoneNo" class="btn_area_btm">
 											<a href="#" onclick="telmodify();return false;"
@@ -383,16 +530,19 @@
 											<p class="contxt_desc">변경할 이메일 주소를 입력하세요.(예 :
 												abc@naver.com)</p>
 											<p class="contxt_webctrl">
-												<input type="text" name="myLetterEmail" id="myLetterEmail"
+											<form id="updateEmail" action="personnalModify.jsp" method="post">
+											<input type="text" name="myLetterEmail" id="myLetterEmail"
 													value="" style="width: 254px">
 											</p>
 											<p id="e_myLetterEmail" class="contxt_alert"></p>
 											<p class="btn_area_btm">
-												<a href="#" onclick="emailnone();return false;"
-													class="btn_model"><b class="btn3">수정완료</b></a> <a href="#"
-													onclick="emailnone();return false;" class="btn_model"><b
-													class="btn2">수정취소</b></a>
+												<a href="#updateEmail" onclick="setEmail();return false;" class="btn_model">
+												<b class="btn3">수정완료</b></a> 
+												
+												<a href="#" onclick="emailnone();return false;" class="btn_model">
+												<b class="btn2">수정취소</b></a>
 											</p>
+											</form>
 										</div>
 										<p id="p_myLetterEmail" class="btn_area_btm">
 											<a href="#" onclick="emailmodify();return false;"
