@@ -3,7 +3,7 @@ package youngun.tis.mypage.dao.mapper;
 import youngun.tis.mypage.domain.Personal;
 
 public interface PersonalMapper {
-	Personal updateEmail(Personal personal);
+	public int updateEmail(Personal personal);
 	Personal updatePw(String memberNum);
 	Personal updatePh(String memberNum);
 }

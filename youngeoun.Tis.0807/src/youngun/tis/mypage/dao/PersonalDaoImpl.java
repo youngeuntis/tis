@@ -14,7 +14,7 @@ public class PersonalDaoImpl implements PersonalDao {
 	}
 
 	@Override
-	public Personal updateEmail(Personal personal) {
+	public int updateEmail(Personal personal) {
 		return personalMapper.updateEmail(personal);
 	}
 
