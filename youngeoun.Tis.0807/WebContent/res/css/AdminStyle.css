@@ -306,16 +306,16 @@ div.admin{
     .memberNum{
         text-align:center;
         width: 1200px;
-        height: 20px;
+        height: 40px;
         margin-left: 0px;
-        margin-top: 20px;
+        margin-top: 15px;
         margin-bottom: 20px;
         float: left;
     }
     .memberNumin{
         text-align:center;
         width: 800px;
-        height: 20px;
+        height: 40px;
         margin-left: 210px;
         float: left;
     }

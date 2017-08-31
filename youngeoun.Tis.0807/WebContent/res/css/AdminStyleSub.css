@@ -137,7 +137,7 @@ div.admin{
 /*------공용 안쪽 공간--------*/
     .mainB{
             width: 1200px;
-             height: 800px;
+         
             margin-left: 100px;
             margin-top: 0px;
             float: left;
@@ -200,9 +200,8 @@ div.admin{
     .memberNum{
         text-align:center;
         width: 300px;
-        height: 20px;
+        height: 40px;
         margin-left: 450px;
-        margin-top: 20px;
         float: left;
     }
     .memberNum a{
@@ -457,7 +456,7 @@ div.admin{
             font:18px "굴림", Gulim;
             width: 16px;
             height: 16px;
-            margin-top: 4px;
+            margin-top: 0px;
             float: left;
             background: #fff;
     }

@@ -1,7 +1,7 @@
-function blindMassage(w, h){
+function blindMassage(w, h, test){
 	 x = (screen.availWidth - w) / 2;
 	 y = (screen.availHeight - h) / 2;
-	 window.open('../function/blindMassage/blindMassage.jsp','blindMassage','width='+w+', height='+h+', left='+x+', top='+y );
+	 window.open('../function/blindMassage/blindMassage.jsp?userId='+test,'blindMassage','width='+w+', height='+h+', left='+x+', top='+y );
 	 return false;
 }
 

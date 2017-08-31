@@ -8,7 +8,13 @@ public class Personal {
 	private String userPw;		//회원 비밀번호
 	
 	public Personal() {}
-
+	
+	//이메일 수정
+	public Personal(int memberNum, String userEmail) {
+		this.memberNum = memberNum;
+		this.userEmail = userEmail;
+	}
+	
 	public Personal(int memberNum, String userId, String userPh, String userEmail, String userPw) {
 		super();
 		this.memberNum = memberNum;
