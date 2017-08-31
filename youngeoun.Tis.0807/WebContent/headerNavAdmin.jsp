@@ -27,7 +27,7 @@
 							<div class="sub_ham" id="sub_ham_event">
 								<h4>이벤트</h4>
 								<ul>
-									<li><a href="../../event/01event.html">이벤트</a></li>
+									<li><a href="../../event/01event.jsp">이벤트</a></li>
 								</ul>
 							</div>
 							<div class="sub_ham">
@@ -213,7 +213,7 @@
 							<div class="sub_comunity"
 								style="display: block; margin-top: -25px; margin-left: 40px; margin-right: 20px;">
 								<h4>
-									<a href="../../event/01event.html">이벤트</a>
+									<a href="../../event/01event.jsp">이벤트</a>
 								</h4>
 							</div>
 							<div class="sub_comunity"

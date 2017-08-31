@@ -13,6 +13,8 @@
 	Page myPage = null;
 	String currentPage = request.getParameter("currentPage");
 	String rowCnt = "10";
+	int row;
+	int row2;
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage),Integer.parseInt(rowCnt));
 	else myPage = new Page(1, Integer.parseInt(rowCnt));
 	
@@ -23,6 +25,19 @@
 	List<User> posts = userService.findUsers(myPage);
 	List<User> posts2 = userService.MainSubUsers();
 	List<User> posts3 = userService.MainSubUsers2();
+	
+	if(posts2.size()<8){
+		row = posts2.size();
+	}else{
+		row = 8;
+	}
+	
+	if(posts3.size()<8){
+		row2 = posts3.size();
+	}else{
+		row2 = 8;
+	}
+	
 	pageContext.setAttribute("posts", posts);
 	System.out.print(posts);	
 	
@@ -105,7 +120,7 @@
 					
 					
 					<div class="mainAa1" id="mainAa1">
-						<%for(int i=0; i < 8;i++){ %>
+						<%for(int i=0; i < row ;i++){ %>
 						<div class="memberDataAdate"><p><%=posts2.get(i).getUntilvisit() %> </p></div>
 						<div class="memberDataAid"><p><%=posts2.get(i).getUserId() %></p></div>
 						<div class="memberDataAname"><p><%=posts2.get(i).getUserName() %></p></div>
@@ -124,7 +139,7 @@
 						<li><a href="#">이름▼</a></li>
 					</ul>
 					<div class="mainAa1">
-						<%for(int i=0; i < 8;i++){ %>
+						<%for(int i=0; i < row2;i++){ %>
 						<div class="memberDataAdate"><p><%=posts3.get(i).getJoinDate() %> </p></div>
 						<div class="memberDataAid"><p><%=posts3.get(i).getUserId() %></p></div>
 						<div class="memberDataAname"><p><%=posts3.get(i).getUserName() %></p></div>
@@ -144,7 +159,7 @@
 					</ul>
 					
 					<div class="mainAa1">
-						<%for(int i=0; i < 8;i++){ %>
+						<%for(int i=0; i < row;i++){ %>
 						<div class="memberDataAdate"><p><%=posts2.get(i).getJoinDate() %> </p></div>
 						<div class="memberDataAid"><p><%=posts2.get(i).getUserId() %></p></div>
 						<div class="memberDataAname"><p><%=posts2.get(i).getUserName() %></p></div>
@@ -257,11 +272,11 @@
 					<li><a href="javascript:popUpMassage(420, 350)" >쪽지</a></li>
 					<li><a href="javascript:StepMassage(620, 285)" >스텝 기능</a></li>
 					
-					
+				<!-- 	
 					<input type="text" id="19" name="19" value="test">
 					
 					<li><input type="button" onclick="chchch()" value="Test"></li>
-					
+				 -->
 				</ul>
 			</div>
 
