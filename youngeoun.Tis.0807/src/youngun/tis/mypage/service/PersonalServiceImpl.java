@@ -9,9 +9,9 @@ public class PersonalServiceImpl implements PersonalService {
 	private Personal personal;
 	
 	
-	public PersonalServiceImpl(int memberNum, String email, String phone, String pw) {
+	public PersonalServiceImpl(int memberNum, String email) {
 		this.personalDao = new PersonalDaoImpl();
-		this.personal = new Personal(memberNum, email, phone, pw);
+		this.personal = new Personal(memberNum, email);
 	}
 	
 	

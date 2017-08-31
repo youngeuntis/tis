@@ -17,6 +17,11 @@ public class Personal {
 		this.userPw = userPw;
 	}
 
+	public Personal(int memberNum,  String userEmail) {
+		this.memberNum = memberNum;
+		this.userEmail = userEmail;
+	}
+	
 	public int getmemberNum() {
 		return memberNum;
 	}

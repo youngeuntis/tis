@@ -18,13 +18,15 @@
 	System.out.println("phone : "+phone);
 	
 	if(email != null){
-		PersonalService personalService = new PersonalServiceImpl(memberNum, email, phone, password);
+		PersonalService personalService = new PersonalServiceImpl(memberNum, email);
 		personalService.changeEmail();
 		dto.setEmail(email);
-	}else if(phone != null){
+	}
+	
+	/* else if(phone != null){
 		PersonalService personalService = new PersonalServiceImpl(memberNum, email, phone, password);
 		personalService.changePhone();
-	}
+	} */
 
 
 %>

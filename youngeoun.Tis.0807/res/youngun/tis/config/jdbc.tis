@@ -1,4 +1,4 @@
 JDBC.Driver=oracle.jdbc.driver.OracleDriver
-JDBC.ConnectionURL=jdbc:oracle:thin:@192.168.0.54:1521:orcl
+JDBC.ConnectionURL=jdbc:oracle:thin:@127.0.0.1:1521:xe
 JDBC.Username=youngeun
 JDBC.Password=youngeun
