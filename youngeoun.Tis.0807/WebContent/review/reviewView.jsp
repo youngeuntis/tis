@@ -72,7 +72,8 @@
               		String reviewNum = request.getParameter("reviewNum");
               		List<Review> reviews = reviewDao.getReviewListNoPara();
               		Review selectReview = service.searchReview(reviews, reviewNum);
-  					List<String> imgStr = new ArrayList<>();
+  					session.setAttribute("Review", selectReview);
+              		List<String> imgStr = new ArrayList<>();
               		
   					if(selectReview.getReviewImg() != null){
 	              		StringTokenizer sh = new StringTokenizer(selectReview.getReviewImg(), ",");

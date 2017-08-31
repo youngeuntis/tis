@@ -5,6 +5,7 @@
 <%@page import="youngun.tis.mypage.service.WishlistService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<% Login dto = (Login)session.getAttribute("Login"); %>
 <!doctype html>
 
 <html>
@@ -37,7 +38,7 @@
 <body>
 
 	<div id="fullweb">
-		<%@include file="../headerNav.jsp" %>
+		<%@include file="../headerNav.jsp"%>
 
 		<div class="slideshow-container">
 
@@ -107,18 +108,6 @@
 				%>
 				
 				</div>
-				
-				<!-- <div class="prev-next">
-
-					<table summary="페이지 네비게이션" class="Nnavi" align="center">
-						<tbody>
-							<tr>
-								<td class="on"><a href="#" class="m-tcol-p">1</a></td>
-								<td><a href="#" class="m-tcol-c">2</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div> -->
 			</div>
 		</div>
 
@@ -156,8 +145,5 @@
 	<script
 		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script src="../res/js/index.js"></script>
-
-
 </body>
-
 </html>

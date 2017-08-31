@@ -69,6 +69,7 @@
 		<!-- 메인 작업부분 -->
 
 		<% 
+			request.setCharacterEncoding("utf-8");
 			ReviewDao reviewDao = new ReviewDaoImpl();
 			SearchService service = new SearchService(reviewDao);
 			String title = request.getParameter("review_title");

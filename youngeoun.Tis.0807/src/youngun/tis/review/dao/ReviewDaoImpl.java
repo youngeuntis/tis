@@ -52,6 +52,7 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	@Override
 	public int deleteReview(Review review) {
+		System.out.println("deletereview : " + review);
 		return reviewMapper.deleteReview(review);
 	}
 
