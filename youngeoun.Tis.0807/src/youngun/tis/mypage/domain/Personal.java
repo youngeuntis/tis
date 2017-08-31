@@ -9,16 +9,9 @@ public class Personal {
 	
 	public Personal() {}
 	
-	//이메일 수정
-	public Personal(int memberNum, String userEmail) {
+
+	public Personal(int memberNum,  String userPh, String userEmail, String userPw) {
 		this.memberNum = memberNum;
-		this.userEmail = userEmail;
-	}
-	
-	public Personal(int memberNum, String userId, String userPh, String userEmail, String userPw) {
-		super();
-		this.memberNum = memberNum;
-		this.userId = userId;
 		this.userPh = userPh;
 		this.userEmail = userEmail;
 		this.userPw = userPw;

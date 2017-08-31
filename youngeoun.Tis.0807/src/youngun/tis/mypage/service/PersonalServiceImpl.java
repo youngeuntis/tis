@@ -9,9 +9,9 @@ public class PersonalServiceImpl implements PersonalService {
 	private Personal personal;
 	
 	
-	public PersonalServiceImpl(int memberNum, String email) {
+	public PersonalServiceImpl(int memberNum, String email, String phone, String pw) {
 		this.personalDao = new PersonalDaoImpl();
-		this.personal = new Personal(memberNum, email);
+		this.personal = new Personal(memberNum, email, phone, pw);
 	}
 	
 	
@@ -21,5 +21,13 @@ public class PersonalServiceImpl implements PersonalService {
 	public void changeEmail() {
 		System.out.println("처리:"+personalDao.updateEmail(personal));
 	}
+
+
+
+	@Override
+	public void changePhone() {
+		System.out.println("처리:"+personalDao.updatePhone(personal));
+	}
+	
 	
 }

@@ -25,9 +25,9 @@ public class PersonalDaoImpl implements PersonalDao {
 	}
 
 	@Override
-	public Personal updatePh(String memberNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public Personal updatePhone(Personal personal) {
+		return personalMapper.updatePhone(personal);
 	}
+
 
 }

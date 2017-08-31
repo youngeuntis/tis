@@ -9,4 +9,10 @@
 	</update>
 
 	
+	<update id="updatePhone" parameterType="youngun.tis.mypage.domain.Personal">
+		update members
+		set phone_num = #{userPh}
+		where member_num = #{memberNum}
+	</update>
+	
 </mapper>

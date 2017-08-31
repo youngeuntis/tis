@@ -11,13 +11,21 @@
 	int memberNum = dto.getMemberNum();
 	
 	String email = request.getParameter("myLetterEmail");
+	String phone = request.getParameter("phoneNo"); 
+	String password = request.getParameter("myLetterPW");
 	System.out.println("memberNum : " + memberNum);
 	System.out.println("email : "+email);
+	System.out.println("phone : "+phone);
+	
 	if(email != null){
-		PersonalService personalService = new PersonalServiceImpl(memberNum, email);
+		PersonalService personalService = new PersonalServiceImpl(memberNum, email, phone, password);
 		personalService.changeEmail();
 		dto.setEmail(email);
+	}else if(phone != null){
+		PersonalService personalService = new PersonalServiceImpl(memberNum, email, phone, password);
+		personalService.changePhone();
 	}
+
 
 %>
 
@@ -34,7 +42,7 @@
 			인도네시아, 프랑스, 스페인, 이탈리아, 영국">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>My personnal</title>
+<title>My personal</title>
 <link rel="stylesheet" href="../res/css/mypage.css">
 <link rel="stylesheet" href="../res/css/mypersonnal.css">
 <link
@@ -117,8 +125,7 @@ function cancelChange(obj){
 		document.getElementById("d_" + obj).style.display="none";
 		document.getElementById(obj).value = document.getElementById("bEmail").value;
 		document.getElementById("e_" + obj).innerHTML = "";
-		
-		clickcr(this,'inf.primarycancel','','',window.event);
+
 	}
 	
 	if(obj == "pswdEmail") {
@@ -290,7 +297,7 @@ function setEmail(){
 													<option value="690">뉴질랜드령토켈라우제도</option>
 													<option value="227">니제르</option>
 													<option value="505">니카라과</option>
-													<option value="82">대한민국</option>
+													<option value="82" selected>대한민국</option>
 													<option value="45">덴마크</option>
 													<option value="299">덴마크령그린란드</option>
 													<option value="298">덴마크령페로제도</option>
@@ -500,10 +507,10 @@ function setEmail(){
 											</p>
 
 												<p class="btn_area_btm">
-													<a href="#" onclick="telnone();return false;" class="btn_model">
+													<a href="#" onclick="checkAuthNoForChangePhoneNo();return false;" class="btn_model">
 													<b id="b_txt_phoneNo_reg" class="btn3" onclick="checkEmail();">수정완료</b></a> 
 													
-													<a href="#" onclick="telnone();return false;" class="btn_model">
+													<a href="#" onclick="cancelChange();return false;" class="btn_model">
 													<b id="b_txt_phoneNo_cncl" class="btn2">수정취소</b></a>
 												</p>
 										</div>
@@ -562,7 +569,7 @@ function setEmail(){
 											        }
 												}
 												</script>
-												<a href="#" onclick="emailnone();return false;" class="btn_model">
+												<a href="#" onclick="cancelChange();return false;" class="btn_model">
 												<b class="btn2">수정취소</b></a>
 											</p>
 											</form>
@@ -596,7 +603,7 @@ function setEmail(){
 											</p>
 											<p class="contxt_desc">새 비밀번호를 다시 입력하세요.</p>
 											<p class="contxt_webctrl">
-												<input type="text" name="myLetterPW" id="myLetterPW"
+												<input type="text" name="myLetterPWCh" id="myLetterPWCh"
 													value="" maxlength="12" style="width: 254px">
 											</p>
 											<p id="e_myLetterPW" class="contxt_alert"></p>
