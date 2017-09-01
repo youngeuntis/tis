@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUser(userId);
 	}
 	
+	//전채 제재회원
 	@Override
 	public List<User> blindUsers(Page page) {
 		
@@ -54,17 +55,6 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List<User> MainSubUsers(){
-		
-		return userDao.getMainSubUsers();
-	}
-	@Override
-	public List<User> MainSubUsers2(){
-		
-		return userDao.getMainSubUsers2();
-	}
-	
-	@Override
 	public List<User> UntilJoinUsers(Page page){
 		
 		return userDao.getUntilJoinUsers(page);
@@ -74,5 +64,23 @@ public class UserServiceImpl implements UserService {
 	public List<User> UntilVisitUsers(Page page){
 		
 		return userDao.getUntilVisitUsers(page);
+	}
+
+	//제재회원
+	@Override
+	public List<User> findBlindUsers(){
+		return userDao.getSubBlindUser();
+	}
+	
+	//최근 방문회원 회원
+	@Override
+	public List<User> findUntilUsers() {
+		return userDao.getUntilUsers();
+	}
+
+	@Override
+	public List<User> findUntilJoinUser() {
+		// TODO Auto-generated method stub
+		return userDao.getSubUntilJoinUsers();
 	}
 }

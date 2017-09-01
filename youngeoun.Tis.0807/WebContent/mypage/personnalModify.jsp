@@ -18,15 +18,16 @@
 	System.out.println("phone : "+phone);
 	
 	if(email != null){
-		PersonalService personalService = new PersonalServiceImpl(memberNum, email);
-		personalService.changeEmail();
+		PersonalService personalService = new PersonalServiceImpl();
+		personalService.changeEmail(memberNum, email);
 		dto.setEmail(email);
+	}else if(phone != null){
+		PersonalService personalService = new PersonalServiceImpl();
+		personalService.changePhone(memberNum, phone);
+	}else if(password != null){
+		PersonalService personalService = new PersonalServiceImpl();
+		personalService.changePw(memberNum, password);
 	}
-	
-	/* else if(phone != null){
-		PersonalService personalService = new PersonalServiceImpl(memberNum, email, phone, password);
-		personalService.changePhone();
-	} */
 
 
 %>
@@ -122,32 +123,13 @@ function checkAuthNoForChangePhoneNo() {
 }
 
 function cancelChange(obj){
+
     if(obj == "myLetterEmail") {
 		document.getElementById("p_" + obj).style.display = "block";
 		document.getElementById("d_" + obj).style.display="none";
-		document.getElementById(obj).value = document.getElementById("bEmail").value;
+		document.getElementById(obj).value =""; /* document.getElementById("bEmail").value; */
 		document.getElementById("e_" + obj).innerHTML = "";
 
-	}
-	
-	if(obj == "pswdEmail") {
-		if(document.getElementById("i_" + obj).style.display == "block"){
-			clickcr(this,'inf.emailcancel','','',window.event);	
-		}else{
-			if(document.getElementById("isEmailYn").value == "Y"){
-				clickcr(this,'inf.recoverycancel','','',window.event);
-			}else{
-				clickcr(this,'inf.recoveryregcancel','','',window.event);
-			}
-		}
-			
-		document.getElementById("p_" + obj).style.display = "block";
-		document.getElementById("i_" + obj).style.display = "none";
-		document.getElementById("d_" + obj).style.display = "none";
-		document.getElementById("confirmPswdEmail").value = ""; 		
-		document.getElementById(obj).value = ""; 	
-		document.getElementById("e_" + obj + "1").innerHTML = "";
-		document.getElementById("e_" + obj + "2").innerHTML = "";	
 	}
 	
 	if(obj == "phoneNo") {
@@ -166,10 +148,21 @@ function cancelChange(obj){
 		}else{
 			clickcr(this,'inf.mphoneregcancel','','',window.event);
 		}
-	}	
+	}
+	
+	if(obj == "myLetterPW") {
+			
+		document.getElementById("p_" + obj).style.display = "block";
+		document.getElementById("d_" + obj).style.display = "none";		
+		document.getElementById(obj).value = "";
+		document.getElementById(obj+"Ch").value = "";
+		document.getElementById("e_" + obj + "1").innerHTML = "";
+		document.getElementById("e_" + obj + "Ch2").innerHTML = "";	
+	}
 }
 
-function setEmail(){
+
+/* function setEmail(){
 	var re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]*.[a-zA-Z]{2,3}$/;
 
 	if (document.getElementById("myLetterEmail").value == "" || document.getElementById("myLetterEmail").value.replace(/^\s+/, "") == "") {
@@ -186,7 +179,7 @@ function setEmail(){
 		return;
 	}
 	document.updateEmail.submit();
-}
+} */
 
 
 
@@ -512,7 +505,7 @@ function setEmail(){
 													<a href="#" onclick="checkAuthNoForChangePhoneNo();return false;" class="btn_model">
 													<b id="b_txt_phoneNo_reg" class="btn3" onclick="checkEmail();">수정완료</b></a> 
 													
-													<a href="#" onclick="cancelChange();return false;" class="btn_model">
+													<a href="#" onclick="cancelChange('phoneNo');return false;" class="btn_model">
 													<b id="b_txt_phoneNo_cncl" class="btn2">수정취소</b></a>
 												</p>
 										</div>
@@ -543,14 +536,18 @@ function setEmail(){
 											<p class="contxt_desc">변경할 이메일 주소를 입력하세요.(예 :
 												abc@naver.com)</p>
 											<p class="contxt_webctrl">
-											<form id="updateEmail" action="personnalModify.jsp" method="get">
+											<form id="updateEmail" action="personnalModify.jsp" method="post">
 											<input type="text" name="myLetterEmail" id="myLetterEmail"
 													style="width: 254px">
 											</p>
+											
+											<!-- 스크립트문  오류글 보이기  -->
 											<p id="e_myLetterEmail" class="contxt_alert"></p>
+											
 											<p class="btn_area_btm">
 												<a href="#updateEmail" onclick="checkEmail();" class="btn_model">
 												<b class="btn3">수정완료</b></a> 
+												<!-- 이메일 유효성검사  -->
 												<script>
 												function checkEmail(){
 													var inputVal=document.getElementById("myLetterEmail").value;
@@ -568,10 +565,12 @@ function setEmail(){
 											            document.getElementById("updateEmail").submit();
 											        }else{
 											            document.getElementById("e_myLetterEmail").innerHTML="잘못입력했습니다. 다시 입력해주세요"
+											            document.getElementById("e_myLetterEmail").style.color='red';
 											        }
 												}
 												</script>
-												<a href="#" onclick="cancelChange();return false;" class="btn_model">
+												
+												<a href="#" onclick="cancelChange('myLetterEmail');return false;" class="btn_model">
 												<b class="btn2">수정취소</b></a>
 											</p>
 											</form>
@@ -600,21 +599,70 @@ function setEmail(){
 											<br />
 											<p class="contxt_desc">새 비밀번호를 입력하세요.</p>
 											<p class="contxt_webctrl">
+											<form id="updatePw" action="personnalModifiy.jsp" method="post">
 												<input type="text" name="myLetterPW" id="myLetterPW"
 													value="" maxlength="12" style="width: 254px">
 											</p>
+											
+											<p id="e_myLetterPW1" class="contxt_alert"></p>
+											
 											<p class="contxt_desc">새 비밀번호를 다시 입력하세요.</p>
 											<p class="contxt_webctrl">
 												<input type="text" name="myLetterPWCh" id="myLetterPWCh"
 													value="" maxlength="12" style="width: 254px">
 											</p>
-											<p id="e_myLetterPW" class="contxt_alert"></p>
+											
+											<p id="e_myLetterPWCh2" class="contxt_alert"></p>
+											
 											<p class="btn_area_btm">
-												<a href="#" onclick="PWnone(); return false;"
-													class="btn_model"><b class="btn3">수정완료</b></a> <a href="#"
-													onclick="PWnone();return false;" class="btn_model"><b
-													class="btn2">수정취소</b></a>
+												<a href="#updatePw" onclick="checkPw(); return false;" class="btn_model">
+												<b class="btn3">수정완료</b> </a> 
+												
+												<script>
+												function checkPw() {
+													alert=("안먹혀?>");
+												    //비밀번호 입력여부 체크
+												    if (document.getElementById("myLetterPW").value == "") {
+												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호를 입력하지 않았습니다.";
+												        document.getElementById("myLetterPW").focus();
+												        return;
+												    }else if(document.getElementById("myLetterPWCh").value == ""){
+												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호를 입력하지 않았습니다.";
+												        document.getElementById("myLetterPWCh").focus();
+												        return;
+												    }
+
+												    //비밀번호 길이 체크(4~12자 까지 허용)
+												    if (document.getElementById("myLetterPW").value.length<4 
+												    	||document.getElementById("myLetterPW").value.length>12) {
+												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호를 4~12자까지 입력해주세요.";
+												    	document.getElementById("myLetterPW").focus();
+												        return;
+												    }else if(document.getElementById("myLetterPWCh").value.length<4 
+													    	||document.getElementById("myLetterPWCh").value.length>12) {
+												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호를 4~12자까지 입력해주세요.";
+												    	document.getElementById("myLetterPWCh").focus();
+												        return;
+												    }
+
+												    //비밀번호와 비밀번호 확인 일치여부 체크
+												    if (document.getElementById("myLetterPW").value 
+												    	!= document.getElementById("myLetterPWCh").value) {
+												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호가 일치하지 않습니다";
+												        document.getElementById("myLetterPWCh").value = "";
+												        document.getElementById("myLetterPWCh").focus();
+												        return;
+												    }
+												    
+												    document.getElementById("updatePw").submit();
+												}
+												
+												</script>
+												
+												<a href="#" onclick="cancelChange(myLetterPW);return false;" class="btn_model">
+												<b class="btn2">수정취소</b></a>
 											</p>
+											</form>
 										</div>
 										<p id="p_myLetterPW" class="btn_area_btm">
 											<a href="#" onclick="PWmodify(); return false;"

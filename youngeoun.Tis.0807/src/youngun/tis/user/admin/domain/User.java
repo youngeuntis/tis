@@ -25,7 +25,11 @@ public class User {
 		this.memberNum = memberNum;
 	}
 
-	
+	public User(String userId, String gradeNum, int memberNum) {
+		this.userId = userId;
+		this.gradeNum = gradeNum;
+		this.memberNum = memberNum;
+	}
 	
 	public String getGradeNum() {
 		return gradeNum;
@@ -115,10 +119,13 @@ public class User {
 		this.memberNum = memberNum;
 	}
 
+
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", memberNum=" + memberNum + ", blackReason="
-				+ blackReason + ", untilvisit=" + untilvisit + ", joinDate=" + joinDate + "]";
+		return "User [sdf=" + sdf + ", userId=" + userId + ", userName=" + userName + ", memberNum=" + memberNum
+				+ ", blackReason=" + blackReason + ", untilvisit=" + untilvisit + ", joinDate=" + joinDate
+				+ ", writeCount=" + writeCount + ", replCount=" + replCount + ", visitCount=" + visitCount
+				+ ", gradeNum=" + gradeNum + "]";
 	}
 	
 }

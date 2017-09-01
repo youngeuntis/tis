@@ -9,24 +9,41 @@ public class PersonalServiceImpl implements PersonalService {
 	private Personal personal;
 	
 	
-	public PersonalServiceImpl(int memberNum, String email) {
+	public PersonalServiceImpl() {
 		this.personalDao = new PersonalDaoImpl();
-		this.personal = new Personal(memberNum, email);
+		
 	}
 	
 	
 
 	//이메일 수정
 	@Override
-	public void changeEmail() {
+	public void changeEmail(int memberNum,String email) {
+		this.personal = new Personal();
+		personal.setmemberNum(memberNum);
+		personal.setUserEmail(email);
 		System.out.println("처리:"+personalDao.updateEmail(personal));
 	}
 
 
 
 	@Override
-	public void changePhone() {
+	public void changePhone(int memberNum,String Phone) {
+		this.personal = new Personal();
+		personal.setmemberNum(memberNum);
+		personal.setUserEmail(Phone);
 		System.out.println("처리:"+personalDao.updatePhone(personal));
+	}
+
+
+
+	@Override
+	public void changePw(int memberNum,String pw) {
+		this.personal = new Personal();
+		personal.setmemberNum(memberNum);
+		personal.setUserEmail(pw);
+		System.out.println("처리:"+personalDao.updatePw(personal));
+		
 	}
 	
 	

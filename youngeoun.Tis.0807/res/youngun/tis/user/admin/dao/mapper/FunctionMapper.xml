@@ -8,7 +8,7 @@
 		where user_id = #{userId}
 	</update>
 	
-	<insert id="insertBlackUser" parameterType="user">
+	<insert id="insetBlackList" parameterType="user">
 		insert into blacklist(blacklist_num, grade_num, member_num, black_reason)
 		values(blacklist_seq.nextval, #{gradeNum}, #{memberNum}, #{blackReason})
 	</insert>

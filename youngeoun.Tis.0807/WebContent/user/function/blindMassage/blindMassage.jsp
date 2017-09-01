@@ -28,8 +28,6 @@
 			flag=true;
 		}
 	}
-	
-	
 %>
 <!doctype html>
 
@@ -43,7 +41,6 @@
 	<div class="blindMain">
 		<div class="blindTitle">
 			<a> 알 림</a>
-
 		</div>
 		<%if(!flag){ %>
 		<form action="blindMassage.jsp" method="post">

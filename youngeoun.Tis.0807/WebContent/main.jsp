@@ -308,7 +308,7 @@
 									<div class="field">
 										<label for="login-email-password">PASSWORD</label> <input
 											id="login-email-password" type="password" name="login_user_pw"
-											value="">
+											value="" required="required">
 									</div>
 									<script type="text/javascript">
 									function checkid() {

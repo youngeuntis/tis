@@ -78,19 +78,20 @@
                     <div class="listcontainer">
                     
                     <% 
-						for(int i=0; i<27; i++){ 
+						for(int i=0; i<1; i++){ 
 					%>
                     
                         <div class="wishlist">
                             <div class="wishlistImg">
-                                <a href="#">
-                                    <img src="../res/img/travelImg/spain.jpg" alt=" 찜 목록" />
+                                <a href="http://www.hanatour.com/asp/booking/productPackage/pk-12000.asp?pkg_code=APP111170905Z2N&hanacode=pack_ae_md_1"
+                                 target="_blank">
+                                    <img src="../res/img/event/event.jpg" alt=" 찜 목록" />
                                 </a>
                             </div>
 
                             <div class="wishlistName">
                                 <a href="#">
-                                    <p>여기 여행 무료</p>
+                                    <p>보라카이 5일- 일급리조트 + 특식</p>
                                 </a>
                             </div>
                         </div>

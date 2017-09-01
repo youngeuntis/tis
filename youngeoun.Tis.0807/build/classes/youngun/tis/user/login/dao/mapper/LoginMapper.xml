@@ -11,10 +11,11 @@
 		<result property="PH" column="phone_num"/>
 		<result property="nickName" column="nickname"/>
 		<result property="profileImg" column="profile_img"/>
+		<result property="gradeNum" column="grade_num"/>
 	</resultMap>
 	
 	<select id="getUser" parameterType="String" resultMap="userMap">
-		select member_num memberNum, user_id userId, user_name userName, pw password, email, phone_num PH, nickname nickName, profile_img profileImg
+		select member_num memberNum, grade_num gradeNum, user_id userId, user_name userName, pw password, email, phone_num PH, nickname nickName, profile_img profileImg
 		from members
 		where user_id = #{userId}
 	</select>

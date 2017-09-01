@@ -10,7 +10,6 @@ import youngun.tis.user.admin.domain.User;
 public interface UserDao {
 	List<User> getUsers(Page page);
 	List<User> getMainSubUsers();
-	List<User> getMainSubUsers2();
 	List<User> getblindUsers(Page page);
 	List<User> getFblindUsers(Page page);
 	List<User> getStepUsers(Page page);
@@ -19,4 +18,7 @@ public interface UserDao {
 	List<User> getUntilVisitUsers(Page page);
 	User getUser(String userId);
 	
+	List<User> getUntilUsers();     //최근 접속
+	List<User> getSubBlindUser();   //제체
+	List<User> getSubUntilJoinUsers(); //최근 가입
 }

@@ -50,6 +50,7 @@ th{
     position: relative;
     left: 50px;
 }
+
 /*input type=file 숨겨놓는 스타일*/
 #inputImge{
     display: none;

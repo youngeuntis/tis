@@ -15,4 +15,10 @@
 		where member_num = #{memberNum}
 	</update>
 	
+	<update id="updatePw" parameterType="youngun.tis.mypage.domain.Personal">
+		update members
+		set pw = #{userPw}
+		where member_num = #{memberNum}
+	</update>
+	
 </mapper>

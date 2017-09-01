@@ -9,6 +9,7 @@ public class Login {
 	private String PH;            //회원 휴대폰번호
 	private String nickName;      //회원 닉네임
 	private String profileImg;    //회원 프로필이미지
+	private String gradeNum;      //회원 등급
 	
 	private boolean flag = false; // 
 	
@@ -91,6 +92,14 @@ public class Login {
 
 	public void setProfileImg(String profileImg) {
 		this.profileImg = profileImg;
+	}
+
+	public String getGradeNum() {
+		return gradeNum;
+	}
+
+	public void setGradeNum(String gradeNum) {
+		this.gradeNum = gradeNum;
 	}
 
 	@Override

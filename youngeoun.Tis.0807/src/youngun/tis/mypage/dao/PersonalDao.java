@@ -4,6 +4,6 @@ import youngun.tis.mypage.domain.Personal;
 
 public interface PersonalDao {
 	public int updateEmail(Personal personal);
-	Personal updatePw(String memberNum);
+	Personal updatePw(Personal personal);
 	Personal updatePhone(Personal personal);
 }

@@ -18,6 +18,7 @@ public class UserDaoImpl implements UserDao {
 		return userMapper.getUsers(page);
 	}	
 	
+	//전체 제재회원
 	public List<User> getblindUsers(Page page){
 		return userMapper.getblindUsers(page);
 	}
@@ -37,9 +38,7 @@ public class UserDaoImpl implements UserDao {
 	public List<User> getMainSubUsers(){
 		return userMapper.getMainSubUsers();
 	}
-	public List<User> getMainSubUsers2(){
-		return userMapper.getMainSubUsers2();
-	}
+
 	public List<User> getUntilJoinUsers(Page page){
 		return userMapper.getUntilJoinUsers(page);
 	}
@@ -50,6 +49,23 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUser(String userId) {
 		return userMapper.getUser(userId);
+	}
+	
+	//제재 회원
+	public List<User> getSubBlindUser(){
+		return userMapper.getSubBlindUser();
+	}
+	
+	//최근 방문 회원
+	@Override
+	public List<User> getUntilUsers() {
+		
+		return userMapper.getUntilUsers();
+	}
+
+	@Override
+	public List<User> getSubUntilJoinUsers() {
+		return userMapper.getSubUntilJoinUsers();
 	}
 
 }

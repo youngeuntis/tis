@@ -5,10 +5,10 @@ function blindMassage(w, h, test){
 	 return false;
 }
 
-function forcedblindMassage(w, h){
+function forcedblindMassage(w, h, test){
 	 x = (screen.availWidth - w) / 2;
 	 y = (screen.availHeight - h) / 2;
-	 window.open('../function/forcedblindMassage/forcedblindMassage.jsp', 'forcedblindMassage','width='+w+', height='+h+', left='+x+', top='+y);
+	 window.open('../function/forcedblindMassage/forcedblindMassage.jsp?userId='+test, 'forcedblindMassage','width='+w+', height='+h+', left='+x+', top='+y);
 	 return false;	 
 }
 
@@ -33,10 +33,10 @@ function StepMassage(w, h){
 	return false;
 }
 
-function ClearMassage(w, h){
+function ClearMassage(w, h, test){
 	x = (screen.availWidth - w) / 2;
 	y = (screen.availHeight - h) / 2;
-	window.open('../function/ClearMassage/ClearMassage.jsp','ClearMassage','width='+w+', height='+h+', left='+x+', top='+y);
+	window.open('../function/ClearMassage/ClearMassage.jsp?userId='+test,'ClearMassage','width='+w+', height='+h+', left='+x+', top='+y);
 	return false;
 }
 

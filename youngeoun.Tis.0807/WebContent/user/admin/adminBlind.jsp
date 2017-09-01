@@ -20,6 +20,9 @@
 	pageContext.setAttribute("pageMaker", pageService);
 	
 	List<User> posts = userService.blindUsers(myPage);
+	
+	System.out.println("adminblind "+posts);
+	
 	pageContext.setAttribute("posts", posts);
 %>
 
@@ -60,8 +63,7 @@
 </head>
 
 <body>
-
-   <div id="fullweb">
+	<div id="fullweb">
 		<header>
 			<div class="Center">
 				<div class="site-logo">
@@ -72,127 +74,160 @@
 					</h1>
 				</div>
 			</div>
-			<div id="cbp-hrmenu" class="cbp-hrmenu" >
-			<ul style=" width: 900px; height: 80px;
-			margin-left: 80px;">
-				<li><a href="adminmain.jsp">메인</a></li>
-				<li><a href="adminFull.jsp">회원 관리</a></li>
-				<li><a href="adminBlind.jsp">제재 회원 관리</a></li>
-				<li><a href="adminForcedBlind.jsp">강퇴 회원 관리</a></li>
-				<li><a href="adminStep.jsp">스텝 관리</a></li>
-			
-			</ul>
+			<div id="cbp-hrmenu" class="cbp-hrmenu">
+				<ul style="width: 900px; height: 80px; margin-left: 80px;">
+					<li><a href="adminmain.jsp">메인</a></li>
+					<li><a href="adminFull.jsp">회원 관리</a></li>
+					<li><a href="adminBlind.jsp">제재 회원 관리</a></li>
+					<li><a href="adminForcedBlind.jsp">강퇴 회원 관리</a></li>
+					<li><a href="adminStep.jsp">스텝 관리</a></li>
+
+				</ul>
 			</div>
 		</header>
-<!-- 메인 작업부분 -->
-		 <main>
-        
-
-     <div class="main">
-       <div class="mainB"><h1>제재 회원 관리</h1>
-            <div class="mainSerch">
-              <div class="mainSerch1"><select class="serchOption" size = "1" style="width: 65px; height: 22px;">
-                   <option>아이디</option>
-                   <option>이름</option>
-               </select></div>
-              <div class="mainSerch2"><input id="search" type="search" style="width: 170px; height: 22px; name="search_member" placeholder="검색" maxlength="255"></div>
-                  <div class="mainSerch3">
-                      <button id="member_button" type="submit"><!--검색--></button>
-                  </div>
-               
-              
-              
-            </div>
-             <div class="mainBb">
-              <ul id="gnb7">
-                    <li><a href="#">아이디▼</a></li>
-		            <li><a href="#">이름▼</a></li>
-		            <li><a href="#">사유▼</a></li>
-                    <li><a href="#">처리일▼</a></li>
-                    <li><a href="#">종료일▼</a></li>
-                    <li><a href="#">처리자▼</a></li>
-                 </ul>
-             </div>
-              
-             
-            <div class="mainB2blind"> 
-  			<c:forEach var="post" items="${posts}">
-                       <div class="memberblindDataBcheck"><input type="checkbox"></div>
-                       <div class="memberblindDataBid">${post.userId}</div>
-                       <div class="memberblindDataBname">${post.userName}</div>
-                       <div class="memberblindDataBre">${post.blackReason }</div>
-                       <div class="memberblindDataBdate"><p></p></div>
-                       <div class="memberblindDataBenddate"><p></p></div>
-                       <div class="memberblindDataBadmin"><p></p></div>
-            </c:forEach>      
-            </div>
-                     
-           
-            <div class="memberNum">
-					<div class="memberNumin">
-						
-			<ul class="pagination">
-				<c:if test="${pageMaker.prev}">
-					<li><a href="adminBlind.jsp?currentPage=${pageMaker.startPage-1}&#mainAa1">&laquo;</a></li>
-				</c:if>
-				
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-					<li <c:out value ="${pageMaker.page.currentPage==idx? 'class=active':'' }"/>>
-						<a href="adminBlind.jsp?currentPage=${idx}&#mainAa1">${idx}</a>
-					</li>
-				</c:forEach>
-				
-				<c:if test="${pageMaker.next}">
-					<li><a href="adminBlind.jsp?currentPage=${pageMaker.endPage+1}&#memberblindDataBid">&raquo;</a></li>
-				</c:if>
-			</ul>
-	
+		<!-- 메인 작업부분 -->
+		<main>
+		<div class="main">
+			<div class="mainB">
+				<h1>제재 회원 관리</h1>
+				<div class="mainSerch">
+					<div class="mainSerch1">
+						<select class="serchOption" size="1"
+							style="width: 65px; height: 22px;">
+							<option>아이디</option>
+							<option>이름</option>
+						</select>
 					</div>
-					
+					<div class="mainSerch2">
+						<input id="search" type="search" style="width: 170px; height: 22px;" placeholder="검색" maxlength="255">
+					</div>
+					<div class="mainSerch3">
+						<button id="member_button" type="submit">
+							<!--검색-->
+						</button>
+					</div>
+
+
+
 				</div>
-        </div>
-         <div class="mainBoption">
-                    <ul id="gnb5">
-                    <li><a href="javascript:ClearMassage(625, 285)">제재 해제</a></li>
-		            <li><a href="javascript:forcedblindMassage(620, 285)" >강제 탈퇴</a></li>
-                 </ul>
-            </div>
-         <div class="clear"></div>
-    </div>
-        
-        
-        
-			
-        </main>
+				<div class="mainBb">
+					<ul id="gnb7">
+						<li><a href="#">아이디▼</a></li>
+						<li><a href="#">이름▼</a></li>
+						<li><a href="#">사유▼</a></li>
+						<li><a href="#">처리일▼</a></li>
+						<li><a href="#">종료일▼</a></li>
+						<li><a href="#">처리자▼</a></li>
+					</ul>
+				</div>
 
-       
+				<div class="mainB2blind">
+					<c:forEach var="post" items="${posts}">
+						<div class="memberblindDataBcheck">
+							<input type="checkbox" id="${post}" name="blackCh" value="${post.userId}">
+						</div>
+						<div class="memberblindDataBid">${post.userId}</div>
+						<div class="memberblindDataBname">${post.userName}</div>
+						<div class="memberblindDataBre">${post.blackReason }</div>
+						<div class="memberblindDataBdate">
+							<p></p>
+						</div>
+						<div class="memberblindDataBenddate">
+							<p></p>
+						</div>
+						<div class="memberblindDataBadmin">
+							<p></p>
+						</div>
+					</c:forEach>
+				</div>
 
-        <footer>
-            <div class="footer_nav">
-                
-                    <ul>
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">제휴제안</a></li>
-                        <li><a href="#">이용약관</a></li>
-                        <li><a href="#">개인정보처리방침</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-            
 
-                <p> copyright DESIGN YOUR TRIP</p>
-            </div>
-        </footer> <!--p태그로 잡으면 안되나봐 -->
+				<div class="memberNum">
+					<div class="memberNumin">
 
-    </div> <!-- end fullweb -->
+						<ul class="pagination">
+							<c:if test="${pageMaker.prev}">
+								<li><a
+									href="adminBlind.jsp?currentPage=${pageMaker.startPage-1}&#mainAa1">&laquo;</a></li>
+							</c:if>
 
-    <!--main_menu_nav-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/cbpHorizontalMenu.min.js"></script>
-    <script>$(function() {cbpHorizontalMenu.init();});</script>
+							<c:forEach begin="${pageMaker.startPage}"
+								end="${pageMaker.endPage}" var="idx">
+								<li
+									<c:out value ="${pageMaker.page.currentPage==idx? 'class=active':'' }"/>>
+									<a href="adminBlind.jsp?currentPage=${idx}&#mainAa1">${idx}</a>
+								</li>
+							</c:forEach>
 
-    <!--main_login-->
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-    <script src="js/index.js"></script>
+							<c:if test="${pageMaker.next}">
+								<li><a
+									href="adminBlind.jsp?currentPage=${pageMaker.endPage+1}&#memberblindDataBid">&raquo;</a></li>
+							</c:if>
+						</ul>
+
+					</div>
+
+				</div>
+			</div>
+			<script type="text/javascript">
+			function chchch(num) {
+				var test
+				var n = num
+				$('input:checkbox[name="blackCh"]').each(function(){
+					if(this.checked){
+						test = this.value;
+					}
+					switch (n) {
+					case 1:
+						location.replace('javascript:ClearMassage(625, 285, "'+ test +'")');
+						break;
+					case 2:
+						location.replace('javascript:forcedblindMassage(620, 285, "'+ test +'")');
+						break;
+					}
+				});
+			}
+		    </script>
+
+			<div class="mainBoption">
+				<ul id="gnb5">
+					<li><a href="#gnb7" onclick="chchch(1)" >제재 해제</a></li>
+					<li><a href="#gnb7" onclick="chchch(2)" >강제 탈퇴</a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		</main>
+		<footer>
+			<div class="footer_nav">
+
+				<ul>
+					<li><a href="#">회사소개</a></li>
+					<li><a href="#">제휴제안</a></li>
+					<li><a href="#">이용약관</a></li>
+					<li><a href="#">개인정보처리방침</a></li>
+					<li><a href="#">고객센터</a></li>
+				</ul>
+
+
+				<p>copyright DESIGN YOUR TRIP</p>
+			</div>
+		</footer>
+		<!--p태그로 잡으면 안되나봐 -->
+
+	</div>
+	<!-- end fullweb -->
+
+	<!--main_menu_nav-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/cbpHorizontalMenu.min.js"></script>
+	<script>$(function() {cbpHorizontalMenu.init();});</script>
+
+	<!--main_login-->
+	<script
+		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+	<script src="js/index.js"></script>
 
 </body>
 

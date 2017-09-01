@@ -19,9 +19,8 @@ public class PersonalDaoImpl implements PersonalDao {
 	}
 
 	@Override
-	public Personal updatePw(String memberNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public Personal updatePw(Personal personal) {
+		return personalMapper.updatePw(personal);
 	}
 
 	@Override

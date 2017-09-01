@@ -55,7 +55,9 @@
 		    	select rownum as rnum, x.*from(
 		    		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
 					from members e, writeCount w, replCount r
-			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM 
+			        and e.grade_num in 
+                    (select grade_num from members where grade_num like 'g' || '%' or grade_num like 'b' || '%')
 			        order by e.member_num
 		     )x where rownum <= #{rowCnt}*#{currentPage}
 		    )where rnum > #{rowCnt}*(#{currentPage}-1)
@@ -109,22 +111,45 @@
 	
 	
 	
-	<select id="getMainSubUsers" resultMap="userMap" parameterType="String">
+	<!-- 회원관리 sub리절트 맵 -->
+	<resultMap id="subUserMap" type="Auser">
+		<id property="memberNum" column="member_num" />
+		<result property="userName" column="user_name"/>
+		<result property="userId" column="user_id"/>
+		<result property="joinDate" column="join_date"/>
+		<result property="untilVisit" column="until_visit"/>
+	</resultMap>
 	
-		    		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
-					from members e, writeCount w, replCount r
-			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
-			        order by e.until_visit desc
-		 
+	
+	<select id="getMainSubUsers" resultMap="subUserMap"	parameterType="String">
+		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
+		from members e, writeCount w, replCount r
+		where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
+		order by e.until_visit desc
+	</select>
+
+	<!-- 제재회원관리  -->
+	<select id="getSubBlindUser" resultMap="subUserMap"	parameterType="String">
+		select member_num memberNum, user_name userName, user_id userId, join_date joinDate
+		from members
+		where grade_num like 'b' || '%'
+		order by join_date desc
 	</select>
 	
-		<select id="getMainSubUsers2" resultMap="userMap" parameterType="String">
-		
-		    		select e.user_name, e.user_id, e.until_visit, e.join_date, e.visitcount, w.write_count, r.repl_count
-					from members e, writeCount w, replCount r
-			        where e.member_num = w.member_num AND e.member_num = r.MEMBER_NUM
-			        order by e.until_visit desc
-		
+	
+	<!-- 최근 접속 회원  -->
+	<select id="getUntilUsers" resultMap="subUserMap"	parameterType="String">
+		select member_num memberNum, user_name userName, user_id userId, until_visit untilVisit
+		from members
+		order by until_visit desc
+	</select>
+	
+	
+	<!-- 최근 가입 회원  -->
+	<select id="getSubUntilJoinUsers" resultMap="subUserMap"	parameterType="String">
+		select member_num memberNum, user_name userName, user_id userId, join_date joinDate
+		from members
+		order by join_date desc
 	</select>
 	
 	

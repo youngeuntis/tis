@@ -11,10 +11,13 @@ public interface UserService {
 	List<User> FblindUsers(Page page);
 	List<User> StepUsers(Page page);
 	List<User> MainUsers(Page page);
-	List<User> MainSubUsers();
-	List<User> MainSubUsers2();
 	List<User> UntilJoinUsers(Page page);
 	List<User> UntilVisitUsers(Page page);
 	User findUser(String userId); //유저 한명
+	
+	List<User> findBlindUsers(); //제재 회원
+	List<User> findUntilUsers(); //최근 회원
+	List<User> findUntilJoinUser(); //최근 가입
+	
 	
 }

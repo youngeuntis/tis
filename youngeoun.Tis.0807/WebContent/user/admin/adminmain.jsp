@@ -13,8 +13,9 @@
 	Page myPage = null;
 	String currentPage = request.getParameter("currentPage");
 	String rowCnt = "10";
-	int row;
 	int row2;
+	int row3;
+	int row4;
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage),Integer.parseInt(rowCnt));
 	else myPage = new Page(1, Integer.parseInt(rowCnt));
 	
@@ -23,23 +24,35 @@
 	pageContext.setAttribute("pageMaker", pageService);
 	
 	List<User> posts = userService.findUsers(myPage);
-	List<User> posts2 = userService.MainSubUsers();
-	List<User> posts3 = userService.MainSubUsers2();
+	/* 최근 방문 회원 */
+	List<User> posts2 = userService.findUntilUsers();
+	/* 최근 가입 회원 */
+	List<User> posts3 = userService.findUntilJoinUser();
+	/* 최근 제재 회원 */
+	List<User> posts4 = userService.findBlindUsers();
 	
-	if(posts2.size()<8){
-		row = posts2.size();
-	}else{
-		row = 8;
-	}
 	
-	if(posts3.size()<8){
-		row2 = posts3.size();
+
+	if(posts2.size() < 8){
+		row2 = posts2.size();
 	}else{
 		row2 = 8;
 	}
 	
+	if(posts3.size() < 8){
+		row3 = posts3.size();
+	}else{
+		row3 = 8;
+	}
+	
+	if(posts4.size() < 8){
+		row4 = posts4.size();
+	}else{
+		row4 = 8;
+	}
+	
 	pageContext.setAttribute("posts", posts);
-	System.out.print(posts);	
+	
 	
 	
 %>
@@ -117,10 +130,8 @@
 						<li><a href="#">이름▼</a></li>
 					</ul>
 					
-					
-					
 					<div class="mainAa1" id="mainAa1">
-						<%for(int i=0; i < row ;i++){ %>
+						<%for(int i=0; i < row2 ;i++){ %>
 						<div class="memberDataAdate"><p><%=posts2.get(i).getUntilvisit() %> </p></div>
 						<div class="memberDataAid"><p><%=posts2.get(i).getUserId() %></p></div>
 						<div class="memberDataAname"><p><%=posts2.get(i).getUserName() %></p></div>
@@ -130,6 +141,7 @@
 						<a href="adminUntilVisit.jsp">더보기</a>
 					</div>
 				</div>
+				
 				<div class="mainA2">
 					<h1>최근 가입 회원</h1>
 					<br />
@@ -139,7 +151,7 @@
 						<li><a href="#">이름▼</a></li>
 					</ul>
 					<div class="mainAa1">
-						<%for(int i=0; i < row2;i++){ %>
+						<%for(int i=0; i < row3;i++){ %>
 						<div class="memberDataAdate"><p><%=posts3.get(i).getJoinDate() %> </p></div>
 						<div class="memberDataAid"><p><%=posts3.get(i).getUserId() %></p></div>
 						<div class="memberDataAname"><p><%=posts3.get(i).getUserName() %></p></div>
@@ -149,6 +161,7 @@
 						<a href="adminUntilJoin.jsp">더보기</a>
 					</div>
 				</div>
+				
 				<div class="mainA3">
 					<h1>최근 제재 회원</h1>
 					<br />
@@ -159,16 +172,18 @@
 					</ul>
 					
 					<div class="mainAa1">
-						<%for(int i=0; i < row;i++){ %>
-						<div class="memberDataAdate"><p><%=posts2.get(i).getJoinDate() %> </p></div>
-						<div class="memberDataAid"><p><%=posts2.get(i).getUserId() %></p></div>
-						<div class="memberDataAname"><p><%=posts2.get(i).getUserName() %></p></div>
+					
+						<%for(int i=0; i < row4;i++){ %>
+						<div class="memberDataAdate"><p><%=posts4.get(i).getJoinDate() %> </p></div>
+						<div class="memberDataAid"><p><%=posts4.get(i).getUserId() %></p></div>
+						<div class="memberDataAname"><p><%=posts4.get(i).getUserName() %></p></div>
 						<%} %>
 					</div>
 					<div class="mainAbutton">
-						<a href="adminUntilBlind.jsp">더보기</a>
+						<a href="adminBlind.jsp">더보기</a>
 					</div>
 				</div>
+				
 			</div>
 			<div class="mainB" id="mainB">
 				<h1>전체 회원</h1>
@@ -251,44 +266,39 @@
 
 			</div>
 			<script type="text/javascript">
-			function chchch() {
+			function chchch(num) {
 				var test
+				var n = num
 				$('input:checkbox[name="blackCh"]').each(function(){
 					if(this.checked){
 						test = this.value;
-						$('#19').val(test);
 					}
-					location.replace('javascript:blindMassage(625, 285, "'+ test +'")');
+					switch (n) {
+					case 1:
+						location.replace('javascript:blindMassage(625, 285, "'+ test +'")');
+						break;
+					case 2:
+						location.replace('javascript:forcedblindMassage(620, 285, "'+ test +'")');
+						break;
+					}
 				});
 			}
-			
 			</script>
 			
 			<div class="mainBoption">
 				<ul id="gnb4">
-					<li><a href="javascript:blindMassage(625, 285)" >제재</a></li>
-					<li><a href="javascript:forcedblindMassage(620, 285)" >강제 탈퇴</a></li>
+					<li><a href="#gnb3" onclick="chchch(1)">제재</a></li>
+					<li><a href="#gnb3" onclick="chchch(2)">강제 탈퇴</a></li>
 					<li><a href="javascript:popUpEmail(620, 670)" >메일</a></li>
 					<li><a href="javascript:popUpMassage(420, 350)" >쪽지</a></li>
 					<li><a href="javascript:StepMassage(620, 285)" >스텝 기능</a></li>
-					
-				<!-- 	
-					<input type="text" id="19" name="19" value="test">
-					
-					<li><input type="button" onclick="chchch()" value="Test"></li>
-				 -->
 				</ul>
 			</div>
 
 			<div class="clear"></div>
 		</div>
 
-
-
-
 		</main>
-
-
 
 		<footer>
 			<div class="footer_nav">
@@ -320,8 +330,5 @@
 		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 	<script src="js/index.js"></script>
 
-
-
 </body>
-
 </html>

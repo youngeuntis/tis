@@ -27,10 +27,10 @@ public class LoginServiceImpl implements LoginService {
 	public Login findUserLogin(String userId){
 		Login vo = loginDao.getUser(userId);
 		
-		//System.out.println("service"+vo.getUserId());
-		
+		//System.out.println("service"+vo.getGradeNum());
+		System.out.println("service"+vo.getGradeNum().trim().equals("f01"));
 		/* 인터셉터로 빼기 */
-		if(vo==null){
+		if(vo==null || vo.getGradeNum().trim().equals("f01")){
 			vo = new Login();
 			vo.setFlag(false);
 		}else{
