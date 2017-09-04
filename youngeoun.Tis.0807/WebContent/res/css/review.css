@@ -22,7 +22,7 @@ table.type02 th {
     width: 350px;
     height: 100px;
     font-weight: bold;
-    vertical-align: top;
+    vertical-align: middle;
     border: 1px solid black;
 }
 table.type02 td {
@@ -58,11 +58,15 @@ div#page_index{
  border : 0;
  margin: 50px 0px 300px 400px;
  position:relative;
- width : 800px; 
-}
+ width : 800px;
+ text-align: center;
 
+}
+div#page_index ul{
+ display : inline;
+}
 div#page_index ul li{
- float : left;
+ /* float : left; */
  margin-right : 40px;
  list-style:none;
 }

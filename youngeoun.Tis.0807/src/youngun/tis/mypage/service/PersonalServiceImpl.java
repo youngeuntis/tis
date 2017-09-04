@@ -31,7 +31,7 @@ public class PersonalServiceImpl implements PersonalService {
 	public void changePhone(int memberNum,String Phone) {
 		this.personal = new Personal();
 		personal.setmemberNum(memberNum);
-		personal.setUserEmail(Phone);
+		personal.setUserPh(Phone);
 		System.out.println("처리:"+personalDao.updatePhone(personal));
 	}
 
@@ -41,7 +41,7 @@ public class PersonalServiceImpl implements PersonalService {
 	public void changePw(int memberNum,String pw) {
 		this.personal = new Personal();
 		personal.setmemberNum(memberNum);
-		personal.setUserEmail(pw);
+		personal.setUserPw(pw);
 		System.out.println("처리:"+personalDao.updatePw(personal));
 		
 	}

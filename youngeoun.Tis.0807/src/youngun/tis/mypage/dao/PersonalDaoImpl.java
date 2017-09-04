@@ -19,12 +19,12 @@ public class PersonalDaoImpl implements PersonalDao {
 	}
 
 	@Override
-	public Personal updatePw(Personal personal) {
+	public int updatePw(Personal personal) {
 		return personalMapper.updatePw(personal);
 	}
 
 	@Override
-	public Personal updatePhone(Personal personal) {
+	public int updatePhone(Personal personal) {
 		return personalMapper.updatePhone(personal);
 	}
 

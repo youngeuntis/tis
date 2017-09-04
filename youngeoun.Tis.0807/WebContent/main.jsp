@@ -20,6 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Design Your TRip</title>
 <link rel="stylesheet" href="res/css/styleMain.css">
+<link rel="stylesheet" href="res/css/mywishlist.css">
 <script type="text/javascript" src="res/js/custom.js"></script>
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -420,19 +421,21 @@
 		<hr style="width: 400px; margin: 0 auto; border: 1px solid #DC4D28;">
 		<div class="best">
 			<h1 class="bestTitle">Hot Event</h1>
-			<div class="bestDiv">
-				<h2 class="bestDivIneer">
-					<a href="event/01.html">
-						<div class="best1">
-							<img src="res/img/mainslide/g.jpg">
-							<h3>그리스 산토리니</h3>
-						</div>
-					</a>
-					<div class="best2"></div>
-					<div class="best3"></div>
-					<div class="best4"></div>
-				</h2>
-			</div>
+			<div class="listcontainer">
+				<div class="wishlist">
+					<div class="wishlistImg">
+						<a href="http://www.hanatour.com/asp/booking/productPackage/pk-12000.asp?pkg_code=APP111170905Z2N&hanacode=pack_ae_md_1"
+					 		target="_blank">
+							<img src="res/img/event/event.jpg" alt=" 찜 목록" />
+						</a>
+					</div>
+					<div class="wishlistName">
+						<a href="#">
+							<p>보라카이 5일- 일급리조트 + 특식</p>
+						</a>
+					</div>
+				</div>
+			</div> 
 		</div>
 		</main>
 

@@ -56,6 +56,7 @@ public class SearchService {
 		
 		
 	}
+	
 	public void modifyReview(Review review){
 		reviewDao.updateInfo(review);
 	}

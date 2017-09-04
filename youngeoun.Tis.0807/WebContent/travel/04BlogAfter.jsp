@@ -72,9 +72,10 @@
 			String country = request.getParameter("country");
 			String blogNum = request.getParameter("blogNum");
 			String userNum = request.getParameter("userNum");
-			Pattern p = Pattern.compile("(http://i.imgur.com/)+(([a-zA-Z0-9]*.jpg)|([a-zA-Z0-9]*.png)|([a-zA-Z0-9]*.jpeg))");
+			Pattern p = Pattern.compile("((https://i.imgur.com/)|(http://i.imgur.com/))+(([a-zA-Z0-9]*.jpg)|([a-zA-Z0-9]*.png)|([a-zA-Z0-9]*.jpeg))");
 			Matcher m = p.matcher(content);
 			List<Blog> blogs = blogDao.getBlogListNoPara();
+			
 			Blog blog = null;
 			if(blogNum == null){
 				blog = new Blog();

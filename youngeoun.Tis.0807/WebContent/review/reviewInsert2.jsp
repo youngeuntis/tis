@@ -81,7 +81,7 @@
 			
 			System.out.print("title="+title+"content="+content+"continent="+continent+"reviewNum="+reviewNum);
 			
-			Pattern p = Pattern.compile("(http://i.imgur.com/)+(([a-zA-Z0-9]*.jpg)|([a-zA-Z0-9]*.png)|([a-zA-Z0-9]*.jpeg))");
+			Pattern p = Pattern.compile("((https://i.imgur.com/)|(http://i.imgur.com/))+(([a-zA-Z0-9]*.jpg)|([a-zA-Z0-9]*.png)|([a-zA-Z0-9]*.jpeg))");
 			Matcher m = p.matcher(content);
 			List<Review> reviews = reviewDao.getReviewListNoPara();
 			Review review = null;

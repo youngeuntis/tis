@@ -127,10 +127,16 @@
 					/* wishlist 가져오기 */
 
 					int memberNum = dto.getMemberNum();
-
+					int wishlistSize;
 					/* int memberNum = 66; */
 					WishlistService wishService = new WishlistServiceImpl();
 					List<Wishlist> wishlist = wishService.findWishlist(memberNum);
+					
+					if(wishlist.size()<3){
+						wishlistSize = wishlist.size();
+					}else{
+						wishlistSize = 3;
+					}
 				%>
 
 
@@ -147,7 +153,7 @@
 
 							<%
 								if (wishlist.size() != 0) {
-									for (int i = 0; i < 3; i++) {
+									for (int i = 0; i < wishlistSize; i++) {
 							%>
 							<div class="wishlist_list">
 								<div class="wishlist_img">

@@ -120,8 +120,8 @@
 						</tbody>
 					</table>
 					<div class="btn_wrap">
-						<a href="myPage.jsp" class="btn_model commit">적용</a> <a href="#"
-							class="btn_model reset">취소</a>
+						<a href="myPage.jsp" class="btn_model commit">적용</a> 
+						<a href="myPage.jsp" class="btn_model reset">취소</a>
 					</div>
 				</form>
 			</div>

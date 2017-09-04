@@ -1,3 +1,4 @@
+<%@page import="java.util.StringTokenizer"%>
 <%@page import="youngun.tis.review.service.SearchService"%>
 <%@page import="youngun.tis.user.login.domain.Login"%>
 <%@page import="youngun.tis.review.domain.Review"%>
@@ -226,7 +227,16 @@
 	                        
 			        <table class="type02">
 						<tr>
-							<th rowspan="2"><img src="<%=reviewNotice.get(i).getReviewImg()%>"  style="width:100%; height: 300px;"></th>
+						<th rowspan="2">
+						<%
+							StringTokenizer str = new StringTokenizer(reviewNotice.get(i).getReviewImg(),",");
+							while(str.hasMoreTokens()){
+						%>
+							<img src="<%=str.nextToken()%>"  style="width:100%; height: auto;">
+						<% 
+							}
+						%>
+						</th>
 							<th><%= reviewNotice.get(i).getReviewTitle() %></th>
 						</tr>
 						<tr>
@@ -262,7 +272,7 @@
 							<a href="reviewView.jsp?reviewNum=<%=reviewNotice.get(i).getReviewNum() %>">
 							<table class="type02">
 						<tr>
-							<th rowspan="2"><img src="<%=reviewNotice.get(i).getReviewImg()%>"  style="width:100%; height: 300px;"></th>
+							<th rowspan="2"><img src="<%=reviewNotice.get(i).getReviewImg()%>"  style="width:100%; height:auto;"></th>
 							<th><%= reviewNotice.get(i).getReviewTitle() %></th>
 						</tr>
 						<tr>

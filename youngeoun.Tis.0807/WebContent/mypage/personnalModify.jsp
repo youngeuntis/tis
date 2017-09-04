@@ -16,6 +16,9 @@
 	System.out.println("memberNum : " + memberNum);
 	System.out.println("email : "+email);
 	System.out.println("phone : "+phone);
+	System.out.println("myLetterPW : "+password);
+	
+	
 	
 	if(email != null){
 		PersonalService personalService = new PersonalServiceImpl();
@@ -24,9 +27,11 @@
 	}else if(phone != null){
 		PersonalService personalService = new PersonalServiceImpl();
 		personalService.changePhone(memberNum, phone);
+		dto.setPH(phone);
 	}else if(password != null){
 		PersonalService personalService = new PersonalServiceImpl();
 		personalService.changePw(memberNum, password);
+		
 	}
 
 
@@ -76,52 +81,6 @@ function setInternationalCode(obj, viewTarget, param){
 	}
 }
 
-function checkAuthNoForChangePhoneNo() {
-	if(document.getElementById("isPhoneYn").value == "Y"){
-		clickcr(this,'inf.mphonecomplete','','',window.event);
-	}else{
-		clickcr(this,'inf.mphoneregcomplete','','',window.event);
-	}
-	
-	if(document.getElementById("isPhoneYn").value == "N" && document.getElementById("phoneNo").value == "" && document.getElementById("authNo").disabled == true){
-		document.getElementById("e_phoneNo").innerHTML =  "삭제하실 휴대전화 번호가 없습니다.";
-		return;
-	}
-	
-	if((document.getElementById("phoneNo").value != "" && document.getElementById("phoneNo").value.length >= 7) && document.getElementById("authNo").disabled == true){
-		document.getElementById("e_phoneNo").innerHTML =  "[인증] 버튼을 클릭하여, 인증번호를 받아주세요.";
-		document.getElementById("e_authNo").innerHTML =  "";
-		return;
-	}
-	
-	if(document.getElementById("phoneNo").value == "" && document.getElementById("authNo").disabled == true){
-		if(!confirm("휴대전화번호를 삭제하시겠습니까?")){
-			document.getElementById("phoneNo").focus();
-			return;
-		}
-	}
-	
-	if(document.getElementById("phoneAuthYn").value == "N" && document.getElementById("phoneNo").value.length < 7 && document.getElementById("phoneNo").value.length != 0){
-		document.getElementById("e_phoneNo").innerHTML =  "휴대전화 번호를 정확하게 입력하세요.";
-		document.getElementById("e_authNo").innerHTML =  "";
-		document.getElementById("phoneNo").focus();
-		return;
-	}
-	
-	if(document.getElementById("authNo").disabled == false && document.getElementById("authNo").value.length < 6){
-		if(document.getElementById("authNo").value.length == 0){
-			document.getElementById("e_authNo").innerHTML =  "인증번호를 입력해 주세요.";
-		}else{
-			document.getElementById("e_authNo").innerHTML =  "인증번호를 정확하게 입력해 주세요.";		
-		}
-		document.getElementById("e_phoneNo").innerHTML =  "";
-		document.getElementById("authNo").focus();
-		return;
-	}
-		
-	checkAuthNo();
-}
-
 function cancelChange(obj){
 
     if(obj == "myLetterEmail") {
@@ -160,28 +119,6 @@ function cancelChange(obj){
 		document.getElementById("e_" + obj + "Ch2").innerHTML = "";	
 	}
 }
-
-
-/* function setEmail(){
-	var re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]*.[a-zA-Z]{2,3}$/;
-
-	if (document.getElementById("myLetterEmail").value == "" || document.getElementById("myLetterEmail").value.replace(/^\s+/, "") == "") {
-		document.getElementById("e_myLetterEmail").innerHTML =  "자주쓰는 메일을 정확하게 입력해 주세요.";
-		document.getElementById("myLetterEmail").focus();
-		document.getElementById("myLetterEmail").value = "";
-		return;
-	}
-	
-	if (document.getElementById("myLetterEmail").value.replace(/^\s+/, "") != re){
-		document.getElementById("e_myLetterEmail").innerHTML =  "이메일 형식이 올바르지 않습니다.";
-		document.getElementById("myLetterEmail").focus();
-		document.getElementById("myLetterEmail").value = "";
-		return;
-	}
-	document.updateEmail.submit();
-} */
-
-
 
 </script>
 
@@ -480,34 +417,114 @@ function cancelChange(obj){
 													<option value="36">헝가리</option>
 													<option value="61">호주</option>
 													<option value="852">홍콩</option>
-												</select> <span class="country_code_w"> <span
-													id="input_internationalCode" class="country_code">+82</span>
-													<input type="text" id="phoneNo" name="phoneNo"
-													maxlength="14"
-													onkeydown="check_num_ajax2('phoneNo', '2', 'e_phoneNo','e_authNo');">
-												</span> <a href="#"
-													onclick="sendSmsForChangePhoneNo();return false;"
-													class="btn_model"><span class="btn4">인증</span></a>
+												</select> 
+												<span class="country_code_w"> 
+												<span id="input_internationalCode" class="country_code">+82</span>
+												<form id="updatePh" action="personnalModify.jsp" method="post">
+													<input type="text" id="phoneNo" name="phoneNo" maxlength="11">
+												</span>
+												
+												<p id="e_phoneNo" class="contxt_alert"></p>
+												
+											<p>
+												<a href="#updatePh" onclick="sendNum(111111,999999);" class="btn_model">
+												<span class="btn4" style="color:chocolate">인증</span></a>
 											</p>
-											<p id="e_phoneNo" class="contxt_alert"></p>
+											<script>
+												function sendNum(min,max) {
+													
+													/* var sendNum;
+													
+													for(i=0; i<6; i++){
+														sendNum = (Math.random*10);
+														alert(sendNum);
+													}
+													
+													document.getElementById("e_sendNum").value = sendNum; */
+													
+													min = Math.ceil(min);
+													max = Math.floor(max);
+													
+													var sendNum = Math.floor(Math.random()*(max-min+1))+min;
+													 
+													document.getElementById("e_sendNum").value = sendNum;
+												}
+											</script>
 
 											<p class="contxt_tit2">
 												<label for="authNo">인증번호 입력</label>
 											</p>
-											<p class="contxt_webctrl">
-												<input type="text" id="authNo" name="authNo" value=""
-													maxlength="6"
-													onkeydown="check_num_ajax2('authNo', '2', 'e_authNo','e_phoneNo');"
-													disabled="" class="focus" style="width: 254px">
+											
+											<!-- 인증번호 나오는곳 -->
+											<p>
+												<input type="text" id="e_sendNum" class="contxt_alert" style="color:blue; width: 254px;" placeholder="인증번호 받는곳 " value="" readonly/>
 											</p>
+											
+											<!-- 인증번호 작성 -->
+											<p class="contxt_webctrl">
+												<input type="text" id="authNo" name="authNo" value="" maxlength="6" class="focus" style="width: 254px">
+											</p>
+											
+											<p id="e_sendNo" class="contxt_alert"></p>
 
 												<p class="btn_area_btm">
-													<a href="#" onclick="checkAuthNoForChangePhoneNo();return false;" class="btn_model">
+													<a href="#updatePh" onclick="checkPh();" class="btn_model">
 													<b id="b_txt_phoneNo_reg" class="btn3" onclick="checkEmail();">수정완료</b></a> 
+												
+												<script>
+												
+												function checkPh() {
 													
-													<a href="#" onclick="cancelChange('phoneNo');return false;" class="btn_model">
+													/* if(document.getElementById("phoneNo").value != "" && document.getElementById("phoneNo").value.length >= 7){
+														document.getElementById("e_phoneNo").innerHTML =  "[인증] 버튼을 클릭하여, 인증번호를 받아주세요.";
+														document.getElementById("e_sendNo").innerHTML =  "";
+														return;
+													} */
+													if(document.getElementById("phoneNo").value.length == 0){
+														document.getElementById("e_phoneNo").innerHTML =  "휴대전화 번호를 입력하세요.";
+														document.getElementById("e_phoneNo").style.color='red';
+														document.getElementById("phoneNo").focus();
+														return;
+													}
+													if(document.getElementById("phoneNo").value.length < 7 && document.getElementById("phoneNo").value.length != 0){
+														document.getElementById("e_phoneNo").innerHTML =  "휴대전화 번호를 정확하게 입력하세요.";
+														document.getElementById("e_phoneNo").style.color='red';
+														document.getElementById("phoneNo").focus();
+														return;
+													}
+													
+													if(document.getElementById("authNo").value.length < 6){
+														if(document.getElementById("authNo").value.length == 0){
+															document.getElementById("e_sendNo").innerHTML =  "인증번호를 입력해 주세요.";
+															document.getElementById("e_sendNo").style.color='red';
+														}else{
+															document.getElementById("e_sendNo").innerHTML =  "인증번호를 정확하게 입력해 주세요.";
+															document.getElementById("e_sendNo").style.color='red';
+														}
+														document.getElementById("e_phoneNo").innerHTML =  "";
+														document.getElementById("authNo").focus();
+														return;
+													}
+													
+													if(document.getElementById("authNo").value 
+												    	!= document.getElementById("e_sendNum").value) {
+												    	document.getElementById("e_sendNo").innerHTML = "인증번호가 일치하지 않습니다";
+												    	document.getElementById("e_sendNo").style.color='red';
+												        document.getElementById("authNo").value = "";
+												        document.getElementById("authNo").focus();
+												        return;
+												    }
+													
+													document.getElementById("updatePh").submit();
+													
+												}
+												</script>	
+													
+													
+													<a href="#updatePh" onclick="cancelChange('phoneNo');return false;" class="btn_model">
 													<b id="b_txt_phoneNo_cncl" class="btn2">수정취소</b></a>
 												</p>
+											</form>
 										</div>
 										<p id="p_phoneNo" class="btn_area_btm">
 											<a href="#" onclick="telmodify();return false;"
@@ -599,7 +616,7 @@ function cancelChange(obj){
 											<br />
 											<p class="contxt_desc">새 비밀번호를 입력하세요.</p>
 											<p class="contxt_webctrl">
-											<form id="updatePw" action="personnalModifiy.jsp" method="post">
+											<form id="updatePw" action="personnalModify.jsp" method="post">
 												<input type="text" name="myLetterPW" id="myLetterPW"
 													value="" maxlength="12" style="width: 254px">
 											</p>
@@ -615,19 +632,23 @@ function cancelChange(obj){
 											<p id="e_myLetterPWCh2" class="contxt_alert"></p>
 											
 											<p class="btn_area_btm">
-												<a href="#updatePw" onclick="checkPw(); return false;" class="btn_model">
+												<a href="#updatePw" onclick="checkPw();" class="btn_model">
 												<b class="btn3">수정완료</b> </a> 
 												
 												<script>
 												function checkPw() {
-													alert=("안먹혀?>");
-												    //비밀번호 입력여부 체크
+													
+												   //비밀번호 입력여부 체크 
 												    if (document.getElementById("myLetterPW").value == "") {
-												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호를 입력하지 않았습니다.";
+												    	document.getElementById("e_myLetterPW1").innerHTML = "비밀번호를 입력하지 않았습니다.";
+												    	document.getElementById("e_myLetterPW1").style.color='red';
+												    	document.getElementById("e_myLetterPWCh2").innerHTML = "";
 												        document.getElementById("myLetterPW").focus();
 												        return;
 												    }else if(document.getElementById("myLetterPWCh").value == ""){
-												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호를 입력하지 않았습니다.";
+												    	document.getElementById("e_myLetterPWCh2").innerHTML = "비밀번호를 입력하지 않았습니다.";
+												    	document.getElementById("e_myLetterPWCh2").style.color='red';
+												    	document.getElementById("e_myLetterPW1").innerHTML = "";
 												        document.getElementById("myLetterPWCh").focus();
 												        return;
 												    }
@@ -635,12 +656,16 @@ function cancelChange(obj){
 												    //비밀번호 길이 체크(4~12자 까지 허용)
 												    if (document.getElementById("myLetterPW").value.length<4 
 												    	||document.getElementById("myLetterPW").value.length>12) {
-												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호를 4~12자까지 입력해주세요.";
+												    	document.getElementById("e_myLetterPW1").innerHTML = "비밀번호를 4~12자까지 입력해주세요.";
+												    	document.getElementById("e_myLetterPW1").style.color='red';
+												    	document.getElementById("e_myLetterPWCh2").innerHTML = ""
 												    	document.getElementById("myLetterPW").focus();
 												        return;
 												    }else if(document.getElementById("myLetterPWCh").value.length<4 
 													    	||document.getElementById("myLetterPWCh").value.length>12) {
-												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호를 4~12자까지 입력해주세요.";
+												    	document.getElementById("e_myLetterPWCh2").innerHTML = "비밀번호를 4~12자까지 입력해주세요.";
+												    	document.getElementById("e_myLetterPWCh2").style.color='red';
+												    	document.getElementById("e_myLetterPW1").innerHTML = "";
 												    	document.getElementById("myLetterPWCh").focus();
 												        return;
 												    }
@@ -648,9 +673,11 @@ function cancelChange(obj){
 												    //비밀번호와 비밀번호 확인 일치여부 체크
 												    if (document.getElementById("myLetterPW").value 
 												    	!= document.getElementById("myLetterPWCh").value) {
-												    	document.getElementById("e_myLetterPW").innerHTML = "비밀번호가 일치하지 않습니다";
+												    	document.getElementById("e_myLetterPWCh2").innerHTML = "비밀번호가 일치하지 않습니다";
+												    	document.getElementById("e_myLetterPWCh2").style.color='red';
 												        document.getElementById("myLetterPWCh").value = "";
 												        document.getElementById("myLetterPWCh").focus();
+												        document.getElementById("e_myLetterPW1").innerHTML = "";
 												        return;
 												    }
 												    
@@ -659,8 +686,9 @@ function cancelChange(obj){
 												
 												</script>
 												
-												<a href="#" onclick="cancelChange(myLetterPW);return false;" class="btn_model">
+												<a href="#" onclick="cancelChange('myLetterPW');" class="btn_model">
 												<b class="btn2">수정취소</b></a>
+												
 											</p>
 											</form>
 										</div>
@@ -677,7 +705,7 @@ function cancelChange(obj){
 
 					<div class="btn_wrap">
 						<a href="myPage.jsp" class="btn_model commit">적용</a> 
-						<a href="#" class="btn_model reset">취소</a>
+						<a href="myPage.jsp" class="btn_model reset">취소</a>
 					</div>
 
 				</fieldset>
