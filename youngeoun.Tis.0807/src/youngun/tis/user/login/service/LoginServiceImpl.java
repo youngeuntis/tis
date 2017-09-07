@@ -65,7 +65,7 @@ public class LoginServiceImpl implements LoginService {
 				for(int i=0; i<viewPw;i++){
 					tmp += vo.getPassword().charAt(i);
 				}
-				pw = tmp + "*************";
+				pw = tmp + "****";
 				vo.setFlag(true);
 				vo.setPassword(pw);
 			}else{

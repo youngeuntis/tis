@@ -33,7 +33,6 @@
 <script type="text/javascript">
 function asd() {
 	
-	alert("hhhh");
 	var email = document.email.userEmail.value;
 	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 
